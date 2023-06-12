@@ -1,5 +1,6 @@
 import '../i18n'
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import './comp.styles/LangOption'
 
 const languages = [
     { value: '', text: "Default EN" },
