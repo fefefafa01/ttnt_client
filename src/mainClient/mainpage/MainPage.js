@@ -1,10 +1,9 @@
-import {Login, Register, ResetPwd} from '../../components'
-import {LoginValid, PwdValid, RegValid} from '../../components'
+import {Login, Register, ResetPwd} from '../../components/MainInput'
+import {LoginValid, PwdValid, RegValid} from '../../components/Validation'
 import Multi_Lang from '../../components/Multi_Lang'
-import "../../../node_modules/bootstrap/dist/css/bootstrap.css"
+import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import './MainPage.css'
-import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { React, setState } from 'react';
+import { React} from 'react';
 
 const MainPage = () => {
   return (

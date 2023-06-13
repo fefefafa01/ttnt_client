@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import './mainClient/mainpage/MainPage'
+import MainPage from './mainClient/mainpage/MainPage';
 
 class App extends Component {
   
@@ -21,9 +23,7 @@ componentDidMount() {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
-        </header>
+        <MainPage />
         <p className="App-intro">;{this.state.apiResponse}</p>
       </div>
     );

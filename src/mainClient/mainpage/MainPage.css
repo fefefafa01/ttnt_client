@@ -195,7 +195,7 @@
   
   .body-img{
     background-size: cover;
-    background-image: url("./img/car.png");
+    background-image: url("../../img/car.png");
     background-position: center;
     height: 50vh;
     margin-top: 17vh;
