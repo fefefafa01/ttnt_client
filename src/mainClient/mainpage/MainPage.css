@@ -200,3 +200,56 @@
     height: 50vh;
     margin-top: 17vh;
   }
+
+  .profile{
+    max-width: 70px;
+  }
+
+  .dropbtn {
+    background-color: #001a71 ;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: -70px;
+  } 
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width:max-content;
+    height: fit-content;
+    right: 0;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin-top: -15px;
+    text-align: left;
+  }
+
+  .dropdown-content a {
+    color: #0f5d5e;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    margin-left: auto;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .powerbutton{
+    max-width: 40px;
+    margin-bottom: 5px;
+  }
