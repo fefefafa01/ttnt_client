@@ -1,5 +1,6 @@
 import {Login, Register, ResetPwd} from '../../components/MainInput'
 import {LoginValid, PwdValid, RegValid} from '../../components/Validation'
+import { Changer } from '../../components/LanguageChange.js'
 import Multi_Lang from '../../components/Multi_Lang'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import './MainPage.css'
@@ -20,12 +21,12 @@ const MainPage = () => {
           
         </div>
         <div className="label col">
-          <p className="label">Welcom to AISIN Parts Support</p>
+          <p className="label"><Changer inp = 'Welcome to AISIN Parts Support' /></p>
         </div>
         <Multi_Lang/>
     </div>
     <div className="body">
-        <Login/>
+        <RegValid/>
         <div className="col-sm-12 col-md content">
           <p className="logo">
             AISIN

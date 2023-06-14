@@ -90,6 +90,7 @@
   }
   
   .form-box h2{
+    margin-top: 20px;
     font-size: 2em;
     color: black;
     text-align: center;
@@ -120,7 +121,39 @@
     margin-top: 5px;
     font-size: 1.2em;
   }
+
+  .name-box{
+    width: 35%;
+    display: inline;
+    border: transparent;
+    border-bottom: 2px solid #172685;
+    margin: 10px 20px;
+    background-color: transparent;
+    outline: none;
+    margin-top: 5px;
+    font-size: 1.2em;
+  }
+
+  .name-box::placeholder {
+    color: #64a5b4;
+  }
+
+  .valid-box {
+    height: 40vh;
+    font-size: 1.5em;
+    text-align: left;
+    margin: 5%;
+    margin-top: 15%;
+    border: solid 1px black;
+    border-radius: 5%;
+    padding: 20px;
+    padding-top: 40px;
+  }
   
+  .valid-box .btn {
+    margin-top: 20%
+  }
+
   .remember-forgot{
     font-size: .9em;
     color: #172685;
@@ -155,7 +188,7 @@
     font-size: 1em;
     color: #fff;
     font-weight: 500;
-    margin-top: 10vh;
+    margin-top: 4vh;
   }
   
   .login-register{

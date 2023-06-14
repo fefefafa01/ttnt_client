@@ -9,9 +9,15 @@ Report Page (Epic 1): mainClient/reportpage
 - Mainpage's Components: Validation, MainInput
 - Homepage's Components: Epic2Filter, Header, PartGroup, SearchCriteria, DownloadFile, Profile
 - Reportpage's Components: ProductOverview,  ProductPeriod, Epic1Filter
-**All 3 MUST include LanguageChange to translate**
+**All MUST include LanguageChange to translate, LanguageOption is for Language Selection**
 
-- Files are just templates, they HAVE NOT been called into App.js yet, neither are they correctly importing files
+- Empty/Half pre-coded files are just templates, they HAVE NOT been called into App.js yet, neither are they correctly importing/functioning files
+
+- Installations Requires:
+npm i react create-react-app (ReactJS)
+npm bootstrap (Bootstrap)
+npm i i18next i18next-http-backend (i18next - Translation)
+npm i i18next-browser-languagedetector react-i18next (i18next - Processing + ReactJS API)
 
 
 

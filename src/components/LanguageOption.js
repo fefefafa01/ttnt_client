@@ -5,8 +5,7 @@ import './comp.styles/LangOption.css'
 const languages = [
     { value: '', text: "Default EN" },
     { value: 'en', text: "English" },
-    { value: 'vi', text: "Vietnam" },
-    { value: 'ja', text: "Japanese" },
+    { value: 'vi', text: "Vietnam" }
   ]
   
   function AppRender () {

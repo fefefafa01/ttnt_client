@@ -10,18 +10,18 @@ function Multi_Lang({Lang}) {
 
     return (
       <div className="lang col-1 dropdown">
-        <button className="multi-lang" onClick={handleOpen} type="button" data-bs-toggle="dropdown" aria-expanded="false"><img className="globe" src={Globe} alt="Globe" />
+        <button className="multi-lang" onClick={handleOpen} type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img className="globe" src={Globe} alt="Globe" />
         </button>
         <span className="langbtn">
             EN
         </span> 
         {open? (
         <ul className="menu lang-item" >
-                <li className="dropdown-item"><a  href="#">VI</a></li>
-                <li className="dropdown-item"><a  href="#">EN</a></li>
+            <li className="dropdown-item"><a  href="#">VI</a></li>
+            <li className="dropdown-item"><a  href="#">EN</a></li>
         </ul>
         ):null}
-        
       </div>
     );
 }
