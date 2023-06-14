@@ -26,7 +26,7 @@ componentDidMount() {
   render() {
     return (
       <div className="App">
-        <MainPage />
+        <MainPage input = 'Login'/>
         <h1><Changer inp='welcome' /></h1>
         <p><Changer inp='selection'></Changer></p>
         <AppRender></AppRender> {/* MultiLanguage */}

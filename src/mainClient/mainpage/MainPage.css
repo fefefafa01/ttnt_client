@@ -9,6 +9,7 @@
   .logo{
     color: white;
     font-family: "VLNL Decks";
+    font-style: italic;
   }
   
   .header div p.logo{
@@ -77,7 +78,7 @@
   
   .wrapper{
     position: absolute;
-    height: 60vh;
+    height: fit-content;
     background-color: #d8dcf4;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;

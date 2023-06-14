@@ -1,137 +1,114 @@
-import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { React, useState } from 'react';
-import { LoginValid, PwdValid } from './Validation';
-import { Link, Routes, Route } from 'react-router-dom';
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import { React, useState } from "react";
+import { LoginValid, PwdValid } from "./Validation";
+import { Link, Routes, Route } from "react-router-dom";
 
-function Login(){
-    const [popupStyle, showPopup] = useState("hide")
-    const popup = () => {
-        showPopup("login-popup")
-        setTimeout(() => showPopup("hide"), 3000)
-    }
-    
+function Login() {
+  const [login, setlogin] = useState(true);
+  const toggleModal1 = () => {
+    setlogin(!login);
+    console.log(login);
+  };
+
+  const [resetPwd, setPwd] = useState(false);
+  const toggleModal2 = () => {
+    setPwd(!resetPwd);
+    console.log(resetPwd);
+  };
+
+  const [signup, setsignup] = useState(false);
+  const toggleModal3 = () => {
+    setsignup(!signup);
+    console.log(signup);
+  };
+
   return (
     <div className="wrapper">
+      {login && (
         <div className="form-box">
-            <h2>Login</h2>
-            <form action="">
-                <div className="input-box">
-                    <span className="icon"></span>
-                    <input type="email" placeholder='Email Address'></input>
+          <h2>Login</h2>
+          <form action="">
+            <div className="input-box">
+              <span className="icon"></span>
+              <input type="email" placeholder="Email Address"></input>
+            </div>
+            <div className="input-box">
+              <span className="icon"></span>
+              <input type="password" placeholder="Password"></input>
+            </div>
+            <div className="remember-forgot">
+              <label htmlFor="">
+                <input type={"checkbox"} />
+                Remember
+              </label>
+              <label htmlFor="">
+                <div onClick={toggleModal1} className="register-link">
+                  <div onClick={toggleModal2} className="register-link">
+                    Forgot Password?
+                  </div>
                 </div>
-                <div className="input-box">
-                    <span className="icon"></span>
-                    <input type="password" placeholder='Password'></input>
-                </div>
-                <div className="remember-forgot">
-                    <label htmlFor="">
-                        <input type={'checkbox'} />
-                            Remember 
-                    </label>
-                    <Routes>
-                        <Route path='/resetPwd' element={<ResetPwd/>}></Route>
-                    </Routes>
-                    <label htmlFor="">
-                        <Link to="/resetPwd" className="register-link">Forgot Password?</Link>
-                    </label>    
-                </div>  
-                <button className="btn" type='submit' onClick={popup}>
-                    Login
-                </button>
-                <div className={popupStyle}>
-                    <h3>HIIIII</h3>
-                </div>
-                <Routes>
-                        <Route path='/register' element={<Register/>}></Route>
-                    </Routes>
-                <div className="login-register">
-                    <p><Link to="/register"  className="register-link">Create Account</Link></p>
-                </div>
-                </form>
+              </label>
+            </div>
+            <button className="btn" type="submit">
+              Login
+            </button>
+            <div className="login-register" onClick={toggleModal1}>
+              <div onClick={toggleModal3} className="register-link">
+                Create Account
+              </div>
+            </div>
+          </form>
         </div>
+      )}
+      {resetPwd && <ResetPwd />}
+      {signup && <Register />}
     </div>
   );
+}
+
+function Register() {
+  return 1;
+}
+
+function ResetPwd() {
+  const [hide, sethide] = useState(true);
+  const toggleModal1 = () => {
+    sethide(!hide);
   };
 
-function Register () {
-    return (
-        <div className="wrapper">
-            <div className="form-box">
-                <h2>Sign Up</h2>
-                <form action="#">
-                    <div className="input-box">
-                        <span className="icon"></span>
-                        <input type="email" placeholder='Email Address' required />
-                    </div>
-                    <div className="input-box">
-                        <span className="icon"></span>
-                        <input type="password" placeholder='Password' required />
-                    </div>
-                    <div className="remember-forgot">
-                        <label htmlFor="">
-                            <input type={'checkbox'} />
-                                Remember 
-                        </label>
-                        Forgot Password?
-                    </div>  
-                    <button className="btn" type='submit'>
-                        Login
-                    </button>
-                    <div className="login-register">
-                        <p>abc</p>
-                        
-                    </div>
-                    </form>
-            </div>
-        </div>
-      );
-    };
-
-function ResetPwd(){
-    const [values, setValues] = useState({
-        email: '',
-        password:''
-    })
-    const [errors, setErrors] = useState({})
-    const handleInput = (event) => {
-        setValues(prev => ({...prev, [event.target.className]: [event.target.value]}));
-    }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setErrors(PwdValid(values));
-    }
+  const [show, setshow] = useState(false);
+  const toggleModal2 = () => {
+    setshow(!show);
+  };
 
   return (
-    <div className="wrapper">
-        <div className="form-box">
-            <h2>Reset Password</h2>
-            <form action="" onSubmit={handleSubmit}>
-                <div className="input-box">
-                    <span className="icon"></span>
-                    <input type="email" placeholder='Email Address' 
-                    onChange={handleInput} required />
-                    {errors.email && <span className = 'text-danger'> {errors.email}</span>}
-                </div>
-                <div className="input-box">
-                    <span className="icon"></span>
-                    <input type="password" placeholder='Password' 
-                    onChange={handleInput} required />
-                    {errors.email && <span className = 'text-danger'> {errors.email}</span>}
-                </div> 
-                <div className="input-box">
-                    <span className="icon"></span>
-                    <input type="confirm password" placeholder='Confirm New Password' 
-                    onChange={handleInput} required />
-                    {errors.email && <span className = 'text-danger'> {errors.email}</span>}
-                </div>
-                    <button className="btn" type='submit'>
-                        Reset Password
-                    </button>
-                <p></p>
-            </form>
+    <div className="form-box">
+      <h2>Reset Password</h2>
+      {hide && (
+        <form action="">
+          <div className="input-box">
+            <span className="icon"></span>
+            <input type="email" placeholder="Email Address" />
+          </div>
+          <div className="input-box">
+            <span className="icon"></span>
+            <input type="password" placeholder="Password" />
+          </div>
+          <div className="input-box">
+            <span className="icon"></span>
+            <input type="confirm password" placeholder="Confirm New Password" />
+          </div>
+          <button className="btn" onClick={toggleModal1}>
+            <div onClick={toggleModal2} className="register-link">
+              Reset Password
             </div>
-        </div>
-  )
-  };
+          </button>
+          <p></p>
+        </form>
+      )}
+      {show && <PwdValid />}
+    </div>
+  );
+}
 
-export {Login, Register, ResetPwd}
+export { Login, Register, ResetPwd };
