@@ -9,6 +9,7 @@
   .logo{
     color: white;
     font-family: "VLNL Decks";
+    font-style: italic;
   }
   
   .header div p.logo{
@@ -44,21 +45,25 @@
   .multi-lang{
     background-color: transparent;
     border: none;
+    margin-left: 30%;
   }
   
   .langbtn{
     color: white;
     position: absolute;
+    margin-left: -5px;
+    font-size: 1.2em;
   }
-  
-  .menu.lang-item{
+
+  .box{
     border: solid black 1px;
     background-color: white;
-    width: 5vw;
-    padding: 0 30px;
+    width: 3cm;
+    padding: 0 10px;
     border-radius: 8px;
-    margin-left: 20%;
+    margin-left: 50%;
   }
+  
   .dropdown-item a{
     text-decoration: none;
     color: black;
@@ -187,7 +192,7 @@
   .content p.contenttext{
     color: #64a5b4;
     margin-left: 30vw;
-    margin-top: -50px;
+    margin-top: -40px;
     font-weight: bold;
     font-style: italic;
     font-size: 1.7em;
