@@ -5,6 +5,7 @@ import { AppRender } from 'components/LanguageOption'
 import { Changer } from 'components/LanguageChange'
 import './mainClient/mainpage/MainPage'
 import MainPage from './mainClient/mainpage/MainPage';
+import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
   
@@ -25,12 +26,14 @@ componentDidMount() {
 
   render() {
     return (
+      <BrowserRouter>
       <div className="App">
         <MainPage />
         <h1><Changer inp='welcome' /></h1>
         <p><Changer inp='selection'></Changer></p>
         <AppRender></AppRender> {/* MultiLanguage */}
       </div>
+      </BrowserRouter>
     );
   }
 }
