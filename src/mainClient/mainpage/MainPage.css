@@ -120,6 +120,13 @@
     margin-top: 5px;
     font-size: 1.2em;
   }
+
+  .eye{
+    color:#64a5b4;
+    scale: 150%;
+    padding-top: 15px;
+    margin-right: 20px;
+  }
   
   .remember-forgot{
     font-size: .9em;

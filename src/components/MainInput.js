@@ -19,7 +19,7 @@ function Login () {
                             onChange={(e) => setPassword(e.target.value)}
                             required />
                     <div className="p-2" onClick={() => setVisible(!visible)}>
-                        {visible ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
+                        {visible ? <EyeOutlined className="eye"/> : <EyeInvisibleOutlined className="eye"/>}
                     </div>
                 </div>
             </form>
