@@ -19,6 +19,7 @@ npm bootstrap (Bootstrap)
 npm i i18next i18next-http-backend (i18next - Translation)
 npm i i18next-browser-languagedetector react-i18next (i18next - Processing + ReactJS API)
 npm i react-router-dom (Routing and Linking in ReactJS)
+npm i @mui/material @emotion/react @emotion/styled
 
 
 
