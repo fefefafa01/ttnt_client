@@ -94,7 +94,7 @@ function Register () {
                             onChange={(e) => setPassword(e.target.value)}
                             required />
                     <div className="p-2" onClick={() => setVisible(!visible)}>
-                        {visible ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
+                        {visible ? <EyeOutlined className="eye"/> : <EyeInvisibleOutlined className="eye"/>}
                     </div>
                 </div>
                 <div className="input-box">
@@ -104,7 +104,7 @@ function Register () {
                             onChange={(e) => confsetPassword(e.target.value)}
                             required />
                     <div className="p-2" onClick={() => confsetVisible(!confvisible)}>
-                        {confvisible ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
+                        {confvisible ? <EyeOutlined className="eye"/> : <EyeInvisibleOutlined className="eye"/>}
                     </div>
                 </div>
             </form>
@@ -151,7 +151,7 @@ function ResetPwd(){
                         onChange={(e) => setPassword(e.target.value)}
                         />
                     <div className="p-2" onClick={() => setVisible(!visible)}>
-                        {visible ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
+                        {visible ? <EyeOutlined className="eye"/> : <EyeInvisibleOutlined className="eye"/>}
                     </div>
                 </div> 
                 <div className="input-box">
@@ -161,7 +161,7 @@ function ResetPwd(){
                         onChange={(e) => confsetPassword(e.target.value)}
                         />
                     <div className="p-2" onClick={() => confsetVisible(!confvisible)}>
-                        {confvisible ? <EyeOutlined/> : <EyeInvisibleOutlined/>}
+                        {confvisible ? <EyeOutlined className="eye"/> : <EyeInvisibleOutlined className="eye"/>}
                     </div>
                 </div>
                     <button className="btn" type='submit'>
