@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './i18n'
 import './App.css';
-import { AppRender } from 'components/LanguageOption'
 import { Changer } from 'components/LanguageChange'
 import './mainClient/mainpage/MainPage'
 import MainPage from './mainClient/mainpage/MainPage';
@@ -31,7 +30,6 @@ componentDidMount() {
         <MainPage />
         <h1><Changer inp='welcome' /></h1>
         <p><Changer inp='selection'></Changer></p>
-        <AppRender></AppRender> {/* MultiLanguage */}
       </div>
       </BrowserRouter>
     );
