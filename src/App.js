@@ -27,8 +27,6 @@ componentDidMount() {
     return (
       <div className="App">
         <MainPage />
-        <h1><Changer inp='welcome' /></h1>
-        <p><Changer inp='selection'></Changer></p>
         <AppRender></AppRender> {/* MultiLanguage */}
       </div>
     );
