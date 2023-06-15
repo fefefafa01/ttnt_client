@@ -1,5 +1,6 @@
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { React, useState } from 'react';
+import { Changer } from './LanguageChange' 
 
 function Login () {
     const[password, setPassword] = useState("");
@@ -7,7 +8,7 @@ function Login () {
     return (
     <div className="col-xs-9 col-md-7 col-lg-3 wrapper">
         <div className="form-box login">
-            <h2>Login</h2>
+            <h2><Changer inp='Login' /></h2>
             <form action="#">
                 <div className="input-box">
                     <input type="email" placeholder='Email Address' required />
