@@ -3,6 +3,33 @@ import { React, useState } from 'react';
 import { Changer } from './LanguageChange'
 import { RegValid } from './Validation';
 
+function validation(values){
+    let error = {}
+    const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const password_pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/
+
+    if(values.email === "") {
+       error.email = "Email should not be empty"
+    }
+    else if (!email_pattern.test(values.email)) {
+       error.email = "Invalid email address"
+    }
+    else {
+       error.email = ""
+    }
+
+    if(values.password === "") {
+       error.password = "Password should not be empty"
+    }
+    else if(!password_pattern.test(values.password)) {
+       error.password = "Incorrect email or password"
+    }
+    else {
+       error.password = ""
+    }
+    return error;
+}
+
 
 function Login () {
     const [hide, sethide] = useState(true)
@@ -12,29 +39,46 @@ function Login () {
     sethide(!hide)
     console.log(hide)
     setappear(!appear)
- }
- const toggleAModal = () => {
+    }
+
+    const toggleAModal = () => {
     sethide(!hide)
     console.log(hide)
     setAappear(!Aappear)
- }
+    }
+
     const[password, setPassword] = useState("");
     const[visible, setVisible] = useState(false);
+
+    const [values, setValues] = useState({
+        email: '',
+        password:''
+    })
+    const [errors, setErrors] = useState({})
+    const handleInput = (event) => {
+        setValues(prev => ({...prev, [event.target.className]: [event.target.value]}));
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setErrors(validation(values));
+    }
+
     return (
     <> {hide &&
     <div className="col-xs-9 col-md-7 col-lg-3 wrapper">
         <div className="form-box login">
             <h2><Changer inp = 'Login' /></h2>
-            <form action="#">
+            <form action="#" onSubmit={handleSubmit}>
                 <div className="input-box">
-                    <input type="email" placeholder='Email Address' required />
+                    <input type="email" placeholder='Email Address' onChange={handleInput} />
+                    {errors.email && <span className = 'text-danger'> {errors.email}</span>}
                 </div>
                 <div className="input-box">
                     <input  value={password}
                             type={visible ? "text" : "password"} 
                             placeholder='Password'
                             onChange={(e) => setPassword(e.target.value)}
-                            required />
+                            />
                     <div className="p-2" onClick={() => setVisible(!visible)}>
                         {visible ? <EyeOutlined className="eye"/> : <EyeInvisibleOutlined className="eye"/>}
                     </div>
@@ -84,8 +128,8 @@ function Register () {
                     <input type="email" placeholder='Email Address' required />
                 </div>
                 <div>
-                    <input className="input-box name-box" type="text" placeholder='First Name' id='' required />
-                    <input className="input-box name-box" type="text" placeholder='Last Name' required />
+                    <input className="name-box name-left" type="text" placeholder='First Name' id='' required />
+                    <input className="name-box name-right" type="text" placeholder='Last Name' required />
                 </div>
                 <div className="input-box">
                     <input  value={password}
@@ -109,7 +153,7 @@ function Register () {
                 </div>
             </form>
         </div>
-        <button onClick={togglevalid} className="btn" type='submit'>
+        <button onClick={togglevalid} className="btn regbtn" type='submit'>
             <Changer inp = "Create Account" />
         </button>
     </div>}

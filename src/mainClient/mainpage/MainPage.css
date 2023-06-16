@@ -46,7 +46,7 @@
   
   .wrapper{
     position: absolute;
-    height: 70vh;
+    height: fit-content;
     background-color: #d8dcf4;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -91,20 +91,29 @@
     font-size: 1.2em;
   }
 
-  .name-box{
+  input.name-box{
     width: 35%;
     display: inline;
     border: transparent;
     border-bottom: 2px solid #172685;
-    margin: 10px 20px;
     background-color: transparent;
     outline: none;
     margin-top: 5px;
     font-size: 1.2em;
+    margin-left: -2px;
   }
 
-  .name-box::placeholder {
+  input.name-box::placeholder{
     color: #64a5b4;
+  }
+
+  input.name-left{
+    margin-right: 30px;
+    margin-left: -15px;
+  }
+
+  input.name-right{
+    margin-left: 25px;
   }
 
   .valid-box {
@@ -164,25 +173,23 @@
     font-size: 1em;
     color: #fff;
     font-weight: 500;
-    margin-top: 10vh;
+    margin-top: 5vh;
+  }
+
+  button.regbtn{
+    margin-bottom: 5vh;
   }
   
   .login-register{
     font-size: .9em;
-    color: black;
     text-align: center;
     font-weight: 500;
-    margin: 5% 0 20% 0;
+    margin: 10px 0px 20px  0px;
   }
-  
-  .login-register a{
+
+  p.register-link{
     color: #172685;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .login-register a:hover{
-    text-decoration: underline;
+    cursor: pointer;
   }
   
   .content p.logo{
