@@ -179,6 +179,10 @@
   button.regbtn{
     margin-bottom: 5vh;
   }
+
+  .regbtn {
+    margin-bottom: 5vh
+  }
   
   .login-register{
     font-size: .9em;
