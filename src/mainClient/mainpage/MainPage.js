@@ -1,3 +1,5 @@
+
+import {LoginValid, PwdValid, RegValid} from '../../components/Validation'
 import {Login, Register, ResetPwd} from '../../components/MainInput'
 import { Changer } from '../../components/LanguageChange.js'
 import Multi_Lang from '../../components/Multi_Lang'

@@ -47,6 +47,7 @@
   .wrapper{
     position: absolute;
     height: fit-content;
+    width: 25em;
     background-color: #d8dcf4;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -61,6 +62,7 @@
   .form-box h2{
     margin-top: 20px;
     font-size: 2em;
+    padding-top: 20px;
     color: black;
     text-align: center;
   }
@@ -70,15 +72,12 @@
     width: 80%;
     height: 50px;
     border-bottom: 2px solid #172685;
+    display: flex;
     margin: 30px 30px;
   }
   
   .input-box ::placeholder{
     color: #64a5b4;
-  }
-  
-  .input-box{
-    display: flex;
   }
   
   .input-box input{
@@ -167,7 +166,6 @@
     width: 100%;
     height: 50px;
     background-color: black;
-    border: none;
     border-radius: 10px;
     cursor: pointer;
     font-size: 1em;
