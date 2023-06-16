@@ -109,7 +109,7 @@ function Register () {
                 </div>
             </form>
         </div>
-        <button onClick={togglevalid} className="btn" type='submit'>
+        <button onClick={togglevalid} className="btn regbtn" type='submit'>
             <Changer inp = "Create Account" />
         </button>
     </div>}

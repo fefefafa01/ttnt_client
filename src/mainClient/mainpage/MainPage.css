@@ -46,7 +46,7 @@
   
   .wrapper{
     position: absolute;
-    height: 70vh;
+    height: fit-content;
     background-color: #d8dcf4;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -165,6 +165,10 @@
     color: #fff;
     font-weight: 500;
     margin-top: 10vh;
+  }
+
+  .regbtn {
+    margin-bottom: 5vh
   }
   
   .login-register{
