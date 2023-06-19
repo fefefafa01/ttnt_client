@@ -33,13 +33,7 @@ function ResetPwd() {
   const [confvisible, confsetVisible] = useState(false);
 
   const [hide, sethide] = useState(true);
-  const toggleModal1 = () => {
-    sethide(!hide);
-  };
   const [show, setshow] = useState(false);
-  const toggleModal2 = () => {
-    setshow(!show);
-  };
 
   const initialValues = { email: "", password: "", confpassword: "" };
   const [formValues, setFormvalues] = useState(initialValues);
@@ -66,6 +60,13 @@ function ResetPwd() {
       console.log(formValues);
     }
   }, [formErrors]);
+
+  function ChangePage(){
+    if(Object.keys(formErrors).length === 0 && isSubmit){
+    sethide(!hide);
+    setshow(!show);
+    };
+};
 
   return (
     <>
@@ -130,8 +131,7 @@ function ResetPwd() {
               <div className="error">
                 <span>{formErrors.confpassword}</span>
               </div>
-
-              <button className="btn" type="submit">
+              <button className="btn" onClick={ChangePage}>
                 Reset Password
               </button>
             </form>
@@ -147,7 +147,7 @@ function ResetPwd() {
                 <p>Your password was successfully reset!</p>
                 <p>please log in</p>
                 <a href={<Login />} className="register-link">
-                  <button onClick={toggleModal2} className="btn">
+                  <button className="btn">
                     Go to Login
                   </button>
                 </a>
