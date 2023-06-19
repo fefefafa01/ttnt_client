@@ -73,7 +73,7 @@
     height: 50px;
     border-bottom: 2px solid #172685;
     display: flex;
-    margin: 30px 30px;
+    margin: 10px 30px 20px;
   }
   
   .input-box ::placeholder{
@@ -116,7 +116,7 @@
   }
 
   .valid-box {
-    height: 40vh;
+    height: fit-content;
     font-size: 1.5em;
     text-align: left;
     margin: 5%;
@@ -218,3 +218,17 @@
     height: 50vh;
     margin-top: 17vh;
   }
+
+  .error{
+    width: 80%;
+    margin-left: 30px;
+    text-align: left;
+    margin-top: -20px;
+    position: absolute;
+  }
+
+  span{
+    color:red;
+  }
+
+  
