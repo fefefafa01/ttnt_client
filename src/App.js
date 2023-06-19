@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './i18n'
 import './App.css';
 import MainPage from './mainClient/mainpage/MainPage';
+import {Views} from './components/Views'
 
-class App extends Component {
+function App() {
   
 //   constructor(props) {
 //     super(props);
@@ -20,13 +21,11 @@ class App extends Component {
 //     this.callAPI();
 // }
 
-  render() {
-    return (
-      <div className="App">
-        <MainPage />
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Views />
+    </div>
+  );
 }
 
 export default App;

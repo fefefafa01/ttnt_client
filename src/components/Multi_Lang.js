@@ -7,23 +7,38 @@ import EN from '../../src/img/english.png'
 import { Changer } from './LanguageChange' 
 import './comp.styles/LangOption.css'
 
+function getLng() {
+  const lastLng = window.location.href.split('/')
+  return lastLng.at(-1);
+}
+
 function Multi_Lang() {
     const [open, setOpen] = useState(false);
     const handleOpen=() =>{
         setOpen(!open);
     };
-    let loc = "http://localhost:3000/";
+    let loc;
+    let defloc = "http://localhost:3000/"
+    if (window.location.href === "http://localhost:3000/?") {window.location.replace("http://localhost:3000/")}
     const check = Changer({inp:'Check'})
+    if (window.location.href!==defloc && 
+      ((getLng()==='?lng=vi') || (getLng()==='?lng=en'))) {
+        loc = window.location.href.split('/').slice(0, -1).join('/');
+    } else if (window.location.href!==defloc) {
+        loc = window.location.href;
+    } else if (window.location.href === defloc) {
+      loc = "http://localhost:3000/Login"
+    } else {loc = "http://localhost:3000"}
     var [lang, setLang] = useState('EN');
     if (check==='Check') {lang = 'EN'}
     else {lang = 'VI'}
     const handleLang=() => {
       if(lang === 'VI'){
         setLang('EN');  
-        window.location.replace(loc + "?lng=en");
+        window.location.replace(loc + "/?lng=en");
       } else {
         setLang('VI');
-        window.location.replace(loc + "?lng=vi");
+        window.location.replace(loc + "/?lng=vi");
       }
       
     };
