@@ -73,9 +73,9 @@
     height: 50px;
     border-bottom: 2px solid #172685;
     display: flex;
-    margin: 30px 30px;
+    margin: 10px 30px 20px;
   }
-  
+
   .input-box ::placeholder{
     color: #64a5b4;
   }
@@ -106,6 +106,18 @@
     color: #64a5b4;
   }
 
+  .error{
+    width: 80%;
+    margin-left: 30px;
+    text-align: left;
+    margin-top: -20px;
+    position: absolute;
+  }
+
+  .error span{
+    color:red;
+  }
+
   input.name-left{
     margin-right: 30px;
     margin-left: -15px;
@@ -115,8 +127,12 @@
     margin-left: 25px;
   }
 
+  .error_first_name{
+    margin-right: 35px;
+  }
+
   .valid-box {
-    height: 40vh;
+    height: fit-content;
     font-size: 1.5em;
     text-align: left;
     margin: 5%;
@@ -218,3 +234,17 @@
     height: 50vh;
     margin-top: 17vh;
   }
+
+  .error{
+    width: 80%;
+    margin-left: 30px;
+    text-align: left;
+    margin-top: -20px;
+    position: absolute;
+  }
+
+  span{
+    color:red;
+  }
+
+  
