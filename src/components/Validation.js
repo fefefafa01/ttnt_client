@@ -1,8 +1,7 @@
 //Link with UserHandler.js in ./server
 import { Changer } from './LanguageChange';
-import MainPage from '../mainClient/mainpage/MainPage';
 import { React, useState } from 'react';
-import { Login } from './MainInput';
+import { Login } from './Login';
 
 
 function LoginValid() {

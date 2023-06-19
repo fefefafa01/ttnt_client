@@ -1,6 +1,4 @@
-
-import {LoginValid, PwdValid, RegValid} from '../../components/Validation'
-import {Login, Register, ResetPwd} from '../../components/MainInput'
+import {Login} from '../../components/Login'
 import { Changer } from '../../components/LanguageChange.js'
 import Multi_Lang from '../../components/Multi_Lang'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css'

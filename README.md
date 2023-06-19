@@ -14,12 +14,12 @@ Report Page (Epic 1): mainClient/reportpage
 - Empty/Half pre-coded files are just templates, they HAVE NOT been called into App.js yet, neither are they correctly importing/functioning files
 
 - Installations Requires:
-npm i react create-react-app (ReactJS)
-npm bootstrap (Bootstrap)
-npm i i18next i18next-http-backend (i18next - Translation)
-npm i i18next-browser-languagedetector react-i18next (i18next - Processing + ReactJS API)
-npm i react-router-dom (Routing and Linking in ReactJS)
-npm i @mui/material @emotion/react @emotion/styled
+npm i -g react create-react-app
+npm i -g bootstrap 
+npm i -g i18next i18next-http-backend 
+npm i -g i18next-browser-languagedetector react-i18next 
+npm i -g react-router-dom 
+npm i -g @mui/material @emotion/react @emotion/styled
 
 *#URL : 192.168.11.143:3005*
 - (LE TRAN KHANH)
