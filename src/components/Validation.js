@@ -2,6 +2,7 @@
 import { Changer } from './LanguageChange';
 import { React, useState } from 'react';
 import { Login } from './Login';
+import { Link } from 'react-router-dom';
 
 
 function LoginValid() {
@@ -27,7 +28,7 @@ function RegValid () {
                 <p><Changer inp='Your account was successfully created!'/></p>
                 <p><Changer inp='please log in'/></p>
                 <button onClick={toggleModal} className="btn" type='submit'>
-                <Changer inp = 'Go to Login' />
+                <Link className="back_login" to ="/login"><Changer inp = 'Go to Login' /></Link>
                 </button>
                 </span>
             </div>
@@ -56,7 +57,6 @@ function PwdValid (values) {
   } else {
     error.password = "";
   }
-
   if (values.confirm === "") {
     error.confirm = "Please enter your password again";
   } else if (values.confirm !== values.password) {

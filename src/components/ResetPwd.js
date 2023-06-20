@@ -2,6 +2,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { React, useState, useEffect } from "react";
 import { Changer } from "./LanguageChange";
 import { Login } from "./Login";
+import { Link } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -72,7 +73,7 @@ function ResetPwd() {
     <>
       {""}
       {hide && (
-        <div className="wrapper">
+        <div className="wrapper reset_pwd">
           <div className="form-box login">
             <h2>
               <Changer inp="Reset Password" />
@@ -131,7 +132,7 @@ function ResetPwd() {
               <div className="error">
                 <span>{formErrors.confpassword}</span>
               </div>
-              <button className="btn" onClick={ChangePage}>
+              <button className="btn btn-dark" onClick={ChangePage}>
                 Reset Password
               </button>
             </form>
@@ -146,11 +147,9 @@ function ResetPwd() {
               <span className="border-box">
                 <p>Your password was successfully reset!</p>
                 <p>please log in</p>
-                <a href={<Login />} className="register-link">
                   <button className="btn">
-                    Go to Login
+                    <Link className="back_login" to ="/login"><Changer inp = 'Go to Login' /></Link>
                   </button>
-                </a>
               </span>
             </div>
           </div>

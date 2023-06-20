@@ -1,9 +1,12 @@
 import {Login} from '../../components/Login'
+import { Register } from 'components/Register'
+import { ResetPwd } from 'components/ResetPwd'
 import { Changer } from '../../components/LanguageChange.js'
 import Multi_Lang from '../../components/Multi_Lang'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import './MainPage.css'
 import { React} from 'react';
+import { Route, Routes } from 'react-router-dom'
 
 function MainPage () {
   return (
@@ -24,7 +27,12 @@ function MainPage () {
         <Multi_Lang/>
     </div>
     <div className="body">
-        <Login />
+        <Routes>
+          <Route path="/" element={<Login/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/resetpwd" element={<ResetPwd/>}/>  
+        </Routes>
         <div className="col-sm-12 col-md content">
           <p className="logo">
             AISIN

@@ -57,6 +57,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    padding-bottom: 20px;
   }
   
   .form-box h2{
@@ -117,7 +118,7 @@
   .error span{
     color:red;
   }
-
+  
   input.name-left{
     margin-right: 30px;
     margin-left: -15px;
@@ -209,6 +210,11 @@
     color: #172685;
     cursor: pointer;
   }
+
+  .back_login{
+    text-decoration: none;
+    color: white;
+  }
   
   .content p.logo{
     font-style: italic;
@@ -243,7 +249,7 @@
     position: absolute;
   }
 
-  span{
+  .error, .error_first_name, .error_last_name{
     color:red;
   }
 

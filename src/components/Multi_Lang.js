@@ -12,7 +12,7 @@ function Multi_Lang() {
     const handleOpen=() =>{
         setOpen(!open);
     };
-    let loc = "http://localhost:3000/";
+    let loc = window.location.pathname;
     const check = Changer({inp:'Check'})
     var [lang, setLang] = useState('EN');
     if (check==='Check') {lang = 'EN'}
@@ -25,7 +25,6 @@ function Multi_Lang() {
         setLang('VI');
         window.location.replace(loc + "?lng=vi");
       }
-      
     };
     return (
       <div className="lang col-2 dropdown">

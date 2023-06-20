@@ -1,5 +1,6 @@
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { React, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Changer } from './LanguageChange'
 import { Register } from './Register';
 import {ResetPwd} from './ResetPwd'
@@ -68,9 +69,6 @@ function Login() {
     }, [formErrors]);
 
   return (
-    <>
-      {" "}
-      {hide && (
         <div className="col-xs-9 col-md-7 col-lg-3 wrapper">
           <div className="form-box login">
             <h2>
@@ -109,7 +107,7 @@ function Login() {
                             <Changer inp="Remember" />
                         </label>
                         <p onClick={toggleAModal}>
-                            <Changer inp="Forgot Password?" />
+                            <Link to ="/resetpwd"><Changer inp="Create Account" /></Link>
                         </p>
                     </div>
                 <button className="btn btn-dark" type="submit">
@@ -118,18 +116,12 @@ function Login() {
             </form>
           </div>
           <div className="login-register">
-            <p onClick={toggleModal} className="register-link">
-              <Changer inp="Create Account" />
+            <p className="register-link">
+                <Link to ="/register"><Changer inp="Create Account" /></Link>
             </p>
           </div>
         </div>
-      )}
-      {appear && <Register />}
-      {Aappear && <ResetPwd />}
-    </>
   );
 }
-
-
 
 export {Login}

@@ -119,7 +119,7 @@ function Register() {
                 </div>
                 <div>
                 <span className="error_first_name">{formErrors.first_name}</span>
-                <span>{formErrors.last_name}</span>
+                <span className="error_last_name">{formErrors.last_name}</span>
                 </div>
                 <div className="input-box">
                   <input  name="password"
