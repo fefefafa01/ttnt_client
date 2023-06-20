@@ -39,25 +39,61 @@ function Login() {
     setAappear(!Aappear);
   };
 
-  const [password, setPassword] = useState("");
+//   const [pass, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
 
   const initialValues = {email:"", password:""};
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false)
+    const [isSubmit, setIsSubmit] = useState(false);
+    
+    const [isChecked, setIsChecked] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.checkbox && localStorage.username !== "") {
+            setIsChecked(true);
+          setFormvalues({
+            email: localStorage.email,
+            password: localStorage.password,
+          });
+        }
+        else if(!localStorage.checkbox){
+            setIsChecked(false);
+            localStorage.delete();
+        }
+        console.log(isChecked);
+      }, []);
 
     const handleChange = (e) =>{
         const {name, value} = e.target;
         setFormvalues({...formValues, [name]: value});
-        setPassword(e.target.value);
+        // setPassword(e.target.value);
     };
 
     const handleSubmit = (e) =>{
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
+    };
+
+    const handleCheck = (e) =>{
+        setIsChecked(e.target.checked);
+        console.log(isChecked);
     }
+
+    const loginSubmit = () => {
+        if (isChecked && formValues.email !== "") {
+          localStorage.email = formValues.email;
+          localStorage.password = formValues.password
+          localStorage.checkbox = isChecked;
+        }
+        // here call the API to signup/login
+        else if(!isChecked){
+            localStorage.email = "";
+            localStorage.password = "";
+            localStorage.checkbox = isChecked;
+        }
+    };
 
     useEffect(() => {
         console.log(formErrors);
@@ -101,21 +137,21 @@ function Login() {
                 <div className="error"><span>{formErrors.password}</span></div>
                     <div className="remember-forgot">
                         <label htmlFor="">
-                            <input type={"checkbox"} />
+                            <input type={"checkbox"} checked={isChecked} name='IsRememberMe' onChange={handleCheck} />
                             <Changer inp="Remember" />
                         </label>
                         <p onClick={toggleAModal}>
-                            <Link to ="/resetpwd" ><Changer inp="Forgot Password" /></Link>
+                            <Link to ="/resetpwd/*" ><Changer inp="Forgot Password" /></Link>
                         </p>
                     </div>
-                <button className="btn btn-dark" type="submit">
+                <button className="btn btn-dark" type="submit" onClick={loginSubmit}>
                     <Changer inp="User Login" />
                 </button>
             </form>
           </div>
           <div className="login-register">
             <p className="register-link">
-                <Link to ="/register" ><Changer inp="Create Account" /></Link>
+                <Link to ="/register/*"><Changer inp="Create Account" /></Link>
             </p>
           </div>
         </div>
