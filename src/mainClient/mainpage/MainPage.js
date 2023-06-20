@@ -6,7 +6,7 @@ import Multi_Lang from '../../components/Multi_Lang'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.css'
 import './MainPage.css'
 import { React} from 'react';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
 
 function MainPage () {
   return (
@@ -29,7 +29,6 @@ function MainPage () {
     <div className="body">
         <Routes>
           <Route path="/" element={<Login/>}/>
-          <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/resetpwd" element={<ResetPwd/>}/>  
         </Routes>

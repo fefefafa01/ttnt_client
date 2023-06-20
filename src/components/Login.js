@@ -2,8 +2,6 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Changer } from './LanguageChange'
-import { Register } from './Register';
-import {ResetPwd} from './ResetPwd'
 
 const validate = (values) =>{
     const errors = {};
@@ -107,7 +105,7 @@ function Login() {
                             <Changer inp="Remember" />
                         </label>
                         <p onClick={toggleAModal}>
-                            <Link to ="/resetpwd"><Changer inp="Create Account" /></Link>
+                            <Link to ="/resetpwd" ><Changer inp="Forgot Password" /></Link>
                         </p>
                     </div>
                 <button className="btn btn-dark" type="submit">
@@ -117,7 +115,7 @@ function Login() {
           </div>
           <div className="login-register">
             <p className="register-link">
-                <Link to ="/register"><Changer inp="Create Account" /></Link>
+                <Link to ="/register" ><Changer inp="Create Account" /></Link>
             </p>
           </div>
         </div>
