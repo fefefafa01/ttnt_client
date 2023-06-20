@@ -17,7 +17,7 @@ const validate = (values) =>{
 
     if (!values.password) {
         errors.password = "Password is required";}
-    else if (values.password.length < 4) {
+    else if (values.password.length < 7) {
         errors.password = "Password must be more than 4 characters";}
     //   } else if (values.password.length > 10) {
     //     errors.password = "Password cannot exceed more than 10 characters";
@@ -29,18 +29,36 @@ function Login() {
 
   const {setUser} = useContext(AccountContext) || {};
   const [password, setPassword] = useState("");
+//   const [pass, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState(null);
 
   const initialValues = {email:'', password:''};
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false)
+    const [isSubmit, setIsSubmit] = useState(false);
+    
+    const [isChecked, setIsChecked] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.checkbox && localStorage.username !== "") {
+            setIsChecked(true);
+          setFormvalues({
+            email: localStorage.email,
+            password: localStorage.password,
+          });
+        }
+        else if(!localStorage.checkbox){
+            setIsChecked(false);
+            //localStorage.delete();
+        }
+        console.log(isChecked);
+      }, []);
 
     const handleChange = (e) =>{
         const {name, value} = e.target;
         setFormvalues({...formValues, [name]: value});
-        setPassword(e.target.value);
+        // setPassword(e.target.value);
     };
 
     const handleSubmit = (e) => {
@@ -74,7 +92,26 @@ function Login() {
             <Link to = '/homepage' />
           }
         })
+    };
+
+    const handleCheck = (e) =>{
+        setIsChecked(e.target.checked);
+        console.log(isChecked);
     }
+
+    const loginSubmit = () => {
+        if (isChecked && formValues.email !== "") {
+          localStorage.email = formValues.email;
+          localStorage.password = formValues.password
+          localStorage.checkbox = isChecked;
+        }
+        // here call the API to signup/login
+        else if(!isChecked){
+            localStorage.email = "";
+            localStorage.password = "";
+            localStorage.checkbox = isChecked;
+        }
+    };
 
     useEffect(() => {
         console.log(formErrors);
@@ -118,14 +155,14 @@ function Login() {
                 <div className="error"><span>{formErrors.password}</span></div>
                     <div className="remember-forgot">
                         <label htmlFor="">
-                            <input type={"checkbox"} />
+                            <input type={"checkbox"} checked={isChecked} name='IsRememberMe' onChange={handleCheck} />
                             <Changer inp="Remember" />
                         </label>
                         <p>
-                            <Link to ="/resetpwd" ><Changer inp="Forgot Password?" /></Link>
+                            <Link to ="/resetpwd" ><Changer inp="Forgot Password" /></Link>
                         </p>
                     </div>
-                <button className="btn btn-dark" type="submit">
+                <button className="btn btn-dark" type="submit" onClick={loginSubmit}>
                     <Changer inp="User Login" />
                 </button>
             </form>
