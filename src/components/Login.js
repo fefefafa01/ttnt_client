@@ -1,7 +1,9 @@
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Changer } from './LanguageChange'
+import {AccountContext} from './Login.comps/AccountContext';
+import { parse, stringify, toJSON, fromJSON} from 'flatted';
 
 const validate = (values) =>{
     const errors = {};
@@ -24,25 +26,13 @@ const validate = (values) =>{
 };
 
 function Login() {
-  const [hide, sethide] = useState(true);
-  const [appear, setappear] = useState(false);
-  const [Aappear, setAappear] = useState(false);
-  const toggleModal = () => {
-    sethide(!hide);
-    console.log(hide);
-    setappear(!appear);
-  };
 
-  const toggleAModal = () => {
-    sethide(!hide);
-    console.log(hide);
-    setAappear(!Aappear);
-  };
-
+  const {setUser} = useContext(AccountContext) || {};
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
+  const [error, setError] = useState(null);
 
-  const initialValues = {email:"", password:""};
+  const initialValues = {email:'', password:''};
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false)
@@ -53,10 +43,37 @@ function Login() {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
+        console.log(formValues.email, formValues.password)
         setIsSubmit(true);
+          fetch("http://localhost:5000/auth/login", {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formValues),
+        })
+        .catch(err => {
+          return;
+        })
+        .then (res => {
+          if (!res || !res.ok || res.status >= 400) {
+            return;
+          }
+          return res.json();
+        })
+        .then (data => {
+          if (!data) return;
+          setUser({...data});
+          if(data.status) {
+            setError(data.status);
+          } else if (data.loggedIn) {
+            <Link to = '/homepage' />
+          }
+        })
     }
 
     useEffect(() => {
@@ -104,8 +121,8 @@ function Login() {
                             <input type={"checkbox"} />
                             <Changer inp="Remember" />
                         </label>
-                        <p onClick={toggleAModal}>
-                            <Link to ="/resetpwd" ><Changer inp="Forgot Password" /></Link>
+                        <p>
+                            <Link to ="/resetpwd" ><Changer inp="Forgot Password?" /></Link>
                         </p>
                     </div>
                 <button className="btn btn-dark" type="submit">

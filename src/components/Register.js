@@ -25,7 +25,7 @@ const validate = (values) =>{
         errors.confpassword = "Password is required";}
     else if (values.confpassword.length < 4) {
         errors.confpassword = "Password must be more than 4 characters";}
-    else if (values.confpassword != values.password){
+    else if (values.confpassword !== values.password){
         errors.confpassword = "Password should be the same";
     }
     //   } else if (values.password.length > 10) {
