@@ -47,7 +47,7 @@ function Login() {
         setFormErrors(validate(formValues));
         console.log(formValues.email, formValues.password)
         setIsSubmit(true);
-          fetch("http://192.168.11.143:5005/auth/login", {
+          fetch("http://localhost:5000/auth/login", {
           method: "POST",
           credentials: "include",
           headers: {
