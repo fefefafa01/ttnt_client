@@ -3,7 +3,6 @@ import { React, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Changer } from './LanguageChange'
 import {AccountContext} from './Login.comps/AccountContext';
-import { parse, stringify, toJSON, fromJSON} from 'flatted';
 
 const validate = (values) =>{
     const errors = {};
@@ -17,7 +16,7 @@ const validate = (values) =>{
 
     if (!values.password) {
         errors.password = "Password is required";}
-    else if (values.password.length < 7) {
+    else if (values.password.length < 4) {
         errors.password = "Password must be more than 4 characters";}
     //   } else if (values.password.length > 10) {
     //     errors.password = "Password cannot exceed more than 10 characters";
@@ -29,36 +28,18 @@ function Login() {
 
   const {setUser} = useContext(AccountContext) || {};
   const [password, setPassword] = useState("");
-//   const [pass, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState(null);
 
   const initialValues = {email:'', password:''};
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
-    
-    const [isChecked, setIsChecked] = useState(false);
-
-    useEffect(() => {
-        if (localStorage.checkbox && localStorage.username !== "") {
-            setIsChecked(true);
-          setFormvalues({
-            email: localStorage.email,
-            password: localStorage.password,
-          });
-        }
-        else if(!localStorage.checkbox){
-            setIsChecked(false);
-            //localStorage.delete();
-        }
-        console.log(isChecked);
-      }, []);
+    const [isSubmit, setIsSubmit] = useState(false)
 
     const handleChange = (e) =>{
         const {name, value} = e.target;
         setFormvalues({...formValues, [name]: value});
-        // setPassword(e.target.value);
+        setPassword(e.target.value);
     };
 
     const handleSubmit = (e) => {
@@ -66,11 +47,13 @@ function Login() {
         setFormErrors(validate(formValues));
         console.log(formValues.email, formValues.password)
         setIsSubmit(true);
-          fetch("http://localhost:5000/auth/login", {
+          fetch("http://192.168.11.143:5005/auth/login", {
           method: "POST",
           credentials: "include",
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
           },
           body: JSON.stringify(formValues),
         })
@@ -92,26 +75,7 @@ function Login() {
             <Link to = '/homepage' />
           }
         })
-    };
-
-    const handleCheck = (e) =>{
-        setIsChecked(e.target.checked);
-        console.log(isChecked);
     }
-
-    const loginSubmit = () => {
-        if (isChecked && formValues.email !== "") {
-          localStorage.email = formValues.email;
-          localStorage.password = formValues.password
-          localStorage.checkbox = isChecked;
-        }
-        // here call the API to signup/login
-        else if(!isChecked){
-            localStorage.email = "";
-            localStorage.password = "";
-            localStorage.checkbox = isChecked;
-        }
-    };
 
     useEffect(() => {
         console.log(formErrors);
@@ -155,14 +119,14 @@ function Login() {
                 <div className="error"><span>{formErrors.password}</span></div>
                     <div className="remember-forgot">
                         <label htmlFor="">
-                            <input type={"checkbox"} checked={isChecked} name='IsRememberMe' onChange={handleCheck} />
+                            <input type={"checkbox"} />
                             <Changer inp="Remember" />
                         </label>
                         <p>
-                            <Link to ="/resetpwd" ><Changer inp="Forgot Password" /></Link>
+                            <Link to ="/resetpwd" ><Changer inp="Forgot Password?" /></Link>
                         </p>
                     </div>
-                <button className="btn btn-dark" type="submit" onClick={loginSubmit}>
+                <button className="btn btn-dark" type="submit">
                     <Changer inp="User Login" />
                 </button>
             </form>
