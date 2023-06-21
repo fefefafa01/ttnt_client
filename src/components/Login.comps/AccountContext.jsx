@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 const { createContext, useState, useEffect } = require("react");
 
-export const AccountContext = createContext();
+export const AccountContext = createContext({
+  user:null,
+  setUser: () => {}
+});
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState({ loggedIn: null });
