@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './i18n'
 import './App.css';
 import MainPage from './mainClient/mainpage/MainPage';
+import { Views } from 'components/Views';
 
 class App extends Component {
   
@@ -23,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MainPage />
+        <Views />
       </div>
     );
   }

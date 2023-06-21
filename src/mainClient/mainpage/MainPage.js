@@ -29,9 +29,10 @@ function MainPage () {
     <div className="body">
         <Routes>
           <Route path="/" element={<Login/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/resetpwd" element={<ResetPwd/>}/>  
+          <Route path="/login/*" element={<Login/>}/>
+          <Route path="/register/*" element={<Register/>}/>
+          <Route path="/resetpwd/*" element={<ResetPwd/>}/>  
+          <Route path="*" element={<ResetPwd/>}/>  
         </Routes>
         <div className="col-sm-12 col-md content">
           <p className="logo">
