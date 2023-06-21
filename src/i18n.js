@@ -7,18 +7,18 @@ const apiKey = "ozrkKpQl7Mw1sWa0X-4IrA";
 const loadPath = `https://api.i18nexus.com/project_resources/translations/{{lng}}/{{ns}}.json?api_key=${apiKey}`;
 
 i18next 
-  .use(HttpBackend)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: "en",
+    .use(HttpBackend)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+        fallbackLng: "en",
 
-    ns: ["default"],
-    defaultNS: "default",
+        ns: ["default"],
+        defaultNS: "default",
 
-    supportedLngs: ["en","vi"],
+        supportedLngs: ["en","vi"],
     
-    backend: {
-      loadPath: loadPath
-    }
-  })
+        backend: {
+            loadPath: loadPath
+        }
+    })

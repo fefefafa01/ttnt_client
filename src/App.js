@@ -5,7 +5,6 @@ import MainPage from './mainClient/mainpage/MainPage';
 import { Views } from 'components/Views';
 
 class App extends Component {
-  
 //   constructor(props) {
 //     super(props);
 //     this.state = { apiResponse: "" };
@@ -21,13 +20,13 @@ class App extends Component {
 //     this.callAPI();
 // }
 
-  render() {
-    return (
-      <div className="App">
-        <Views />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <Views />
+            </div>
+        );
+    }
 }
 
 export default App;

@@ -38,39 +38,38 @@ function Multi_Lang() {
             </span> 
             {open? (
                 <Box component="div" className="box"> 
-                <FormControl>
-                <FormLabel id="radio-buttons-group-label"></FormLabel>
-                <RadioGroup 
-                    aria-labelledby="radio-buttons-group-label"
-                    defaultValue={lang}
-                    name="radio-buttons-group"
-                >
-                <FormControlLabel
-                control={<Radio checked={lang ==="VI"} onChange={handleLang} />}
-                value="VI"
-                label={
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <img src={VI} alt="Vietnamese" style={{ maxWidth:'25px', marginLeft:'-6px' }} />
-                  <Typography level="body3" style={{marginLeft: '5px', fontSize: '1.2em'}}>VI</Typography>
-                </div>
-              }
-                />
-            <FormControlLabel 
-              value="EN" 
-              control={<Radio checked={lang ==="EN"} onChange={handleLang}/>} 
-              label={
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <img src={EN} alt="English" style={{ maxWidth:'25px', marginLeft:'-6px' }} />
-                  <Typography level="body3" style={{marginLeft: '5px', fontSize: '1.2em'}}>EN</Typography>
-                </div>
-              }
-            />
-          </RadioGroup>
-        </FormControl>
-      </Box>
-        ):null}
-        
-      </div>
+                    <FormControl>
+                        <FormLabel id="radio-buttons-group-label"></FormLabel>
+                        <RadioGroup 
+                            aria-labelledby="radio-buttons-group-label"
+                            defaultValue={lang}
+                            name="radio-buttons-group"
+                        >
+                            <FormControlLabel
+                                control={<Radio checked={lang ==="VI"} onChange={handleLang} />}
+                                value="VI"
+                                label={
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <img src={VI} alt="Vietnamese" style={{ maxWidth:'25px', marginLeft:'-6px' }} />
+                                    <Typography level="body3" style={{marginLeft: '5px', fontSize: '1.2em'}}>VI</Typography>
+                                    </div>
+                                }
+                            />
+                            <FormControlLabel 
+                                value="EN" 
+                                control={<Radio checked={lang ==="EN"} onChange={handleLang}/>} 
+                                label={
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <img src={EN} alt="English" style={{ maxWidth:'25px', marginLeft:'-6px' }} />
+                                    <Typography level="body3" style={{marginLeft: '5px', fontSize: '1.2em'}}>EN</Typography>
+                                    </div>
+                                }
+                            />
+                        </RadioGroup>
+                    </FormControl>
+                </Box>
+            ):null}   
+        </div>
     );
 }
 
