@@ -148,7 +148,7 @@ function ResetPwd() {
                 <p>Your password was successfully reset!</p>
                 <p>please log in</p>
                   <button className="btn">
-                    <Link className="back_login" to ="/login"><Changer inp = 'Go to Login' /></Link>
+                    <Link className="back_login" to ="/login/*"><Changer inp = 'Go to Login' /></Link>
                   </button>
               </span>
             </div>

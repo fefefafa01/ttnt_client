@@ -45,9 +45,8 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        console.log(formValues.email, formValues.password)
         setIsSubmit(true);
-          fetch("http://localhost:5000/auth/login", {
+        fetch("http://localhost:5000/auth/login", {
           method: "POST",
           credentials: "include",
           headers: {
@@ -72,7 +71,7 @@ function Login() {
           if(data.status) {
             setError(data.status);
           } else if (data.loggedIn) {
-            <Link to = '/homepage' />
+            window.location.assign('http://localhost:3000/homepage')
           }
         })
     }
@@ -123,17 +122,17 @@ function Login() {
                             <Changer inp="Remember" />
                         </label>
                         <p>
-                            <Link to ="/resetpwd" ><Changer inp="Forgot Password?" /></Link>
+                            <Link to ="/resetpwd/*" ><Changer inp="Forgot Password?" /></Link>
                         </p>
                     </div>
                 <button className="btn btn-dark" type="submit">
-                    <Changer inp="User Login" />
+                <Changer inp="User Login" />
                 </button>
             </form>
           </div>
           <div className="login-register">
             <p className="register-link">
-                <Link to ="/register" ><Changer inp="Create Account" /></Link>
+                <Link to ="/register/*" ><Changer inp="Create Account" /></Link>
             </p>
           </div>
         </div>
