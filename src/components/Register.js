@@ -1,4 +1,3 @@
-import { RegValid } from './Validation';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { React, useState, useEffect, useContext } from 'react';
 import { Changer } from './LanguageChange'
@@ -202,7 +201,7 @@ function Register() {
                   <p><Changer inp='Your account was successfully created!'/></p>
                   <p><Changer inp='please log in'/></p>
                   <button className="btn" type='submit'>
-                  <Link className="back_login" to ="/login/*"><Changer inp = 'Go to Login' /></Link>
+                  <Link className="back_login" to ="/login"><Changer inp = 'Go to Login' /></Link>
                   </button>
                   </span>
               </div>

@@ -10,7 +10,7 @@ export const AccountContext = createContext({
 const UserContext = ({ children }) => {
   const [user, setUser] = useState({ loggedIn: null });
   useEffect(() => {
-    fetch("http://192.168.11.143:5005/auth/login", {
+    fetch("http://localhost:5000/auth/login", {
       credentials: "include",
     })
       .catch(err => {

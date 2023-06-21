@@ -7,9 +7,6 @@ const Views = () => {
         <div>
             <Routes>
                 <Route path='/' element={<MainPage />}/>
-                <Route path='/register/*' element={<MainPage />}/>
-                <Route path='/resetpwd/*' element={<MainPage />}/>
-                <Route path='/login/*' element={<MainPage />}/>
                 <Route path='*' element={<MainPage />}/>
                 <Route path='/homepage' element={<HomePage />}/>
             </Routes>
