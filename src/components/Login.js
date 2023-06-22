@@ -70,8 +70,12 @@ function Login() {
         .then (data => {
             if (!data) return;
             setUser({...data});
-            if(data.status) {
-                setError(data.status);
+            if(data.status === "Wrong Password") {
+                setFormErrors({password:data.status})
+                console.log(formErrors.password)
+            } else if(data.status === "Wrong Email") {
+                setFormErrors({email:data.status})
+                console.log(formErrors.email)
             } else if (data.loggedIn) {
                 window.location.assign('/homepage');
             }
