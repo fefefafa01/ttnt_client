@@ -1,7 +1,6 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { React, useState, useEffect } from "react";
 import { Changer } from "./LanguageChange";
-import { Login } from "./Login";
 import { Link } from "react-router-dom";
 
 const validate = (values) => {
@@ -32,6 +31,7 @@ function ResetPwd() {
   const [confpassword, confsetPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [confvisible, confsetVisible] = useState(false);
+  const [error, setError] = useState(null);
 
   const [hide, sethide] = useState(true);
   const [show, setshow] = useState(false);
@@ -52,6 +52,29 @@ function ResetPwd() {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
+    fetch("http://localhost:5000/auth/resetpwd", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      },
+      body: JSON.stringify(formValues),
+    })
+      .catch((err) => {
+        return;
+      })
+      .then((res) => {
+        if (!res || !res.ok || res.status >= 400) {
+          return;
+        }
+        return res.json();
+      });
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      sethide(!hide);
+      setshow(!show);
+    }
   };
 
   useEffect(() => {
@@ -61,13 +84,6 @@ function ResetPwd() {
       console.log(formValues);
     }
   }, [formErrors]);
-
-  function ChangePage(){
-    if(Object.keys(formErrors).length === 0 && isSubmit){
-    sethide(!hide);
-    setshow(!show);
-    };
-};
 
   return (
     <>
@@ -132,9 +148,7 @@ function ResetPwd() {
               <div className="error">
                 <span>{formErrors.confpassword}</span>
               </div>
-              <button className="btn btn-dark" onClick={ChangePage}>
-                Reset Password
-              </button>
+              <button className="btn btn-dark">Reset Password</button>
             </form>
           </div>
         </div>
@@ -147,9 +161,11 @@ function ResetPwd() {
               <span className="border-box">
                 <p>Your password was successfully reset!</p>
                 <p>please log in</p>
-                  <button className="btn">
-                    <Link className="back_login" to ="/login"><Changer inp = 'Go to Login' /></Link>
-                  </button>
+                <button className="btn">
+                  <Link className="back_login" to="/login">
+                    <Changer inp="Go to Login" />
+                  </Link>
+                </button>
               </span>
             </div>
           </div>
