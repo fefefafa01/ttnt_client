@@ -2,13 +2,12 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { React, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Changer } from './LanguageChange'
-import {AccountContext} from './Login.comps/AccountContext';
-import { parse, stringify, toJSON, fromJSON} from 'flatted';
+import { AccountContext } from './Login.comps/AccountContext';
 
-const validate = (values) =>{
+const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if(!values.email){
+    if (!values.email) {
         errors.email = "Email is required";
     }
     else if (!regex.test(values.email)) {
@@ -16,9 +15,11 @@ const validate = (values) =>{
     }
 
     if (!values.password) {
-        errors.password = "Password is required";}
-    else if (values.password.length < 7) {
-        errors.password = "Password must be more than 4 characters";}
+        errors.password = "Password is required";
+    }
+    else if (values.password.length < 4) {
+        errors.password = "Password must be more than 4 characters";
+    }
     //   } else if (values.password.length > 10) {
     //     errors.password = "Password cannot exceed more than 10 characters";
     //   }
@@ -27,153 +28,119 @@ const validate = (values) =>{
 
 function Login() {
 
-  const {setUser} = useContext(AccountContext) || {};
-  const [password, setPassword] = useState("");
-//   const [pass, setPassword] = useState("");
-  const [visible, setVisible] = useState(false);
-  const [error, setError] = useState(null);
+    const { setUser } = useContext(AccountContext) || {};
+    const [password, setPassword] = useState("");
+    const [visible, setVisible] = useState(false);
+    const [error, setError] = useState(null);
 
-  const initialValues = {email:'', password:''};
+    const initialValues = {email:'', password:''};
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-    
-    const [isChecked, setIsChecked] = useState(false);
 
-    useEffect(() => {
-        if (localStorage.checkbox && localStorage.username !== "") {
-            setIsChecked(true);
-          setFormvalues({
-            email: localStorage.email,
-            password: localStorage.password,
-          });
-        }
-        else if(!localStorage.checkbox){
-            setIsChecked(false);
-            //localStorage.delete();
-        }
-        console.log(isChecked);
-      }, []);
-
-    const handleChange = (e) =>{
+    const handleChange = (e) => {
         const {name, value} = e.target;
         setFormvalues({...formValues, [name]: value});
-        // setPassword(e.target.value);
+        setPassword(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        console.log(formValues.email, formValues.password)
         setIsSubmit(true);
-          fetch("http://localhost:5000/auth/login", {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formValues),
+        fetch("http://localhost:5000/auth/login", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+              },
+              body: JSON.stringify(formValues),
         })
         .catch(err => {
-          return;
+            return;
         })
         .then (res => {
-          if (!res || !res.ok || res.status >= 400) {
-            return;
-          }
-          return res.json();
+            if (!res || !res.ok || res.status >= 400) {
+                return;
+            }
+            return res.json();
         })
         .then (data => {
-          if (!data) return;
-          setUser({...data});
-          if(data.status) {
-            setError(data.status);
-          } else if (data.loggedIn) {
-            <Link to = '/homepage' />
-          }
+            if (!data) return;
+            setUser({...data});
+            if(data.status) {
+                setError(data.status);
+            } else if (data.loggedIn) {
+                window.location.assign('/homepage');
+            }
         })
-    };
-
-    const handleCheck = (e) =>{
-        setIsChecked(e.target.checked);
-        console.log(isChecked);
     }
-
-    const loginSubmit = () => {
-        if (isChecked && formValues.email !== "") {
-          localStorage.email = formValues.email;
-          localStorage.password = formValues.password
-          localStorage.checkbox = isChecked;
-        }
-        // here call the API to signup/login
-        else if(!isChecked){
-            localStorage.email = "";
-            localStorage.password = "";
-            localStorage.checkbox = isChecked;
-        }
-    };
 
     useEffect(() => {
         console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-          console.log(formValues);
+            console.log(formValues);
         }
-    }, [formErrors]);
+    }, 
+        [formErrors],
+    );
 
-  return (
+    return (
         <div className="col-xs-9 col-md-7 col-lg-3 wrapper">
-          <div className="form-box login">
-            <h2>
-              <Changer inp="Login" />
-            </h2>
-            <form action="#" onSubmit={handleSubmit}>
-                <div className="input-box">
-                    <input
-                    type="text"
-                    name="email"
-                    placeholder="Email Address"
-                    value={formValues.email}
-                    onChange={handleChange}
-                    />     
-                </div>
-                <div className="error"><span>{formErrors.email}</span></div>
-                <div className="input-box">
-                    <input name="password"
-                    value={formValues.password}
-                    type={visible ? "text" : "password"}
-                    placeholder="Password"
-                    onChange={handleChange}
-                    />
-                    <div className="p-2" onClick={() => setVisible(!visible)}>
-                    {visible ? (
-                        <EyeOutlined className="eye" />
-                    ) : (
-                        <EyeInvisibleOutlined className="eye" />
-                    )}
+            <div className="form-box login">
+                <h2>
+                    <Changer inp="Login" />
+                </h2>
+                <form action="#" onSubmit={handleSubmit}>
+                    <div className="input-box">
+                        <input
+                        type="text"
+                        name="email"
+                        placeholder="Email Address"
+                        value={formValues.email}
+                        onChange={handleChange}
+                        />     
                     </div>
-                </div>
-                <div className="error"><span>{formErrors.password}</span></div>
-                    <div className="remember-forgot">
-                        <label htmlFor="">
-                            <input type={"checkbox"} checked={isChecked} name='IsRememberMe' onChange={handleCheck} />
-                            <Changer inp="Remember" />
-                        </label>
-                        <p>
-                            <Link to ="/resetpwd" ><Changer inp="Forgot Password" /></Link>
-                        </p>
+                    <div className="error"><span>{formErrors.email}</span></div>
+                    <div className="input-box">
+                        <input name="password"
+                        value={formValues.password}
+                        type={visible ? "text" : "password"}
+                        placeholder="Password"
+                        onChange={handleChange}
+                        />
+                        <div className="p-2" onClick={() => setVisible(!visible)}>
+                        {visible ? (
+                            <EyeOutlined className="eye" />
+                        ) : (
+                            <EyeInvisibleOutlined className="eye" />
+                        )}
+                        </div>
                     </div>
-                <button className="btn btn-dark" type="submit" onClick={loginSubmit}>
+                    <div className="error"><span>{formErrors.password}</span></div>
+                        <div className="remember-forgot">
+                            <label htmlFor="">
+                                <input type={"checkbox"} />
+                                <Changer inp="Remember" />
+                            </label>
+                            <p>
+                                <Link to ="/resetpwd" ><Changer inp="Forgot Password?" /></Link>
+                            </p>
+                        </div>
+                    <button className="btn btn-dark" type="submit">
                     <Changer inp="User Login" />
-                </button>
-            </form>
-          </div>
-          <div className="login-register">
-            <p className="register-link">
-                <Link to ="/register" ><Changer inp="Create Account" /></Link>
-            </p>
-          </div>
+                    </button>
+                </form>
+            </div>
+            <div className="login-register">
+                <p className="register-link">
+                    <Link to ="/register" ><Changer inp="Create Account" /></Link>
+                </p>
+            </div>
         </div>
-  );
+    );
 }
 
 export {Login}
