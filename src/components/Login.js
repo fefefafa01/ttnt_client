@@ -3,22 +3,23 @@ import { React, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Changer } from './LanguageChange'
 import { AccountContext } from './Login.comps/AccountContext';
+import { useTranslation } from 'react-i18next';
 
 const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.email) {
-        errors.email = "Email is required";
+        errors.email = <Changer inp="Email is required" />;
     }
     else if (!regex.test(values.email)) {
-        errors.email = "This is not a valid email format!";
+        errors.email = <Changer inp="This is not a valid email format!" />;
     }
 
     if (!values.password) {
-        errors.password = "Password is required";
+        errors.password = <Changer inp="Password is required" />;
     }
     else if (values.password.length < 4) {
-        errors.password = "Password must be more than 4 characters";
+        errors.password = <Changer inp="Password must be more than 4 characters" />;
     }
     //   } else if (values.password.length > 10) {
     //     errors.password = "Password cannot exceed more than 10 characters";
@@ -37,6 +38,7 @@ function Login() {
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const {t} = useTranslation();
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -71,11 +73,9 @@ function Login() {
             if (!data) return;
             setUser({...data});
             if(data.status === "Wrong Password") {
-                setFormErrors({password:data.status})
-                console.log(formErrors.password)
+                setFormErrors({password:t('Wrong Password')});
             } else if(data.status === "Wrong Email") {
-                setFormErrors({email:data.status})
-                console.log(formErrors.email)
+                setFormErrors({email:t('Wrong Email')});
             } else if (data.loggedIn) {
                 window.location.assign('/homepage');
             }
@@ -85,7 +85,7 @@ function Login() {
     useEffect(() => {
         console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
+            //console.log(formValues);
         }
     }, 
         [formErrors],
@@ -102,7 +102,7 @@ function Login() {
                         <input
                         type="text"
                         name="email"
-                        placeholder="Email Address"
+                        placeholder={t("Email Address")}
                         value={formValues.email}
                         onChange={handleChange}
                         />     
@@ -112,7 +112,7 @@ function Login() {
                         <input name="password"
                         value={formValues.password}
                         type={visible ? "text" : "password"}
-                        placeholder="Password"
+                        placeholder={t("Password")}
                         onChange={handleChange}
                         />
                         <div className="p-2" onClick={() => setVisible(!visible)}>

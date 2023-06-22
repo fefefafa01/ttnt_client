@@ -1,25 +1,27 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import { Changer } from "./LanguageChange";
 import { Link } from "react-router-dom";
+import {AccountContext} from './Login.comps/AccountContext';
+import { useTranslation } from "react-i18next";
 
 const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.email) {
-        errors.email = "Email is required";
+        errors.email = <Changer inp="Email is required" />;
     } else if (!regex.test(values.email)) {
-        errors.email = "This is not a valid email format!";
+        errors.email = <Changer inp="This is not a valid email format!" />;
     }
     if (!values.password) {
-        errors.password = "Password is required";
+        errors.password = <Changer inp="Password is required" />;
     } else if (values.password.length < 4) {
-        errors.password = "Password must be more than 4 characters";
+        errors.password = <Changer inp="Password must be more than 4 characters" />;
     }
     if (!values.confpassword) {
-        errors.confpassword = "Password is required";
+        errors.confpassword = <Changer inp="Password is required" />;
     } else if (values.confpassword !== values.password) {
-      errors.confpassword = "Password must be the same";
+      errors.confpassword = <Changer inp="Password must be the same" />;
     }
     return errors;
 };
@@ -30,14 +32,13 @@ function ResetPwd() {
     const [visible, setVisible] = useState(false);
     const [confvisible, confsetVisible] = useState(false);
     const [error, setError] = useState(null);
-
+    const { setUser } = useContext(AccountContext) || {};
     const [hide, sethide] = useState(true);
-    const [show, setshow] = useState(false);
-
-  const initialValues = { email: "", password: "", confpassword: "" };
-  const [formValues, setFormvalues] = useState(initialValues);
-  const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+    const {t} = useTranslation();
+    const initialValues = { email: "", password: "", confpassword: "" };
+    const [formValues, setFormvalues] = useState(initialValues);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -68,11 +69,16 @@ function ResetPwd() {
                 return;
             }
             return res.json();
-        });
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            sethide(!hide);
-            setshow(!show);
-        }
+        })
+        .then (data => {
+            if (!data) return;
+            setUser({...data});
+            if (data.status === ("Email Unavailable")) {
+                setFormErrors({email:t('Email Unavailable')});
+            } else if (data.status === 'Changed Pass') {
+                sethide(!hide);
+            }
+        })
     };
 
     useEffect(() => {
@@ -98,7 +104,7 @@ function ResetPwd() {
                         <input
                         name="email"
                         type="text"
-                        placeholder="Email Address"
+                        placeholder={t("Email Address")}
                         value={formValues.email}
                         onChange={handleChange}
                         />
@@ -111,7 +117,7 @@ function ResetPwd() {
                         name="password"
                         value={formValues.password}
                         type={visible ? "text" : "password"}
-                        placeholder="Password"
+                        placeholder={t("Password")}
                         onChange={handleChange}
                         />
                         <div className="p-2" onClick={() => setVisible(!visible)}>
@@ -131,7 +137,7 @@ function ResetPwd() {
                         name="confpassword"
                         value={formValues.confpassword}
                         type={confvisible ? "text" : "password"}
-                        placeholder="Confirm New Password"
+                        placeholder={t("Confirm New Password")}
                         onChange={handleChange}
                         />
                         <div className="p-2" onClick={() => confsetVisible(!confvisible)}>
@@ -146,19 +152,19 @@ function ResetPwd() {
                     <div className="error">
                         <span>{formErrors.confpassword}</span>
                     </div>
-                    <button className="btn btn-dark">Reset Password</button>
+                    <button className="btn btn-dark"><Changer inp='Reset Password' /></button>
                 </form>
             </div>
         </div>
         )}
-        {show && (
+        {!hide && (
             <div className="wrapper">
                 <div className="form-box">
-                    <h2>Reset Password</h2>
+                    <h2><Changer inp='Reset Password' /></h2>
                     <div className="form-box valid-box">
                         <span className="border-box">
-                            <p>Your password was successfully reset!</p>
-                            <p>please log in</p>
+                            <p><Changer inp='Your password was successfully reset!' /></p>
+                            <p><Changer inp='please log in' /></p>
                             <button className="btn">
                                 <Link className="back_login" to="/login">
                                     <Changer inp="Go to Login" />

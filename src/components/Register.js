@@ -3,50 +3,52 @@ import { React, useState, useEffect, useContext } from 'react';
 import { Changer } from './LanguageChange'
 import { Link } from 'react-router-dom';
 import {AccountContext} from './Login.comps/AccountContext';
+import { useTranslation } from 'react-i18next';
 
 const Validate = (values) =>{
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.email) {
-        errors.email = "Email is required";
+        errors.email = <Changer inp="Email is required" />;
     }
     else if (!regex.test(values.email)) {
-        errors.email = "This is not a valid email format!";
+        errors.email = <Changer inp="This is not a valid email format!" />;
     }
     if (!values.password) {
-        errors.password = "Password is required";
+        errors.password = <Changer inp="Password is required" />;
     }
     else if (values.password.length < 4) {
-        errors.password = "Password must be more than 4 characters";
+        errors.password = <Changer inp="Password must be more than 4 characters" />;
     }
   //   } else if (values.password.length > 10) {
   //     errors.password = "Password cannot exceed more than 10 characters";
   //   }
 
     if (!values.confpassword) {
-        errors.confpassword = "Password is required";
+        errors.confpassword = <Changer inp="Password is required" />;
     }
     else if (values.confpassword.length < 4) {
-        errors.confpassword = "Password must be more than 4 characters";
+        errors.confpassword = <Changer inp="Password must be more than 4 characters" />;
     }
     else if (values.confpassword !== values.password) {
-        errors.confpassword = "Password must be the same";
+        errors.confpassword = <Changer inp="Password must be the same" />;
     }
   //   } else if (values.password.length > 10) {
   //     errors.password = "Password cannot exceed more than 10 characters";
   //   }
 
     if (!values.last_name) {
-        errors.last_name = "Last Name is required";
+        errors.last_name = <Changer inp="Last Name is required" />;
     }
     if (!values.first_name) {
-        errors.first_name = "First Name is required";
+        errors.first_name = <Changer inp="First Name is required" />;
     } 
     return errors;
 };
 
 function Register() {
     const { setUser } = useContext(AccountContext) || {};
+    var {t} = useTranslation();
     const [error, setError] = useState(null);
     const [password, setPassword] = useState("");
     const [confpassword, confsetPassword] = useState("");
@@ -91,22 +93,22 @@ function Register() {
         .then (data => {
             if (!data) return;
             setUser({...data});
-            if (data.status) {
-                setError(data.status);
+            if (data.status === ("Email Taken")) {
+                setFormErrors({email:t('Email Taken')});
+            } else if (data.status === 'Registered') {
+                setVad(!vad);
+                NsetVad(!Nvad);
             }
         })
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-              setVad(!vad);
-              NsetVad(!Nvad);
-        };
     }
     useEffect(() => {
         console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
+            //console.log(formValues);
         }
-    }, [formErrors]);
-
+    }, 
+        [formErrors]
+    );
     return (
         <>
             {vad && (
@@ -119,7 +121,7 @@ function Register() {
                         <div className="input-box">
                             <input type="text" 
                             name="email" 
-                            placeholder="Email Address" 
+                            placeholder={t('Email Address')}
                             value={formValues.email} 
                             onChange={handleChange}
                             />
@@ -130,14 +132,14 @@ function Register() {
                             value={formValues.first_name}
                             className="name-box name-left"
                             type="text"
-                            placeholder="First Name"
+                            placeholder={t("First Name")}
                             onChange={handleChange}
                             />
                             <input  name="last_name"
                             value={formValues.last_name}
                             className="name-box name-right"
                             type="text"
-                            placeholder="Last Name"
+                            placeholder={t("Last Name")}
                             onChange={handleChange}
                             />
                         </div>
@@ -149,7 +151,7 @@ function Register() {
                             <input  name="password"
                             value={formValues.password}
                             type={visible ? "text" : "password"}
-                            placeholder="Password"
+                            placeholder={t("Password")}
                             onChange={handleChange}       
                             />
                             <div className="p-2" onClick={() => setVisible(!visible)}>
@@ -168,7 +170,7 @@ function Register() {
                             <input  name="confpassword"
                             value={formValues.confpassword}
                             type={confvisible ? "text" : "password"}
-                            placeholder="Confirm Password"
+                            placeholder={t("Confirm Password")}
                             onChange={handleChange} 
                             />
                             <div className="p-2" onClick={() => confsetVisible(!confvisible)}>
