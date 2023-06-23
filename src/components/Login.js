@@ -76,6 +76,11 @@ function Login() {
                 setFormErrors({password:t('Wrong Password')});
             } else if(data.status === "Wrong Email") {
                 setFormErrors({email:t('Wrong Email')});
+            //} else if (data.loggedIn && data.status === 'Admin User) {
+            //    window.location.assign('/homepage/a)
+            //} else if (data.loggedIn && data.status === 'Viewer User) {
+            //    window.location.assign('/homepage/u)
+            //}
             } else if (data.loggedIn) {
                 window.location.assign('/homepage');
             }

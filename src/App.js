@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './i18n'
 import './App.css';
-import MainPage from './mainClient/mainpage/MainPage';
 import { Views } from 'components/Views';
 
 class App extends Component {

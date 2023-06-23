@@ -13,9 +13,9 @@ function Multi_Lang() {
         setOpen(!open);
     };
     let loc = window.location.pathname;
-    const check = Changer({inp:'Check'});
+    const check = Changer({inp:'Login'});
     var [lang, setLang] = useState('EN');
-    if (check==='Check') {
+    if (check==='Login') {
         lang = 'EN';
     } else {
         lang = 'VI';
@@ -30,7 +30,7 @@ function Multi_Lang() {
         }
     };
     return (
-        <div className="lang col-2 dropdown">
+        <div className="lang col-1 dropdown">
             <button className="multi-lang" onClick={handleOpen} type="button" data-bs-toggle="dropdown" aria-expanded="false"><img className="globe" src={Globe} alt="Globe" />
             </button>
             <span className="langbtn">

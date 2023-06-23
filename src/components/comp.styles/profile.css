@@ -1,0 +1,32 @@
+.dropbtn {
+    background-color: transparent;
+    margin-left: -60px;;
+    border:none;
+}
+
+.profile {
+    width: 25px;
+    margin-top: 33px;
+    border: solid lightblue 2px
+}
+
+.dropdown-content {
+    text-align: left;
+    margin-left: -80px;
+    background-color: white;
+    margin-right: 73px;
+    border-radius: 7%;
+    border: solid black 2px
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    color: #86bac5;
+}
+
+.powerbutton {
+    width: 10px;
+    display:inline;
+    margin-top: -3px;
+    margin-left: 5px;
+}
