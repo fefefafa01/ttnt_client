@@ -10,11 +10,16 @@ function Homepage() {
     setSideBarOpen(!sidebarOpen);
   };
   return (
-    <div className="body">
-      {/* <AdminHeader /> */}
-      <SearchCriteria isOpen={sidebarOpen} toggleSidebar={handleViewSidebar} />
-      <ResultList />
-    </div>
+    <>
+      <AdminHeader />
+      <div className="body">
+        <SearchCriteria
+          isOpen={sidebarOpen}
+          toggleSidebar={handleViewSidebar}
+        />
+        <ResultList />
+      </div>
+    </>
   );
 }
 

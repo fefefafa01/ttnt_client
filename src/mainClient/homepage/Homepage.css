@@ -1,25 +1,25 @@
 .body{
     background-color: #001a71;
     display: flex;
-    height: 100%;
+    width: 100%;
+    height: calc(100% - 10vh);
 }
 
-.wrapper{
-    background-color: #001a71;
-    height: 5%;
-    width: 100%;
-    margin: 0cm;
-    border: 1px #001a71;
-    position: relative;
+.wrappers{
+    position: absolute;
+    background-color: darkblue;
+    left: 10px;
+    top: 13vh;
+    height: calc(100% - 13vh) ;
+    width: 99%;
     display: flex;
-    align-items: flex-end;
     transition: left 0.5s ease-in-out;
 }
 
 .tabs{
     position: absolute;
     background: #001a71;
-    height: 62%;
+    height: 100%;
     width: 100%;
 }
 
@@ -69,10 +69,9 @@
 
 .tabcontent{
     background-color: #b0c4e4;
-    height: 90vh;
+    height: 93%;
     width: 100%;
     padding-left: 20px;
-    padding-bottom: 5px;
     position: absolute;
 }
 
@@ -123,7 +122,7 @@
     max-width: max-content;
     max-height: max-content;
     border-radius: 20px;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     padding-top: 10px;
@@ -141,9 +140,10 @@
 
 .sidebar {
     position: absolute;
-    top: 60px;
-    left: -460px;
-    height: 93.8%;
+    top: 13vh;
+    left: -500px;
+    margin-left: 0px;
+    height: calc(100% - 14vh);
     width: 500px;
     transition: left 0.5s ease-in-out;
     background-color: lightgray;
@@ -151,12 +151,11 @@
   .sidebar-toggle {
     position: absolute;
     top: 0%;
-    right: 0%;
-    height: 40px;
-    width: 40px;
+    right: -60px;
+    height: 60px;
+    width: 60px;
     z-index: 1;
   }
-
   .content {
     position: absolute;
     top: 60px;
@@ -170,11 +169,61 @@
     left: 0;
   }
   .content.open {
-    left: 500px;
+    left: 0;
   }
   
-  .sidebar.open ~ .wrapper {
-    width: 72%;
-    height: 10%;
+  .sidebar.open ~ .wrappers {
+    width: 71%;
+    height:calc(100% - 13vh);
     left: 520px;
   }
+
+  .bttn {
+    transform: skew(-35deg);
+    min-height:50px;
+    width:150px;
+    text-align: center;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.srbtngroup {
+    justify-content: right;
+}
+
+.leftalgn {
+    margin-left: 10px;
+}
+
+.lbtngroup, .rbtngroup, .srbtngroup {
+    display:flex;
+    margin-top: 20px;
+}
+
+.rbtngroup span, .lbtngroup span, .srbtngroup span {
+    display: inline-block;
+    transform: skew(35deg);
+}
+
+.rbtngroup {
+    align-self: right;
+}
+
+.aheader{
+    display: flex;
+    text-align: center;
+    background-color: #001a71;
+    height: 10vh;
+}
+
+.aheader div p.logo{
+    font-size: xx-large;
+    margin-top: 20px;
+}
+  
+.hbody{
+    background-color: #001a71;
+    height: 90vh;
+    padding-top: 1em;
+    display: block;
+}

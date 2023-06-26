@@ -6,16 +6,10 @@ import Profile from "components/Profile";
 
 function ResultList() {
   return (
-    <div class="wrapper">
+    <div class="wrappers">
       <div class="tabs">
         <div class="tab">
-          <input
-            type="radio"
-            name="css-tabs"
-            id="tab-1"
-            checked
-            className="tab-switch"
-          />
+          <input type="radio" name="css-tabs" checked className="tab-switch" />
           <label for="tab-1" className="tab-label">
             Search Result
           </label>
