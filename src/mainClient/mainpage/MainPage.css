@@ -3,7 +3,6 @@
     text-align: center;
     background-color: #001a71;
     height: 10vh;
-    
   }
   
   .logo{
@@ -227,8 +226,5 @@
     position: absolute;
   }
 
-  span{
-    color:red;
-  }
 
-  
+

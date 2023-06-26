@@ -1,17 +1,11 @@
-import {LangDropdown} from './Lang.js'
-import {Profile} from './Profile.js'
-//Link with UserHandler.js in ./server for Profile
+import React from "react";
 
-function AdminHeader () {
-    return (
-        1
-    )
+function AdminHeader() {
+  return 1;
 }
 
-function StaffHeader () {
-    return (
-        1
-    )
+function StaffHeader() {
+  return 1;
 }
 
-export {AdminHeader, StaffHeader}
+export { AdminHeader, StaffHeader };
