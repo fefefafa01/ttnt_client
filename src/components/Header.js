@@ -6,6 +6,12 @@ import './comp.styles/Header.css'
 //Link with UserHandler.js in ./server for Profile
 
 function AdminHeader () {
+    
+    const handlePSBtn = (e) => {
+        e.preventDefault();
+        window.location.assign('/homepage')
+    }
+
     return (
         <>
             <div className="aheader">
@@ -20,7 +26,7 @@ function AdminHeader () {
                     </p>       
                 </div>
                 <div className="lbtngroup col-2">
-                    <button className="bttn col">
+                    <button className="bttn col" onClick={handlePSBtn}>
                         <span><Changer inp='Vehicle Part Search' /></span>
                     </button>
                     <button className="bttn leftalgn col">
@@ -37,7 +43,7 @@ function AdminHeader () {
                     <button className="bttn leftalgn col">
                         <span><Changer inp='Vehicle Part Management' /></span>
                     </button>
-                    <button className="bttn leftalgn col">
+                    <button className="bttn leftalgn col" onClick={handlePSBtn}>
                         <span><Changer inp='Home' /></span>
                     </button>
                 </div>
@@ -52,6 +58,12 @@ function AdminHeader () {
 }
 
 function StaffHeader () {
+        
+    const handlePSBtn = (e) => {
+        e.preventDefault();
+        window.location.assign('/homepage')
+    }
+
     return (
         <>
             <div className="aheader">
@@ -66,7 +78,7 @@ function StaffHeader () {
                     </p>       
                 </div>
                 <div className="lbtngroup col-2">
-                    <button className="bttn col">
+                    <button className="bttn col" onClick={handlePSBtn}>
                         <span><Changer inp='Vehicle Part Search' /></span>
                     </button>
                     <button className="bttn leftalgn col">
@@ -77,7 +89,7 @@ function StaffHeader () {
                     <p className="label"><Changer inp = 'Vehicle Part Search' /></p>
                 </div>
                 <div className="srbtngroup col-3">
-                    <button className="bttn">
+                    <button className="bttn" onClick={handlePSBtn}>
                         <span><Changer inp='Home' /></span>
                     </button>
                 </div>

@@ -119,16 +119,28 @@ input.name-box::placeholder{
 }
   
 input.name-left{
-    margin-right: 30px;
-    margin-left: -15px;
+    float:left;
+    margin-left: 30px; 
 }
 
 input.name-right{
-    margin-left: 25px;
+    float:right;
+    margin-right: 50px;
+    margin-left: 30px;
 }
 
-.error_first_name{
-    margin-right: 35px;
+.error_last_name{
+    float:left;
+    margin-left: 30px;
+}
+
+.error_first_name {
+    display: inline;
+    margin-left: -10px;
+}
+
+.name-error {
+    display: inline
 }
 
 .valid-box {

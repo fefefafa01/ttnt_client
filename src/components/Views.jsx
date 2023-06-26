@@ -7,10 +7,10 @@ const Views = () => {
         <div>
             <Routes>
                 <Route path='/' element={<MainPage />}/>
-                {/* <Route path='*' element={<MainPage />}/> */}
+                <Route path='*' element={<MainPage />}/>
                 <Route path='/homepage' element={<HomePage />}/>
-                <Route path='/homepage/a' element={<HomePage />}/>
-                <Route path='/homepage/u' element={<HomePage />}/>
+                {/* <Route path='/homepage/a' element={<HomePage />}/>
+                <Route path='/homepage/u' element={<HomePage />}/> */}
             </Routes>
         </div>
     )

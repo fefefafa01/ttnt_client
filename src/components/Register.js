@@ -126,16 +126,16 @@ function Register() {
                             onChange={handleChange}
                             />
                         </div>
-                    <div className="error"><span>{formErrors.email}</span></div>
+                        <div className="error"><span>{formErrors.email}</span></div>
                         <div>
-                            <input  name="first_name"
+                            <input name="first_name"
                             value={formValues.first_name}
                             className="name-box name-left"
                             type="text"
                             placeholder={t("First Name")}
                             onChange={handleChange}
                             />
-                            <input  name="last_name"
+                            <input name="last_name"
                             value={formValues.last_name}
                             className="name-box name-right"
                             type="text"
@@ -143,12 +143,13 @@ function Register() {
                             onChange={handleChange}
                             />
                         </div>
+
                         <div>
-                            <span className="error_first_name">{formErrors.first_name}</span>
-                            <span className="error_last_name">{formErrors.last_name}</span>
+                            <span className="name-error error_first_name">{formErrors.first_name}</span>
+                            <span className="name-error error_last_name">{formErrors.last_name}</span>
                         </div>
                         <div className="input-box">
-                            <input  name="password"
+                            <input name="password"
                             value={formValues.password}
                             type={visible ? "text" : "password"}
                             placeholder={t("Password")}
@@ -189,8 +190,8 @@ function Register() {
                             <Changer inp="Create Account" />
                         </button>
                     </form>
-                </div>    
-            </div>
+                    </div>    
+                </div>
             )}
             {!vad && (
                 <div className='col-xs-9 col-md-7 col-lg-3 wrapper'>

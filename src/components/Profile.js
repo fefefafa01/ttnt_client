@@ -9,7 +9,10 @@ function Profile() {
     const handleOpen = () => {
         setOpen(!open);
     };
-
+    const handleSignOut = (e) => {
+        e.preventDefault();
+        window.location.assign('/login')
+    }
     return (
         <div className="col-1 dropdown">
             <button className="dropbtn" onClick={handleOpen}>
@@ -21,7 +24,7 @@ function Profile() {
                     <br></br>
                     <a href="#">Reset Password</a>
                     <br></br>
-                    <a href="#">
+                    <a href="#" onClick={handleSignOut}>
                         Sign Out
                         <img className="powerbutton" src={PowerButton} alt="PowerButton" />{" "}
                     </a>
