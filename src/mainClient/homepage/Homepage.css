@@ -14,6 +14,7 @@
     width: 99%;
     display: flex;
     transition: left 0.5s ease-in-out;
+    z-index: 0;
 }
 
 .tabs{
@@ -147,6 +148,7 @@
     width: 500px;
     transition: left 0.5s ease-in-out;
     background-color: lightgray;
+    z-index: 2;
   }
   .sidebar-toggle {
     position: absolute;
@@ -214,6 +216,7 @@
     text-align: center;
     background-color: #001a71;
     height: 10vh;
+    z-index: 2;
 }
 
 .aheader div p.logo{
@@ -226,4 +229,9 @@
     height: 90vh;
     padding-top: 1em;
     display: block;
+}
+
+.dropdown{
+    position: relative;
+    z-index: 3;
 }

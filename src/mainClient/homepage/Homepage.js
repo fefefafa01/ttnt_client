@@ -5,7 +5,7 @@ import { SearchCriteria } from "components/SearchCriteria";
 import { ResultList } from "components/SearchList";
 
 function Homepage() {
-  const [sidebarOpen, setSideBarOpen] = useState(false);
+  const [sidebarOpen, setSideBarOpen] = useState(true);
   const handleViewSidebar = () => {
     setSideBarOpen(!sidebarOpen);
   };
