@@ -1,8 +1,5 @@
-import { Changer } from "./LanguageChange"
-import Multi_Lang from "./Multi_Lang"
-import Profile from './Profile'
-import './comp.styles/Header.css'
-
+import {LangDropdown} from './Lang.js'
+import {Profile} from './Profile.js'
 //Link with UserHandler.js in ./server for Profile
 
 function AdminHeader () {
@@ -103,4 +100,4 @@ function StaffHeader () {
     )
 }
 
-export {AdminHeader, StaffHeader}
+export { AdminHeader, StaffHeader };
