@@ -51,8 +51,8 @@ function Login() {
         }
         else if(!localStorage.checkbox){
             setIsChecked(false);
-            localStorage.delete('checkEmail');
-            localStorage.delete('checkPassword');
+            localStorage.removeItem('checkEmail');
+            localStorage.removeItem('checkPassword');
         }
         console.log(isChecked);
       }, []);

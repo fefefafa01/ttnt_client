@@ -1,13 +1,10 @@
 {
     "Home":"Trang chủ",
-    "Check":"Kiểm tra",
     "Login":"Đăng Nhập",
     "Report":"Báo cáo",
-    "welcome":"Chào mừng đến với ReactJS",
     "Password":"Mật khẩu",
     "Remember":"Ghi nhớ",
     "Last Name":"Họ",
-    "selection":"Chọn một ngôn ngữ",
     "First Name":"Tên",
     "User Login":"Đăng nhập",
     "Email Taken":"Email đã được đăng ký",

@@ -1,13 +1,10 @@
 {
     "Home":"Home",
-    "Check":"Check",
     "Login":"Login",
     "Report":"Report",
-    "welcome":"Welcome to ReactJS",
     "Password":"Password",
     "Remember":"Remember",
     "Last Name":"Last Name",
-    "selection":"Select A Language",
     "First Name":"First Name",
     "User Login":"User Login",
     "Email Taken":"Email Taken",
