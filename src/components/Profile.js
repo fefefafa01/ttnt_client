@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
 import "./comp.styles/profile.css";
-import { PopupMenu } from "react-simple-widgets";
+import { Changer } from "./LanguageChange";
 
 function Profile() {
   const [open, setOpen] = useState(true);
