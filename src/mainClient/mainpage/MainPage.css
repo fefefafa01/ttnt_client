@@ -226,6 +226,10 @@ p.register-link{
     text-decoration: none;
     color: white;
 }
+.content {
+    position: absolute;
+    top: 60px;
+  }
 
 .content p.logo{
     font-style: italic;

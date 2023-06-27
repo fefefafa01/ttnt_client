@@ -13,8 +13,6 @@ const Views = () => {
                 <Route path='/' element={loggedIn?<HomePage/> : <MainPage />}/>
                 <Route path='*' element={<MainPage />}/>
                 <Route path='/homepage' element={<HomePage />}/>
-                {/* <Route path='/homepage/a' element={<HomePage />}/>
-                <Route path='/homepage/u' element={<HomePage />}/> */}
             </Routes>
         </div>
     )

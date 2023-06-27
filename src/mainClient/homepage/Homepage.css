@@ -159,18 +159,13 @@
   .content {
     position: absolute;
     top: 60px;
-    left: 0;
-    right: 0;
-    height: 100%;
-    transition: left 0.5s ease-in-out;
-    background-color: lightgray;
   }
   .sidebar.open {
     left: 0;
   }
-  .content.open {
+  /* .content.open {
     left: 0;
-  }
+  } */
   
   .sidebar.open ~ .wrappers {
     width: 71%;
