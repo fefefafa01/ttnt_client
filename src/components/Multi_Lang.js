@@ -6,6 +6,10 @@ import VI from '../../src/img/vietnamese.png'
 import EN from '../../src/img/english.png'
 import { Changer } from './LanguageChange' 
 import './comp.styles/LangOption.css'
+import { changeLanguage } from 'i18next';
+import { useTranslation } from 'react-i18next';
+
+import VI_TRANSLATE from './translation/vi/default.json'
 
 function Multi_Lang() {
     const [open, setOpen] = useState(false);
@@ -13,24 +17,29 @@ function Multi_Lang() {
         setOpen(!open);
     };
     let loc = window.location.pathname;
-    const check = Changer({inp:'Login'});
+    // const check = Changer({inp:'Login'});
+    // console.log(check);
     var [lang, setLang] = useState('EN');
-    if (check==='Login') {
-        lang = 'EN';
-    } else {
-        lang = 'VI';
-    }
-    const handleLang=() => {
-        if (lang === 'VI') {
+    // if (check==='Login') {
+    //     lang = 'EN';
+    // } else {
+    //     lang = 'VI';
+    // }
+    const {t} = useTranslation();
+    const handleLang = (lng) => {
+        if (lng === 'en') {
             setLang('EN');  
-            window.location.replace(loc + "?lng=en");
+            changeLanguage('en')
+            //window.location.replace(loc + "?lng=en");
         } else {
             setLang('VI');
-            window.location.replace(loc + "?lng=vi");
+            //window.location.replace(loc + "?lng=vi");
+            changeLanguage('vi');
+            console.log(t('Login'))
         }
     };
     return (
-        <div className="lang col-1 dropdown">
+        <div className="lang col-2 dropdown">
             <button className="multi-lang" onClick={handleOpen} type="button" data-bs-toggle="dropdown" aria-expanded="false"><img className="globe" src={Globe} alt="Globe" />
             </button>
             <span className="langbtn">
@@ -46,8 +55,8 @@ function Multi_Lang() {
                             name="radio-buttons-group"
                         >
                             <FormControlLabel
-                                control={<Radio checked={lang ==="VI"} onChange={handleLang} />}
-                                value="VI"
+                                control={<Radio checked={lang ==="VI"} onChange={() => handleLang('vi')} />}
+                                value="vi"
                                 label={
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <img src={VI} alt="Vietnamese" style={{ maxWidth:'25px', marginLeft:'-6px' }} />
@@ -56,8 +65,8 @@ function Multi_Lang() {
                                 }
                             />
                             <FormControlLabel 
-                                value="EN" 
-                                control={<Radio checked={lang ==="EN"} onChange={handleLang}/>} 
+                                value="en" 
+                                control={<Radio checked={lang ==="EN"} onChange={() => handleLang('en')}/>} 
                                 label={
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                     <img src={EN} alt="English" style={{ maxWidth:'25px', marginLeft:'-6px' }} />
