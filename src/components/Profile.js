@@ -1,14 +1,16 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
 import "./comp.styles/profile.css";
+import { PopupMenu } from "react-simple-widgets";
 
 function Profile() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const handleOpen = () => {
     setOpen(!open);
   };
+
   const handleSignOut = (e) => {
     e.preventDefault();
     window.location.assign("/login");
@@ -18,28 +20,40 @@ function Profile() {
     window.location.assign("/resetpwd");
   };
   return (
-    <div className="col-1 drop-down">
-      <button className="dropbtn" onClick={handleOpen}>
+    <div className="drop">
+      <button className="dropbtn">
         <img className="profile" src={profile} alt="Profile" />
       </button>
-      {open ? (
+
+      <div className="dropdown-content">
+        <a href="#" onClick={handleOpen}>
+          My Profile
+        </a>
+
+        <a href="#" onClick={handlePwd}>
+          Reset Password
+        </a>
+        <a href="#" onClick={handleSignOut}>
+          Sign Out
+          <img className="powerbutton" src={PowerButton} alt="PowerButton" />
+        </a>
+      </div>
+      {open && (
         <div className="dropdown-content">
-          <a href="#">My Profile</a>
-          <br></br>
-          <a href="#" onClick={handlePwd}>
-            Reset Password
-          </a>
-          <br></br>
-          <a href="#" onClick={handleSignOut}>
-            Sign Out
-            <img
-              className="powerbutton"
-              src={PowerButton}
-              alt="PowerButton"
-            />{" "}
-          </a>
+          <span>
+            <a href="#"> My Profile </a>
+            <a href="#" onClick={handleOpen}>
+              Back
+            </a>
+          </span>
+          <div className="myProfile">
+            <a> First name: Tanaka Ayashi</a>
+            <a> Last name </a>
+            <a> Email address </a>
+            <a> Role </a>
+          </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

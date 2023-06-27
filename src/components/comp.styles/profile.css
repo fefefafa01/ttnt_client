@@ -1,35 +1,49 @@
-.dropbtn {
-    background-color: transparent;
-    border:none;
+.drop{
+    position: relative;
+    display: inline-block;
+    float: right;
 }
 
-.profile {
-    width: 25px;
-    margin-top: 70px;
-    margin-right: -100px;
-    border: solid lightblue 2px;
+
+.dropbtn {
+    background-color: transparent;
+    height: 10vh;
+    width: 50px;
+    border: none;
     display: flex;
+        justify-content: flex-end;
+}
+
+.dropbtn img {
+    width: 25px;
+    border: solid lightblue 2px;
+    align-self: flex-end;
 
 }
 
 .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
     background-color: white;
-    border-radius: 10%;
-    border: solid black 2px;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    flex-direction: column;
-    min-width: 100px;
-    min-height: 100px;
-    max-width: max-content;
-    max-height: max-content;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid black;
+    border-radius: 20px;
 }
 
 .dropdown-content a {
     text-decoration: none;
     color: #86bac5;
-    width: 130px;
+    width: max-content;
+    padding: 12px 16px;
+    display: block;
+}
+
+.dropdown-content span{
+    display: flex;
+    justify-content: space-between;
 }
 
 .powerbutton {
@@ -38,4 +52,26 @@
     margin-top: -3px;
     margin-left: 5px;
     margin-bottom: 2px;
+} 
+
+.dropdown-content a:hover {
+    background-color: white;
+    border-radius: inherit;
 }
+
+.dropdown-content span:hover {
+    background-color: white;
+    border-radius: inherit;
+}
+
+
+.drop:hover .dropdown-content {display: block;}
+
+.myProfile{
+    padding-left: 20px;
+    text-decoration: none;
+    color: #86bac5;
+}
+
+
+
