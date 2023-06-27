@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
 import './comp.styles/profile.css'
+import { Changer } from "./LanguageChange";
 
 function Profile() {
     const [logOut, setLogOut] = useState(false);
@@ -10,13 +11,21 @@ function Profile() {
     const handleOpen = () => {
         setOpen(!open);
     };
-    const handleSignOut = (e) => {
+    const handleSignOut = () => {
         localStorage.removeItem('email');
         localStorage.removeItem('password');
-        localStorage.removeItem('isLoggedIn')
+        localStorage.removeItem('isLoggedIn');
         setLogOut(true);
-        window.location.assign('/login')
+        window.location.assign('/login');
         
+    }
+
+    const handleRP = () => {
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+        localStorage.removeItem('isLoggedIn');
+        setLogOut(true);
+        window.location.assign('/resetpwd');
     }
 
     return (
@@ -26,12 +35,14 @@ function Profile() {
             </button>
             {open ? (
                 <div className="dropdown-content">
-                    <a href="#">My Profile</a>
+                    <a href="#"><Changer inp='My Profile' /></a>
                     <br></br>
-                    <a href="#">Reset Password</a>
+                    <a href="#" onClick={handleRP}>
+                        <Changer inp='Reset Password' />
+                    </a>
                     <br></br>
                     <a href="#" onClick={handleSignOut}>
-                        Sign Out
+                        <Changer inp='Sign Out' />
                         <img className="powerbutton" src={PowerButton} alt="PowerButton" />{" "}
                     </a>
                 </div>

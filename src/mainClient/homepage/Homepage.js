@@ -17,10 +17,10 @@ function HomePage () {
                 <Route path="/homepage/u" element={<HeaderType type='' />}/>
                 <Route path="/homepage" element={<HeaderType type='' />}/>
             </Routes> */}
-            <AdminHeader />
+            {/* <AdminHeader /> */}
         </div>
         <div>
-            {/* <StaffHeader /> */}
+            <StaffHeader />
         </div>
         </>
     )

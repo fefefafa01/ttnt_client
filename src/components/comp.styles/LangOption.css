@@ -6,7 +6,7 @@
 .multi-lang{
     background-color: transparent;
     border: none;
-    margin-left: 30%;
+    /* margin-left: 30%; */
 }
   
 .langbtn{
@@ -21,7 +21,7 @@
     background-color: white;
     width: fit-content;
     border-radius: 8px;
-    margin-left: 60%;
+    /* margin-left: 45%; */
 }
   
 .dropdown-item a{

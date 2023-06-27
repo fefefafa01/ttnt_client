@@ -4,42 +4,44 @@ import Globe from '../img/globe.png';
 import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Box, Typography} from '@mui/material';
 import VI from '../../src/img/vietnamese.png'
 import EN from '../../src/img/english.png'
-import { Changer } from './LanguageChange' 
 import './comp.styles/LangOption.css'
-import { changeLanguage } from 'i18next';
-import { useTranslation } from 'react-i18next';
-
-import VI_TRANSLATE from './translation/vi/default.json'
+import { changeLanguage, reloadResources } from 'i18next';
 
 function Multi_Lang() {
     const [open, setOpen] = useState(false);
     const handleOpen=() => {
         setOpen(!open);
     };
-    let loc = window.location.pathname;
+    //let loc = window.location.pathname;
     // const check = Changer({inp:'Login'});
     // console.log(check);
-    var [lang, setLang] = useState('EN');
+    var [lang, setLang] = useState(''+localStorage.lng);
+    if (!localStorage.lng) {
+        localStorage.setItem('lng', 'EN');
+        lang='EN'
+    } else {
+        lang=localStorage.lng;
+    } 
     // if (check==='Login') {
     //     lang = 'EN';
     // } else {
     //     lang = 'VI';
     // }
-    const {t} = useTranslation();
     const handleLang = (lng) => {
         if (lng === 'en') {
             setLang('EN');  
-            changeLanguage('en')
+            changeLanguage('en');
+            localStorage.lng='EN';
             //window.location.replace(loc + "?lng=en");
         } else {
             setLang('VI');
             //window.location.replace(loc + "?lng=vi");
             changeLanguage('vi');
-            console.log(t('Login'))
+            localStorage.lng='VI';
         }
     };
     return (
-        <div className="lang col-2 dropdown">
+        <div className="lang col-1 dropdown">
             <button className="multi-lang" onClick={handleOpen} type="button" data-bs-toggle="dropdown" aria-expanded="false"><img className="globe" src={Globe} alt="Globe" />
             </button>
             <span className="langbtn">
