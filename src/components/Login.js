@@ -38,6 +38,25 @@ function Login() {
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.checkbox && localStorage.username !== "") {
+            setIsChecked(true);
+          setFormvalues({
+            email: localStorage.checkEmail,
+            password: localStorage.checkPassword,
+          });
+        }
+        else if(!localStorage.checkbox){
+            setIsChecked(false);
+            localStorage.delete('checkEmail');
+            localStorage.delete('checkPassword');
+        }
+        console.log(isChecked);
+      }, []);
+
     const {t} = useTranslation();
 
     const handleChange = (e) => {
@@ -71,6 +90,7 @@ function Login() {
         })
         .then (data => {
             if (!data) return;
+            localStorage.setItem("isLoggedIn", false); 
             setUser({...data});
             if(data.status === "Wrong Password") {
                 setFormErrors({password:t('Wrong Password')});
@@ -82,10 +102,34 @@ function Login() {
             //    window.location.assign('/homepage/u)
             //}
             } else if (data.loggedIn) {
+                localStorage.isLoggedIn = true;
                 window.location.assign('/homepage');
             }
         })
     }
+
+const handleCheck = (e) =>{
+    setIsChecked(e.target.checked);
+    console.log(isChecked);
+}
+
+const loginSubmit = () => {
+    if (isChecked && formValues.email !== "") {
+      localStorage.email = formValues.email;
+      localStorage.password = formValues.password
+      localStorage.checkbox = isChecked;
+      localStorage.checkEmail = formValues.email;
+      localStorage.checkPassword = formValues.password;
+    }
+    // here call the API to signup/login
+    else if(!isChecked){
+        localStorage.email = "";
+        localStorage.password = "";
+        localStorage.checkbox = false;
+        localStorage.checkEmail = "";
+        localStorage.checkPassword = "";
+    }
+};
 
     useEffect(() => {
         console.log(formErrors);
@@ -131,14 +175,15 @@ function Login() {
                     <div className="error"><span>{formErrors.password}</span></div>
                         <div className="remember-forgot">
                             <label htmlFor="">
-                                <input type={"checkbox"} />
+                                <input type={"checkbox"} checked={isChecked} name='IsRememberMe' onChange={handleCheck} />
                                 <Changer inp="Remember" />
                             </label>
                             <p>
                                 <Link to ="/resetpwd" ><Changer inp="Forgot Password?" /></Link>
                             </p>
                         </div>
-                    <button className="btn btn-dark" type="submit">
+                    <p>{formErrors.email}</p>
+                    <button className="btn btn-dark" type="submit" onClick={loginSubmit}>
                     <Changer inp="User Login" />
                     </button>
                 </form>

@@ -5,14 +5,20 @@ import PowerButton from "../img/PowerButton.png";
 import './comp.styles/profile.css'
 
 function Profile() {
+    const [logOut, setLogOut] = useState(false);
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(!open);
     };
     const handleSignOut = (e) => {
-        e.preventDefault();
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+        localStorage.removeItem('isLoggedIn')
+        setLogOut(true);
         window.location.assign('/login')
+        
     }
+
     return (
         <div className="col-1 dropdown">
             <button className="dropbtn" onClick={handleOpen}>
