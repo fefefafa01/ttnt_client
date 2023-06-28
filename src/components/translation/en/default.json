@@ -34,5 +34,9 @@
     "Your account was successfully created!":"Your account was successfully created!",
     "Password must be more than 4 characters":"Password must be more than 4 characters",
     "My Profile":"My Profile",
-    "Sign Out":"Sign Out"
+    "Sign Out":"Sign Out",
+    "Role": "Role",
+    "Back": "Back",
+    "Viewer": "Staff",
+    "Admin": "Admin"
 }
