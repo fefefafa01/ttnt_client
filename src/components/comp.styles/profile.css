@@ -1,17 +1,18 @@
 .drop{
     position: relative;
-    display: inline-block;
+    display: block;
     float: right;
+    height: 30px;
+    width: 40px;
+    align-self: flex-end;
 }
 
 
 .dropbtn {
     background-color: transparent;
-    height: 10vh;
-    width: 50px;
     border: none;
     display: flex;
-        justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 .dropbtn img {
