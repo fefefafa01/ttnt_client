@@ -251,6 +251,10 @@ p.register-link{
     margin-top: 17vh;
 }
 
+.bigcontent {
+    width: 100%;
+}
+
 .error{
     width: 80%;
     margin-left: 30px;
