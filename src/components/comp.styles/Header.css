@@ -47,3 +47,8 @@
     padding-top: 1em;
     display: block;
 }
+
+.dropdown{
+    position: relative;
+    z-index: 3;
+}

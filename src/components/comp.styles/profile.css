@@ -7,14 +7,12 @@
     align-self: flex-end;
 }
 
-
 .dropbtn {
     background-color: transparent;
     border: none;
     display: flex;
     justify-content: flex-end;
 }
-
 .dropbtn img {
     width: 25px;
     border: solid lightblue 2px;
