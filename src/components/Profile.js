@@ -6,7 +6,7 @@ import "./comp.styles/profile.css";
 import { Changer } from "./LanguageChange";
 
 function Profile() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);
   };

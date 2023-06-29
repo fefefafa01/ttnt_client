@@ -1,29 +1,26 @@
-import {AdminHeader, StaffHeader} from '../../components/Header'
-//import { Route, Routes } from 'react-router-dom';
-import './Homepage.css'
-//import { Changer } from '../../components/LanguageChange.js'
+import React, { useState } from "react";
+import "./Homepage.css";
+import { AdminHeader } from "components/Header";
+import { SearchCriteria } from "components/SearchCriteria";
+import { ResultList } from "components/SearchList";
 
-// import 'components/Epic2Filter'
-// import './Homepage.css'
-
-//Functions Aboves etc...
-
-function HomePage () {
-    return (
-        <>
-        <div>
-            {/* <Routes>
-                <Route path="/homepage/a" element={<HeaderType type='Admin'/>}/>
-                <Route path="/homepage/u" element={<HeaderType type='' />}/>
-                <Route path="/homepage" element={<HeaderType type='' />}/>
-            </Routes> */}
-            {/* <AdminHeader /> */}
-        </div>
-        <div>
-            <StaffHeader />
-        </div>
-        </>
-    )
+function Homepage() {
+  const [sidebarOpen, setSideBarOpen] = useState(true);
+  const handleViewSidebar = () => {
+    setSideBarOpen(!sidebarOpen);
+  };
+  return (
+    <>
+      <AdminHeader />
+      <div className="body">
+        <SearchCriteria
+          isOpen={sidebarOpen}
+          toggleSidebar={handleViewSidebar}
+        />
+        <ResultList />
+      </div>
+    </>
+  );
 }
 
-export default HomePage;
+export default Homepage;
