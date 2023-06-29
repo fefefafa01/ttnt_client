@@ -1,0 +1,62 @@
+.contents-part-list {
+    display: flex;
+    background-color: white;
+    min-height: 100%;
+    min-width: 100%;
+    width: max-content;
+    height: max-content;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+td,
+tr {
+    border: solid 2px white;
+    height: 50px;
+    font-size: 1.1em;
+}
+
+table {
+    height: 100%;
+    width: 97%;
+    margin-top: 0vh;
+}
+
+.title {
+    border: solid 5px white;
+    background-color: black;
+    color: white;
+    height: 50px;
+}
+
+.subtitle {
+    color: white;
+    border: solid 2px white;
+}
+
+.OE {
+    background-color: black;
+}
+
+.AISIN {
+    background-color: darkblue;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: lightgrey;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: grey;
+}
+
+button.details {
+    background-color: grey;
+    color: white;
+    border: solid 2px black;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}

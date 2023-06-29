@@ -1,29 +1,29 @@
-.header{
+.header {
     display: flex;
     text-align: center;
     background-color: #001a71;
     height: 10vh;
 }
-  
-.logo{
+
+.logo {
     color: white;
     font-family: "VLNL Decks";
     font-style: italic;
 }
-  
-.header div p.logo{
+
+.header div p.logo {
     font-size: xx-large;
     margin-top: 20px;
 }
-  
-.logotext{
+
+.logotext {
     color: white;
     margin-top: -50px;
     font-weight: bold;
-    font-size:x-small;
+    font-size: x-small;
 }
-  
-.label{
+
+.label {
     color: white;
     flex: 10%;
     text-align: center;
@@ -31,24 +31,24 @@
     font-family: Tahoma;
     font-size: xx-large;
 }
-  
-p.label{
+
+p.label {
     margin-top: 20px;
 }
-  
-.body{
+
+.body {
     background-color: #001a71;
     height: 90vh;
     padding-top: 1em;
     display: block;
 }
-  
-.wrapper{
+
+.wrapper {
     position: absolute;
     height: fit-content;
     width: 25em;
     background-color: #d8dcf4;
-    border: 2px solid rgba(255, 255, 255, .5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     margin-left: 5vh;
     backdrop-filter: blur(20px);
@@ -58,16 +58,16 @@ p.label{
     margin-top: 20px;
     padding-bottom: 20px;
 }
-  
-.form-box h2{
+
+.form-box h2 {
     margin-top: 20px;
     font-size: 2em;
     padding-top: 20px;
     color: black;
     text-align: center;
 }
-  
-.input-box{
+
+.input-box {
     position: relative;
     width: 80%;
     height: 50px;
@@ -76,11 +76,11 @@ p.label{
     margin: 10px 30px 20px;
 }
 
-.input-box ::placeholder{
+.input-box ::placeholder {
     color: #64a5b4;
 }
-  
-.input-box input{
+
+.input-box input {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -90,7 +90,7 @@ p.label{
     font-size: 1.2em;
 }
 
-input.name-box{
+input.name-box {
     width: 35%;
     display: inline;
     border: transparent;
@@ -102,11 +102,11 @@ input.name-box{
     margin-left: -2px;
 }
 
-input.name-box::placeholder{
+input.name-box::placeholder {
     color: #64a5b4;
 }
 
-.error{
+.error {
     width: 80%;
     margin-left: 30px;
     text-align: left;
@@ -114,23 +114,23 @@ input.name-box::placeholder{
     position: absolute;
 }
 
-.error span{
-    color:red;
-}
-  
-input.name-left{
-    float:left;
-    margin-left: 30px; 
+.error span {
+    color: red;
 }
 
-input.name-right{
-    float:right;
+input.name-left {
+    float: left;
+    margin-left: 30px;
+}
+
+input.name-right {
+    float: right;
     margin-right: 50px;
     margin-left: 30px;
 }
 
-.error_last_name{
-    float:left;
+.error_last_name {
+    float: left;
     margin-left: 30px;
 }
 
@@ -140,7 +140,7 @@ input.name-right{
 }
 
 .name-error {
-    display: inline
+    display: inline;
 }
 
 .valid-box {
@@ -155,43 +155,43 @@ input.name-right{
     padding-top: 40px;
 }
 
-.eye{
-    color:#64a5b4;
+.eye {
+    color: #64a5b4;
     scale: 150%;
     padding-top: 15px;
     margin-right: 20px;
 }
-  
+
 .valid-box .btn {
-    margin-top: 20%
+    margin-top: 20%;
 }
 
-.remember-forgot{
-    font-size: .9em;
+.remember-forgot {
+    font-size: 0.9em;
     color: #172685;
     font-weight: 500;
     margin: 10px 28px 15px;
     display: flex;
     justify-content: space-between;
 }
-  
-.remember-forgot label input{
+
+.remember-forgot label input {
     accent-color: black;
     margin-right: 3px;
 }
-  
-.remember-forgot a{
+
+.remember-forgot a {
     color: #172685;
     text-decoration: none;
 }
-  
-.remember-forgot a:hover{
+
+.remember-forgot a:hover {
     color: black;
     text-decoration: none;
 }
-  
-button.btn{
-    width: 100%;
+
+button.btn {
+    width: 85%;
     height: 50px;
     background-color: black;
     border-radius: 10px;
@@ -199,46 +199,42 @@ button.btn{
     font-size: 1em;
     color: #fff;
     font-weight: 500;
-    margin-top: 5vh;
+    margin-top: 50px;
 }
 
-button.regbtn{
+button.regbtn {
     margin-bottom: 5vh;
 }
 
 .regbtn {
-    margin-bottom: 5vh
-}
-  
-.login-register{
-    font-size: .9em;
-    text-align: center;
-    font-weight: 500;
-    margin: 10px 0px 20px  0px;
+    margin-bottom: 5vh;
 }
 
-p.register-link{
+.login-register {
+    font-size: 0.9em;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 0px 20px 0px;
+}
+
+p.register-link {
     color: #172685;
     cursor: pointer;
 }
 
-.back_login{
+.back_login {
     text-decoration: none;
     color: white;
 }
-.content {
-    position: absolute;
-    top: 60px;
-  }
 
-.content p.logo{
+.content p.logo {
     font-style: italic;
     font-size: 5em;
     margin-top: 2%;
-    margin-left: 30vw; 
+    margin-left: 30vw;
 }
-  
-.content p.contenttext{
+
+.content p.contenttext {
     color: #64a5b4;
     margin-left: 30vw;
     margin-top: -50px;
@@ -246,16 +242,16 @@ p.register-link{
     font-style: italic;
     font-size: 1.7em;
 }
-  
-.body-img{
+
+.body-img {
     background-size: cover;
     background-image: url("../../img/car.png");
     background-position: center;
     height: 50vh;
-    margin-top: 17vh;
+    margin-top: 38vh;
 }
 
-.error{
+.error {
     width: 80%;
     margin-left: 30px;
     text-align: left;
@@ -263,8 +259,14 @@ p.register-link{
     position: absolute;
 }
 
-.error, .error_first_name, .error_last_name{
-    color:red;
+.p-error {
+    position: absolute;
+    margin: 20px 100px;
 }
 
-
+.error,
+.p-error,
+.error_first_name,
+.error_last_name {
+    color: red;
+}

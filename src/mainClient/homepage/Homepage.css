@@ -1,47 +1,148 @@
-.body{
+.aheader {
+    display: flex;
+    text-align: center;
+    background-color: #001a71;
+    height: 10vh;
+}
+
+.aheader div p.logo {
+    font-size: xx-large;
+    margin-top: 20px;
+}
+
+.lbtngroup,
+.rbtngroup,
+.srbtngroup {
+    display: flex;
+    margin-top: 20px;
+}
+
+.rbtngroup {
+    align-self: right;
+}
+
+.srbtngroup {
+    justify-content: right;
+}
+
+.rbtngroup span,
+.lbtngroup span,
+.srbtngroup span {
+    display: inline-block;
+    transform: skew(35deg);
+}
+
+.bttn {
+    transform: skew(-35deg);
+    min-height: 50px;
+    width: 150px;
+    text-align: center;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+/* .body{
     background-color: #001a71;
     display: flex;
     width: 100%;
-    height: calc(100% - 10vh);
+    height: 0vh;
+} */
+
+.hbody {
+    background-color: #001a71;
+    height: 50vh;
+    padding-top: 1em;
+    display: block;
 }
 
-.wrappers{
+.sidebar {
     position: absolute;
-    background-color: darkblue;
+    top: 13vh;
+    left: -500px;
+    margin-left: 0px;
+    height: calc(100% - 14vh);
+    width: 500px;
+    transition: left 0.5s ease-in-out;
+    background-color: lightgray;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar.open ~ .wrappers {
+    width: calc(100% - 520px);
+    height: calc(100% - 13vh);
+    left: 520px;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 30px;
+    right: -30px;
+    height: 30px;
+    width: 30px;
+    z-index: 1;
+}
+
+.wrappers {
+    position: absolute;
+    background-color: #001a71;
     left: 10px;
     top: 13vh;
-    height: calc(100% - 13vh) ;
+    height: calc(100% - 13vh);
     width: 99%;
     display: flex;
     transition: left 0.5s ease-in-out;
 }
 
-.tabs{
-    position: absolute;
-    background: #001a71;
-    height: 100%;
+.tabs {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
-.tabs::before,
+.tab-list {
+    display: flex;
+    height: 65px;
+    margin-top: -20px;
+    font-size: 1.25em;
+    padding-left: 0px;
+}
+
+.tab {
+    background-color: #d6dff0;
+    border: #7697cb;
+    color: #76787c;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 250px;
+    display: inline-block;
+    padding: 15px 16px;
+    transition: border-bottom-color 0.3s;
+    margin-top: 8px;
+    margin-right: 20px;
+}
+
+/* .tabs::before,
 .tabs::after{
     content: "";
     display: table;
-}
+} */
 
-.tabs::after{
+/* .tabs::after{
     clear: both;
-}
+} */
 
-.tab{
+.tab {
     float: left;
 }
-  
-.tab-switch {
-    display: none;
-}
 
-.tab-label{
+.tab-label {
     position: relative;
     display: block;
     line-height: 2.75em;
@@ -51,31 +152,35 @@
     transition: all 0.25s;
 }
 
-
-.tab-switch:checked + .tab-label{
-    background: #b0c4e4;
-    color: darkblue;
+.tab.react-tabs__tab--selected {
+    background: #acc0e2;
+    color: #2d468e;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    font-weight: bold;
     text-align: center;
     font-style: italic;
+    margin-top: 0px;
+    border: none;
 }
 
-.tab-switch:checked + label + .tab-content{
+.tab.active + .tab-content {
     z-index: 2;
     opacity: 1;
-    transition: all 0.35s;
+    transition: all 0.15s;
 }
 
-.tabcontent{
-    background-color: #b0c4e4;
-    height: 93%;
+.tabcontent {
+    background-color: #acc0e2;
+    height: 95%;
     width: 100%;
     padding-left: 20px;
     position: absolute;
+    top: 4vh;
+    z-index: 0;
 }
 
-.tabcontent h3{
+.tabcontent h3 {
     color: black;
     text-align: left;
     font-size: small;
@@ -83,7 +188,7 @@
     font-style: italic;
 }
 
-.Scroll{
+.Scroll {
     background-color: #b0c4e4;
     height: 93%;
     width: 100%;
@@ -96,31 +201,31 @@
     padding-right: 10px;
 }
 
-#scroll-style::-webkit-scrollbar{
-	width: 20px;
-	background-color: white;
+#scroll-style::-webkit-scrollbar {
+    width: 20px;
+    background-color: white;
     border-radius: 10px;
 }
 
-#scroll-style::-webkit-scrollbar-track{
-	border-radius: 20px;
-	background-color: white;
+#scroll-style::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: white;
     width: 50px;
 }
 
-#scroll-style::-webkit-scrollbar-thumb{
-	border-radius: 10px;
-	background-color: #b0c4e4;
-    border: 2em solid #7697cb ;
+#scroll-style::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b0c4e4;
+    border: 2em solid #7697cb;
 }
 
-.contents{
+.contents {
     display: flex;
     background-color: white;
     min-height: 100%;
     min-width: 100%;
-    max-width: max-content;
-    max-height: max-content;
+    width: max-content;
+    height: max-content;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
@@ -128,97 +233,12 @@
     padding-top: 10px;
 }
 
-.contents h1{
+.contents h1 {
     color: darkblue;
     font-size: large;
 }
 
-.contents h2{
+.contents h2 {
     color: lightblue;
     font-size: large;
-}
-
-.sidebar {
-    position: absolute;
-    top: 13vh;
-    left: -500px;
-    margin-left: 0px;
-    height: calc(100% - 14vh);
-    width: 500px;
-    transition: left 0.5s ease-in-out;
-    background-color: lightgray;
-  }
-  .sidebar-toggle {
-    position: absolute;
-    top: 0%;
-    right: -60px;
-    height: 60px;
-    width: 60px;
-    z-index: 1;
-  }
-  .content {
-    position: absolute;
-    top: 60px;
-  }
-  .sidebar.open {
-    left: 0;
-  }
-  /* .content.open {
-    left: 0;
-  } */
-  
-  .sidebar.open ~ .wrappers {
-    width: 71%;
-    height:calc(100% - 13vh);
-    left: 520px;
-  }
-
-  .bttn {
-    transform: skew(-35deg);
-    min-height:50px;
-    width:150px;
-    text-align: center;
-    font-size: 0.85em;
-    font-weight: bold;
-}
-
-.srbtngroup {
-    justify-content: right;
-}
-
-.leftalgn {
-    margin-left: 10px;
-}
-
-.lbtngroup, .rbtngroup, .srbtngroup {
-    display:flex;
-    margin-top: 20px;
-}
-
-.rbtngroup span, .lbtngroup span, .srbtngroup span {
-    display: inline-block;
-    transform: skew(35deg);
-}
-
-.rbtngroup {
-    align-self: right;
-}
-
-.aheader{
-    display: flex;
-    text-align: center;
-    background-color: #001a71;
-    height: 10vh;
-}
-
-.aheader div p.logo{
-    font-size: xx-large;
-    margin-top: 20px;
-}
-  
-.hbody{
-    background-color: #001a71;
-    height: 90vh;
-    padding-top: 1em;
-    display: block;
 }
