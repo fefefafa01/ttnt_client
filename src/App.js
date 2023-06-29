@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './i18n'
 import './App.css';
 import { Views } from 'components/Views';
-import HomePage from 'mainClient/homepage/Homepage';
 import { changeLanguage } from 'i18next';
+import { Specpdf } from 'components/SpecPDF';
 
 class App extends Component {
     
@@ -16,7 +16,7 @@ class App extends Component {
         }
         return (
             <div className="App">
-                <Views />
+                <Specpdf />
             </div>
         );
     }
