@@ -34,5 +34,9 @@
     "Your account was successfully created!":"Tài khoản của bạn đã được tạo thành công!",
     "Password must be more than 4 characters":"Mật khẩu phải nhiều hơn 4 ký tự",
     "My Profile":"Hồ sơ của tôi",
-    "Sign Out":"Đăng xuất"
+    "Sign Out":"Đăng xuất",
+    "Role": "Quyền hạn",
+    "Back": "Trở về",
+    "Viewer": "Nhân viên",
+    "Admin": "Quản lý"
 }
