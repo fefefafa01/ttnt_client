@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import MainPage from "mainClient/mainpage/MainPage"
 import HomePage from "mainClient/homepage/Homepage"
 import { useEffect } from "react"
+import { Specpdf } from "./SpecPDF"
 
 const Views = () => {
     const loggedIn = localStorage.getItem('isLoggedIn');
@@ -13,6 +14,7 @@ const Views = () => {
                 <Route path='/' element={loggedIn?<HomePage/> : <MainPage />}/>
                 <Route path='*' element={<MainPage />}/>
                 <Route path='/homepage' element={<HomePage />}/>
+                <Route path='/specpdf' element={<Specpdf />}/>
                 {/* <Route path='/homepage/a' element={<HomePage />}/>
                 <Route path='/homepage/u' element={<HomePage />}/> */}
             </Routes>
