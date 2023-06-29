@@ -3,81 +3,50 @@
     text-align: center;
     background-color: #001a71;
     height: 10vh;
-    
-  }
+}
   
-  .logo{
+.logo{
     color: white;
     font-family: "VLNL Decks";
-  }
+    font-style: italic;
+}
   
-  .header div p.logo{
+.header div p.logo{
     font-size: xx-large;
     margin-top: 20px;
-  }
+}
   
-  .logotext{
+.logotext{
     color: white;
     margin-top: -50px;
     font-weight: bold;
     font-size:x-small;
-  }
+}
   
-  .label{
+.label{
     color: white;
     flex: 10%;
     text-align: center;
     display: block;
     font-family: Tahoma;
     font-size: xx-large;
-  }
+}
   
-  p.label{
+p.label{
     margin-top: 20px;
-  }
+}
   
-  .lang{
-    margin-top: 30px;
-    justify-content: center;
-  }
-  
-  .multi-lang{
-    background-color: transparent;
-    border: none;
-  }
-  
-  .langbtn{
-    color: white;
-    position: absolute;
-  }
-  
-  .menu.lang-item{
-    border: solid black 1px;
-    background-color: white;
-    width: 5vw;
-    padding: 0 30px;
-    border-radius: 8px;
-    margin-left: 20%;
-  }
-  .dropdown-item a{
-    text-decoration: none;
-    color: black;
-    margin-left: -10px;
-  }
-  
-  .globe{
-    max-width: 20px;
-  }
-  .body{
+.body{
     background-color: #001a71;
     height: 90vh;
     padding-top: 1em;
     display: block;
-  }
+}
   
-  .wrapper{
+.wrapper{
     position: absolute;
-    height: 60vh;
+    height: fit-content;
+    width: 25em;
     background-color: #d8dcf4;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -87,31 +56,31 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-  }
+    padding-bottom: 20px;
+}
   
-  .form-box h2{
+.form-box h2{
+    margin-top: 20px;
     font-size: 2em;
+    padding-top: 20px;
     color: black;
     text-align: center;
-  }
+}
   
-  .input-box{
+.input-box{
     position: relative;
     width: 80%;
     height: 50px;
     border-bottom: 2px solid #172685;
-    margin: 30px 30px;
-  }
-  
-  .input-box ::placeholder{
-    color: #64a5b4;
-  }
-  
-  .input-box{
     display: flex;
-  }
+    margin: 10px 30px 20px;
+}
+
+.input-box ::placeholder{
+    color: #64a5b4;
+}
   
-  .input-box input{
+.input-box input{
     width: 100%;
     height: 100%;
     background: transparent;
@@ -119,137 +88,183 @@
     outline: none;
     margin-top: 5px;
     font-size: 1.2em;
-  }
+}
+
+input.name-box{
+    width: 35%;
+    display: inline;
+    border: transparent;
+    border-bottom: 2px solid #172685;
+    background-color: transparent;
+    outline: none;
+    margin-top: 5px;
+    font-size: 1.2em;
+    margin-left: -2px;
+}
+
+input.name-box::placeholder{
+    color: #64a5b4;
+}
+
+.error{
+    width: 80%;
+    margin-left: 30px;
+    text-align: left;
+    margin-top: -20px;
+    position: absolute;
+}
+
+.error span{
+    color:red;
+}
   
-  .remember-forgot{
+input.name-left{
+    float:left;
+    margin-left: 30px; 
+}
+
+input.name-right{
+    float:right;
+    margin-right: 50px;
+    margin-left: 30px;
+}
+
+.error_last_name{
+    float:left;
+    margin-left: 30px;
+}
+
+.error_first_name {
+    display: inline;
+    margin-left: -10px;
+}
+
+.name-error {
+    display: inline
+}
+
+.valid-box {
+    height: fit-content;
+    font-size: 1.5em;
+    text-align: left;
+    margin: 5%;
+    margin-top: 15%;
+    border: solid 1px black;
+    border-radius: 5%;
+    padding: 20px;
+    padding-top: 40px;
+}
+
+.eye{
+    color:#64a5b4;
+    scale: 150%;
+    padding-top: 15px;
+    margin-right: 20px;
+}
+  
+.valid-box .btn {
+    margin-top: 20%
+}
+
+.remember-forgot{
     font-size: .9em;
     color: #172685;
     font-weight: 500;
     margin: 10px 28px 15px;
     display: flex;
     justify-content: space-between;
-  }
+}
   
-  .remember-forgot label input{
+.remember-forgot label input{
     accent-color: black;
     margin-right: 3px;
-  }
+}
   
-  .remember-forgot a{
+.remember-forgot a{
     color: #172685;
     text-decoration: none;
-  }
+}
   
-  .remember-forgot a:hover{
+.remember-forgot a:hover{
     color: black;
     text-decoration: none;
-  }
+}
   
-  button.btn{
+button.btn{
     width: 100%;
     height: 50px;
     background-color: black;
-    border: none;
     border-radius: 10px;
     cursor: pointer;
     font-size: 1em;
     color: #fff;
     font-weight: 500;
-    margin-top: 10vh;
-  }
+    margin-top: 5vh;
+}
+
+button.regbtn{
+    margin-bottom: 5vh;
+}
+
+.regbtn {
+    margin-bottom: 5vh
+}
   
-  .login-register{
+.login-register{
     font-size: .9em;
-    color: black;
     text-align: center;
     font-weight: 500;
-    margin: 5% 0 20% 0;
-  }
-  
-  .login-register a{
+    margin: 10px 0px 20px  0px;
+}
+
+p.register-link{
     color: #172685;
+    cursor: pointer;
+}
+
+.back_login{
     text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .login-register a:hover{
-    text-decoration: underline;
-  }
-  
-  .content p.logo{
+    color: white;
+}
+
+.content p.logo{
     font-style: italic;
     font-size: 5em;
     margin-top: 2%;
-    margin-left: 30vw;
+    margin-left: 30vw; 
+}
   
-  }
-  
-  .content p.contenttext{
+.content p.contenttext{
     color: #64a5b4;
     margin-left: 30vw;
     margin-top: -50px;
     font-weight: bold;
     font-style: italic;
     font-size: 1.7em;
-  }
+}
   
-  .body-img{
+.body-img{
     background-size: cover;
     background-image: url("../../img/car.png");
     background-position: center;
     height: 50vh;
     margin-top: 17vh;
-  }
+}
 
-  .profile{
-    max-width: 70px;
-  }
+.bigcontent {
+    width: 100%;
+}
 
-  .dropbtn {
-    background-color: #001a71 ;
-    color: white;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    margin-right: -70px;
-  } 
-
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    width:max-content;
-    height: fit-content;
-    right: 0;
-    border: 3px solid black;
-    border-radius: 10px;
-    margin-top: -15px;
+.error{
+    width: 80%;
+    margin-left: 30px;
     text-align: left;
-  }
+    margin-top: -20px;
+    position: absolute;
+}
 
-  .dropdown-content a {
-    color: #0f5d5e;
-    padding: 10px 16px;
-    text-decoration: none;
-    display: block;
-    margin-left: auto;
-  }
+.error, .error_first_name, .error_last_name{
+    color:red;
+}
 
-  .dropdown-content a:hover {
-    background-color: #f1f1f1;
-    border-radius: 10px;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  .powerbutton{
-    max-width: 40px;
-    margin-bottom: 5px;
-  }
+  

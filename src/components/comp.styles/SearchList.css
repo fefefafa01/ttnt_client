@@ -1,0 +1,133 @@
+.wrappers{
+    position: absolute;
+    background-color: darkblue;
+    left: 10px;
+    top: 13vh;
+    height: calc(100% - 13vh) ;
+    width: 99%;
+    display: flex;
+    transition: left 0s ease-in-out;
+    z-index: 0;
+}
+
+.tabs{
+    position: absolute;
+    background: #001a71;
+    height: 99%;
+    width: 100%;
+}
+
+.tabs::before,
+.tabs::after{
+    content: "";
+    display: table;
+}
+
+.tabs::after{
+    clear: both;
+}
+
+.tab{
+    float: left;
+}
+  
+.tab-switch {
+    display: none;
+}
+
+.tab-label{
+    position: relative;
+    display: block;
+    line-height: 2.75em;
+    height: 3em;
+    width: 200px;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+
+.tab-switch:checked + .tab-label{
+    background: #b0c4e4;
+    color: darkblue;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    text-align: center;
+    font-style: italic;
+}
+
+.tab-switch:checked + label + .tab-content{
+    z-index: 2;
+    opacity: 1;
+    transition: all 0.35s;
+}
+
+.tabcontent{
+    background-color: #b0c4e4;
+    height: 93%;
+    width: 100%;
+    padding-left: 20px;
+    position: absolute;
+}
+
+.tabcontent h3{
+    color: black;
+    text-align: left;
+    font-size: small;
+    padding-top: 20px;
+    font-style: italic;
+}
+
+.Scroll{
+    background-color: #b0c4e4;
+    height: 90%;
+    width: 100%;
+    border-radius: 20px;
+    overflow: scroll;
+    display: flex;
+    max-height: 98%;
+    max-width: 99%;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+#scroll-style::-webkit-scrollbar{
+	width: 20px;
+	background-color: white;
+    border-radius: 10px;
+}
+
+#scroll-style::-webkit-scrollbar-track{
+	border-radius: 20px;
+	background-color: white;
+    width: 50px;
+}
+
+#scroll-style::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #b0c4e4;
+    border: 2em solid #7697cb ;
+}
+
+.contents{
+    display: flex;
+    background-color: white;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: max-content;
+    max-height: max-content;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.contents h1{
+    color: darkblue;
+    font-size: large;
+}
+
+.contents h2{
+    color: lightblue;
+    font-size: large;
+}

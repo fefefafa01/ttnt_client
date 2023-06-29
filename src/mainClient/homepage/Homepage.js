@@ -1,12 +1,26 @@
-import {AdminHeader, StaffHeader} from '/components'
-import 'components/Epic2Filter'
-import './Homepage.css'
+import React, { useState } from "react";
+import "./Homepage.css";
+import { AdminHeader } from "components/Header";
+import { SearchCriteria } from "components/SearchCriteria";
+import { ResultList } from "components/SearchList";
 
-//Functions Aboves etc...
-
-function SignOut () {
-    //Call out to UserHandler.js in ./server
-    return (
-        1
-    )
+function Homepage() {
+  const [sidebarOpen, setSideBarOpen] = useState(true);
+  const handleViewSidebar = () => {
+    setSideBarOpen(!sidebarOpen);
+  };
+  return (
+    <>
+      <AdminHeader />
+      <div className="body">
+        <SearchCriteria
+          isOpen={sidebarOpen}
+          toggleSidebar={handleViewSidebar}
+        />
+        <ResultList />
+      </div>
+    </>
+  );
 }
+
+export default Homepage;
