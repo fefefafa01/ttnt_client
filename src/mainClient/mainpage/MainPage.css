@@ -46,7 +46,7 @@ p.label {
 .wrapper {
     position: absolute;
     height: fit-content;
-    width: 25em;
+    width: 30vw;
     background-color: #d8dcf4;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -55,7 +55,7 @@ p.label {
     display: block;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10vh;
     padding-bottom: 20px;
 }
 
@@ -190,6 +190,11 @@ input.name-right {
     text-decoration: none;
 }
 
+.p-error {
+    position: absolute;
+    margin: 65px 100px;
+}
+
 button.btn {
     width: 85%;
     height: 50px;
@@ -199,7 +204,7 @@ button.btn {
     font-size: 1em;
     color: #fff;
     font-weight: 500;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 button.regbtn {
@@ -257,11 +262,6 @@ p.register-link {
     text-align: left;
     margin-top: -20px;
     position: absolute;
-}
-
-.p-error {
-    position: absolute;
-    margin: 20px 100px;
 }
 
 .error,
