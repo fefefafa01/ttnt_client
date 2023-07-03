@@ -51,8 +51,8 @@ function Login() {
         }
         else if(!localStorage.checkbox){
             setIsChecked(false);
-            localStorage.delete('checkEmail');
-            localStorage.delete('checkPassword');
+            localStorage.removeItem('checkEmail');
+            localStorage.removeItem('checkPassword');
         }
         console.log(isChecked);
       }, []);
@@ -76,8 +76,8 @@ function Login() {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-              },
-              body: JSON.stringify(formValues),
+            },
+            body: JSON.stringify(formValues),
         })
         .catch(err => {
             return;

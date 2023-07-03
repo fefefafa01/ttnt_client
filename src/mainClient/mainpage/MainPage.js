@@ -35,16 +35,18 @@ function MainPage () {
                 <Route path="/resetpwd" element={<ResetPwd/>}/>  
                 <Route path="*" element={<Login/>}/>  
             </Routes>
-            <div className="col-sm-12 col-md content">
-                <p className="logo">
-                    AISIN
-                </p>
-                <br></br>
-                <p className="contenttext">
-                    AIMING FOR A BETTER FUTURE
-                </p>
+            <div className="bigcontent">
+                <div className="col-sm-12 col-md content">
+                    <p className="logo">
+                        AISIN
+                    </p>
+                    <br></br>
+                    <p className="contenttext">
+                        AIMING FOR A BETTER FUTURE
+                    </p>
+                </div>
+                <div className="col body-img" />
             </div>
-            <div className="col body-img" />
         </div>
         </>
     );

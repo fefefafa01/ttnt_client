@@ -24,7 +24,7 @@ function Multi_Lang() {
     const handleOpen = () => {
         setOpen(!open);
     };
-    let loc = window.location.pathname;
+    //let loc = window.location.pathname;
     // const check = Changer({inp:'Login'});
     // console.log(check);
     var [lang, setLang] = useState("EN");

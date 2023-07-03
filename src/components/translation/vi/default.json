@@ -1,13 +1,10 @@
 {
     "Home":"Trang chủ",
-    "Check":"Kiểm tra",
     "Login":"Đăng Nhập",
     "Report":"Báo cáo",
-    "welcome":"Chào mừng đến với ReactJS",
     "Password":"Mật khẩu",
     "Remember":"Ghi nhớ",
     "Last Name":"Họ",
-    "selection":"Chọn một ngôn ngữ",
     "First Name":"Tên",
     "User Login":"Đăng nhập",
     "Email Taken":"Email đã được đăng ký",
@@ -35,5 +32,11 @@
     "This is not a valid email format!":"Email không hợp lệ",
     "Your password was successfully reset!":"Mật khẩu của bạn đã được đặt lại thành công!",
     "Your account was successfully created!":"Tài khoản của bạn đã được tạo thành công!",
-    "Password must be more than 4 characters":"Mật khẩu phải nhiều hơn 4 ký tự"
+    "Password must be more than 4 characters":"Mật khẩu phải nhiều hơn 4 ký tự",
+    "My Profile":"Hồ sơ của tôi",
+    "Sign Out":"Đăng xuất",
+    "Role": "Quyền hạn",
+    "Back": "Trở về",
+    "Viewer": "Nhân viên",
+    "Admin": "Quản lý"
 }

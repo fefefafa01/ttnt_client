@@ -2,7 +2,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { React, useState, useEffect, useContext } from "react";
 import { Changer } from "./LanguageChange";
 import { Link } from "react-router-dom";
-import {AccountContext} from './Login.comps/AccountContext';
+import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
 
 const validate = (values) => {
@@ -21,7 +21,7 @@ const validate = (values) => {
     if (!values.confpassword) {
         errors.confpassword = <Changer inp="Password is required" />;
     } else if (values.confpassword !== values.password) {
-      errors.confpassword = <Changer inp="Password must be the same" />;
+        errors.confpassword = <Changer inp="Password must be the same" />;
     }
     return errors;
 };
@@ -34,7 +34,7 @@ function ResetPwd() {
     const [error, setError] = useState(null);
     const { setUser } = useContext(AccountContext) || {};
     const [hide, sethide] = useState(true);
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const initialValues = { email: "", password: "", confpassword: "" };
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
@@ -55,9 +55,9 @@ function ResetPwd() {
             method: "POST",
             credentials: "include",
             headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
             },
             body: JSON.stringify(formValues),
         })
@@ -70,101 +70,110 @@ function ResetPwd() {
             }
             return res.json();
         })
-        .then (data => {
+        .then((data) => {
             if (!data) return;
-            setUser({...data});
-            if (data.status === ("Email Unavailable")) {
-                setFormErrors({email:t('Email Unavailable')});
-            } else if (data.status === 'Changed Pass') {
+            setUser({ ...data });
+            if (data.status === "Email Unavailable") {
+                setFormErrors({ email: t("Email Unavailable") });
+                console.log(data.status);
+            } else if (data.status === "Changed Pass") {
                 sethide(!hide);
             }
-        })
+        });
     };
 
     useEffect(() => {
-        console.log(formErrors);
-        console.log("is Submit:", isSubmit);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            console.log(formValues);
-        }
-    }, 
+            console.log(formErrors);
+            console.log("is Submit:", isSubmit);
+            if (Object.keys(formErrors).length === 0 && isSubmit) {
+                console.log(formValues);
+            }
+        }, 
         [formErrors]
     );
 
     return (
-        <>
+    <>
         {hide && (
-        <div className="wrapper reset_pwd">
-            <div className="form-box login">
-                <h2>
-                    <Changer inp="Reset Password" />
-                </h2>
-                <form action="#" onSubmit={handleSubmit}>
-                    <div className="input-box">
-                        <input
-                        name="email"
-                        type="text"
-                        placeholder={t("Email Address")}
-                        value={formValues.email}
-                        onChange={handleChange}
-                        />
-                    </div>
-                    <div className="error">
-                        <span>{formErrors.email}</span>
-                    </div>
-                    <div className="input-box">
-                        <input
-                        name="password"
-                        value={formValues.password}
-                        type={visible ? "text" : "password"}
-                        placeholder={t("Password")}
-                        onChange={handleChange}
-                        />
-                        <div className="p-2" onClick={() => setVisible(!visible)}>
-                            {visible ? (
-                                <EyeOutlined className="eye" />
-                                ) : (
-                                <EyeInvisibleOutlined className="eye" />
-                                )
-                            }
+            <div className="wrapper reset_pwd">
+                <div className="form-box login">
+                    <h2>
+                        <Changer inp="Reset Password" />
+                    </h2>
+                    <form action="#" onSubmit={handleSubmit}>
+                        <div className="input-box">
+                            <input
+                            name="email"
+                            type="text"
+                            placeholder={t("Email Address")}
+                            value={formValues.email}
+                            onChange={handleChange}
+                            />
                         </div>
-                    </div>
-                    <div className="error">
-                        <span>{formErrors.password}</span>
-                    </div>
-                    <div className="input-box">
-                        <input
-                        name="confpassword"
-                        value={formValues.confpassword}
-                        type={confvisible ? "text" : "password"}
-                        placeholder={t("Confirm New Password")}
-                        onChange={handleChange}
-                        />
-                        <div className="p-2" onClick={() => confsetVisible(!confvisible)}>
-                            {confvisible ? (
-                                <EyeOutlined className="eye" />
-                                ) : (
-                                <EyeInvisibleOutlined className="eye" />
-                                )
-                            }
+                        <div className="error">
+                            <span>{formErrors.email}</span>
                         </div>
-                    </div>
-                    <div className="error">
-                        <span>{formErrors.confpassword}</span>
-                    </div>
-                    <button className="btn btn-dark"><Changer inp='Reset Password' /></button>
-                </form>
+                        <div className="input-box">
+                            <input
+                            name="password"
+                            value={formValues.password}
+                            type={visible ? "text" : "password"}
+                            placeholder={t("Password")}
+                            onChange={handleChange}
+                            />
+                            <div className="p-2" onClick={() => setVisible(!visible)}>
+                                {visible ? (
+                                    <EyeOutlined className="eye" />
+                                    ) : (
+                                    <EyeInvisibleOutlined className="eye" />
+                                    )
+                                }
+                            </div>
+                        </div>
+                        <div className="error">
+                            <span>{formErrors.password}</span>
+                        </div>
+                        <div className="input-box">
+                            <input
+                            name="confpassword"
+                            value={formValues.confpassword}
+                            type={confvisible ? "text" : "password"}
+                            placeholder={t("Confirm New Password")}
+                            onChange={handleChange}
+                            />
+                            <div className="p-2" onClick={() => confsetVisible(!confvisible)}>
+                                {confvisible ? (
+                                    <EyeOutlined className="eye" />
+                                    ) : (
+                                    <EyeInvisibleOutlined className="eye" />
+                                    )
+                                }
+                            </div>
+                        </div>
+                        <div className="error">
+                            <span>{formErrors.confpassword}</span>
+                        </div>
+                        <button className="btn btn-dark">
+                            <Changer inp="Reset Password" />
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
         )}
         {!hide && (
             <div className="wrapper">
                 <div className="form-box">
-                    <h2><Changer inp='Reset Password' /></h2>
+                    <h2>
+                        <Changer inp="Reset Password" />
+                    </h2>
                     <div className="form-box valid-box">
                         <span className="border-box">
-                            <p><Changer inp='Your password was successfully reset!' /></p>
-                            <p><Changer inp='please log in' /></p>
+                            <p>
+                                <Changer inp="Your password was successfully reset!" />
+                            </p>
+                            <p>
+                                <Changer inp="please log in" />
+                            </p>
                             <button className="btn">
                                 <Link className="back_login" to="/login">
                                     <Changer inp="Go to Login" />
@@ -175,7 +184,7 @@ function ResetPwd() {
                 </div>
             </div>
         )}
-        </>
+    </>
     );
 }
 

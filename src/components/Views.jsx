@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MainPage from "mainClient/mainpage/MainPage";
 import HomePage from "mainClient/homepage/Homepage";
 import { useEffect } from "react";
+import { Specpdf } from "./SpecPDF";
 
 const Views = () => {
     const loggedIn = localStorage.getItem("isLoggedIn");

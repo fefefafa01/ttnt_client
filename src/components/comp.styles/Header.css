@@ -59,3 +59,8 @@
     margin-top: 15px;
     padding-left: 150px;
 }
+
+.dropdown {
+    position: relative;
+    z-index: 3;
+}
