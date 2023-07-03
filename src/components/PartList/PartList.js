@@ -2,7 +2,7 @@
 import { PartsDetail } from "../PartDetail";
 import { DownloadFile } from "../DownloadFile";
 import "./partList.css";
-import { useState } from "react";
+import React, { useState, Fragment } from "react";
 
 function PartList() {
     const data = [
@@ -79,6 +79,30 @@ function PartList() {
         },
     ];
 
+    let namesArr = {};
+    const rowSpan = data.reduce((result, item, key) => {
+        if (namesArr[item.partGroup] === undefined) {
+            namesArr[item.partGroup] = key;
+            result[key] = 1;
+        } else {
+            const firstIndex = namesArr[item.partGroup];
+            if (
+                firstIndex === key - 1 ||
+                (item.partGroup === data[key - 1].partGroup &&
+                    result[key - 1] === 0)
+            ) {
+                result[firstIndex]++;
+                result[key] = 0;
+                console.log(result);
+            } else {
+                result[key] = 1;
+                namesArr[item.partGroup] = key;
+            }
+        }
+        console.log(result);
+        return result;
+    }, []);
+
     return (
         <div className="tabcontent">
             <h3>
@@ -116,22 +140,24 @@ function PartList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((val, key) => {
-                                return (
-                                    <tr key={key}>
-                                        <td>{val.partGroup}</td>
-                                        <td>{val.partName}</td>
-                                        <td>{val.OE}</td>
-                                        <td>{val.AISIN_Premium}</td>
-                                        <td>{val.AISIN_sub_Premium}</td>
-                                        <td>
-                                            <button className="details">
-                                                Details
-                                            </button>
+                            {data.map((el, index) => (
+                                <tr key={index}>
+                                    {rowSpan[index] > 0 && (
+                                        <td rowSpan={rowSpan[index]}>
+                                            {el.partGroup}
                                         </td>
-                                    </tr>
-                                );
-                            })}
+                                    )}
+                                    <td>{el.partName}</td>
+                                    <td>{el.OE}</td>
+                                    <td>{el.AISIN_Premium}</td>
+                                    <td>{el.AISIN_sub_Premium}</td>
+                                    <td>
+                                        <button className="details">
+                                            Details
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

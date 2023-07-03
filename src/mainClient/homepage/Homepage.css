@@ -96,7 +96,12 @@
     transition: left 0.5s ease-in-out;
 }
 
-.tabs {
+:where(.css-dev-only-do-not-override-12upa3x).ant-tabs > .ant-tabs-nav {
+    margin-top: -15px;
+    height: 60px;
+}
+
+:where(.css-dev-only-do-not-override-12upa3x).ant-tabs {
     box-sizing: border-box;
     position: relative;
     display: flex;
@@ -104,7 +109,7 @@
     width: 100%;
 }
 
-.tab-list {
+.custom-tab .ant-tabs-nav-list {
     display: flex;
     height: 65px;
     margin-top: -20px;
@@ -112,7 +117,9 @@
     padding-left: 0px;
 }
 
-.tab {
+:where(.css-dev-only-do-not-override-12upa3x).ant-tabs-card
+    > .ant-tabs-nav
+    .ant-tabs-tab {
     background-color: #d6dff0;
     border: #7697cb;
     color: #76787c;
@@ -120,12 +127,13 @@
     cursor: pointer;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    width: 250px;
-    display: inline-block;
-    padding: 15px 16px;
-    transition: border-bottom-color 0.3s;
-    margin-top: 8px;
+    width: fit-content;
+    padding: 15px 25px;
+    margin-top: 5px;
     margin-right: 20px;
+    font-size: 1.6em;
+    display: inline-flex;
+    align-items: center;
 }
 
 /* .tabs::before,
@@ -152,9 +160,10 @@
     transition: all 0.25s;
 }
 
-.tab.react-tabs__tab--selected {
-    background: #acc0e2;
-    color: #2d468e;
+:where(.css-dev-only-do-not-override-12upa3x).ant-tabs-card
+    > .ant-tabs-nav
+    .ant-tabs-tab-active {
+    background-color: #acc0e2;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     font-weight: bold;
@@ -162,6 +171,18 @@
     font-style: italic;
     margin-top: 0px;
     border: none;
+    font-size: 1.6em;
+}
+
+:where(.css-dev-only-do-not-override-12upa3x).ant-tabs
+    .ant-tabs-tab.ant-tabs-tab-active
+    .ant-tabs-tab-btn {
+    color: #001a71;
+}
+
+:where(.css-dev-only-do-not-override-12upa3x).ant-tabs .ant-tabs-content {
+    position: initial;
+    width: initial;
 }
 
 .tab.active + .tab-content {
@@ -172,8 +193,9 @@
 
 .tabcontent {
     background-color: #acc0e2;
-    height: 95%;
+    height: 94%;
     width: 100%;
+    margin-top: 8px;
     padding-left: 20px;
     position: absolute;
     top: 4vh;
