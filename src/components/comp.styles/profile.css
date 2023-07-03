@@ -1,22 +1,25 @@
 .dropbtn {
     background-color: transparent;
-    margin-left: -60px;;
-    border:none;
+    margin-left: -80px;
+    border: none;
 }
 
 .profile {
     width: 25px;
-    margin-top: 33px;
-    border: solid lightblue 2px
+    margin-top: 25px;
+    border: solid lightblue 2px;
+    margin-left: -50px;
 }
 
 .dropdown-content {
+    width: 120px;
     text-align: left;
-    margin-left: -80px;
+    margin-top: 10px;
+    margin-left: -140px;
     background-color: white;
-    margin-right: 73px;
     border-radius: 7%;
-    border: solid black 2px
+    border: solid black 2px;
+    position: absolute;
 }
 
 .dropdown-content a {
@@ -26,7 +29,7 @@
 
 .powerbutton {
     width: 10px;
-    display:inline;
+    display: inline;
     margin-top: -3px;
     margin-left: 5px;
 }

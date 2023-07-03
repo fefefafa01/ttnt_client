@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
-import './comp.styles/profile.css'
+import "./comp.styles/profile.css";
 
 function Profile() {
     const [logOut, setLogOut] = useState(false);
@@ -11,16 +11,15 @@ function Profile() {
         setOpen(!open);
     };
     const handleSignOut = (e) => {
-        localStorage.removeItem('email');
-        localStorage.removeItem('password');
-        localStorage.removeItem('isLoggedIn')
+        localStorage.removeItem("email");
+        localStorage.removeItem("password");
+        localStorage.removeItem("isLoggedIn");
         setLogOut(true);
-        window.location.assign('/login')
-        
-    }
+        window.location.assign("/login");
+    };
 
     return (
-        <div className="col-1 dropdown">
+        <div className="dropdown">
             <button className="dropbtn" onClick={handleOpen}>
                 <img className="profile" src={profile} alt="Profile" />
             </button>
@@ -32,7 +31,11 @@ function Profile() {
                     <br></br>
                     <a href="#" onClick={handleSignOut}>
                         Sign Out
-                        <img className="powerbutton" src={PowerButton} alt="PowerButton" />{" "}
+                        <img
+                            className="powerbutton"
+                            src={PowerButton}
+                            alt="PowerButton"
+                        />{" "}
                     </a>
                 </div>
             ) : null}
