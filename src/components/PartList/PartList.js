@@ -5,33 +5,42 @@ import "./partList.css";
 import React, { useState, Fragment } from "react";
 
 function PartList({ carid }) {
-    carid = "29";
+    //Variables
+    carid = "28"; //Test ID
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
     const [firstOpenComp, setFirstOpenComp] = useState(false);
-    // value from /exp/partList
-    const [maker, setMaker] = useState("");
-    const [modelname, setModelName] = useState("");
-    const [model, setModel] = useState("");
-    const [startTime, setStartTime] = useState("");
-    const [endTime, setEndTime] = useState("");
-    const [dpos, setDpos] = useState("");
-    const [engmod, setEngmod] = useState("");
-    const [displace, setDisplace] = useState("");
-    const [power, setPower] = useState("");
-    const [fuel, setFuel] = useState("");
-    const [transcode, setTranscode] = useState("");
-    const [speed, setSpeed] = useState("");
-    const [trans, setTrans] = useState("");
-    const [drivetrain, setDrivetrain] = useState("");
 
-    //backEndCall
+    //Variables for Car Model
+    var [maker, setMaker] = useState("");
+    var [model, setModel] = useState("");
+    var [vcode, setVcode] = useState("");
+    var [start, setStart] = useState("");
+    var [end, setEnd] = useState("");
+    var [dpos, setDpos] = useState("");
+    var [ecode, setEcode] = useState("");
+    var [displace, setDisplace] = useState("");
+    var [ptype, setPtype] = useState("");
+    var [ftype, setFtype] = useState("");
+    var [transc, setTransc] = useState("");
+    var [spd, setSpd] = useState("");
+    var [trans, setTrans] = useState("");
+    var [dt, setDt] = useState("");
+
+    //Array for Parts Table and Manufacturer
+    var [premiumData, setPremiumData] = useState([]);
+    var [spremiumData, setSPremiumData] = useState([]);
+    var [competitor, setCompetitor] = useState([]);
+
+    //Backend Call
+    //Querying Model Name
     if (firstOpenModel) {
-        fetch("http://localhost:5000/exp/partList", {
+        fetch("http://localhost:5000/exp/model", {
             method: "POST",
             credentials: "include",
             headers: {
+                "Content-Type": "application/json",
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
@@ -41,42 +50,48 @@ function PartList({ carid }) {
             .catch((err) => {
                 return;
             })
+            .then((res) => {
+                if (!res || !res.ok || res.status >= 400) {
+                    return;
+                }
+                return res.json();
+            })
             .then((data) => {
                 if (!data) return;
                 setFirstOpenModel(false);
-                //set value
+                setFirstOpenPreP(true);
+                //Set Values
                 setMaker(data.maker);
-                setModelName(data.modelname);
                 setModel(data.model);
-                setStartTime(data.startTime);
-                setEndTime(data.endTime);
-                setDpos(data.dpos);
-                setEngmod(data.engmod);
-                setDisplace(data.displace);
-                setPower(data.power);
-                setFuel(data.fuel);
-                setTranscode(data.transcode);
-                setSpeed(data.speed);
+                setVcode(data.vcode);
+                setStart(data.start);
+                setEnd(data.end);
+                setDpos(data.dripos);
+                setEcode(data.engcode);
+                setDisplace(data.disp);
+                setPtype(data.powered);
+                setFtype(data.fuel);
+                setTransc(data.transc);
+                setSpd(data.spd);
                 setTrans(data.trans);
-                setDrivetrain(data.drivetrain);
+                setDt(data.dtrain);
             });
     }
-
     console.log(
         maker,
-        modelname,
         model,
-        startTime,
-        endTime,
+        vcode,
+        start,
+        end,
         dpos,
-        engmod,
+        ecode,
         displace,
-        power,
-        fuel,
-        transcode,
-        speed,
+        ptype,
+        ftype,
+        transc,
+        spd,
         trans,
-        drivetrain
+        dt
     );
 
     const data = [
@@ -180,9 +195,9 @@ function PartList({ carid }) {
     return (
         <div className="tabcontent">
             <h3>
-                {maker},{modelname},{model} ({startTime} - {endTime}), {dpos},{" "}
-                {engmod}, {displace}, {power}, {fuel}, {transcode}, {speed}
-                {trans}, {drivetrain}
+                {maker}, {model}, {vcode} {"(" + start} - {end + ")"}, {dpos},{" "}
+                {ecode}, {displace}, {ptype}, {ftype},{" " + transc}, {spd}
+                {trans}, {dt}
             </h3>
             <div className="Scroll" id="scroll-style">
                 <div className="contents-part-list">

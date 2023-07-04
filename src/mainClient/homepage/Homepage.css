@@ -96,12 +96,12 @@
     transition: left 0.5s ease-in-out;
 }
 
-:where(.css-dev-only-do-not-override-12upa3x).ant-tabs > .ant-tabs-nav {
+.ant-tabs > .ant-tabs-nav {
     margin-top: -15px;
     height: 60px;
 }
 
-:where(.css-dev-only-do-not-override-12upa3x).ant-tabs {
+.ant-tabs {
     box-sizing: border-box;
     position: relative;
     display: flex;
@@ -117,9 +117,7 @@
     padding-left: 0px;
 }
 
-:where(.css-dev-only-do-not-override-12upa3x).ant-tabs-card
-    > .ant-tabs-nav
-    .ant-tabs-tab {
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
     background-color: #d6dff0;
     border: #7697cb;
     color: #76787c;
@@ -160,9 +158,7 @@
     transition: all 0.25s;
 }
 
-:where(.css-dev-only-do-not-override-12upa3x).ant-tabs-card
-    > .ant-tabs-nav
-    .ant-tabs-tab-active {
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
     background-color: #acc0e2;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -174,13 +170,11 @@
     font-size: 1.6em;
 }
 
-:where(.css-dev-only-do-not-override-12upa3x).ant-tabs
-    .ant-tabs-tab.ant-tabs-tab-active
-    .ant-tabs-tab-btn {
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: #001a71;
 }
 
-:where(.css-dev-only-do-not-override-12upa3x).ant-tabs .ant-tabs-content {
+.ant-tabs .ant-tabs-content {
     position: initial;
     width: initial;
 }
