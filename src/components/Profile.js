@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 
 function Profile() {
     const [open, setOpen] = useState(false);
+    const [openProfile, setOpenProfile] = useState(false);
     const [logOut, setLogOut] = useState(false);
     var [firstname, setFirstname] = useState("");
     var [lastname, setLastname] = useState("");
@@ -15,6 +16,10 @@ function Profile() {
     const { t } = useTranslation();
     const handleOpen = () => {
         setOpen(!open);
+    };
+
+    const handleOpenProfile = () => {
+        setOpenProfile(!openProfile);
     };
 
     const handleSignOut = () => {
@@ -34,7 +39,7 @@ function Profile() {
     };
 
     if (open && localStorage.email !== "") {
-        fetch("http://localhost:5000/prof/info", {
+        fetch("http://192.168.11.74:5005/prof/info", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -63,8 +68,14 @@ function Profile() {
     }
 
     return (
-        <div className="col-1 dropdown">
-            <button className="dropbtn" onClick={handleOpen}>
+        <div className="drop">
+            <button
+                className="dropbtn"
+                type="button"
+                onClick={handleOpenProfile}
+                aria-expanded="false"
+                data-bs-toggle="drop"
+            >
                 <img className="profile" src={profile} alt="Profile" />
             </button>
             <div className="dropdown-content">
