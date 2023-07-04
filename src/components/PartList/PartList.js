@@ -2,6 +2,7 @@
 import { PartsDetail } from "../PartDetail";
 import { DownloadFile } from "../DownloadFile";
 import "./partList.css";
+import Download from "../../img/download.png";
 import React, { useState, Fragment } from "react";
 
 function PartList({ carid }) {
@@ -29,6 +30,7 @@ function PartList({ carid }) {
     var [dt, setDt] = useState("");
 
     //Array for Parts Table and Manufacturer
+    var [partList, setPartList] = useState([]);
     var [premiumData, setPremiumData] = useState([]);
     var [spremiumData, setSPremiumData] = useState([]);
     var [competitor, setCompetitor] = useState([]);
@@ -194,11 +196,24 @@ function PartList({ carid }) {
 
     return (
         <div className="tabcontent">
-            <h3>
-                {maker}, {model}, {vcode} {"(" + start} - {end + ")"}, {dpos},{" "}
-                {ecode}, {displace}, {ptype}, {ftype},{" " + transc}, {spd}
-                {trans}, {dt}
-            </h3>
+            <div className="titlecontent">
+                <div className="col-9">
+                    <h3>
+                        {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
+                        {dpos}, {ecode}, {displace}, {ptype}, {ftype},
+                        {" " + transc}, {spd}
+                        {trans}, {dt}
+                    </h3>
+                </div>
+                <div className="col download">
+                    <img
+                        className="downloadbutton"
+                        src={Download}
+                        alt="download"
+                    />
+                    <span className="download-text">Download to file</span>
+                </div>
+            </div>
             <div className="Scroll" id="scroll-style">
                 <div className="contents-part-list">
                     <table className="part-table">

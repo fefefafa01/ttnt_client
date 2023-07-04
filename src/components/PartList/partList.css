@@ -11,17 +11,37 @@
     padding-top: 10px;
 }
 
+.titlecontent {
+    display: flex;
+}
+.download {
+    align-items: center;
+    text-align: center;
+}
+
+.downloadbutton {
+    max-width: 50px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.download-text {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: -5px;
+}
+
 td,
 tr {
     border: solid 2px white;
-    height: 50px;
+    height: 40px;
     font-size: 1.1em;
 }
 
 table {
     height: 100%;
     width: 97%;
-    margin-top: 0vh;
+    margin-top: -10px;
 }
 
 .title {
@@ -59,4 +79,7 @@ button.details {
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+}
+.details:focus {
+    border: solid 3px black;
 }
