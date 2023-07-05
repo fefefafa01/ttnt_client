@@ -216,8 +216,8 @@
     display: flex;
     max-height: 98%;
     max-width: 99%;
-    padding-bottom: 10px;
-    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-right: 50px;
 }
 
 #scroll-style::-webkit-scrollbar {

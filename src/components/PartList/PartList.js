@@ -7,7 +7,7 @@ import React, { useState, Fragment } from "react";
 
 function PartList({ carid }) {
     //Variables
-    carid = "28"; //Test ID
+    carid = "29"; //Test ID
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
@@ -95,83 +95,38 @@ function PartList({ carid }) {
         trans,
         dt
     );
-
-    const data = [
-        {
-            partGroup: "Powertrain/Chassis",
-            partName: "Clutch Disc",
-            OE: "Clutch Cover",
-            AISIN_Premium: "DTX-209A",
-            AISIN_sub_Premium: "DT-602U",
-        },
-        {
-            partGroup: "Powertrain/Chassis",
-            partName: "Clutch Disc",
-            OE: "Clutch Cover",
-            AISIN_Premium: "DTX-209A",
-            AISIN_sub_Premium: "DT-602U",
-        },
-        {
-            partGroup: "Powertrain/Chassis",
-            partName: "Clutch Disc",
-            OE: "Clutch Cover",
-            AISIN_Premium: "DTX-209A",
-            AISIN_sub_Premium: "DT-602U",
-        },
-        {
-            partGroup: "Powertrain/Chassis",
-            partName: "Clutch Disc",
-            OE: "Clutch Cover",
-            AISIN_Premium: "DTX-209A",
-            AISIN_sub_Premium: "DT-602U",
-        },
-
-        {
-            partGroup: "Engine/Fuel",
-            partName: "Oil pump",
-            OE: "11320-0L030",
-            AISIN_Premium: "TGTS-001",
-            AISIN_sub_Premium: "WPT-166VAT",
-        },
-        {
-            partGroup: "Engine/Fuel",
-            partName: "Oil pump",
-            OE: "11320-0L030",
-            AISIN_Premium: "TGTS-001",
-            AISIN_sub_Premium: "WPT-166VAT",
-        },
-        {
-            partGroup: "Engine/Fuel",
-            partName: "Oil pump",
-            OE: "11320-0L030",
-            AISIN_Premium: "TGTS-001",
-            AISIN_sub_Premium: "WPT-166VAT",
-        },
-        {
-            partGroup: "Engine/Fuel",
-            partName: "Oil pump",
-            OE: "11320-0L030",
-            AISIN_Premium: "TGTS-001",
-            AISIN_sub_Premium: "WPT-166VAT",
-        },
-        {
-            partGroup: "Engine/Fuel",
-            partName: "Oil pump",
-            OE: "11320-0L030",
-            AISIN_Premium: "TGTS-001",
-            AISIN_sub_Premium: "WPT-166VAT",
-        },
-        {
-            partGroup: "Electrical",
-            partName: "Cabin air filter",
-            OE: "871390-06080",
-            AISIN_Premium: "",
-            AISIN_sub_Premium: "CBF-4003",
-        },
-    ];
+    if (firstOpenPreP) {
+        fetch("http://localhost:5000/exp/partList", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Acess-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+            },
+            body: JSON.stringify(carid),
+        })
+            .catch((err) => {
+                return;
+            })
+            .then((res) => {
+                if (!res || !res.ok || res.status >= 400) {
+                    return;
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if (!data) return;
+                setFirstOpenPreP(false);
+                setFirstOpenSPreP(true);
+                setPremiumData(data.partList);
+                console.log(premiumData);
+            });
+    }
 
     let namesArr = {};
-    const rowSpan = data.reduce((result, item, key) => {
+    const rowSpan = premiumData.reduce((result, item, key) => {
         if (namesArr[item.partGroup] === undefined) {
             namesArr[item.partGroup] = key;
             result[key] = 1;
@@ -179,7 +134,7 @@ function PartList({ carid }) {
             const firstIndex = namesArr[item.partGroup];
             if (
                 firstIndex === key - 1 ||
-                (item.partGroup === data[key - 1].partGroup &&
+                (item.partGroup === premiumData[key - 1].partGroup &&
                     result[key - 1] === 0)
             ) {
                 result[firstIndex]++;
@@ -202,7 +157,7 @@ function PartList({ carid }) {
                         {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
                         {dpos}, {ecode}, {displace}, {ptype}, {ftype},
                         {" " + transc}, {spd}
-                        {trans}, {dt}
+                        {trans}, {dt} - Part list
                     </h3>
                 </div>
                 <div className="col download">
@@ -244,7 +199,7 @@ function PartList({ carid }) {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((el, index) => (
+                            {premiumData.map((el, index) => (
                                 <tr key={index}>
                                     {rowSpan[index] > 0 && (
                                         <td rowSpan={rowSpan[index]}>
@@ -253,8 +208,8 @@ function PartList({ carid }) {
                                     )}
                                     <td>{el.partName}</td>
                                     <td>{el.OE}</td>
-                                    <td>{el.AISIN_Premium}</td>
-                                    <td>{el.AISIN_sub_Premium}</td>
+                                    <td>{el.aisinPrem}</td>
+                                    <td>{el.aisinSubPrem}</td>
                                     <td>
                                         <button className="details">
                                             Details
