@@ -3,6 +3,8 @@ import Multi_Lang from "./Multi_Lang";
 import Profile from "./Profile";
 import "./comp.styles/Header.css";
 
+//Link with UserHandler.js in ./server for Profile
+
 function AdminHeader() {
     const handlePSBtn = (e) => {
         e.preventDefault();
@@ -59,6 +61,7 @@ function AdminHeader() {
                 <Multi_Lang />
                 <Profile />
             </div>
+            <div className="hbody"></div>
         </>
     );
 }

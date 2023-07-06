@@ -51,6 +51,7 @@ p.label {
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     margin-left: 5vh;
+    margin-top: 75px;
     backdrop-filter: blur(20px);
     display: block;
     justify-content: center;
@@ -254,6 +255,10 @@ p.register-link {
     background-position: center;
     height: 50vh;
     margin-top: 38vh;
+}
+
+.bigcontent {
+    width: 100%;
 }
 
 .error {

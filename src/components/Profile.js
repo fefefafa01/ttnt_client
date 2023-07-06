@@ -1,46 +1,128 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
-import './comp.styles/profile.css'
+import "./comp.styles/profile.css";
+import { Changer } from "./LanguageChange";
+import { useTranslation } from "react-i18next";
 
 function Profile() {
-    const [logOut, setLogOut] = useState(false);
     const [open, setOpen] = useState(false);
+    const [openProfile, setOpenProfile] = useState(false);
+    const [logOut, setLogOut] = useState(false);
+    var [firstname, setFirstname] = useState("");
+    var [lastname, setLastname] = useState("");
+    var [role, setRole] = useState("");
+    const { t } = useTranslation();
     const handleOpen = () => {
         setOpen(!open);
     };
-    const handleSignOut = (e) => {
-        localStorage.removeItem('email');
-        localStorage.removeItem('password');
-        localStorage.removeItem('isLoggedIn')
+
+    const handleOpenProfile = () => {
+        setOpenProfile(!openProfile);
+    };
+
+    const handleSignOut = () => {
+        localStorage.removeItem("email");
+        localStorage.removeItem("password");
+        localStorage.removeItem("isLoggedIn");
         setLogOut(true);
-        window.location.assign('/login')
-        
+        window.location.assign("/login");
+    };
+
+    const handleRP = () => {
+        localStorage.removeItem("email");
+        localStorage.removeItem("password");
+        localStorage.removeItem("isLoggedIn");
+        setLogOut(true);
+        window.location.assign("/resetpwd");
+    };
+
+    if (open && localStorage.email !== "") {
+        fetch("http://192.168.11.74:5005/prof/info", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+            },
+            body: JSON.stringify(localStorage.email),
+        })
+            .catch((err) => {
+                return;
+            })
+            .then((res) => {
+                if (!res || !res.ok || res.status >= 400) {
+                    return;
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if (!data) return;
+                setFirstname(data.firstname.firstname);
+                setLastname(data.lastname.lastname);
+                setRole(t(data.roleid.role));
+            });
     }
 
     return (
-        <div className="col-1 dropdown">
-            <button className="dropbtn" onClick={handleOpen}>
+        <div className="drop">
+            <button
+                className="dropbtn"
+                type="button"
+                onClick={handleOpenProfile}
+                aria-expanded="false"
+                data-bs-toggle="drop"
+            >
                 <img className="profile" src={profile} alt="Profile" />
             </button>
-            {open ? (
+            <div className="dropdown-content">
+                <a href="#" onClick={handleOpen}>
+                    <Changer inp="My Profile" />
+                </a>
+                <a href="#" onClick={handleRP}>
+                    <Changer inp="Reset Password" />
+                </a>
+                <a href="#" onClick={handleSignOut}>
+                    <Changer inp="Sign Out" />
+                    <img
+                        className="powerbutton"
+                        src={PowerButton}
+                        alt="PowerButton"
+                    />
+                </a>
+            </div>
+            {open && (
                 <div className="dropdown-content">
-                    <a href="#">My Profile</a>
-                    <br></br>
-                    <a href="#">Reset Password</a>
-                    <br></br>
-                    <a href="#" onClick={handleSignOut}>
-                        Sign Out
-                        <img className="powerbutton" src={PowerButton} alt="PowerButton" />{" "}
-                    </a>
+                    <span>
+                        <a href="#">
+                            <Changer inp="My Profile" />
+                        </a>
+                        <a href="#" onClick={handleOpen}>
+                            <Changer inp="Back" />
+                        </a>
+                    </span>
+                    <div className="myProfile">
+                        <a>
+                            <Changer inp="First Name" />: {firstname}
+                        </a>
+                        <a>
+                            <Changer inp="Last Name" />: {lastname}
+                        </a>
+                        <a>
+                            <Changer inp="Email Address" />:{" "}
+                            {localStorage.email}
+                        </a>
+                        <a>
+                            <Changer inp="Role" />: {role}
+                        </a>
+                    </div>
                 </div>
-            ) : null}
+            )}
         </div>
     );
 }
-
-
-
 
 export default Profile;

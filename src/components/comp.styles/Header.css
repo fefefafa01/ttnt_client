@@ -1,9 +1,10 @@
 .bttn {
-    transform: skew(-35deg);
-    min-height:50px;
-    width:150px;
+    transform: skew(-45deg);
+    height: 40px;
+    width: 150px;
+    margin-top: 10px;
     text-align: center;
-    font-size: 0.85em;
+    font-size: 0.7em;
     font-weight: bold;
 }
 
@@ -15,12 +16,16 @@
     margin-left: 10px;
 }
 
-.lbtngroup, .rbtngroup, .srbtngroup {
-    display:flex;
+.lbtngroup,
+.rbtngroup,
+.srbtngroup {
+    display: flex;
     margin-top: 20px;
 }
 
-.rbtngroup span, .lbtngroup span, .srbtngroup span {
+.rbtngroup span,
+.lbtngroup span,
+.srbtngroup span {
     display: inline-block;
     transform: skew(35deg);
 }
@@ -29,21 +34,34 @@
     align-self: right;
 }
 
-.aheader{
+.aheader {
     display: flex;
     text-align: center;
     background-color: #001a71;
     height: 10vh;
 }
 
-.aheader div p.logo{
+.aheader div p.logo {
     font-size: xx-large;
     margin-top: 20px;
 }
-  
-.hbody{
+
+.hbody {
     background-color: #001a71;
-    height: 90vh;
+    height: 85vh;
+    width: 100%;
     padding-top: 1em;
     display: block;
+}
+
+.btn-profile {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 15px;
+    padding-left: 150px;
+}
+
+.dropdown {
+    position: relative;
+    z-index: 3;
 }

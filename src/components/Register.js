@@ -95,7 +95,7 @@ function Register() {
             setUser({...data});
             if (data.status === ("Email Taken")) {
                 setFormErrors({email:t('Email Taken')});
-            } else if (data.status === 'Registered' && !formErrors) {
+            } else if (data.status === 'Registered') {
                 setVad(!vad);
                 NsetVad(!Nvad);
             }
