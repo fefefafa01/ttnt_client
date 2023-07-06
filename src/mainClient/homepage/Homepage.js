@@ -12,13 +12,8 @@ function Homepage() {
   return (
     <>
       <AdminHeader />
-      <div className="body">
-        <SearchCriteria
-          isOpen={sidebarOpen}
-          toggleSidebar={handleViewSidebar}
-        />
-        <ResultList />
-      </div>
+      <SearchCriteria isOpen={sidebarOpen} toggleSidebar={handleViewSidebar} />
+      <ResultList />
     </>
   );
 }

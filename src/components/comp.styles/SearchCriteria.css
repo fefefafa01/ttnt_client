@@ -2,22 +2,23 @@
     position: absolute;
     background-color: #b0c4e4 ;
     top: 13vh;
-    left: -500px;
+    left: -420px;
     margin-left: 0px;
     height: calc(100% - 14vh);
-    width: 500px;
-    transition: left 0s ease-in-out;
+    width: 400px;
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-left: 20px;
+    transition: left 0.5s ease-in-out;
 }
 .sidebar-toggle {
     position: absolute;
     top: 0%;
-    right: -50px;
+    right: -40px;
     height: 3em;
-    width: 50px;
+    width: 45px;
     z-index: 1;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -35,9 +36,10 @@
     left: 0;
 }
 .sidebar.open ~ .wrappers {
-    width: calc(100% - 520px);
+    width: calc(100% - 445px);
     height:calc(100% - 13vh);
-    left: 520px;
+    left: 440px;
+    transition: all 0.5s ease-in-out;
 }
 
 .searchTitle{
@@ -58,7 +60,7 @@
 .searchTitle img{
     height: 50px;
     justify-self: flex-end;
-    right: 0;
+    margin-right: -10px;
 }
 
 .searchTitle button{
@@ -71,11 +73,11 @@
 .searchScroll{
     background-color: #b0c4e4;
     height: 90%;
-    width: 99%;
-    border-radius: 20px;
+    width: 98%;
     overflow-y: scroll;
     max-height: 100%;
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 .boxcontent{
@@ -103,20 +105,26 @@
 
 .searchBox{
     display: flex;
-    height: 50px;
-    width: calc(100% - 80px);
+    height: 40px;
+    width: calc(100% - 30px);
     background-color: #001a71;
     color: white;
     align-self: center;
     justify-content: space-between;
-    align-items: center;
-    padding-left: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
     padding-right: 10px;
+    padding-bottom: 10px;
     border: none;
+    font-size: 15px;
+}
+
+.searchBox a{
+    justify-self: flex-start;
 }
 
 .select-css{
-    width: 200px;
+    width: 150px;
     padding-left: 10px;
     border-radius: 10px;
     color: grey;
@@ -134,19 +142,25 @@
 
   .subSearchbtn {
     display: flex;
-    font-size: larger;
-    height: 50px;
-    width: calc(100% - 80px);
+    font-size: large;
+    height: 35px;
+    width: calc(100% - 30px);
     background-color: gray;
     color: white;
     align-self: center;
     justify-content: space-between;
     align-items: center;
+    padding-top: 5px;
     padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 10px;
     border: none;
+  }
+
+  .subSearchbtn img{
+    height: 80px;
+    margin-top: -10px;
+    margin-right: -50px;
   }
   
 .subSearch-content{
@@ -156,6 +170,18 @@
     background-color: #001a71;
     flex-direction: column;
 }
+
+input::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+input[list]::-webkit-input-placeholder {
+    color: #999;
+    font-size: 15px;
+}
+
+
+
 
 .submitbtn{
     display: flex;
