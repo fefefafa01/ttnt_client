@@ -199,7 +199,7 @@ function Login() {
                             </Link>
                         </p>
                     </div>
-                    <p className="p-error">{error}</p>
+                    <p className="p-error">{error ? error : null}</p>
                     <button
                         className="btn btn-dark"
                         type="submit"

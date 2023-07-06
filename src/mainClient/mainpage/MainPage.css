@@ -193,7 +193,7 @@ input.name-right {
 
 .p-error {
     position: absolute;
-    margin: 65px 100px;
+    margin: 65px 130px;
 }
 
 button.btn {
@@ -254,7 +254,7 @@ p.register-link {
     background-image: url("../../img/car.png");
     background-position: center;
     height: 50vh;
-    margin-top: 38vh;
+    margin-top: 15%;
 }
 
 .bigcontent {

@@ -58,8 +58,10 @@ function AdminHeader() {
                         </span>
                     </button>
                 </div>
-                <Multi_Lang />
-                <Profile />
+                <div className="col-1 btn-profile">
+                    <Multi_Lang />
+                    <Profile />
+                </div>
             </div>
             <div className="hbody"></div>
         </>
@@ -109,8 +111,10 @@ function StaffHeader() {
                         </span>
                     </button>
                 </div>
-                <Multi_Lang />
-                <Profile />
+                <div className="col-1 btn-profile">
+                    <Multi_Lang />
+                    <Profile />
+                </div>
             </div>
             <div className="hbody"></div>
         </>

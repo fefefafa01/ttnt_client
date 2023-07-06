@@ -1,52 +1,9 @@
-.aheader {
-    display: flex;
-    text-align: center;
-    background-color: #001a71;
-    height: 10vh;
-}
-
-.aheader div p.logo {
-    font-size: xx-large;
-    margin-top: 20px;
-}
-
-.lbtngroup,
-.rbtngroup,
-.srbtngroup {
-    display: flex;
-    margin-top: 20px;
-}
-
-.rbtngroup {
-    align-self: right;
-}
-
-.srbtngroup {
-    justify-content: right;
-}
-
-.rbtngroup span,
-.lbtngroup span,
-.srbtngroup span {
-    display: inline-block;
-    transform: skew(35deg);
-}
-
-.bttn {
-    transform: skew(-35deg);
-    min-height: 50px;
-    width: 150px;
-    text-align: center;
-    font-size: 0.85em;
-    font-weight: bold;
-}
-
-.body {
+/* .body {
     background-color: #001a71;
     display: flex;
     width: 100%;
     height: 0vh;
-}
+} */
 
 .hbody {
     background-color: #001a71;
