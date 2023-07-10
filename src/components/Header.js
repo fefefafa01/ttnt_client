@@ -14,7 +14,7 @@ function AdminHeader() {
     return (
         <>
             <div className="aheader">
-                <div className="col-2">
+                <div className="col-lg-2 col-sm-1">
                     <link
                         href="//db.onlinewebfonts.com/c/11cd399ec653d4e156ce034b85c19cb7?family=VLNL+Decks"
                         rel="stylesheet"
@@ -22,9 +22,9 @@ function AdminHeader() {
                     />
                     <p className="logo">AISIN</p>
                     <br></br>
-                    <p className="col logotext">We Touch The Future</p>
+                    <p className="col-lg logotext">We Touch The Future</p>
                 </div>
-                <div className="lbtngroup col-2">
+                <div className="lbtngroup col-lg-2 col-sm-4">
                     <button className="bttn col" onClick={handlePSBtn}>
                         <span>
                             <Changer inp="Vehicle Part Search" />
@@ -36,29 +36,32 @@ function AdminHeader() {
                         </span>
                     </button>
                 </div>
-                <div className="label col">
-                    <p className="hlabel">
+                <div className="hlabel col-lg ">
+                    <p className="hlabel-content">
                         <Changer inp="Vehicle Part Search" />
                     </p>
                 </div>
-                <div className="rbtngroup col-3">
-                    <button className="bttn col">
+                <div className="rbtngroup col-lg-3 col-sm-6">
+                    <button className="bttn col-lg">
                         <span>
                             <Changer inp="Vehicle Management" />
                         </span>
                     </button>
-                    <button className="bttn leftalgn col">
+                    <button className="bttn leftalgn col-lg">
                         <span>
                             <Changer inp="Vehicle Part Management" />
                         </span>
                     </button>
-                    <button className="bttn leftalgn col" onClick={handlePSBtn}>
+                    <button
+                        className="bttn leftalgn col-lg"
+                        onClick={handlePSBtn}
+                    >
                         <span>
                             <Changer inp="Home" />
                         </span>
                     </button>
                 </div>
-                <div className="col-1 btn-profile">
+                <div className="col-lg-1 col-sm-1 btn-profile">
                     <Multi_Lang_Home />
                     <Profile />
                 </div>

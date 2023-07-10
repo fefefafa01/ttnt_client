@@ -68,12 +68,6 @@
     position: absolute;
 }
 
-@media screen and (max-width: 1024px) {
-    .tabcontent {
-        height: 93%;
-    }
-}
-
 .tabcontent h3 {
     color: black;
     text-align: left;
@@ -135,4 +129,16 @@
 .contents h2 {
     color: lightblue;
     font-size: large;
+}
+
+@media screen and (max-width: 1024px) {
+    .tabcontent {
+        height: 93%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tabcontent {
+        height: 91%;
+    }
 }

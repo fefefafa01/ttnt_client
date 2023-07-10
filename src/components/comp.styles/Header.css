@@ -52,14 +52,10 @@
     text-align: center;
     display: block;
     font-family: Tahoma;
-    font-size: 1.2em;
-    margin-top: 20px;
 }
-@media screen and (max-width: 1024px) {
-    .hlabel {
-        font-size: 0.8em;
-        margin-top: 30px;
-    }
+.hlabel-content {
+    font-size: 2.5em;
+    margin-top: 20px;
 }
 
 .btn-profile {
@@ -72,4 +68,31 @@
 .dropdown {
     position: relative;
     z-index: 3;
+}
+
+@media screen and (max-width: 1024px) {
+    .hlabel-content {
+        font-size: 1.7em;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .aheader div p.logo {
+        margin-top: 35px;
+        font-size: 1em;
+        margin-left: -10px;
+    }
+    .bttn {
+        font-size: 0.5em;
+        width: 120px;
+        height: 30px;
+        margin-left: 15px;
+    }
+    .logotext {
+        display: none;
+    }
+    .hlabel {
+        display: none;
+    }
 }
