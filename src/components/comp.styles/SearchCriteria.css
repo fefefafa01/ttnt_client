@@ -1,6 +1,6 @@
 .sidebar {
     position: absolute;
-    background-color: #b0c4e4 ;
+    background-color: #b0c4e4;
     top: 13vh;
     left: -500px;
     margin-left: 0px;
@@ -12,6 +12,7 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
 .sidebar-toggle {
     position: absolute;
     top: 0%;
@@ -25,7 +26,7 @@
     background-color: #7697cb;
 }
 
-.sidebar-toggle img{
+.sidebar-toggle img {
     height: 50px;
     margin-left: -10px;
     margin-top: -2px;
@@ -36,11 +37,11 @@
 }
 .sidebar.open ~ .wrappers {
     width: calc(100% - 520px);
-    height:calc(100% - 13vh);
+    height: calc(100% - 13vh);
     left: 520px;
 }
 
-.searchTitle{
+.searchTitle {
     color: #001a71;
     justify-self: flex-start;
     font-weight: 700;
@@ -50,25 +51,24 @@
     justify-content: space-between;
 }
 
-.searchTitle a{
+.searchTitle a {
     padding-bottom: 5px;
     padding-left: 10px;
 }
 
-.searchTitle img{
+.searchTitle img {
     height: 50px;
     justify-self: flex-end;
     right: 0;
 }
 
-.searchTitle button{
+.searchTitle button {
     background-color: inherit;
     border: none;
     height: 50px;
 }
 
-
-.searchScroll{
+.searchScroll {
     background-color: #b0c4e4;
     height: 90%;
     width: 99%;
@@ -78,30 +78,30 @@
     display: block;
 }
 
-.boxcontent{
+.boxcontent {
     display: flex;
     flex-direction: column;
 }
 
-#scroll-style::-webkit-scrollbar{
-	width: 20px;
-	background-color: white;
+#scroll-style::-webkit-scrollbar {
+    width: 20px;
+    background-color: white;
     border-radius: 10px;
 }
 
-#scroll-style::-webkit-scrollbar-track{
-	border-radius: 20px;
-	background-color: white;
+#scroll-style::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: white;
     width: 50px;
 }
 
-#scroll-style::-webkit-scrollbar-thumb{
-	border-radius: 10px;
-	background-color: #b0c4e4;
-    border: 2em solid #7697cb ;
+#scroll-style::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b0c4e4;
+    border: 2em solid #7697cb;
 }
 
-.searchBox{
+.searchBox {
     display: flex;
     height: 50px;
     width: calc(100% - 80px);
@@ -115,14 +115,14 @@
     border: none;
 }
 
-.select-css{
+.select-css {
     width: 200px;
     padding-left: 10px;
     border-radius: 10px;
     color: grey;
 }
 
-  .subSearch {
+.subSearch {
     float: left;
     overflow: hidden;
     display: flex;
@@ -130,9 +130,9 @@
     justify-content: space-between;
     align-items: center;
     height: max-content;
-  }
+}
 
-  .subSearchbtn {
+.subSearchbtn {
     display: flex;
     font-size: larger;
     height: 50px;
@@ -147,9 +147,9 @@
     margin-bottom: 20px;
     border-radius: 10px;
     border: none;
-  }
-  
-.subSearch-content{
+}
+
+.subSearch-content {
     display: flex;
     height: max-content;
     width: calc(100% - 80px);
@@ -157,7 +157,7 @@
     flex-direction: column;
 }
 
-.submitbtn{
+.submitbtn {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -166,19 +166,19 @@
     margin: 20px 0px 20px 30px;
 }
 
-.submitbtn button{
+.submitbtn button {
     border: none;
     border-radius: 10px;
     cursor: pointer;
     color: white;
 }
 
-#Submit{
+#Submit {
     width: 70%;
     background-color: black;
 }
 
-#Clear{
+#Clear {
     width: 25%;
     background-color: grey;
 }

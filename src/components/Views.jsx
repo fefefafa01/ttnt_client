@@ -18,7 +18,8 @@ const Views = () => {
                 <Route path="*" element={<MainPage />} />
                 <Route
                     path="/homepage"
-                    element={loggedIn ? <HomePage /> : <MainPage />}
+                    //element={loggedIn ? <HomePage /> : <MainPage />}
+                    element={<HomePage />}
                 />
                 {/* <Route path='/homepage/a' element={<HomePage />}/>
                 <Route path='/homepage/u' element={<HomePage />}/> */}

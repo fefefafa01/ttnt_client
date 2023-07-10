@@ -1,6 +1,7 @@
-.body{
+.hbody {
     background-color: #001a71;
-    display: flex;
+    height: 90vh;
     width: 100%;
-    height: calc(100% - 10vh);
+    padding-top: 1em;
+    display: block;
 }

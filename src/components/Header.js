@@ -1,5 +1,5 @@
 import { Changer } from "./LanguageChange";
-import Multi_Lang from "./Multi_Lang";
+import { Multi_Lang_Home } from "./Multi_Lang";
 import Profile from "./Profile";
 import "./comp.styles/Header.css";
 
@@ -37,7 +37,7 @@ function AdminHeader() {
                     </button>
                 </div>
                 <div className="label col">
-                    <p className="label">
+                    <p className="hlabel">
                         <Changer inp="Vehicle Part Search" />
                     </p>
                 </div>
@@ -59,11 +59,10 @@ function AdminHeader() {
                     </button>
                 </div>
                 <div className="col-1 btn-profile">
-                    <Multi_Lang />
+                    <Multi_Lang_Home />
                     <Profile />
                 </div>
             </div>
-            <div className="hbody"></div>
         </>
     );
 }
@@ -111,14 +110,11 @@ function StaffHeader() {
                         </span>
                     </button>
                 </div>
-                <Multi_Lang />
-                <Profile />
+                <div className="col-1 btn-profile">
+                    <Multi_Lang_Home />
+                    <Profile />
+                </div>
             </div>
-            <div className="col-1 btn-profile">
-                <Multi_Lang />
-                <Profile />
-            </div>
-            <div className="hbody"></div>
         </>
     );
 }
