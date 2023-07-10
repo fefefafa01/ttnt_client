@@ -3,6 +3,7 @@ import { Changer } from "./LanguageChange"
 import spec from '../img/car.png'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useState } from 'react';
+import { DownloadFile } from './DownloadFile';
 
 function Specpdf({carid}) {
     //Variables
@@ -76,7 +77,6 @@ function Specpdf({carid}) {
             setDt(data.dtrain);
         })
     }
-    console.log(maker, model, vcode, start, end, dpos, ecode, displace, ptype, ftype, transc, spd, trans, dt)
         
         //Querying Premium Parts Array
     if (firstOpenPreP) { 
@@ -164,8 +164,6 @@ function Specpdf({carid}) {
         })
     }
 
-    console.log(competitor)
-
     //Reducing First Header
     let namesArr = {};
     var rowSpan = premiumData.reduce((result, item, key) => {
@@ -209,7 +207,6 @@ function Specpdf({carid}) {
     return result;
     }, []);
     
-    
     //Exports
     return (
         <div className="specpop">
@@ -229,6 +226,8 @@ function Specpdf({carid}) {
                         </TransformComponent>
                     </TransformWrapper>
                     <p className="speclabel">OE#: 31250-0K210(07-12)</p>
+                    <button onClick={(e) => DownloadFile(premiumData, "Premium", "Premium", "csv")}>Export Premium</button>
+                    <button onClick={(e) => DownloadFile(spremiumData, "Sub-Premium", "Sub-Premium", "csv")}>Export Sub-Premium</button>
                     <div className="spec_tbl">
                         {/* Table: Premium Header/SubHeader has 1 Column, then comes the Part.No, then comes their respective Dimension Values 
                             AISIN Part     = Merge 2 Rows, 2 Columns                - Dimension = Merge Columns Num of Dimensions.
@@ -247,7 +246,7 @@ function Specpdf({carid}) {
                             |  SUBPREM  |_Part_Y_|_________|___________|_________|___________|________|
                             |___________|_Part_Z_|_________|___________|_________|___________|________|
                         */}
-                        <table className="specpart-table">
+                        <table className="specpart-table" id="sbt">
                             <thead>
                                 <tr>
                                     <th rowSpan="2" colSpan="2" className="spectitle">
