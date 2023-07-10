@@ -27,7 +27,7 @@ function Multi_Lang() {
     //let loc = window.location.pathname;
     // const check = Changer({inp:'Login'});
     // console.log(check);
-    var [lang, setLang] = useState("EN");
+    var [lang, setLang] = useState(localStorage.lng);
     // if (check==='Login') {
     //     lang = 'EN';
     // } else {
@@ -38,12 +38,14 @@ function Multi_Lang() {
         if (lng === "en") {
             setLang("EN");
             changeLanguage("en");
+            localStorage.lng="EN";
             //window.location.replace(loc + "?lng=en");
         } else {
             setLang("VI");
             //window.location.replace(loc + "?lng=vi");
             changeLanguage("vi");
             console.log(t("Login"));
+            localStorage.lng="VI";
         }
     };
     return (

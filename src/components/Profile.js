@@ -39,7 +39,7 @@ function Profile() {
     };
 
     if (open && localStorage.email !== "") {
-        fetch("http://192.168.11.74:5005/prof/info", {
+        fetch("http://localhost:5000/prof/info", {
             method: "POST",
             credentials: "include",
             headers: {
