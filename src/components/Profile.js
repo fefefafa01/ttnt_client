@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 
 function Profile() {
     const [open, setOpen] = useState(false);
+    const [openProfile, setOpenProfile] = useState(false);
     const [logOut, setLogOut] = useState(false);
     var [firstname, setFirstname] = useState("");
     var [lastname, setLastname] = useState("");
@@ -15,6 +16,11 @@ function Profile() {
     const { t } = useTranslation();
     const handleOpen = () => {
         setOpen(!open);
+    };
+
+    const handleOpenProfile = () => {
+        setOpenProfile(!openProfile);
+        console.log(openProfile);
     };
 
     const handleSignOut = () => {
@@ -64,7 +70,13 @@ function Profile() {
 
     return (
         <div className="drop">
-            <button className="dropbtn">
+            <button
+                className="dropbtn"
+                type="button"
+                aria-expanded="false"
+                data-bs-toggle="drop"
+                onClick={setOpenProfile}
+            >
                 <img className="profile" src={profile} alt="Profile" />
             </button>
             <div className="dropdown-content">

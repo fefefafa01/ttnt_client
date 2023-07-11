@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import "./Homepage.css";
+import { Tabs } from "antd";
+import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
 import { SearchResult } from "components/SearchList";
-import { Tabs } from "antd";
-import { PartList } from "components/PartList/PartList";
 import { ResultList } from "components/ResultList/ResultList";
-
 const { TabPane } = Tabs;
-
 function Homepage() {
     const [sidebarOpen, setSideBarOpen] = useState(true);
     const handleViewSidebar = () => {

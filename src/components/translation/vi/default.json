@@ -38,5 +38,18 @@
     "Role": "Quyền hạn",
     "Back": "Trở về",
     "Viewer": "Nhân viên",
-    "Admin": "Quản lý"
+    "Admin": "Quản lý",
+    "AISIN Part": "Bộ phận AISIN",
+    "Dimension": "Kích thước",
+    "Part Group": "Nhóm bộ phận",
+    "Part Name": "Tên bộ phận",
+    "Information": "Thông tin",
+    "Specification": "Thông số",
+    "Details": "Chi tiết",
+    "Electrical": "Điện",
+    "Engine/Exhaust": "Động cơ/Bộ xả",
+    "Clutch Disc": "Đĩa ly hợp",
+    "Clutch Release Cylinder": "Xi lanh nhả ly hợp",
+    "Download to file": "Tải file về",
+    "File Format": "Định dạng file"
 }

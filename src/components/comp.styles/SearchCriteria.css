@@ -145,6 +145,7 @@
     height: 70px;
     margin-right: -10px;
     align-self: center;
+    margin-top: -10px;
   }
   
 .subSearch-content{
@@ -285,5 +286,3 @@
     text-decoration: underline;
     color: grey;
 }
-
-

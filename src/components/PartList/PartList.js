@@ -1,9 +1,11 @@
 //Link with SearchingHandler.js in ./server
 import { PartsDetail } from "../PartDetail";
-import { DownloadFile } from "../DownloadFile";
+import { DropDown } from "./DropDown"
 import "./partList.css";
 import Download from "../../img/download.png";
 import React, { useState, Fragment } from "react";
+import { Specpdf } from "components/SpecPDF";
+import { Changer } from "components/LanguageChange";
 
 function PartList({ carid }) {
     //Variables
@@ -13,6 +15,8 @@ function PartList({ carid }) {
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
     const [firstOpenComp, setFirstOpenComp] = useState(false);
 
+    var [opening, setOpening] = useState(false);
+    var [ecode, setEcode] = useState("")
     //Variables for Car Model
     var [maker, setMaker] = useState("");
     var [model, setModel] = useState("");
@@ -34,6 +38,18 @@ function PartList({ carid }) {
     var [premiumData, setPremiumData] = useState([]);
     var [spremiumData, setSPremiumData] = useState([]);
     var [competitor, setCompetitor] = useState([]);
+
+    //Open Detail Button
+    const openPDF = (code) => {
+        setEcode(code)
+        setOpening(!opening)
+    }
+
+    //Download Button
+    const [downdrop, setDowndrop] = useState(false)
+    const handleDropdown = () => {
+        setDowndrop(!downdrop);
+    }
 
     //Backend Call
     //Querying Model Name
@@ -79,22 +95,22 @@ function PartList({ carid }) {
                 setDt(data.dtrain);
             });
     }
-    console.log(
-        maker,
-        model,
-        vcode,
-        start,
-        end,
-        dpos,
-        ecode,
-        displace,
-        ptype,
-        ftype,
-        transc,
-        spd,
-        trans,
-        dt
-    );
+    // console.log(
+    //     maker,
+    //     model,
+        // vcode
+    //     start,
+    //     end,
+    //     dpos,
+    //     ecode,
+    //     displace,
+    //     ptype,
+    //     ftype,
+    //     transc,
+    //     spd,
+    //     trans,
+    //     dt
+    // );
     if (firstOpenPreP) {
         fetch("http://localhost:5000/exp/partList", {
             method: "POST",
@@ -121,7 +137,7 @@ function PartList({ carid }) {
                 setFirstOpenPreP(false);
                 setFirstOpenSPreP(true);
                 setPremiumData(data.partList);
-                console.log(premiumData);
+                
             });
     }
 
@@ -139,18 +155,18 @@ function PartList({ carid }) {
             ) {
                 result[firstIndex]++;
                 result[key] = 0;
-                console.log(result);
+                // console.log(result);
             } else {
                 result[key] = 1;
                 namesArr[item.partGroup] = key;
             }
         }
-        console.log(result);
+        // console.log(result);
         return result;
     }, []);
-
     return (
         <div className="tabcontent">
+            {opening && <Specpdf carid={""+carid} partcode={""+ecode} open={openPDF} />}
             <div className="titlecontent">
                 <div className="col-9">
                     <h3>
@@ -160,13 +176,18 @@ function PartList({ carid }) {
                         {trans}, {dt} - Part list
                     </h3>
                 </div>
-                <div className="col download">
-                    <img
-                        className="downloadbutton"
-                        src={Download}
-                        alt="download"
-                    />
-                    <span className="download-text">Download to file</span>
+                <div className="col">
+                    <button className="col download" onClick={handleDropdown}>
+                        <img
+                            className="downloadbutton"
+                            src={Download}
+                            alt="download"
+                        />
+                        <span className="download-text"><Changer inp='Download to file' /></span>
+                    </button>
+                    {downdrop &&
+                        <DropDown data={premiumData} dropping={handleDropdown} />
+                    }
                 </div>
             </div>
             <div className="Scroll" id="scroll-style">
@@ -175,13 +196,13 @@ function PartList({ carid }) {
                         <thead>
                             <tr>
                                 <th rowSpan="2" className="title">
-                                    Part Group
+                                    <Changer inp="Part Group" />
                                 </th>
                                 <th rowSpan="2" className="title">
-                                    Part Name
+                                    <Changer inp="Part Name" />
                                 </th>
                                 <th colSpan="4" className="title">
-                                    Information
+                                    <Changer inp="Information" />
                                 </th>
                             </tr>
 
@@ -194,7 +215,7 @@ function PartList({ carid }) {
                                     ASIN Sub-Premium/AN
                                 </th>
                                 <th className="subtitle AISIN">
-                                    Specification
+                                    <Changer inp="Specification" />
                                 </th>
                             </tr>
                         </thead>
@@ -203,16 +224,16 @@ function PartList({ carid }) {
                                 <tr key={index}>
                                     {rowSpan[index] > 0 && (
                                         <td rowSpan={rowSpan[index]}>
-                                            {el.partGroup}
+                                            <Changer inp={el.partGroup} />
                                         </td>
                                     )}
-                                    <td>{el.partName}</td>
+                                    <td><Changer inp={el.partName} /></td>
                                     <td>{el.OE}</td>
                                     <td>{el.aisinPrem}</td>
                                     <td>{el.aisinSubPrem}</td>
                                     <td>
-                                        <button className="details">
-                                            Details
+                                        <button className="details" onClick={e=>openPDF(el.OE)}>
+                                            <Changer inp="Details" />
                                         </button>
                                     </td>
                                 </tr>

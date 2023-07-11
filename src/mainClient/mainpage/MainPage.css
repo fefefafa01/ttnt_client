@@ -36,6 +36,13 @@ p.label {
     margin-top: 20px;
 }
 
+.btn-lng {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 15px;
+    padding-left: 150px;
+}
+
 .body {
     background-color: #001a71;
     height: 90vh;
@@ -51,6 +58,7 @@ p.label {
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     margin-left: 5vh;
+    margin-top: 75px;
     backdrop-filter: blur(20px);
     display: block;
     justify-content: center;
@@ -118,25 +126,31 @@ input.name-box::placeholder {
     color: red;
 }
 
+.full-name {
+    display: block;
+}
+
+.name {
+    display: flex;
+}
+
 input.name-left {
-    float: left;
-    margin-left: 30px;
+    width: 70%;
 }
 
 input.name-right {
-    float: right;
-    margin-right: 50px;
-    margin-left: 30px;
+    width: 70%;
+    margin-left: -40px;
 }
 
 .error_last_name {
     float: left;
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 .error_first_name {
-    display: inline;
-    margin-left: -10px;
+    float: left;
+    margin-left: 30px;
 }
 
 .name-error {
@@ -192,7 +206,7 @@ input.name-right {
 
 .p-error {
     position: absolute;
-    margin: 65px 100px;
+    margin: 65px 130px;
 }
 
 button.btn {
@@ -242,10 +256,10 @@ p.register-link {
 .content p.contenttext {
     color: #64a5b4;
     margin-left: 30vw;
-    margin-top: -50px;
+    margin-top: -30px;
     font-weight: bold;
     font-style: italic;
-    font-size: 1.7em;
+    font-size: 2em;
 }
 
 .body-img {
@@ -253,7 +267,11 @@ p.register-link {
     background-image: url("../../img/car.png");
     background-position: center;
     height: 50vh;
-    margin-top: 38vh;
+    margin-top: 15%;
+}
+
+.bigcontent {
+    width: 100%;
 }
 
 .error {
@@ -269,4 +287,65 @@ p.register-link {
 .error_first_name,
 .error_last_name {
     color: red;
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        width: 40vw;
+    }
+    .content p.logo {
+        margin-left: 40vw;
+    }
+    .content p.contenttext {
+        margin-left: 40vw;
+        font-size: 1.7em;
+        margin-top: -50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        margin-left: 10px;
+        width: 40vw;
+        margin-top: 50px;
+    }
+    .form-box h2 {
+        margin-top: 0px;
+        font-size: 1.75em;
+    }
+    button.btn {
+        margin-top: 5vh;
+    }
+    .content p.logo {
+        margin-left: 45vw;
+    }
+    .content p.contenttext {
+        margin-left: 40vw;
+        font-size: 1.7em;
+        margin-top: -50px;
+    }
+    .name {
+        display: block;
+    }
+    input.name-left {
+        width: 80%;
+    }
+    input.name-right {
+        width: 80%;
+        margin-left: 0px;
+        margin-top: 30px;
+    }
+    .error_first_name {
+        position: absolute;
+        margin-top: 40px;
+        margin-left: -243px;
+    }
+    .error_last_name {
+        position: absolute;
+        margin-top: 60px;
+        margin-left: -243px;
+    }
+    button.regbtn {
+        margin-bottom: 0px;
+    }
 }
