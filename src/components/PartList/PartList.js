@@ -5,6 +5,7 @@ import "./partList.css";
 import Download from "../../img/download.png";
 import React, { useState, Fragment } from "react";
 import { Specpdf } from "components/SpecPDF";
+import { Changer } from "components/LanguageChange";
 
 function PartList({ carid }) {
     //Variables
@@ -40,7 +41,6 @@ function PartList({ carid }) {
 
     //Open Detail Button
     const openPDF = (code) => {
-        console.log(code)
         setEcode(code)
         setOpening(!opening)
     }
@@ -185,13 +185,13 @@ function PartList({ carid }) {
                         <thead>
                             <tr>
                                 <th rowSpan="2" className="title">
-                                    Part Group
+                                    <Changer inp="Part Group" />
                                 </th>
                                 <th rowSpan="2" className="title">
-                                    Part Name
+                                    <Changer inp="Part Name" />
                                 </th>
                                 <th colSpan="4" className="title">
-                                    Information
+                                    <Changer inp="Information" />
                                 </th>
                             </tr>
 
@@ -204,7 +204,7 @@ function PartList({ carid }) {
                                     ASIN Sub-Premium/AN
                                 </th>
                                 <th className="subtitle AISIN">
-                                    Specification
+                                    <Changer inp="Specification" />
                                 </th>
                             </tr>
                         </thead>
@@ -213,16 +213,16 @@ function PartList({ carid }) {
                                 <tr key={index}>
                                     {rowSpan[index] > 0 && (
                                         <td rowSpan={rowSpan[index]}>
-                                            {el.partGroup}
+                                            <Changer inp={el.partGroup} />
                                         </td>
                                     )}
-                                    <td>{el.partName}</td>
+                                    <td><Changer inp={el.partName} /></td>
                                     <td>{el.OE}</td>
                                     <td>{el.aisinPrem}</td>
                                     <td>{el.aisinSubPrem}</td>
                                     <td>
                                         <button className="details" onClick={e=>openPDF(el.OE)}>
-                                            Details
+                                            <Changer inp="Details" />
                                         </button>
                                     </td>
                                 </tr>

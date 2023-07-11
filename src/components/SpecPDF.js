@@ -3,7 +3,6 @@ import { Changer } from "./LanguageChange"
 import spec from '../img/car.png'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useState } from 'react';
-import { DownloadFile } from './DownloadFile';
 
 function Specpdf(input) {
     //Variables
@@ -234,8 +233,6 @@ function Specpdf(input) {
                         </TransformComponent>
                     </TransformWrapper>
                     <p className="speclabel">OE#: {input.partcode}</p>
-                    <button onClick={(e) => DownloadFile(premiumData, "Premium", "Premium", "csv")}>Export Premium</button>
-                    <button onClick={(e) => DownloadFile(spremiumData, "Sub-Premium", "Sub-Premium", "csv")}>Export Sub-Premium</button>
                     <div className="spec_tbl">
                         {/* Table: Premium Header/SubHeader has 1 Column, then comes the Part.No, then comes their respective Dimension Values 
                             AISIN Part     = Merge 2 Rows, 2 Columns                - Dimension = Merge Columns Num of Dimensions.
@@ -258,10 +255,10 @@ function Specpdf(input) {
                             <thead>
                                 <tr>
                                     <th rowSpan="2" colSpan="2" className="spectitle">
-                                        AISIN Part
+                                        <Changer inp="AISIN Part" />
                                     </th>
                                     <th colSpan="10" className="spectitle">
-                                        Dimension
+                                        <Changer inp="Dimension" />
                                     </th>
                                 </tr>
                                 <tr>
