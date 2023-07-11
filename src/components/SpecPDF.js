@@ -3,10 +3,13 @@ import { Changer } from "./LanguageChange"
 import spec from '../img/car.png'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useState } from 'react';
+import { DownloadFile } from './DownloadFile';
 
-function Specpdf({carid}) {
+function Specpdf(input) {
     //Variables
-    carid='1' //Test ID
+    if (input.carid===null || input.carid===undefined) {
+        input.carid="29"
+    } //Test ID
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
@@ -33,6 +36,11 @@ function Specpdf({carid}) {
     var [spremiumData, setSPremiumData] = useState([])
     var [competitor, setCompetitor] = useState([])
 
+    //Handle On/Off
+    const handleDisable = () => {
+        input.open(input.partcode)
+    }
+
     //Backend Call
         //Querying Model Name
     if (firstOpenModel) { 
@@ -44,7 +52,7 @@ function Specpdf({carid}) {
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS"
             },
-            body: JSON.stringify(carid)
+            body: JSON.stringify(input.carid)
         })
         .catch(err => {
             return;
@@ -76,7 +84,6 @@ function Specpdf({carid}) {
             setDt(data.dtrain);
         })
     }
-    console.log(maker, model, vcode, start, end, dpos, ecode, displace, ptype, ftype, transc, spd, trans, dt)
         
         //Querying Premium Parts Array
     if (firstOpenPreP) { 
@@ -88,7 +95,7 @@ function Specpdf({carid}) {
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS"
             },
-            body: JSON.stringify(carid)
+            body: JSON.stringify(input.partcode)
         })
         .catch(err => {
             return;
@@ -117,7 +124,7 @@ function Specpdf({carid}) {
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS"
             },
-            body: JSON.stringify(carid)
+            body: JSON.stringify(input.partcode)
         })
         .catch(err => {
             return;
@@ -146,7 +153,7 @@ function Specpdf({carid}) {
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS"
             },
-            body: JSON.stringify(carid)
+            body: JSON.stringify(input.partcode)
         })
         .catch(err => {
             return;
@@ -163,8 +170,6 @@ function Specpdf({carid}) {
             setCompetitor(data.Comp)
         })
     }
-
-    console.log(competitor)
 
     //Reducing First Header
     let namesArr = {};
@@ -209,14 +214,14 @@ function Specpdf({carid}) {
     return result;
     }, []);
     
-    
     //Exports
     return (
+    <>
         <div className="specpop">
             <div className="specheader">
                 <p className="specmodel">{maker}, {model}, {vcode} {"("+start} - {end+")"}, {dpos}, {ecode}, {displace}, {ptype}, {ftype},
                     {" "+transc}, {spd}{trans}, {dt}</p>
-                <button className='closingicon'>
+                <button className='closingicon' onClick={handleDisable}>
                     X
                 </button>
             </div>
@@ -228,7 +233,9 @@ function Specpdf({carid}) {
                             <img className='partimg' src={spec} alt='spec' />
                         </TransformComponent>
                     </TransformWrapper>
-                    <p className="speclabel">OE#: 31250-0K210(07-12)</p>
+                    <p className="speclabel">OE#: {input.partcode}</p>
+                    <button onClick={(e) => DownloadFile(premiumData, "Premium", "Premium", "csv")}>Export Premium</button>
+                    <button onClick={(e) => DownloadFile(spremiumData, "Sub-Premium", "Sub-Premium", "csv")}>Export Sub-Premium</button>
                     <div className="spec_tbl">
                         {/* Table: Premium Header/SubHeader has 1 Column, then comes the Part.No, then comes their respective Dimension Values 
                             AISIN Part     = Merge 2 Rows, 2 Columns                - Dimension = Merge Columns Num of Dimensions.
@@ -247,7 +254,7 @@ function Specpdf({carid}) {
                             |  SUBPREM  |_Part_Y_|_________|___________|_________|___________|________|
                             |___________|_Part_Z_|_________|___________|_________|___________|________|
                         */}
-                        <table className="specpart-table">
+                        <table className="specpart-table" id="sbt">
                             <thead>
                                 <tr>
                                     <th rowSpan="2" colSpan="2" className="spectitle">
@@ -371,6 +378,7 @@ function Specpdf({carid}) {
                 </div>
             </div>
         </div>
+    </>
     )
 }
 

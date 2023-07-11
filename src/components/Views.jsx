@@ -21,8 +21,7 @@ const Views = () => {
                     //element={loggedIn ? <HomePage /> : <MainPage />}
                     element={<HomePage />}
                 />
-                {/* <Route path='/homepage/a' element={<HomePage />}/>
-                <Route path='/homepage/u' element={<HomePage />}/> */}
+                <Route path='/specpdf' element={<Specpdf />}/>
             </Routes>
         </div>
     );

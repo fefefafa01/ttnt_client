@@ -1,12 +1,12 @@
 .sidebar {
     position: absolute;
     background-color: #b0c4e4;
-    top: 13vh;
+    top: 12vh;
     left: -500px;
     margin-left: 0px;
-    height: calc(100% - 14vh);
+    height: calc(100% - 13vh);
     width: 500px;
-    transition: left 0s ease-in-out;
+    transition: left 0.5s ease-in-out;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -26,6 +26,15 @@
     background-color: #7697cb;
 }
 
+.sidebar-toggle {
+    position: absolute;
+    top: 0px;
+    right: -50px;
+    height: 50px;
+    width: 50px;
+    z-index: 1;
+}
+
 .sidebar-toggle img {
     height: 50px;
     margin-left: -10px;
@@ -39,6 +48,7 @@
     width: calc(100% - 520px);
     height: calc(100% - 13vh);
     left: 520px;
+    transition: all 0.5s ease-in-out;
 }
 
 .searchTitle {
@@ -149,6 +159,11 @@
     border: none;
 }
 
+.subSearchbtn img {
+    max-width: 100px;
+    margin-right: -65px;
+}
+
 .subSearch-content {
     display: flex;
     height: max-content;
@@ -163,7 +178,7 @@
     justify-content: space-between;
     height: 50px;
     width: 90%;
-    margin: 20px 0px 20px 35px;
+    margin: 20px 0px 20px 30px;
 }
 
 .submitbtn button {
@@ -179,8 +194,7 @@
 }
 
 #Clear {
-    width: 200px;
-    margin-left: 10px;
+    width: 25%;
     background-color: grey;
 }
 
@@ -207,17 +221,6 @@
     .searchBox a {
         font-size: 0.8em;
     }
-    .submitbtn {
-        margin: 20px 0px 20px 20px;
-    }
-    #Submit {
-        width: 300px;
-        height: 40px;
-    }
-    #Clear {
-        width: 170px;
-        height: 40px;
-    }
 }
 
 @media screen and (max-width: 768px) {
@@ -237,28 +240,13 @@
         height: 40px;
         text-align: left;
     }
-    .searchScroll {
-        height: 98%;
-    }
     .select-css {
         width: 100px;
     }
     .subSearchbtn {
-        height: 30px;
-        width: calc(100% - 50px);
+        width: calc(100% - 40px);
     }
     .searchBox a {
         font-size: 0.8em;
-    }
-    .submitbtn {
-        margin: 20px 0px 5px 20px;
-    }
-    #Submit {
-        width: 250px;
-        height: 35px;
-    }
-    #Clear {
-        width: 100px;
-        height: 35px;
     }
 }
