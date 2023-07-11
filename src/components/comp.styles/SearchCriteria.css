@@ -2,10 +2,10 @@
     position: absolute;
     background-color: #b0c4e4 ;
     top: 13vh;
-    left: -420px;
+    left: -470px;
     margin-left: 0px;
     height: calc(100% - 14vh);
-    width: 400px;
+    width: 450px;
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -36,9 +36,9 @@
     left: 0;
 }
 .sidebar.open ~ .wrappers {
-    width: calc(100% - 445px);
+    width: calc(100% - 495px);
     height:calc(100% - 13vh);
-    left: 440px;
+    left: 490px;
     transition: all 0.5s ease-in-out;
 }
 
@@ -106,7 +106,7 @@
 .searchBox{
     display: flex;
     height: 40px;
-    width: calc(100% - 30px);
+    width: calc(100% - 40px);
     background-color: #001a71;
     color: white;
     align-self: center;
@@ -121,26 +121,10 @@
 
 .searchBox a{
     justify-self: flex-start;
+    align-self: center;
 }
 
-.select-css{
-    width: 150px;
-    padding-left: 10px;
-    border-radius: 10px;
-    color: grey;
-}
-
-  .subSearch {
-    float: left;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: max-content;
-  }
-
-  .subSearchbtn {
+.subSearchbtn {
     display: flex;
     font-size: large;
     height: 35px;
@@ -150,17 +134,17 @@
     align-self: center;
     justify-content: space-between;
     align-items: center;
-    padding-top: 5px;
     padding-left: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
     border: none;
+    z-index: 1;
   }
 
-  .subSearchbtn img{
-    height: 80px;
-    margin-top: -10px;
-    margin-right: -50px;
+.subSearchbtn img{
+    height: 70px;
+    margin-right: -10px;
+    align-self: center;
   }
   
 .subSearch-content{
@@ -171,17 +155,15 @@
     flex-direction: column;
 }
 
-input::-webkit-calendar-picker-indicator {
-    display: none;
+.subSearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
   }
-
-input[list]::-webkit-input-placeholder {
-    color: #999;
-    font-size: 15px;
+.subSearch.active .basicInfo{
+    display: none;
 }
-
-
-
 
 .submitbtn{
     display: flex;
@@ -208,3 +190,100 @@ input[list]::-webkit-input-placeholder {
     width: 25%;
     background-color: grey;
 }
+
+.selectDropdown{
+    width: 200px;
+    height: auto;
+    position: relative;
+}
+
+.select-btn{
+    height: 20px;
+    cursor: pointer;
+    background-color: white;
+    color: grey;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: 0.3s linear;
+}
+
+.select-btn img{
+    height: 30px;
+}
+
+.selectDropdown.active .select-btn img{
+    transform: rotate(-180deg);
+}
+
+.content{
+    background-color: white;
+    margin-top: 5px;
+    padding: 5px;
+    color: black;
+    border-radius: 5px;
+    border: 1px solid grey;
+    display: none;
+    position: relative;
+    z-index: 4;
+}
+
+.selectDropdown.active .content{
+    display: block;
+}
+
+.content .seacrh{
+    position: relative;
+}
+
+.search input{
+    border-radius: 5px;
+    width: 180px;
+    padding-left: 30px;
+
+}
+
+.search img{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    margin-top: -5px;
+    margin-left: -5px;
+}
+
+.content .options{
+    margin-top: 5px;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-left: 5px;
+}
+
+.options li{
+    height: 35px;
+    max-width: 180px;
+    padding-left: 5px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    border-bottom: 1px solid rgb(182, 180, 180);
+    justify-content: space-between;
+}
+
+.options li:hover{
+    background-color: #f2f2f2;
+}
+
+.remove-btn{
+    height: 20px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: none;
+    text-decoration: underline;
+    color: grey;
+}
+
+
