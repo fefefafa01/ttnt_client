@@ -17,6 +17,41 @@
 .download {
     align-items: center;
     text-align: center;
+    border: transparent;
+    background-color: transparent;
+}
+
+.droplist {
+    position: fixed;
+    background-color: white;
+    align-items: left;
+    margin-left: 8%;
+    margin-top: -10px;
+    width: 12.6vw;
+    display: block;
+    padding: 5px;
+    border-radius: 3px;
+    border: solid 1px grey;
+}
+
+.dropdldtxt {
+    margin-top: 10px;
+    font-weight: bold;
+    float:left;
+    margin-bottom: 5px;
+}
+
+.dropdldbtn {
+    text-align: left;
+    border: transparent;
+    background-color: transparent;
+    float: left;
+    width: 100%;
+    padding: 5px;
+}
+
+.dropdldbtn:hover {
+    background-color: rgb(185, 185, 185);
 }
 
 .downloadbutton {
@@ -26,8 +61,8 @@
 }
 
 .download-text {
-    text-decoration: underline;
     cursor: pointer;
+    font-weight: bold;
     margin-top: -5px;
 }
 

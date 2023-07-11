@@ -1,6 +1,6 @@
 //Link with SearchingHandler.js in ./server
 import { PartsDetail } from "../PartDetail";
-import { DownloadFile } from "../DownloadFile";
+import { DropDown } from "./DropDown"
 import "./partList.css";
 import Download from "../../img/download.png";
 import React, { useState, Fragment } from "react";
@@ -43,6 +43,12 @@ function PartList({ carid }) {
     const openPDF = (code) => {
         setEcode(code)
         setOpening(!opening)
+    }
+
+    //Download Button
+    const [downdrop, setDowndrop] = useState(false)
+    const handleDropdown = () => {
+        setDowndrop(!downdrop);
     }
 
     //Backend Call
@@ -170,13 +176,18 @@ function PartList({ carid }) {
                         {trans}, {dt} - Part list
                     </h3>
                 </div>
-                <div className="col download">
-                    <img
-                        className="downloadbutton"
-                        src={Download}
-                        alt="download"
-                    />
-                    <span className="download-text">Download to file</span>
+                <div className="col">
+                    <button className="col download" onClick={handleDropdown}>
+                        <img
+                            className="downloadbutton"
+                            src={Download}
+                            alt="download"
+                        />
+                        <span className="download-text"><Changer inp='Download to file' /></span>
+                    </button>
+                    {downdrop &&
+                        <DropDown data={premiumData} dropping={handleDropdown} />
+                    }
                 </div>
             </div>
             <div className="Scroll" id="scroll-style">
