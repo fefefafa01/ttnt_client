@@ -163,7 +163,7 @@
     justify-content: space-between;
     height: 50px;
     width: 90%;
-    margin: 20px 0px 20px 30px;
+    margin: 20px 0px 20px 35px;
 }
 
 .submitbtn button {
@@ -179,7 +179,8 @@
 }
 
 #Clear {
-    width: 25%;
+    width: 200px;
+    margin-left: 10px;
     background-color: grey;
 }
 
@@ -206,6 +207,17 @@
     .searchBox a {
         font-size: 0.8em;
     }
+    .submitbtn {
+        margin: 20px 0px 20px 20px;
+    }
+    #Submit {
+        width: 300px;
+        height: 40px;
+    }
+    #Clear {
+        width: 170px;
+        height: 40px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -225,13 +237,28 @@
         height: 40px;
         text-align: left;
     }
+    .searchScroll {
+        height: 98%;
+    }
     .select-css {
         width: 100px;
     }
     .subSearchbtn {
-        width: calc(100% - 40px);
+        height: 30px;
+        width: calc(100% - 50px);
     }
     .searchBox a {
         font-size: 0.8em;
+    }
+    .submitbtn {
+        margin: 20px 0px 5px 20px;
+    }
+    #Submit {
+        width: 250px;
+        height: 35px;
+    }
+    #Clear {
+        width: 100px;
+        height: 35px;
     }
 }

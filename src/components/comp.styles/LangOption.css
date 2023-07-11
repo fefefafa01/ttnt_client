@@ -103,7 +103,7 @@
     margin-left: -230px;
     margin-top: -10px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
     .hglobe {
         margin-left: -270px;
         margin-top: -25px;
@@ -112,10 +112,13 @@
         display: none;
     }
     .hbox {
-        margin-left: -185px;
+        margin-left: -170px;
         margin-top: -5px;
     }
     .Typography {
+        display: none;
+    }
+    .hlang-name {
         display: none;
     }
 }

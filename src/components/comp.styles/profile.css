@@ -72,7 +72,7 @@
     color: #86bac5;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
     .dropbtn {
         margin-left: -230px;
         margin-top: -12px;

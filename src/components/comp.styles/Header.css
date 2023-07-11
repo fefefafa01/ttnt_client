@@ -37,8 +37,9 @@
 .aheader {
     display: flex;
     text-align: center;
-    background-color: #001a71;
+    background-color: hsl(226, 100%, 22%);
     height: 10vh;
+    padding-bottom: 10px;
 }
 
 .aheader div p.logo {
@@ -77,7 +78,10 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
+    .aheader {
+        padding-bottom: 10px;
+    }
     .aheader div p.logo {
         margin-top: 35px;
         font-size: 1em;
