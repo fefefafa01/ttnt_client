@@ -5,9 +5,11 @@ import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useState } from 'react';
 import { DownloadFile } from './DownloadFile';
 
-function Specpdf({carid}) {
+function Specpdf(input) {
     //Variables
-    carid='1' //Test ID
+    if (input.carid===null || input.carid===undefined) {
+        input.carid="29"
+    } //Test ID
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
@@ -34,6 +36,11 @@ function Specpdf({carid}) {
     var [spremiumData, setSPremiumData] = useState([])
     var [competitor, setCompetitor] = useState([])
 
+    //Handle On/Off
+    const handleDisable = () => {
+        input.open(input.partcode)
+    }
+
     //Backend Call
         //Querying Model Name
     if (firstOpenModel) { 
@@ -45,7 +52,7 @@ function Specpdf({carid}) {
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS"
             },
-            body: JSON.stringify(carid)
+            body: JSON.stringify(input.carid)
         })
         .catch(err => {
             return;
@@ -88,7 +95,7 @@ function Specpdf({carid}) {
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS"
             },
-            body: JSON.stringify(carid)
+            body: JSON.stringify(input.partcode)
         })
         .catch(err => {
             return;
@@ -117,7 +124,7 @@ function Specpdf({carid}) {
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS"
             },
-            body: JSON.stringify(carid)
+            body: JSON.stringify(input.partcode)
         })
         .catch(err => {
             return;
@@ -146,7 +153,7 @@ function Specpdf({carid}) {
                 "Acess-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, PATCH, OPTIONS"
             },
-            body: JSON.stringify(carid)
+            body: JSON.stringify(input.partcode)
         })
         .catch(err => {
             return;
@@ -209,11 +216,12 @@ function Specpdf({carid}) {
     
     //Exports
     return (
+    <>
         <div className="specpop">
             <div className="specheader">
                 <p className="specmodel">{maker}, {model}, {vcode} {"("+start} - {end+")"}, {dpos}, {ecode}, {displace}, {ptype}, {ftype},
                     {" "+transc}, {spd}{trans}, {dt}</p>
-                <button className='closingicon'>
+                <button className='closingicon' onClick={handleDisable}>
                     X
                 </button>
             </div>
@@ -225,7 +233,7 @@ function Specpdf({carid}) {
                             <img className='partimg' src={spec} alt='spec' />
                         </TransformComponent>
                     </TransformWrapper>
-                    <p className="speclabel">OE#: 31250-0K210(07-12)</p>
+                    <p className="speclabel">OE#: {input.partcode}</p>
                     <button onClick={(e) => DownloadFile(premiumData, "Premium", "Premium", "csv")}>Export Premium</button>
                     <button onClick={(e) => DownloadFile(spremiumData, "Sub-Premium", "Sub-Premium", "csv")}>Export Sub-Premium</button>
                     <div className="spec_tbl">
@@ -370,6 +378,7 @@ function Specpdf({carid}) {
                 </div>
             </div>
         </div>
+    </>
     )
 }
 

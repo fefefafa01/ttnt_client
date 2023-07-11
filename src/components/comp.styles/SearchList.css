@@ -1,41 +1,41 @@
-.wrappers{
+.wrappers {
     position: absolute;
     background-color: darkblue;
     left: 10px;
     top: 13vh;
-    height: calc(100% - 13vh) ;
+    height: calc(100% - 13vh);
     width: 99%;
     display: flex;
-    transition: left 0s ease-in-out;
     z-index: 0;
+    transition: all 0.5s ease-in-out;
 }
 
-.tabs{
+.tabs {
     position: absolute;
     background: #001a71;
-    height: 99%;
+    height: calc(100% - 2vh);
     width: 100%;
 }
 
 .tabs::before,
-.tabs::after{
+.tabs::after {
     content: "";
     display: table;
 }
 
-.tabs::after{
+.tabs::after {
     clear: both;
 }
 
-.tab{
+.tab {
     float: left;
 }
-  
+
 .tab-switch {
     display: none;
 }
 
-.tab-label{
+.tab-label {
     position: relative;
     display: block;
     line-height: 2.75em;
@@ -45,8 +45,7 @@
     transition: all 0.25s;
 }
 
-
-.tab-switch:checked + .tab-label{
+.tab-switch:checked + .tab-label {
     background: #b0c4e4;
     color: darkblue;
     border-top-right-radius: 10px;
@@ -55,13 +54,13 @@
     font-style: italic;
 }
 
-.tab-switch:checked + label + .tab-content{
+.tab-switch:checked + label + .tab-content {
     z-index: 2;
     opacity: 1;
     transition: all 0.35s;
 }
 
-.tabcontent{
+.tabcontent {
     background-color: #b0c4e4;
     height: 93%;
     width: 100%;
@@ -69,7 +68,7 @@
     position: absolute;
 }
 
-.tabcontent h3{
+.tabcontent h3 {
     color: black;
     text-align: left;
     font-size: small;
@@ -77,7 +76,7 @@
     font-style: italic;
 }
 
-.Scroll{
+.Scroll {
     background-color: #b0c4e4;
     height: 90%;
     width: 100%;
@@ -90,25 +89,25 @@
     padding-right: 10px;
 }
 
-#scroll-style::-webkit-scrollbar{
-	width: 20px;
-	background-color: white;
+#scroll-style::-webkit-scrollbar {
+    width: 20px;
+    background-color: white;
     border-radius: 10px;
 }
 
-#scroll-style::-webkit-scrollbar-track{
-	border-radius: 20px;
-	background-color: white;
+#scroll-style::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: white;
     width: 50px;
 }
 
-#scroll-style::-webkit-scrollbar-thumb{
-	border-radius: 10px;
-	background-color: #b0c4e4;
-    border: 2em solid #7697cb ;
+#scroll-style::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b0c4e4;
+    border: 2em solid #7697cb;
 }
 
-.contents{
+.contents {
     display: flex;
     background-color: white;
     min-height: 100%;
@@ -122,12 +121,12 @@
     padding-top: 10px;
 }
 
-.contents h1{
+.contents h1 {
     color: darkblue;
     font-size: large;
 }
 
-.contents h2{
+.contents h2 {
     color: lightblue;
     font-size: large;
 }

@@ -111,12 +111,10 @@ function StaffHeader() {
                         </span>
                     </button>
                 </div>
-                <Multi_Lang />
-                <Profile />
-            </div>
-            <div className="col-1 btn-profile">
-                <Multi_Lang />
-                <Profile />
+                <div className="col-1 btn-profile">
+                    <Multi_Lang />
+                    <Profile />
+                </div>
             </div>
             <div className="hbody"></div>
         </>
