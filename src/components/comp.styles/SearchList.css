@@ -80,6 +80,10 @@
     color: #001a71;
 }
 
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-more {
+    color: white;
+}
+
 .ant-tabs .ant-tabs-content {
     position: initial;
     width: initial;

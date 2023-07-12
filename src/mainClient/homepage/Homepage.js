@@ -72,7 +72,7 @@ function Homepage() {
     return (
         <>
             <AdminHeader />
-            <div className="body">
+            <div className="hbody">
                 <SearchCriteria
                     isOpen={sidebarOpen}
                     toggleSidebar={handleViewSidebar}

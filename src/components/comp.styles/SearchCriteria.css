@@ -1,6 +1,6 @@
 .sidebar {
     position: absolute;
-    background-color: #b0c4e4 ;
+    background-color: #b0c4e4;
     top: 13vh;
     left: -470px;
     margin-left: 0px;
@@ -26,7 +26,7 @@
     background-color: #7697cb;
 }
 
-.sidebar-toggle img{
+.sidebar-toggle img {
     height: 50px;
     margin-left: -10px;
     margin-top: -2px;
@@ -37,12 +37,12 @@
 }
 .sidebar.open ~ .wrappers {
     width: calc(100% - 495px);
-    height:calc(100% - 13vh);
+    height: calc(100% - 13vh);
     left: 490px;
     transition: all 0.5s ease-in-out;
 }
 
-.searchTitle{
+.searchTitle {
     color: #001a71;
     justify-self: flex-start;
     font-weight: 700;
@@ -52,25 +52,24 @@
     justify-content: space-between;
 }
 
-.searchTitle a{
+.searchTitle a {
     padding-bottom: 5px;
     padding-left: 10px;
 }
 
-.searchTitle img{
+.searchTitle img {
     height: 50px;
     justify-self: flex-end;
     margin-right: -10px;
 }
 
-.searchTitle button{
+.searchTitle button {
     background-color: inherit;
     border: none;
     height: 50px;
 }
 
-
-.searchScroll{
+.searchScroll {
     background-color: #b0c4e4;
     height: 90%;
     width: 98%;
@@ -80,30 +79,30 @@
     flex-direction: column;
 }
 
-.boxcontent{
+.boxcontent {
     display: flex;
     flex-direction: column;
 }
 
-#scroll-style::-webkit-scrollbar{
-	width: 20px;
-	background-color: white;
+#scroll-style::-webkit-scrollbar {
+    width: 20px;
+    background-color: white;
     border-radius: 10px;
 }
 
-#scroll-style::-webkit-scrollbar-track{
-	border-radius: 20px;
-	background-color: white;
+#scroll-style::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: white;
     width: 50px;
 }
 
-#scroll-style::-webkit-scrollbar-thumb{
-	border-radius: 10px;
-	background-color: #b0c4e4;
-    border: 2em solid #7697cb ;
+#scroll-style::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b0c4e4;
+    border: 2em solid #7697cb;
 }
 
-.searchBox{
+.searchBox {
     display: flex;
     height: 40px;
     width: calc(100% - 40px);
@@ -119,7 +118,7 @@
     font-size: 15px;
 }
 
-.searchBox a{
+.searchBox a {
     justify-self: flex-start;
     align-self: center;
 }
@@ -139,16 +138,16 @@
     border-radius: 10px;
     border: none;
     z-index: 1;
-  }
+}
 
-.subSearchbtn img{
+.subSearchbtn img {
     height: 70px;
     margin-right: -10px;
     align-self: center;
     margin-top: -10px;
-  }
-  
-.subSearch-content{
+}
+
+.subSearch-content {
     display: flex;
     height: max-content;
     width: calc(100% - 80px);
@@ -161,12 +160,12 @@
     flex-direction: column;
     align-items: center;
     height: max-content;
-  }
-.subSearch.active .basicInfo{
+}
+.subSearch.active .basicInfo {
     display: none;
 }
 
-.submitbtn{
+.submitbtn {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -175,30 +174,30 @@
     margin: 20px 0px 20px 30px;
 }
 
-.submitbtn button{
+.submitbtn button {
     border: none;
     border-radius: 10px;
     cursor: pointer;
     color: white;
 }
 
-#Submit{
+#Submit {
     width: 70%;
     background-color: black;
 }
 
-#Clear{
+#Clear {
     width: 25%;
     background-color: grey;
 }
 
-.selectDropdown{
+.selectDropdown {
     width: 200px;
     height: auto;
     position: relative;
 }
 
-.select-btn{
+.select-btn {
     height: 20px;
     cursor: pointer;
     background-color: white;
@@ -212,15 +211,15 @@
     transform: 0.3s linear;
 }
 
-.select-btn img{
+.select-btn img {
     height: 30px;
 }
 
-.selectDropdown.active .select-btn img{
+.selectDropdown.active .select-btn img {
     transform: rotate(-180deg);
 }
 
-.content{
+.content {
     background-color: white;
     margin-top: 5px;
     padding: 5px;
@@ -232,22 +231,21 @@
     z-index: 4;
 }
 
-.selectDropdown.active .content{
+.selectDropdown.active .content {
     display: block;
 }
 
-.content .seacrh{
+.content .seacrh {
     position: relative;
 }
 
-.search input{
+.search input {
     border-radius: 5px;
     width: 180px;
     padding-left: 30px;
-
 }
 
-.search img{
+.search img {
     height: 40px;
     width: 40px;
     position: absolute;
@@ -255,14 +253,14 @@
     margin-left: -5px;
 }
 
-.content .options{
+.content .options {
     margin-top: 5px;
     max-height: 350px;
     overflow-y: auto;
     padding-left: 5px;
 }
 
-.options li{
+.options li {
     height: 35px;
     max-width: 180px;
     padding-left: 5px;
@@ -273,11 +271,11 @@
     justify-content: space-between;
 }
 
-.options li:hover{
+.options li:hover {
     background-color: #f2f2f2;
 }
 
-.remove-btn{
+.remove-btn {
     height: 20px;
     display: flex;
     align-items: center;
@@ -285,4 +283,83 @@
     border: none;
     text-decoration: underline;
     color: grey;
+}
+
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        width: 380px;
+    }
+
+    .sidebar-toggle {
+        right: -150px;
+    }
+    .sidebar.open ~ .wrappers {
+        width: calc(100% - 420px);
+        left: 420px;
+    }
+    .searchBox {
+        width: calc(100% - 40px);
+        height: 40px;
+        text-align: left;
+    }
+    .subSearchbtn {
+        width: calc(100% - 40px);
+    }
+    .searchBox a {
+        font-size: 0.8em;
+    }
+    .submitbtn {
+        margin: 20px 0px 20px 20px;
+    }
+    #Submit {
+        width: 300px;
+        height: 40px;
+    }
+    #Clear {
+        width: 170px;
+        height: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 300px;
+    }
+
+    .sidebar-toggle {
+        right: -250px;
+    }
+    .sidebar.open ~ .wrappers {
+        width: calc(100% - 320px);
+        left: 320px;
+    }
+    .searchBox {
+        width: calc(100% - 50px);
+        height: 40px;
+        text-align: left;
+    }
+    .searchScroll {
+        height: 98%;
+    }
+    .select-css {
+        width: 100px;
+    }
+    .subSearchbtn {
+        height: 30px;
+        width: calc(100% - 50px);
+    }
+    .searchBox a {
+        font-size: 0.8em;
+    }
+    .submitbtn {
+        margin: 20px 0px 5px 20px;
+    }
+    #Submit {
+        width: 250px;
+        height: 35px;
+    }
+    #Clear {
+        width: 100px;
+        height: 35px;
+    }
 }

@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import "./PartList/partList.css";
 import "./comp.styles/subGroup.css";
 import { PartList } from "./PartList/PartList";
+import { border } from "@mui/system";
 
 function PartGroup() {
     return 1;
@@ -137,7 +138,7 @@ function PartSubgroup({ carid, onAdd }) {
     return (
         <div className="tabcontent">
             <div className="titlecontent">
-                <div className="col-9">
+                <div className="">
                     <h3>
                         {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
                         {dpos}, {ecode}, {displace}, {ptype}, {ftype},
@@ -151,8 +152,8 @@ function PartSubgroup({ carid, onAdd }) {
                 <div className="contents-part-list">
                     <table>
                         {subGroup.map((el, index) => (
-                            <tr key={index}>
-                                <td>
+                            <tr style={{ border: "transparent" }} key={index}>
+                                <td style={{ border: "transparent" }}>
                                     <button
                                         className="subgroup"
                                         onClick={() => handleAdd(el.subGroup)}
