@@ -93,6 +93,7 @@ function Multi_Lang() {
                                             }}
                                         />
                                         <Typography
+                                            className="lang-name"
                                             level="body3"
                                             style={{
                                                 marginLeft: "5px",
@@ -128,6 +129,7 @@ function Multi_Lang() {
                                             }}
                                         />
                                         <Typography
+                                            className="lang-name"
                                             level="body3"
                                             style={{
                                                 marginLeft: "5px",
@@ -221,6 +223,7 @@ function Multi_Lang_Home() {
                                             }}
                                         />
                                         <Typography
+                                            className="hlang-name"
                                             level="body3"
                                             style={{
                                                 marginLeft: "5px",
@@ -256,6 +259,7 @@ function Multi_Lang_Home() {
                                             }}
                                         />
                                         <Typography
+                                            className="hlang-name"
                                             level="body3"
                                             style={{
                                                 marginLeft: "5px",

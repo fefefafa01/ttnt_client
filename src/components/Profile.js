@@ -20,6 +20,7 @@ function Profile() {
 
     const handleOpenProfile = () => {
         setOpenProfile(!openProfile);
+        console.log(openProfile);
     };
 
     const handleSignOut = () => {
@@ -72,9 +73,9 @@ function Profile() {
             <button
                 className="dropbtn"
                 type="button"
-                onClick={handleOpenProfile}
                 aria-expanded="false"
                 data-bs-toggle="drop"
+                onClick={setOpenProfile}
             >
                 <img className="profile" src={profile} alt="Profile" />
             </button>
@@ -95,7 +96,7 @@ function Profile() {
                 </a>
             </div>
             {open && (
-                <div className="dropdown-content">
+                <div className="dropdown-content profile">
                     <span>
                         <a href="#">
                             <Changer inp="My Profile" />

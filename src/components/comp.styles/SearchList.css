@@ -1,38 +1,56 @@
 .wrappers {
     position: absolute;
-    background-color: darkblue;
+    background-color: #001a71;
     left: 10px;
     top: 13vh;
     height: calc(100% - 13vh);
     width: 99%;
     display: flex;
-    transition: left 0s ease-in-out;
-    z-index: 0;
+    transition: left 0.5s ease-in-out;
 }
 
-.tabs {
-    position: absolute;
-    background: #001a71;
-    height: 99%;
+.ant-tabs > .ant-tabs-nav {
+    margin-top: -15px;
+    height: 60px;
+}
+
+.ant-tabs {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
-.tabs::before,
-.tabs::after {
-    content: "";
-    display: table;
+.custom-tab .ant-tabs-nav-list {
+    display: flex;
+    height: 65px;
+    margin-top: -20px;
+    font-size: 1.25em;
+    padding-left: 0px;
 }
 
-.tabs::after {
-    clear: both;
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+    background-color: #d6dff0;
+    border: #7697cb;
+    color: #76787c;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: fit-content;
+    padding: 15px 25px;
+    margin-top: 10px;
+    margin-right: 20px;
+    font-size: 1em;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
 }
 
 .tab {
     float: left;
-}
-
-.tab-switch {
-    display: none;
 }
 
 .tab-label {
@@ -45,27 +63,47 @@
     transition: all 0.25s;
 }
 
-.tab-switch:checked + .tab-label {
-    background: #b0c4e4;
-    color: darkblue;
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active {
+    background-color: #acc0e2;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    font-weight: bold;
     text-align: center;
     font-style: italic;
+    margin-top: 5px;
+    border: none;
+    font-size: 1em;
+    width: fit-content;
 }
 
-.tab-switch:checked + label + .tab-content {
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #001a71;
+}
+
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-more {
+    color: white;
+}
+
+.ant-tabs .ant-tabs-content {
+    position: initial;
+    width: initial;
+}
+
+.tab.active + .tab-content {
     z-index: 2;
     opacity: 1;
-    transition: all 0.35s;
+    transition: all 0.15s;
 }
 
 .tabcontent {
-    background-color: #b0c4e4;
-    height: 95%;
-    width: 99%;
+    background-color: #acc0e2;
+    height: 94%;
+    width: 100%;
+    margin-top: 8px;
     padding-left: 20px;
     position: absolute;
+    top: 4vh;
+    z-index: 0;
 }
 
 .tabcontent h3 {
@@ -78,15 +116,15 @@
 
 .Scroll {
     background-color: #b0c4e4;
-    height: 90%;
+    height: 93%;
     width: 100%;
     border-radius: 20px;
     overflow: scroll;
     display: flex;
     max-height: 98%;
     max-width: 99%;
-    padding-bottom: 10px;
-    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-right: 50px;
 }
 
 #scroll-style::-webkit-scrollbar {
@@ -112,8 +150,8 @@
     background-color: white;
     min-height: 100%;
     min-width: 100%;
-    max-width: max-content;
-    max-height: max-content;
+    width: max-content;
+    height: max-content;
     border-radius: 20px;
     justify-content: center;
     align-items: center;

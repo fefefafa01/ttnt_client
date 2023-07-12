@@ -63,6 +63,7 @@ p.label {
     display: block;
     justify-content: center;
     align-items: center;
+    margin-top: 10vh;
     padding-bottom: 20px;
 }
 
@@ -203,8 +204,13 @@ input.name-right {
     text-decoration: none;
 }
 
+.p-error {
+    position: absolute;
+    margin: 65px 130px;
+}
+
 button.btn {
-    width: 80%;
+    width: 85%;
     height: 50px;
     background-color: black;
     border-radius: 10px;
@@ -212,7 +218,7 @@ button.btn {
     font-size: 1em;
     color: #fff;
     font-weight: 500;
-    margin-top: 10vh;
+    margin-top: 100px;
 }
 
 button.regbtn {
@@ -261,7 +267,7 @@ p.register-link {
     background-image: url("../../img/car.png");
     background-position: center;
     height: 50vh;
-    margin-top: 17vh;
+    margin-top: 15%;
 }
 
 .bigcontent {
@@ -277,6 +283,7 @@ p.register-link {
 }
 
 .error,
+.p-error,
 .error_first_name,
 .error_last_name {
     color: red;

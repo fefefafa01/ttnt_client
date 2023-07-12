@@ -25,6 +25,7 @@ const Views = () => {
                 {/* <Route path='/homepage/a' element={<HomePage />}/>
                 <Route path='/homepage/u' element={<HomePage />}/> */}
                 <Route path="/report" element={<ReportPage />} />
+                <Route path="/specpdf" element={<Specpdf />} />
             </Routes>
         </div>
     );
