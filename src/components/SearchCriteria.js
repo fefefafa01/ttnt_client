@@ -6,6 +6,7 @@ import down from "../img/Down.png";
 import up from "../img/Up.png";
 import glass from "../img/Glass.png";
 import arrow from "../img/arrow.png";
+import { Changer } from "./LanguageChange";
 
 function SelectSpeed() {
     const [selectedValue, setSelectedValue] = useState("");
@@ -24,8 +25,13 @@ function SelectSpeed() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...options]);
             setSelectedValue([...options].join(", "));
             const selectedOptionElements =
@@ -109,7 +115,7 @@ function SelectSpeed() {
                 </div>
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -122,7 +128,7 @@ function SelectSpeed() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -157,8 +163,13 @@ function SelectYear() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...options]);
             setSelectedValue([...options].join(", "));
             const selectedOptionElements =
@@ -242,7 +253,7 @@ function SelectYear() {
                 </div>
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -255,7 +266,7 @@ function SelectYear() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -305,8 +316,13 @@ function SelectCountries() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...countryNames]);
             setSelectedValue([...countryNames].join(", "));
             const selectedOptionElements =
@@ -399,7 +415,7 @@ function SelectCountries() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -412,7 +428,7 @@ function SelectCountries() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -462,8 +478,13 @@ function SelectCarMaker() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...manufacturer_name]);
             setSelectedValue([...manufacturer_name].join(", "));
             const selectedOptionElements =
@@ -557,7 +578,7 @@ function SelectCarMaker() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -570,7 +591,7 @@ function SelectCarMaker() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -620,8 +641,13 @@ function SelectModelName() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...model_name]);
             setSelectedValue([...model_name].join(", "));
             const selectedOptionElements =
@@ -714,7 +740,7 @@ function SelectModelName() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -727,7 +753,7 @@ function SelectModelName() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -777,8 +803,13 @@ function SelectModelCode() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...modelcode]);
             setSelectedValue([...modelcode].join(", "));
             const selectedOptionElements =
@@ -871,7 +902,7 @@ function SelectModelCode() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -884,7 +915,7 @@ function SelectModelCode() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -934,8 +965,13 @@ function SelectPosition() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...driversposition]);
             setSelectedValue([...driversposition].join(", "));
             const selectedOptionElements =
@@ -1028,7 +1064,7 @@ function SelectPosition() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1041,7 +1077,7 @@ function SelectPosition() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -1091,8 +1127,13 @@ function SelectEngineCode() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...enginemodel]);
             setSelectedValue([...enginemodel].join(", "));
             const selectedOptionElements =
@@ -1185,7 +1226,7 @@ function SelectEngineCode() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1198,7 +1239,7 @@ function SelectEngineCode() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -1248,8 +1289,13 @@ function SelectDisplacement() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...displacementcode]);
             setSelectedValue([...displacementcode].join(", "));
             const selectedOptionElements =
@@ -1342,7 +1388,7 @@ function SelectDisplacement() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1355,7 +1401,7 @@ function SelectDisplacement() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -1405,8 +1451,13 @@ function SelectFuel() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption.slice(0, -3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...fueltype]);
             setSelectedValue([...fueltype].join(", "));
             const selectedOptionElements =
@@ -1472,7 +1523,7 @@ function SelectFuel() {
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "Gasoline"}
+                    {selectedValue || <Changer inp="Gasoline" />}
                 </span>
                 <img
                     src={arrow}
@@ -1499,7 +1550,7 @@ function SelectFuel() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1512,7 +1563,7 @@ function SelectFuel() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -1562,8 +1613,13 @@ function SelectTransmission() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...transmissiontype]);
             setSelectedValue([...transmissiontype].join(", "));
             const selectedOptionElements =
@@ -1656,7 +1712,7 @@ function SelectTransmission() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1669,7 +1725,7 @@ function SelectTransmission() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -1719,8 +1775,13 @@ function SelectDrivertrain() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...drivetrainNames]);
             setSelectedValue([...drivetrainNames].join(", "));
             const selectedOptionElements =
@@ -1813,7 +1874,7 @@ function SelectDrivertrain() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1826,7 +1887,7 @@ function SelectDrivertrain() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -1876,8 +1937,13 @@ function SelectPartName() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...aisinpartname]);
             setSelectedValue([...aisinpartname].join(", "));
             const selectedOptionElements =
@@ -1970,7 +2036,7 @@ function SelectPartName() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1983,7 +2049,7 @@ function SelectPartName() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -2033,8 +2099,13 @@ function SelectOE() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...partcode]);
             setSelectedValue([...partcode].join(", "));
             const selectedOptionElements =
@@ -2127,7 +2198,7 @@ function SelectOE() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -2140,7 +2211,7 @@ function SelectOE() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -2190,8 +2261,13 @@ function SelectAISIN() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...aisinpremiumcode]);
             setSelectedValue([...aisinpremiumcode].join(", "));
             const selectedOptionElements =
@@ -2284,7 +2360,7 @@ function SelectAISIN() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -2297,7 +2373,7 @@ function SelectAISIN() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -2347,8 +2423,13 @@ function SelectCompetitor() {
     };
 
     const handleSelection = (event, optionToRemove) => {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === "Select All") {
+        var selectedOption = event.target.textContent;
+        if (selectedOption==="Xóa") {
+            selectedOption="clear"
+        } else if (selectedOption.slice(-3)==="Xóa") {
+            selectedOption=selectedOption-selectedOption.slice(-3)+"clear"
+        }
+        if (selectedOption === "Select All" || selectedOption==="Chọn tất cả") {
             setSelectedOptions([...competiterpartcode]);
             setSelectedValue([...competiterpartcode].join(", "));
             const selectedOptionElements =
@@ -2441,7 +2522,7 @@ function SelectCompetitor() {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        <Changer inp="Select All" />
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -2454,7 +2535,7 @@ function SelectCompetitor() {
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    clear
+                                    <Changer inp="clear" />
                                 </button>
                             )}
                         </li>
@@ -2537,7 +2618,7 @@ const SearchCriteria = (props) => {
     return (
         <div className={sidebarClass}>
             <div className="searchTitle">
-                <a>Search by Vehicle Info and/or Part Info</a>
+                <a><Changer inp="Search by Vehicle Info and/or Part Info" /></a>
                 <button onClick={handleSidebar}>
                     <img
                         src={right}
@@ -2554,7 +2635,7 @@ const SearchCriteria = (props) => {
                 <div>
                     <div className="boxcontent">
                         <div className="searchBox">
-                            <a> Sales Country </a>
+                            <a><Changer inp="Sales Country" /></a>
                             <span>
                                 <SelectCountries />
                             </span>
@@ -2565,38 +2646,38 @@ const SearchCriteria = (props) => {
                                 className="subSearchbtn"
                                 onClick={handleOpenBasic}
                             >
-                                Basic Info
+                                <Changer inp="Basic Info" />
                                 {arrow1 && <img src={down} alt="Down"></img>}
                                 {openBasic && <img src={up} alt="Up"></img>}
                             </button>
                             {openBasic && (
                                 <>
                                     <div className="searchBox">
-                                        <a> Car Maker </a>
+                                        <a><Changer inp="Car Maker" /></a>
                                         <span>
                                             <SelectCarMaker />{" "}
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Model Name </a>
+                                        <a><Changer inp="Model Name" /></a>
                                         <span>
                                             <SelectModelName />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Model Code </a>
+                                        <a><Changer inp="Model Code" /></a>
                                         <span>
                                             <SelectModelCode />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Year </a>
+                                        <a><Changer inp="Year" /></a>
                                         <span>
                                             <SelectYear />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Driver's Position </a>
+                                        <a><Changer inp="Driver's Position" /></a>
                                         <span>
                                             <SelectPosition />
                                         </span>
@@ -2610,44 +2691,44 @@ const SearchCriteria = (props) => {
                                 className="subSearchbtn"
                                 onClick={handleOpenDetailed}
                             >
-                                Detailed Info
+                                <Changer inp="Detailed Info" />
                                 {arrow2 && <img src={down} alt="Down"></img>}
                                 {openDetailed && <img src={up} alt="Up"></img>}
                             </button>
                             {openDetailed && (
                                 <>
                                     <div className="searchBox">
-                                        <a> Engine Code </a>
+                                        <a><Changer inp="Engine Code" /> </a>
                                         <span>
                                             <SelectEngineCode />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Displacement </a>
+                                        <a><Changer inp="Displacement" /></a>
                                         <span>
                                             <SelectDisplacement />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Fuel Type </a>
+                                        <a><Changer inp="Fuel Type" /></a>
                                         <span>
                                             <SelectFuel />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Transmission Type </a>
+                                        <a><Changer inp="Transmission Type" /></a>
                                         <span>
                                             <SelectTransmission />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Speed </a>
+                                        <a><Changer inp="Speed" /></a>
                                         <span>
                                             <SelectSpeed />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Drivetrain </a>
+                                        <a><Changer inp="Drivetrain" /></a>
                                         <span>
                                             <SelectDrivertrain />
                                         </span>
@@ -2661,32 +2742,32 @@ const SearchCriteria = (props) => {
                                 className="subSearchbtn"
                                 onClick={handleOpenPart}
                             >
-                                Part Info
+                                <Changer inp="Part Info" />
                                 {arrow3 && <img src={down} alt="Down"></img>}
                                 {openPart && <img src={up} alt="Up"></img>}
                             </button>
                             {openPart && (
                                 <>
                                     <div className="searchBox">
-                                        <a> Part Name </a>
+                                        <a><Changer inp="Part Name" /></a>
                                         <span>
                                             <SelectPartName />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> OE number </a>
+                                        <a><Changer inp="OE number" /></a>
                                         <span>
                                             <SelectOE />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> AISIN number </a>
+                                        <a><Changer inp="AISIN number" /></a>
                                         <span>
                                             <SelectAISIN />
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Competitor number </a>
+                                        <a><Changer inp="Competitor number" /></a>
                                         <span>
                                             <SelectCompetitor />
                                         </span>
