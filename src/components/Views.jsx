@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import MainPage from "mainClient/mainpage/MainPage";
 import HomePage from "mainClient/homepage/Homepage";
+import ReportPage from "mainClient/reportpage/report";
 import { useEffect } from "react";
 import { Specpdf } from "./SpecPDF";
 
@@ -23,6 +24,7 @@ const Views = () => {
                 />
                 {/* <Route path='/homepage/a' element={<HomePage />}/>
                 <Route path='/homepage/u' element={<HomePage />}/> */}
+                <Route path="/report" element={<ReportPage />} />
             </Routes>
         </div>
     );

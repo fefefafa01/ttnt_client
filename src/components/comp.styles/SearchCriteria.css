@@ -39,6 +39,7 @@
     width: calc(100% - 520px);
     height: calc(100% - 13vh);
     left: 520px;
+    transition: all 0.5s ease-in-out;
 }
 
 .searchTitle {

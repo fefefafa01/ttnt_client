@@ -1,7 +1,7 @@
 .bttn {
     transform: skew(-45deg);
     height: 40px;
-    width: 150px;
+    width: 120px;
     margin-top: 10px;
     text-align: center;
     font-size: 0.7em;
@@ -75,6 +75,9 @@
         font-size: 1.7em;
         margin-top: 30px;
     }
+    .bttn {
+        width: 80px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -95,4 +98,19 @@
     .hlabel {
         display: none;
     }
+}
+
+/*for header of report*/
+.rep-btn {
+    background-color: #acc0e2;
+}
+
+.rbttn {
+    transform: skew(-45deg);
+    height: 40px;
+    width: 130px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.7em;
+    font-weight: bold;
 }

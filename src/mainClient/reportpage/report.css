@@ -1,0 +1,68 @@
+.wrappers-report {
+    position: absolute;
+    background-color: #b0c4e4;
+    left: 30px;
+    right: 30px;
+    height: calc(100% - 15vh);
+    width: cal(100%-60px);
+    display: flex;
+    transition: left 0s ease-in-out;
+    z-index: 0;
+}
+
+.Scroll-report {
+    background-color: #b0c4e4;
+    height: 90%;
+    width: 100%;
+    border-radius: 20px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    display: flex;
+    max-height: 98%;
+    max-width: 99%;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+#rscroll-style::-webkit-scrollbar {
+    width: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#rscroll-style::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: white;
+    width: 50px;
+}
+
+#rscroll-style::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b0c4e4;
+    border: 2em solid #7697cb;
+}
+
+.report-content {
+    display: block;
+}
+
+.rtabs {
+    height: 7vh;
+}
+
+.tab-panel {
+    height: 73vh;
+    width: 60vw;
+    margin-left: 30px;
+    border: solid 1px black;
+    background-color: black;
+    color: white;
+}
+.sidebar-right {
+    height: 73vh;
+    width: 30vw;
+    margin-left: 30px;
+    border: solid 1px black;
+    background-color: black;
+    color: white;
+}
