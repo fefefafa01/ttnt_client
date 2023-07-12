@@ -15,7 +15,7 @@ function PartList({ carid, SubGroupName }) {
     const [firstOpenComp, setFirstOpenComp] = useState(false);
 
     var [opening, setOpening] = useState(false);
-    var [ecode, setEcode] = useState("")
+    var [pcode, setPcode] = useState("")
     //Variables for Car Model
     var [maker, setMaker] = useState("");
     var [model, setModel] = useState("");
@@ -38,7 +38,7 @@ function PartList({ carid, SubGroupName }) {
 
     //Open Detail Button
     const openPDF = (code) => {
-        setEcode(code)
+        setPcode(code)
         setOpening(!opening)
     }
 
@@ -163,7 +163,7 @@ function PartList({ carid, SubGroupName }) {
     }, []);
     return (
         <div className="tabcontent">
-            {opening && <Specpdf carid={""+carid} partcode={""+ecode} open={openPDF} />}
+            {opening && <Specpdf carid={""+carid} partcode={""+pcode} open={openPDF} />}
             <div className="titlecontent">
                 <div className="col-9">
                     <h3>
@@ -206,10 +206,10 @@ function PartList({ carid, SubGroupName }) {
                             <tr>
                                 <th className="subtitle OE">OE#</th>
                                 <th className="subtitle AISIN ">
-                                    ASIN Premium
+                                    AISIN Premium
                                 </th>
                                 <th className="subtitle AISIN">
-                                    ASIN Sub-Premium/AN
+                                    AISIN Sub-Premium/AM
                                 </th>
                                 <th className="subtitle AISIN">
                                     <Changer inp="Specification" />

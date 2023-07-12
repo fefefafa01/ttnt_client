@@ -96,7 +96,7 @@ function Specpdf(input) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(input.partcode),
+            body: JSON.stringify(input.partcode.slice(0, input.partcode.length-8)),
         })
             .catch((err) => {
                 return;
@@ -126,7 +126,7 @@ function Specpdf(input) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(input.partcode),
+            body: JSON.stringify(input.partcode.slice(0, input.partcode.length-8)),
         })
             .catch((err) => {
                 return;
@@ -156,7 +156,7 @@ function Specpdf(input) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(input.partcode),
+            body: JSON.stringify(input.partcode.slice(0, input.partcode.length-8)),
         })
             .catch((err) => {
                 return;
@@ -235,7 +235,6 @@ function Specpdf(input) {
                     </button>
                 </div>
                 <div className="specbody">
-                    {" "}
                     {/*Thêm scroll bar bên phải (nếu table dài) */}
                     <div className="sbcontent">
                         <TransformWrapper initialScale={1}>
