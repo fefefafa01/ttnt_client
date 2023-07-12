@@ -5,9 +5,8 @@ import "./partList.css";
 import Download from "../../img/download.png";
 import React, { useState, Fragment } from "react";
 
-function PartList({ carid }) {
+function PartList({ carid, SubGroupName }) {
     //Variables
-    carid = "29"; //Test ID
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
@@ -30,10 +29,8 @@ function PartList({ carid }) {
     var [dt, setDt] = useState("");
 
     //Array for Parts Table and Manufacturer
-    var [partList, setPartList] = useState([]);
+    const part = { id: carid, partSubGroup: SubGroupName };
     var [premiumData, setPremiumData] = useState([]);
-    var [spremiumData, setSPremiumData] = useState([]);
-    var [competitor, setCompetitor] = useState([]);
 
     //Backend Call
     //Querying Model Name
@@ -105,7 +102,7 @@ function PartList({ carid }) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(carid),
+            body: JSON.stringify(part),
         })
             .catch((err) => {
                 return;

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Homepage.css";
-import { Tabs } from "antd";
+import { Tabs, Button } from "antd";
 import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
 import { ResultList } from "components/SearchList";
+import { PartSubgroup } from "components/PartGroup";
 const { TabPane } = Tabs;
+
 function Homepage() {
     const [sidebarOpen, setSideBarOpen] = useState(true);
     const handleViewSidebar = () => {
@@ -14,8 +16,15 @@ function Homepage() {
 
     const [activeKey, setActiveKey] = useState("1");
     const [panes, setPanes] = useState([
-        { title: "Search Result", content: <ResultList />, key: "1" },
-        { title: "Parts List", content: <PartList />, key: "2" },
+        {
+            title: "Search Result",
+            key: "1",
+            closable: false,
+        },
+        {
+            title: "KUN25, Engine/Fuel group-Parts subgroup list",
+            key: "2",
+        },
     ]);
 
     const onChange = (activeKey) => {
@@ -26,12 +35,12 @@ function Homepage() {
         action === "remove" ? remove(targetKey) : add();
     };
 
-    const add = () => {
+    const add = (buttonName) => {
         const newTabIndex = panes.length;
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
-            title: "New Tab",
-            content: "Content of new Tab",
+            title: "Part List",
+            content: <PartList carid={29} SubGroupName={buttonName} />,
             key: activeKey,
         };
         setPanes([...panes, newPane]);
@@ -58,6 +67,7 @@ function Homepage() {
         setPanes(newPanes);
         setActiveKey(newActiveKey);
     };
+
     return (
         <>
             <AdminHeader />
@@ -68,6 +78,7 @@ function Homepage() {
                 />
                 <div className="wrappers">
                     <Tabs
+                        hideAdd
                         className="tabs"
                         onChange={onChange}
                         activeKey={activeKey}
@@ -80,7 +91,13 @@ function Homepage() {
                                 key={pane.key}
                                 closable={pane.closable}
                             >
-                                {pane.content}
+                                {pane.key === "1" ? (
+                                    <ResultList />
+                                ) : pane.key === "2" ? (
+                                    <PartSubgroup carid={29} onAdd={add} />
+                                ) : (
+                                    pane.content
+                                )}
                             </TabPane>
                         ))}
                     </Tabs>
