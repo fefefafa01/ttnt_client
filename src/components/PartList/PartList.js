@@ -9,6 +9,7 @@ import { Changer } from "components/LanguageChange";
 
 function PartList({ carid }) {
     //Variables
+    console.log("called")
     carid = "29"; //Test ID
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);

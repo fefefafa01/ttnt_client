@@ -44,7 +44,7 @@ function SelectSpeed() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -177,7 +177,7 @@ function SelectYear() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -325,7 +325,7 @@ function SelectCountries() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -482,7 +482,7 @@ function SelectCarMaker() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -640,7 +640,7 @@ function SelectModelName() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -797,7 +797,7 @@ function SelectModelCode() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -954,7 +954,7 @@ function SelectPosition() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -1111,7 +1111,7 @@ function SelectEngineCode() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -1268,7 +1268,7 @@ function SelectDisplacement() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -1425,7 +1425,7 @@ function SelectFuel() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -1582,7 +1582,7 @@ function SelectTransmission() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -1739,7 +1739,7 @@ function SelectDrivertrain() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -1896,7 +1896,7 @@ function SelectPartName() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -2053,7 +2053,7 @@ function SelectOE() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -2210,7 +2210,7 @@ function SelectAISIN() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
@@ -2367,7 +2367,7 @@ function SelectCompetitor() {
             );
             setSelectedValue(selectedValueOptions.join(", "));
             return;
-        } else {
+        } else if (selectedOption.slice(-5)!=="clear") {
             const updatedSelectedOptions = [...selectedOptions];
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
