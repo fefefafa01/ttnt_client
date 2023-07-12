@@ -7,10 +7,8 @@ import React, { useState, Fragment } from "react";
 import { Specpdf } from "components/SpecPDF";
 import { Changer } from "components/LanguageChange";
 
-function PartList({ carid }) {
+function PartList({ carid, SubGroupName }) {
     //Variables
-    console.log("called")
-    carid = "29"; //Test ID
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
@@ -35,10 +33,8 @@ function PartList({ carid }) {
     var [dt, setDt] = useState("");
 
     //Array for Parts Table and Manufacturer
-    var [partList, setPartList] = useState([]);
+    const part = { id: carid, partSubGroup: SubGroupName };
     var [premiumData, setPremiumData] = useState([]);
-    var [spremiumData, setSPremiumData] = useState([]);
-    var [competitor, setCompetitor] = useState([]);
 
     //Open Detail Button
     const openPDF = (code) => {
@@ -122,7 +118,7 @@ function PartList({ carid }) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(carid),
+            body: JSON.stringify(part),
         })
             .catch((err) => {
                 return;
