@@ -1,27 +1,23 @@
-*#Main Coding in "./src"*
+*#Main Coding in "./src/components"*
 
 *#Main Pages for 3 Epics:*
-Login Page: mainClient/mainpage
+Login Page (Epic 4): mainClient/mainpage
 Main Searching Page (Epic 2): mainClient/homepage
 Report Page (Epic 1): mainClient/reportpage
 
 *#Components are in ./components, ./compstyles are for specific component styles*
-- Mainpage's Components: Validation, MainInput
-- Homepage's Components: Epic2Filter, Header, PartGroup, SearchCriteria, DownloadFile, Profile
-- Reportpage's Components: ProductOverview,  ProductPeriod, Epic1Filter
-**All MUST include LanguageChange to translate, LanguageOption is for Language Selection**
+- Language Components: Multi_Lang, LanguageChange, ./translation, i18n
+- Mainpage Components: Login, Register, ResetPwd
+- Homepage Components: SearchList, Header, PartGroup, SearchCriteria, DownloadFile, Profile, SpecPDF, ./PartList
+- Reportpage Components: ProductOverview,  ProductPeriod, Epic1Filter
+**All MUST include LanguageChange as ['import { Changer } from 'path/Languagechange'] to translate or ['import { useTranslation } from 'react-i18next' then const t = useTranslation()]**
 
-- Empty/Half pre-coded files are just templates, they HAVE NOT been called into App.js yet, neither are they correctly importing/functioning files
+- Empty/Half pre-coded files are just templates, they HAVE NOT been called respectedly yet, neither are they correctly importing/functioning files
 
 - Installations Requires:
-npm i -g react create-react-app
-npm i -g bootstrap 
-npm i -g i18next i18next-http-backend 
-npm i -g i18next-browser-languagedetector react-i18next 
-npm i -g react-router-dom 
-npm i -g @mui/material @emotion/react @emotion/styled
+npm install or yarn install
 
-*#URL : 192.168.11.143:3005*
+*#URL : 192.168.11.212:3005*
 - (LE TRAN KHANH)
 
 
