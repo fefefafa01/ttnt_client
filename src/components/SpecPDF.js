@@ -6,9 +6,7 @@ import { useState } from "react";
 
 function Specpdf(input) {
     //Variables
-    if (input.carid === null || input.carid === undefined) {
-        input.carid = "29";
-    } //Test ID
+    const OE = "OE#: "
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
@@ -222,7 +220,7 @@ function Specpdf(input) {
     //Exports
     return (
         <>
-            <div className="specpop">
+            <div className="specpop pdfpop">
                 <div className="specheader">
                     <p className="specmodel">
                         {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
@@ -249,7 +247,14 @@ function Specpdf(input) {
                                 />
                             </TransformComponent>
                         </TransformWrapper>
-                        <p className="speclabel">OE#: {input.partcode}</p>
+                        <p className="speclabel">
+                            <span className="labelOE">
+                                {OE}
+                            </span>
+                            <span>
+                                {input.partcode}
+                            </span>
+                        </p>
                         <div className="spec_tbl">
                             {/* Table: Premium Header/SubHeader has 1 Column, then comes the Part.No, then comes their respective Dimension Values 
                             AISIN Part     = Merge 2 Rows, 2 Columns                - Dimension = Merge Columns Num of Dimensions.

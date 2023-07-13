@@ -79,22 +79,22 @@ function PartSubgroup({ carid, onAdd }) {
                 setDt(data.dtrain);
             });
     }
-    console.log(
-        maker,
-        model,
-        vcode,
-        start,
-        end,
-        dpos,
-        ecode,
-        displace,
-        ptype,
-        ftype,
-        transc,
-        spd,
-        trans,
-        dt
-    );
+    // console.log(
+    //     maker,
+    //     model,
+    //     vcode,
+    //     start,
+    //     end,
+    //     dpos,
+    //     ecode,
+    //     displace,
+    //     ptype,
+    //     ftype,
+    //     transc,
+    //     spd,
+    //     trans,
+    //     dt
+    // );
     if (firstOpenPreP) {
         fetch("http://localhost:5000/exp/subGroup", {
             method: "POST",

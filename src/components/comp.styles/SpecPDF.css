@@ -13,6 +13,10 @@
     padding-bottom: 20px;
 }
 
+.pdfpop {
+    height: 90%
+}
+
 .specheader {
     background-color: rgba(204,204,204,255);
     height: 40px;
@@ -95,10 +99,15 @@
     background-color: white;
     margin-top: 3px;
     border: solid 2px black;
-    font-size: 1.1em;
+    font-size: 1.15em;
     text-align: left;
     padding-left: 7px;
     width: 100%;
+    font-weight: bold;
+}
+
+.labelOE {
+    font-size: 1.3em;
 }
 
 .specpart-table td, th {
