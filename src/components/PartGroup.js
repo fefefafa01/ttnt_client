@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import "./PartList/partList.css";
-import "./comp.styles/subGroup.css";
+import "./comp.styles/subgroup.css";
 import { PartList } from "./PartList/PartList";
 import { border } from "@mui/system";
 
