@@ -187,7 +187,7 @@ function PartList({ carid, SubGroupName }) {
                     }
                 </div>
             </div>
-            <div className="Scroll" id="scroll-style">
+            <div className="partlistscroll" id="pscroll-style">
                 <div className="contents-part-list">
                     <table className="part-table">
                         <thead>

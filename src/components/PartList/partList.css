@@ -118,3 +118,38 @@ button.details {
 .details:focus {
     border: solid 3px black;
 }
+
+.partlistscroll {
+    background-color: #b0c4e4;
+    height: 90%;
+    width: 100%;
+    border-radius: 20px;
+    overflow: auto;
+    display: flex;
+    max-height: 98%;
+    max-width: 99%;
+    padding-bottom: 20px;
+    padding-right: 50px;
+}
+
+#pscroll-style::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+#pscroll-style::-webkit-scrollbar {
+    width: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#pscroll-style::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: white;
+    width: 50px;
+}
+
+#pscroll-style::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #b0c4e4;
+    border: 2em solid #7697cb;
+}

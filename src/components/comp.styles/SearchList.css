@@ -116,7 +116,7 @@
 
 .Scroll {
     background-color: #b0c4e4;
-    height: 93%;
+    height: 92%;
     width: 100%;
     border-radius: 20px;
     overflow: scroll;
@@ -125,12 +125,15 @@
     max-width: 99%;
     padding-bottom: 20px;
     padding-right: 50px;
+    margin-right: 5px;
+}
+
+#scroll-style::-webkit-scrollbar-corner {
+    background-color: transparent;
 }
 
 #scroll-style::-webkit-scrollbar {
-    width: 20px;
-    background-color: white;
-    border-radius: 10px;
+    width: 15px;
 }
 
 #scroll-style::-webkit-scrollbar-track {

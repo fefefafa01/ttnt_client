@@ -2565,6 +2565,7 @@ const SearchCriteria = (props) => {
     };
     const [show, showSidebar] = useState(false);
     const handleSidebar = () => {
+        props.toggleSidebar();
         showSidebar(!show);
     };
     const [arrow1, setOpenArrow1] = useState(false);
@@ -2623,7 +2624,6 @@ const SearchCriteria = (props) => {
                     <img
                         src={right}
                         alt="Right"
-                        onClick={props.toggleSidebar}
                     />
                 </button>
             </div>
