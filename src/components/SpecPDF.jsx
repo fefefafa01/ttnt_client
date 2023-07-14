@@ -297,7 +297,7 @@ function Specpdf(input) {
                                             >
                                                 <Changer inp="AISIN Part" />
                                             </th>
-                                            <th colSpan="10" className="spectitle">
+                                            <th colSpan="11" className="spectitle">
                                                 <Changer inp="Dimension" />
                                             </th>
                                         </tr>
@@ -321,6 +321,11 @@ function Specpdf(input) {
                                             </th>
                                             <th className="subspectitle">
                                                 Width OD
+                                                <br />
+                                                (mm)
+                                            </th>
+                                            <th className="subspectitle">
+                                                Width ID
                                                 <br />
                                                 (mm)
                                             </th>
@@ -360,6 +365,7 @@ function Specpdf(input) {
                                                         <td>{val.Spline}</td>
                                                         <td>{val.PCDmm}</td>
                                                         <td>{val.WidthOD}</td>
+                                                        <td>{val.WidthID}</td>
                                                         <td>{val.Lengthinch}</td>
                                                         <td>{val.Lengthmm}</td>
                                                         <td>{val.Heightmm}</td>
@@ -391,6 +397,7 @@ function Specpdf(input) {
                                                         <td>{val.Spline}</td>
                                                         <td>{val.PCDmm}</td>
                                                         <td>{val.WidthOD}</td>
+                                                        <td>{val.WidthID}</td>
                                                         <td>{val.Lengthinch}</td>
                                                         <td>{val.Lengthmm}</td>
                                                         <td>{val.Heightmm}</td>
