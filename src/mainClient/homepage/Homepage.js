@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Homepage.css";
-import { Tabs } from "antd";
+import { Tabs, Button } from "antd";
 import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
 import { SearchResult } from "components/SearchList";
 import { ResultList } from "components/ResultList/ResultList";
+import { PartSubgroup } from "components/PartGroup";
 const { TabPane } = Tabs;
+
 function Homepage() {
     const [sidebarOpen, setSideBarOpen] = useState(true);
     const handleViewSidebar = () => {
@@ -15,9 +17,15 @@ function Homepage() {
 
     const [activeKey, setActiveKey] = useState("1");
     const [panes, setPanes] = useState([
-        { title: "Search Result", content: <SearchResult />, key: "1" },
-        { title: "Parts List", content: <PartList />, key: "2" },
-        { title: "Result List", content: <ResultList />, key: "3" },
+        {
+            title: "Search Result",
+            key: "1",
+            closable: false,
+        },
+        {
+            title: "KUN25, Engine/Fuel group-Parts subgroup list",
+            key: "2",
+        },
     ]);
 
     const onChange = (activeKey) => {
@@ -28,12 +36,12 @@ function Homepage() {
         action === "remove" ? remove(targetKey) : add();
     };
 
-    const add = () => {
+    const add = (buttonName) => {
         const newTabIndex = panes.length;
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
-            title: "New Tab",
-            content: "Content of new Tab",
+            title: "Part List",
+            content: <PartList carid={29} SubGroupName={buttonName} />,
             key: activeKey,
         };
         setPanes([...panes, newPane]);
@@ -60,31 +68,41 @@ function Homepage() {
         setPanes(newPanes);
         setActiveKey(newActiveKey);
     };
+
     return (
         <>
             <AdminHeader />
-            <SearchCriteria
-                isOpen={sidebarOpen}
-                toggleSidebar={handleViewSidebar}
-            />
-            <div className="wrappers">
-                <Tabs
-                    className="tabs"
-                    onChange={onChange}
-                    activeKey={activeKey}
-                    type="editable-card"
-                    onEdit={onEdit}
-                >
-                    {panes.map((pane) => (
-                        <TabPane
-                            tab={pane.title}
-                            key={pane.key}
-                            closable={pane.closable}
-                        >
-                            {pane.content}
-                        </TabPane>
-                    ))}
-                </Tabs>
+            <div className="hbody">
+                <SearchCriteria
+                    isOpen={sidebarOpen}
+                    toggleSidebar={handleViewSidebar}
+                />
+                <div className="wrappers">
+                    <Tabs
+                        hideAdd
+                        className="tabs"
+                        onChange={onChange}
+                        activeKey={activeKey}
+                        type="editable-card"
+                        onEdit={onEdit}
+                    >
+                        {panes.map((pane) => (
+                            <TabPane
+                                tab={pane.title}
+                                key={pane.key}
+                                closable={pane.closable}
+                            >
+                                {pane.key === "1" ? (
+                                    <ResultList />
+                                ) : pane.key === "2" ? (
+                                    <PartSubgroup carid={29} onAdd={add} />
+                                ) : (
+                                    pane.content
+                                )}
+                            </TabPane>
+                        ))}
+                    </Tabs>
+                </div>
             </div>
         </>
     );

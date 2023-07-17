@@ -66,7 +66,6 @@ function AdminHeader() {
                     <Profile />
                 </div>
             </div>
-            <div className="hbody"></div>
         </>
     );
 }

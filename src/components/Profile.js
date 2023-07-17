@@ -96,7 +96,7 @@ function Profile() {
                 </a>
             </div>
             {open && (
-                <div className="dropdown-content">
+                <div className="dropdown-content profile">
                     <span>
                         <a href="#">
                             <Changer inp="My Profile" />

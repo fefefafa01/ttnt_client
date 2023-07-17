@@ -1,10 +1,9 @@
 .bttn {
-    transform: skew(-45deg);
-    height: 40px;
+    transform: skew(-35deg);
+    min-height: 10px;
     width: 150px;
-    margin-top: 10px;
     text-align: center;
-    font-size: 0.7em;
+    font-size: 0.85em;
     font-weight: bold;
 }
 
@@ -76,6 +75,11 @@
         font-size: 1.7em;
         margin-top: 30px;
     }
+    .bttn {
+        width: 150px;
+        height: 60px;
+        font-size: 0.7em;
+    }
 }
 
 @media screen and (max-width: 991px) {
@@ -83,15 +87,17 @@
         padding-bottom: 10px;
     }
     .aheader div p.logo {
-        margin-top: 35px;
+        margin-top: 25px;
         font-size: 1em;
         margin-left: -10px;
     }
     .bttn {
-        font-size: 0.5em;
-        width: 120px;
-        height: 30px;
+        margin-top: 0px;
+        font-size: 0.7em;
+        width: 100px;
+        height: 35px;
         margin-left: 15px;
+        padding: 0px;
     }
     .logotext {
         display: none;

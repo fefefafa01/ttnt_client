@@ -7,17 +7,15 @@ import React, { useState, Fragment } from "react";
 import { Specpdf } from "components/SpecPDF";
 import { Changer } from "components/LanguageChange";
 
-function PartList({ carid }) {
+function PartList({ carid, SubGroupName }) {
     //Variables
-    console.log("called")
-    carid = "29"; //Test ID
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
     const [firstOpenComp, setFirstOpenComp] = useState(false);
 
     var [opening, setOpening] = useState(false);
-    var [ecode, setEcode] = useState("")
+    var [pcode, setPcode] = useState("")
     //Variables for Car Model
     var [maker, setMaker] = useState("");
     var [model, setModel] = useState("");
@@ -35,14 +33,12 @@ function PartList({ carid }) {
     var [dt, setDt] = useState("");
 
     //Array for Parts Table and Manufacturer
-    var [partList, setPartList] = useState([]);
+    const part = { id: carid, partSubGroup: SubGroupName };
     var [premiumData, setPremiumData] = useState([]);
-    var [spremiumData, setSPremiumData] = useState([]);
-    var [competitor, setCompetitor] = useState([]);
 
     //Open Detail Button
     const openPDF = (code) => {
-        setEcode(code)
+        setPcode(code)
         setOpening(!opening)
     }
 
@@ -122,7 +118,7 @@ function PartList({ carid }) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(carid),
+            body: JSON.stringify(part),
         })
             .catch((err) => {
                 return;
@@ -167,7 +163,7 @@ function PartList({ carid }) {
     }, []);
     return (
         <div className="tabcontent">
-            {opening && <Specpdf carid={""+carid} partcode={""+ecode} open={openPDF} />}
+            {opening && <Specpdf carid={""+carid} partcode={""+pcode} open={openPDF} />}
             <div className="titlecontent">
                 <div className="col-9">
                     <h3>
@@ -191,7 +187,7 @@ function PartList({ carid }) {
                     }
                 </div>
             </div>
-            <div className="Scroll" id="scroll-style">
+            <div className="partlistscroll" id="pscroll-style">
                 <div className="contents-part-list">
                     <table className="part-table">
                         <thead>
@@ -210,10 +206,10 @@ function PartList({ carid }) {
                             <tr>
                                 <th className="subtitle OE">OE#</th>
                                 <th className="subtitle AISIN ">
-                                    ASIN Premium
+                                    AISIN Premium
                                 </th>
                                 <th className="subtitle AISIN">
-                                    ASIN Sub-Premium/AN
+                                    AISIN Sub-Premium/AM
                                 </th>
                                 <th className="subtitle AISIN">
                                     <Changer inp="Specification" />

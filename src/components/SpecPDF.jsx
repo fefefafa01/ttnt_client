@@ -3,16 +3,27 @@ import { Changer } from "./LanguageChange";
 import spec from "../img/car.png";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { useState } from "react";
+import $ from "jquery";
 
 function Specpdf(input) {
     //Variables
-    if (input.carid === null || input.carid === undefined) {
-        input.carid = "29";
-    } //Test ID
+    const OE = "OE#: "
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
     const [firstOpenComp, setFirstOpenComp] = useState(false);
+
+    //Scrollbar Synchronization
+    $(function() {
+        $(".spec_tbl").on("scroll", function() {
+            $(".scrollpdf")
+                .scrollLeft($(".spec_tbl").scrollLeft());
+        });
+        $(".scrollpdf").on("scroll", function() {
+            $(".spec_tbl")
+                .scrollLeft($(".scrollpdf").scrollLeft())
+        });
+    });
 
     //Variables for Car Model
     var [maker, setMaker] = useState("");
@@ -96,7 +107,7 @@ function Specpdf(input) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(input.partcode),
+            body: JSON.stringify(input.partcode.slice(0, input.partcode.length-8)),
         })
             .catch((err) => {
                 return;
@@ -126,7 +137,7 @@ function Specpdf(input) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(input.partcode),
+            body: JSON.stringify(input.partcode.slice(0, input.partcode.length-8)),
         })
             .catch((err) => {
                 return;
@@ -156,7 +167,7 @@ function Specpdf(input) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
-            body: JSON.stringify(input.partcode),
+            body: JSON.stringify(input.partcode.slice(0, input.partcode.length-8)),
         })
             .catch((err) => {
                 return;
@@ -222,7 +233,7 @@ function Specpdf(input) {
     //Exports
     return (
         <>
-            <div className="specpop">
+            <div className="specpop pdfpop">
                 <div className="specheader">
                     <p className="specmodel">
                         {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
@@ -235,22 +246,30 @@ function Specpdf(input) {
                     </button>
                 </div>
                 <div className="specbody">
-                    {" "}
                     {/*Thêm scroll bar bên phải (nếu table dài) */}
                     <div className="sbcontent">
+                        <div className="partimg">
                         <TransformWrapper initialScale={1}>
                             <TransformComponent
                                 wrapperStyle={{ width: "100%", height: "100%" }}
                                 contentStyle={{ width: "100%", height: "100%" }}
                             >
                                 <img
-                                    className="partimg"
+                                    className="pdfpartimg"
                                     src={spec}
                                     alt="spec"
                                 />
                             </TransformComponent>
                         </TransformWrapper>
-                        <p className="speclabel">OE#: {input.partcode}</p>
+                        </div>
+                        <p className="speclabel">
+                            <span className="labelOE">
+                                {OE}
+                            </span>
+                            <span>
+                                {input.partcode}
+                            </span>
+                        </p>
                         <div className="spec_tbl">
                             {/* Table: Premium Header/SubHeader has 1 Column, then comes the Part.No, then comes their respective Dimension Values 
                             AISIN Part     = Merge 2 Rows, 2 Columns                - Dimension = Merge Columns Num of Dimensions.
@@ -269,119 +288,128 @@ function Specpdf(input) {
                             |  SUBPREM  |_Part_Y_|_________|___________|_________|___________|________|
                             |___________|_Part_Z_|_________|___________|_________|___________|________|
                         */}
-                            <table className="specpart-table" id="sbt">
-                                <thead>
-                                    <tr>
-                                        <th
-                                            rowSpan="2"
-                                            colSpan="2"
-                                            className="spectitle"
-                                        >
-                                            <Changer inp="AISIN Part" />
-                                        </th>
-                                        <th colSpan="10" className="spectitle">
-                                            <Changer inp="Dimension" />
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th className="subspectitle">
-                                            OD (mm)
-                                        </th>
-                                        <th className="subspectitle">
-                                            OD (inch)
-                                        </th>
-                                        <th className="subspectitle">
-                                            ID (mm)
-                                        </th>
-                                        <th className="subspectitle">
-                                            Major D. <br />
-                                            (mm)
-                                        </th>
-                                        <th className="subspectitle">Spline</th>
-                                        <th className="subspectitle">
-                                            PCD (mm)
-                                        </th>
-                                        <th className="subspectitle">
-                                            Width OD
-                                            <br />
-                                            (mm)
-                                        </th>
-                                        <th className="subspectitle">
-                                            Length (inch)
-                                        </th>
-                                        <th className="subspectitle">
-                                            Length (mm)
-                                        </th>
-                                        <th className="subspectitle">
-                                            Height (mm)
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {premiumData.map((val, key) => {
-                                        return (
-                                            <>
-                                                <tr key={key}>
-                                                    {rowSpan[key] > 0 && (
-                                                        <td
-                                                            rowSpan={
-                                                                premiumData.length
-                                                            }
-                                                            className="infoHeader"
-                                                        >
-                                                            Premium
+                            <div className="atablea">
+                                <table className="specpart-table" id="sbt">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                rowSpan="2"
+                                                colSpan="2"
+                                                className="spectitle"
+                                            >
+                                                <Changer inp="AISIN Part" />
+                                            </th>
+                                            <th colSpan="11" className="spectitle">
+                                                <Changer inp="Dimension" />
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th className="subspectitle">
+                                                OD (mm)
+                                            </th>
+                                            <th className="subspectitle">
+                                                OD (inch)
+                                            </th>
+                                            <th className="subspectitle">
+                                                ID (mm)
+                                            </th>
+                                            <th className="subspectitle">
+                                                Major D. <br />
+                                                (mm)
+                                            </th>
+                                            <th className="subspectitle">Spline</th>
+                                            <th className="subspectitle">
+                                                PCD (mm)
+                                            </th>
+                                            <th className="subspectitle">
+                                                Width OD
+                                                <br />
+                                                (mm)
+                                            </th>
+                                            <th className="subspectitle">
+                                                Width ID
+                                                <br />
+                                                (mm)
+                                            </th>
+                                            <th className="subspectitle">
+                                                Length (inch)
+                                            </th>
+                                            <th className="subspectitle">
+                                                Length (mm)
+                                            </th>
+                                            <th className="subspectitle">
+                                                Height (mm)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {premiumData.map((val, key) => {
+                                            return (
+                                                <>
+                                                    <tr key={key}>
+                                                        {rowSpan[key] > 0 && (
+                                                            <td
+                                                                rowSpan={
+                                                                    premiumData.length
+                                                                }
+                                                                className="infoHeader"
+                                                            >
+                                                                Premium
+                                                            </td>
+                                                        )}
+                                                        <td className="speccode">
+                                                            {val.PremiumCode}
                                                         </td>
-                                                    )}
-                                                    <td className="speccode">
-                                                        {val.PremiumCode}
-                                                    </td>
-                                                    <td>{val.ODmm}</td>
-                                                    <td>{val.ODinch}</td>
-                                                    <td>{val.IDmm}</td>
-                                                    <td>{val.Major}</td>
-                                                    <td>{val.Spline}</td>
-                                                    <td>{val.PCDmm}</td>
-                                                    <td>{val.WidthOD}</td>
-                                                    <td>{val.Lengthinch}</td>
-                                                    <td>{val.Lengthmm}</td>
-                                                    <td>{val.Heightmm}</td>
-                                                </tr>
-                                            </>
-                                        );
-                                    })}
-                                    {spremiumData.map((val, key) => {
-                                        return (
-                                            <>
-                                                <tr key={key}>
-                                                    {srowSpan[key] > 0 && (
-                                                        <td
-                                                            rowSpan={
-                                                                spremiumData.length
-                                                            }
-                                                            className="infoHeader"
-                                                        >
-                                                            Sub-Premium/AM
+                                                        <td>{val.ODmm}</td>
+                                                        <td>{val.ODinch}</td>
+                                                        <td>{val.IDmm}</td>
+                                                        <td>{val.Major}</td>
+                                                        <td>{val.Spline}</td>
+                                                        <td>{val.PCDmm}</td>
+                                                        <td>{val.WidthOD}</td>
+                                                        <td>{val.WidthID}</td>
+                                                        <td>{val.Lengthinch}</td>
+                                                        <td>{val.Lengthmm}</td>
+                                                        <td>{val.Heightmm}</td>
+                                                    </tr>
+                                                </>
+                                            );
+                                        })}
+                                        {spremiumData.map((val, key) => {
+                                            return (
+                                                <>
+                                                    <tr key={key}>
+                                                        {srowSpan[key] > 0 && (
+                                                            <td
+                                                                rowSpan={
+                                                                    spremiumData.length
+                                                                }
+                                                                className="infoHeader"
+                                                            >
+                                                                Sub-Premium/AM
+                                                            </td>
+                                                        )}
+                                                        <td className="speccode">
+                                                            {val.SPremiumCode}
                                                         </td>
-                                                    )}
-                                                    <td className="speccode">
-                                                        {val.SPremiumCode}
-                                                    </td>
-                                                    <td>{val.ODmm}</td>
-                                                    <td>{val.ODinch}</td>
-                                                    <td>{val.IDmm}</td>
-                                                    <td>{val.Major}</td>
-                                                    <td>{val.Spline}</td>
-                                                    <td>{val.PCDmm}</td>
-                                                    <td>{val.WidthOD}</td>
-                                                    <td>{val.Lengthinch}</td>
-                                                    <td>{val.Lengthmm}</td>
-                                                    <td>{val.Heightmm}</td>
-                                                </tr>
-                                            </>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
+                                                        <td>{val.ODmm}</td>
+                                                        <td>{val.ODinch}</td>
+                                                        <td>{val.IDmm}</td>
+                                                        <td>{val.Major}</td>
+                                                        <td>{val.Spline}</td>
+                                                        <td>{val.PCDmm}</td>
+                                                        <td>{val.WidthOD}</td>
+                                                        <td>{val.WidthID}</td>
+                                                        <td>{val.Lengthinch}</td>
+                                                        <td>{val.Lengthmm}</td>
+                                                        <td>{val.Heightmm}</td>
+                                                    </tr>
+                                                </>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div className="comp_tbl">
                             {/* Table: 2 Columns
@@ -417,6 +445,7 @@ function Specpdf(input) {
                                 </tbody>
                             </table>
                         </div>
+                        <div className="scrollpdf"><html className="emptyscrollpdf">&nbsp;</html></div>
                     </div>
                 </div>
             </div>

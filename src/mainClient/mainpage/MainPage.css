@@ -53,11 +53,11 @@ p.label {
 .wrapper {
     position: absolute;
     height: fit-content;
-    width: 30vw;
+    width: 25vw;
     background-color: #d8dcf4;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    margin-left: 5vh;
+    margin-left: 10vh;
     margin-top: 75px;
     backdrop-filter: blur(20px);
     display: block;
@@ -96,6 +96,12 @@ p.label {
     outline: none;
     margin-top: 5px;
     font-size: 1.2em;
+}
+.input-box input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: transparent;
 }
 
 input.name-box {
@@ -289,9 +295,15 @@ p.register-link {
     color: red;
 }
 
+@media screen and (max-width: 1440) {
+    .wrapper {
+        width: 30vw;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .wrapper {
-        width: 40vw;
+        width: 35vw;
     }
     .content p.logo {
         margin-left: 40vw;
