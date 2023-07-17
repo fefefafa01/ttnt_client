@@ -66,10 +66,12 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validate(formValues));
-        if (formErrors) {
-            setError("Incorrect email or password");
-        }
         setIsSubmit(true);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            setError(null);
+        } else {
+            setError("incorrect email or password");
+        }
         fetch("http://localhost:5000/auth/login", {
             method: "POST",
             credentials: "include",
@@ -97,9 +99,11 @@ function Login() {
                 if (data.status === "Wrong Password") {
                     setFormErrors({ password: t("Wrong Password") });
                     setError("Incorrect email or password");
+                    console.log(error);
                 } else if (data.status === "Wrong Email") {
                     setFormErrors({ email: t("Wrong Email") });
                     setError("Incorrect email or password");
+                    console.log(error);
                     //} else if (data.loggedIn && data.status === 'Admin User) {
                     //    window.location.assign('/homepage/a)
                     //} else if (data.loggedIn && data.status === 'Viewer User) {
@@ -138,6 +142,7 @@ function Login() {
     useEffect(() => {
         console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
+            setError(null);
             //console.log(formValues);
         }
     }, [formErrors]);
