@@ -17,12 +17,7 @@ function DownloadFile (fileData, fileName, sheetName, fileExType) {
     //Export in progress
     const exportToExcel = async () => {
         //New Worksheet and Workbook
-        var ws
-        if (fileExType==="csv") {
-            ws = XLSX.utils.json_to_csv(fileData)
-        } else {
-            ws = XLSX.utils.json_to_sheet(fileData);
-        }
+        const ws = XLSX.utils.json_to_sheet(fileData);
         let wb = XLSX.utils.book_new();
         //Append Sheets into Workbook
         XLSX.utils.book_append_sheet(wb, ws, sheetName)

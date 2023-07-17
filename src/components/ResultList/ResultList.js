@@ -99,31 +99,6 @@ function ResultList() {
                                     </th>
                                 </tr>
                             </theader>
-                            <tbody>
-                                {premiumData.map((el, index) => (
-                                    <tr key={index}>
-                                        {rowSpan[index] > 0 && (
-                                            <td rowSpan={rowSpan[index]}>
-                                                <Changer inp={el.partGroup} />
-                                            </td>
-                                        )}
-                                        <td>
-                                            <Changer inp={el.partName} />
-                                        </td>
-                                        <td>{el.OE}</td>
-                                        <td>{el.aisinPrem}</td>
-                                        <td>{el.aisinSubPrem}</td>
-                                        <td>
-                                            <button
-                                                className="details"
-                                                onClick={(e) => openPDF(el.OE)}
-                                            >
-                                                <Changer inp="Details" />
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
                         </table>
                     </div>
                 </div>
