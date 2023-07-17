@@ -17,7 +17,7 @@ function Specpdf(input) {
     $(function() {
         $(".spec_tbl").on("scroll", function() {
             $(".scrollpdf")
-                .scrollLeft($("spec_tbl").scrollLeft());
+                .scrollLeft($(".spec_tbl").scrollLeft());
         });
         $(".scrollpdf").on("scroll", function() {
             $(".spec_tbl")

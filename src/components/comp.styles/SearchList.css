@@ -119,8 +119,9 @@
     height: 92%;
     width: 100%;
     border-radius: 20px;
-    overflow: scroll;
-    display: flex;
+    display: block;
+    overflow-y: scroll;
+    overflow-x: hidden;
     max-height: 98%;
     max-width: 99%;
     padding-bottom: 20px;

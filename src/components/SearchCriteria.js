@@ -2792,7 +2792,6 @@ const SearchCriteria = (props) => {
                             <img
                                 src={left}
                                 alt="Left"
-                                onClick={props.toggleSidebar}
                             />
                         </button>
                     )}

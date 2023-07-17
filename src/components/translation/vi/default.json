@@ -65,10 +65,12 @@
     "Model Code": "Mã mẫu xe",
     "Year": "Năm sản xuất",
     "Driver's Position": "Vị trí lái",
+    "Powered Type": "Loại năng lượng",
     "Engine Code": "Mã động cơ",
     "Displacement": "Dung tích",
     "Fuel Type": "Loại nhiên liệu",
-    "Transmission Type": "Loại xe",
+    "Transmission Type": "Loại hộp số xe",
+    "Transmission Code": "Mã hộp số xe",
     "Speed": "Tốc độ",
     "Drivetrain": "Hệ thống truyền động",
     "OE number": "Số OE",
@@ -77,5 +79,7 @@
     "Select All": "Chọn tất cả",
     "Gasoline": "Xăng",
     "Diesel": "Dầu DO",
-    "clear": "Xóa"
+    "clear": "Xóa",
+    "From": "Từ",
+    "To": "Đến"
 }   

@@ -65,10 +65,12 @@
     "Model Code": "Model Code",
     "Year": "Year",
     "Driver's Position": "Driver's Position",
+    "Powered Type": "Powered Type",
     "Engine Code": "Engine Code",
     "Displacement": "Displacement",
     "Fuel Type": "Fuel Type",
     "Transmission Type": "Transmission Type",
+    "Transmission Code": "Transmission Code",
     "Speed": "Speed",
     "Drivertrain": "Drivetrain",
     "OE number": "OE number",
@@ -77,5 +79,7 @@
     "Select All": "Select All",
     "Gasoline": "Gasoline",
     "Diesel": "Diesel",
-    "clear": "clear"
+    "clear": "clear",
+    "From": "From",
+    "To": "To"
 }
