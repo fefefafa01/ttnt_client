@@ -248,18 +248,20 @@ function Specpdf(input) {
                 <div className="specbody">
                     {/*Thêm scroll bar bên phải (nếu table dài) */}
                     <div className="sbcontent">
+                        <div className="partimg">
                         <TransformWrapper initialScale={1}>
                             <TransformComponent
                                 wrapperStyle={{ width: "100%", height: "100%" }}
                                 contentStyle={{ width: "100%", height: "100%" }}
                             >
                                 <img
-                                    className="partimg"
+                                    className="pdfpartimg"
                                     src={spec}
                                     alt="spec"
                                 />
                             </TransformComponent>
                         </TransformWrapper>
+                        </div>
                         <p className="speclabel">
                             <span className="labelOE">
                                 {OE}
