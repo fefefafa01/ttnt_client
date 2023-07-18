@@ -37,7 +37,7 @@
 .dropdldtxt {
     margin-top: 10px;
     font-weight: bold;
-    float:left;
+    float: left;
     margin-bottom: 5px;
 }
 
@@ -66,14 +66,14 @@
     margin-top: -5px;
 }
 
-td,
-tr {
+.part-table td,
+.part-table tr {
     border: solid 2px white;
     height: 40px;
     font-size: 1.1em;
 }
 
-table {
+.part-table {
     height: 100%;
     width: 97%;
     margin-top: -10px;
@@ -99,11 +99,11 @@ table {
     background-color: darkblue;
 }
 
-table tbody tr:nth-child(odd) {
+.part-table tbody tr:nth-child(odd) {
     background-color: #e7e7e7;
 }
 
-table tbody tr:nth-child(even) {
+.part-table tbody tr:nth-child(even) {
     background-color: #cbcbcb;
 }
 
