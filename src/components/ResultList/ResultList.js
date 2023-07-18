@@ -59,8 +59,7 @@ function ResultList() {
                                     Transmission Type{" "}
                                 </th>
                                 <th rowSpan="2" className="titleResult">
-                                    {" "}
-                                    Speed{" "}
+                                    Speed
                                 </th>
                                 <th rowSpan="2" className="titleResult">
                                     {" "}

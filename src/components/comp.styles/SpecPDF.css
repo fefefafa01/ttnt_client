@@ -2,7 +2,7 @@
     position: absolute;
     height: 70%;
     width: 35em;
-    background-color: rgba(229,229,229,255);
+    background-color: rgba(229, 229, 229, 255);
     border: 2px solid black;
     margin-left: 5vh;
     backdrop-filter: blur(20px);
@@ -14,7 +14,7 @@
 }
 
 .specheader {
-    background-color: rgba(204,204,204,255);
+    background-color: rgba(204, 204, 204, 255);
     height: 40px;
     align-items: center;
     border-bottom: 2px solid black;
@@ -23,7 +23,7 @@
 .specmodel {
     font-size: 0.65em;
     font-weight: bold;
-    float:left;
+    float: left;
     padding-left: 20px;
     margin-top: 10px;
 }
@@ -40,7 +40,7 @@
     margin-top: 5px;
     margin-left: 30px;
     margin-right: 10px;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
 .specbody::-webkit-scrollbar {
@@ -55,7 +55,7 @@
 }
 
 .specbody::-webkit-scrollbar-thumb {
-    background: rgba(172,192,226,255);
+    background: rgba(172, 192, 226, 255);
     border-radius: 5px;
     background-clip: content-box;
     height: 20px;
@@ -63,7 +63,7 @@
 
 .sbcontent {
     margin-right: 20px;
-    overflow-x:scroll;
+    overflow-x: scroll;
     margin-bottom: 10px;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .sbcontent::-webkit-scrollbar-thumb {
-    background: rgba(172,192,226,255);
+    background: rgba(172, 192, 226, 255);
     border-radius: 5px;
     background-clip: content-box;
     height: 20px;
@@ -101,18 +101,19 @@
     width: 100%;
 }
 
-.specpart-table td, th {
+.specpart-table td,
+.specpart-table th {
     border: 2px solid white;
     border-collapse: collapse;
     font-size: 0.85em;
 }
 
 .specpart-table tr:nth-child(even) {
-    background-color: rgba(203,203,203,255);
+    background-color: rgba(203, 203, 203, 255);
 }
 
 .specpart-table tr:nth-child(odd) {
-    background-color: rgba(231,231,231,255);
+    background-color: rgba(231, 231, 231, 255);
 }
 
 .specpart-table {
@@ -124,9 +125,12 @@
     height: 50px;
 }
 
-.spectitle, .infoHeader, .subspectitle, .comptitle {
+.spectitle,
+.infoHeader,
+.subspectitle,
+.comptitle {
     color: white;
-    background-color: rgba(0,26,113,255);
+    background-color: rgba(0, 26, 113, 255);
     font-weight: bold;
 }
 
@@ -142,16 +146,17 @@
     width: 20px;
 }
 
-.speccomp-table th, td {
+.speccomp-table th,
+.speccomp-table td {
     border: 2px solid white;
 }
 
 .speccomp-table tr:nth-child(odd) {
-    background-color: rgba(203,203,203,255);
+    background-color: rgba(203, 203, 203, 255);
 }
 
 .speccomp-table tr:nth-child(even) {
-    background-color: rgba(231,231,231,255);
+    background-color: rgba(231, 231, 231, 255);
 }
 
 .speccomp-table {
@@ -161,5 +166,3 @@
 .comptitle {
     width: 10%;
 }
-
-

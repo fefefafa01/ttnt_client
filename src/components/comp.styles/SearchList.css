@@ -144,6 +144,9 @@
     background-color: #b0c4e4;
     border: 2em solid #7697cb;
 }
+#scroll-style::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
 
 .contents {
     display: flex;
