@@ -68,10 +68,19 @@ function Homepage() {
         setPanes(newPanes);
         setActiveKey(newActiveKey);
     };
+    const [langopen, setLangopen] = useState(false);
+    const [gofirst, setGofirst] = useState(true);
+    function handleOpenlang() {
+        if(gofirst && langopen) {
+            setGofirst(false);
+        } else if (!gofirst && langopen) {
+            setLangopen(false);
+        }
+    }
 
     return (
-        <>
-            <AdminHeader />
+        <div onClick = {handleOpenlang}>
+            <AdminHeader langopen={langopen} setLangopen={setLangopen}/>
             <div className="hbody">
                 <SearchCriteria
                     isOpen={sidebarOpen}
@@ -104,7 +113,7 @@ function Homepage() {
                     </Tabs>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

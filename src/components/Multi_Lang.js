@@ -19,10 +19,10 @@ import { useTranslation } from "react-i18next";
 
 import VI_TRANSLATE from "./translation/vi/default.json";
 
-function Multi_Lang() {
+function Multi_Lang(props) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
-        setOpen(!open);
+        localStorage.open=true
     };
     //let loc = window.location.pathname;
     // const check = Changer({inp:'Login'});
@@ -60,7 +60,7 @@ function Multi_Lang() {
                 <img className="globe" src={Globe} alt="Globe" />
             </button>
             <span className="langbtn">{lang}</span>
-            {open ? (
+            {localStorage.open ? (
                 <Box component="div" className="box">
                     <FormControl>
                         <FormLabel id="radio-buttons-group-label"></FormLabel>
@@ -149,10 +149,10 @@ function Multi_Lang() {
     );
 }
 
-function Multi_Lang_Home() {
+function Multi_Lang_Home(props) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
-        setOpen(!open);
+        props.proper.setLangopen(!props.proper.langopen)
     };
     //let loc = window.location.pathname;
     // const check = Changer({inp:'Login'});
@@ -190,7 +190,7 @@ function Multi_Lang_Home() {
                 <img className="hglobe" src={Globe} alt="Globe" />
             </button>
             <span className="hlangbtn">{lang}</span>
-            {open ? (
+            {props.proper.langopen ? (
                 <Box component="div" className="hbox">
                     <FormControl>
                         <FormLabel id="radio-buttons-group-label"></FormLabel>

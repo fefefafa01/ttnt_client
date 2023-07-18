@@ -5,7 +5,7 @@ import "./comp.styles/Header.css";
 
 //Link with UserHandler.js in ./server for Profile
 
-function AdminHeader() {
+function AdminHeader(props) {
     const handlePSBtn = (e) => {
         e.preventDefault();
         window.location.assign("/homepage");
@@ -62,7 +62,7 @@ function AdminHeader() {
                     </button>
                 </div>
                 <div className="col-lg-1 col-sm-1 btn-profile">
-                    <Multi_Lang_Home />
+                    <Multi_Lang_Home proper={props}/>
                     <Profile />
                 </div>
             </div>
