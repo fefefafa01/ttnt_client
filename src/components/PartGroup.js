@@ -1,8 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState} from "react";
 import "./PartList/partList.css";
 import "./comp.styles/subgroup.css";
 import { PartList } from "./PartList/PartList";
 import { border } from "@mui/system";
+import { backlocale } from "constants/constindex";
 
 function PartGroup() {
     return 1;
@@ -14,7 +15,7 @@ function PartSubgroup({ carid, onAdd }) {
     };
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
-    const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
+    var loc;
 
     //Variables for Car Model
     var [maker, setMaker] = useState("");
@@ -38,7 +39,8 @@ function PartSubgroup({ carid, onAdd }) {
     //Backend Call
     //Querying Model Name
     if (firstOpenModel) {
-        fetch("http://localhost:5000/exp/model", {
+        loc = backlocale + "exp/model";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -96,7 +98,8 @@ function PartSubgroup({ carid, onAdd }) {
     //     dt
     // );
     if (firstOpenPreP) {
-        fetch("http://localhost:5000/exp/subGroup", {
+        loc = backlocale + "exp/subGroup";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -119,7 +122,6 @@ function PartSubgroup({ carid, onAdd }) {
             .then((data) => {
                 if (!data) return;
                 setFirstOpenPreP(false);
-                setFirstOpenSPreP(true);
                 setSubGroup(data.subGroupList);
                 console.log(subGroup);
             });

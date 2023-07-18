@@ -4,6 +4,7 @@ import { Changer } from "./LanguageChange";
 import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
+import { backlocale } from "constants/constindex";
 
 const validate = (values) => {
     const errors = {};
@@ -27,6 +28,7 @@ const validate = (values) => {
 };
 
 function ResetPwd() {
+    var loc;
     const [password, setPassword] = useState("");
     const [confpassword, confsetPassword] = useState("");
     const [visible, setVisible] = useState(false);
@@ -51,7 +53,8 @@ function ResetPwd() {
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
-        fetch("http://localhost:5000/auth/resetpwd", {
+        loc = backlocale + "auth/resetpwd";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {

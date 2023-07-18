@@ -4,6 +4,7 @@ import { Changer } from "./LanguageChange";
 import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
+import { backlocale } from "constants/constindex";
 
 const Validate = (values) => {
     const errors = {};
@@ -47,6 +48,7 @@ const Validate = (values) => {
 };
 
 function Register() {
+    var loc;
     const { setUser } = useContext(AccountContext) || {};
     var { t } = useTranslation();
     const [error, setError] = useState(null);
@@ -77,7 +79,8 @@ function Register() {
         setFormErrors(Validate(formValues));
         setIsSubmit(true);
         console.log(formValues);
-        fetch("http://localhost:5000/auth/reg", {
+        loc = backlocale + "auth/reg";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {

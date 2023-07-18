@@ -3,10 +3,12 @@ import { Changer } from "components/LanguageChange";
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next'
 import "./partList.css";
+import { backlocale } from "constants/constindex.js";
 
 //Getting Current Date and Time
 var tempDate = new Date();
 var month, day, hour, minute, sec
+var loc;
 
 function Reformatting(currdate) {
     if (currdate < 10) {
@@ -39,7 +41,8 @@ function DropDown (input) {
     const {t} = useTranslation();
 
     if (first) {
-        fetch("http://localhost:5000/down/partlist", {
+        loc = backlocale + "down/partlist";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {

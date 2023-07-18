@@ -12,7 +12,7 @@
 
 - It's not showing any values.
     -> There are 2 cases: Either the connection to server is wrong or server crashed/hasn't started.
-        + If the server is already started but the client gets no value, then check if the corresponding component at **"fetch"** line if the link to server-side is correct. Please do the same with Server (Guide is in Server README) 
+        + If the server is already started but the client gets no value, then check if **constindex.js** in constants folder with the link and port to server-side is correct. Please do the same with Server (Guide is in Server README) 
 
         + For the other case, either because server hasn't started or it crashed. For example, opening user profile while not logging in will cause it to crash for tempting to send null data to server. Therefore no data is queried. Simply start the server again.
 

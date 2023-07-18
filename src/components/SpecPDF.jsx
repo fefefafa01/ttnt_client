@@ -4,6 +4,7 @@ import spec from "../img/car.png";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { useState } from "react";
 import $ from "jquery";
+import { backlocale } from "constants/constindex";
 
 function Specpdf(input) {
     //Variables
@@ -53,8 +54,10 @@ function Specpdf(input) {
 
     //Backend Call
     //Querying Model Name
+    var loc;
     if (firstOpenModel) {
-        fetch("http://localhost:5000/exp/model", {
+        loc = backlocale + "exp/model";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -98,7 +101,8 @@ function Specpdf(input) {
 
     //Querying Premium Parts Array
     if (firstOpenPreP) {
-        fetch("http://localhost:5000/exp/premium", {
+        loc = backlocale + "exp/premium";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -128,7 +132,8 @@ function Specpdf(input) {
 
     //Querying SubPremium Parts Data
     if (firstOpenSPreP) {
-        fetch("http://localhost:5000/exp/subpremium", {
+        loc = backlocale + "exp/subpremium";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -158,7 +163,8 @@ function Specpdf(input) {
 
     //Querying Competitor
     if (firstOpenComp) {
-        fetch("http://localhost:5000/exp/comp", {
+        loc = backlocale + "exp/comp";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -246,7 +252,6 @@ function Specpdf(input) {
                     </button>
                 </div>
                 <div className="specbody">
-                    {/*Thêm scroll bar bên phải (nếu table dài) */}
                     <div className="sbcontent">
                         <div className="partimg">
                         <TransformWrapper initialScale={1}>
@@ -271,23 +276,6 @@ function Specpdf(input) {
                             </span>
                         </p>
                         <div className="spec_tbl">
-                            {/* Table: Premium Header/SubHeader has 1 Column, then comes the Part.No, then comes their respective Dimension Values 
-                            AISIN Part     = Merge 2 Rows, 2 Columns                - Dimension = Merge Columns Num of Dimensions.
-                                                                                    Dimensions = 1 Column for each dimension
-                            Premium Header = Merge Rows Num of Premium Code Parts   - Premium = 1 Row for each with Parts.No -> Dimension Values
-                            Sub Premium HDR = ^^^^^ of Sub-Premium Code Parts       - Sub-Premium = ^^^
-                                        ( IF THERE IS NO DATA FOR PREMIUM/SUB PREMIUM FOR THAT PART -> DIMENSIONS ARE NULL)
-                            Example:
-                            ___________________________________________________________________________
-                            |     AISIN PARTS    |_____________________DIMENSION______________________|                 
-                            |____________________|_OD_(mm)_|_OD_(inch)_|_ID (mm)_|_ID_(inch)_|_Spline_|
-                            |           |_Part_A_|___150___|____40_____|___145___|____66_____|___20___|
-                            |  PREMIUM  |_Part_B_|_________|___________|_________|___________|________|
-                            |___________|_Part_C_|_________|___________|_________|___________|________|
-                            |           |_Part_X_|___300___|____90_____|___413___|____64_____|___72___|
-                            |  SUBPREM  |_Part_Y_|_________|___________|_________|___________|________|
-                            |___________|_Part_Z_|_________|___________|_________|___________|________|
-                        */}
                             <div className="atablea">
                                 <table className="specpart-table" id="sbt">
                                     <thead>
@@ -412,14 +400,6 @@ function Specpdf(input) {
                             </div>
                         </div>
                         <div className="comp_tbl">
-                            {/* Table: 2 Columns
-                            ____________________________________________________________________________
-                            |__________Competitor Name__________|___________Competitor Number__________| 
-                            |________________555________________|________________555-xx________________|
-                            |________________ABC________________|________________ABC_xx________________|
-                                    Manufacturer Name                       Competitor's Part Code
-                                    (IF THE THERE ARE NO COMPETITOR NUMBER FOR THAT PART CODE, LEAVE TABLE 1 ROW WITH EVERYTHING AS NULL)
-                        */}
                             <table className="speccomp-table">
                                 <thead>
                                     <tr>
