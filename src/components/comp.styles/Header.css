@@ -10,7 +10,7 @@
 }
 
 .bttn:hover {
-    transform: skew(-35deg);
+    transform: skew(-45deg);
     min-height: 10px;
     width: 150px;
     text-align: center;
