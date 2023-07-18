@@ -1,6 +1,6 @@
 //Link with SearchingHandler.js in ./server
 import { PartsDetail } from "../PartDetail";
-import { DropDown } from "./DropDown"
+import { DropDown } from "./DropDown";
 import "./partList.css";
 import Download from "../../img/download.png";
 import React, { useState, Fragment } from "react";
@@ -15,7 +15,7 @@ function PartList({ carid, SubGroupName }) {
     const [firstOpenComp, setFirstOpenComp] = useState(false);
 
     var [opening, setOpening] = useState(false);
-    var [pcode, setPcode] = useState("")
+    var [pcode, setPcode] = useState("");
     //Variables for Car Model
     var [maker, setMaker] = useState("");
     var [model, setModel] = useState("");
@@ -38,15 +38,15 @@ function PartList({ carid, SubGroupName }) {
 
     //Open Detail Button
     const openPDF = (code) => {
-        setPcode(code)
-        setOpening(!opening)
-    }
+        setPcode(code);
+        setOpening(!opening);
+    };
 
     //Download Button
-    const [downdrop, setDowndrop] = useState(false)
+    const [downdrop, setDowndrop] = useState(false);
     const handleDropdown = () => {
         setDowndrop(!downdrop);
-    }
+    };
 
     //Backend Call
     //Querying Model Name
@@ -95,7 +95,7 @@ function PartList({ carid, SubGroupName }) {
     // console.log(
     //     maker,
     //     model,
-        // vcode
+    // vcode
     //     start,
     //     end,
     //     dpos,
@@ -134,7 +134,6 @@ function PartList({ carid, SubGroupName }) {
                 setFirstOpenPreP(false);
                 setFirstOpenSPreP(true);
                 setPremiumData(data.partList);
-                
             });
     }
 
@@ -163,7 +162,13 @@ function PartList({ carid, SubGroupName }) {
     }, []);
     return (
         <div className="tabcontent">
-            {opening && <Specpdf carid={""+carid} partcode={""+pcode} open={openPDF} />}
+            {opening && (
+                <Specpdf
+                    carid={"" + carid}
+                    partcode={"" + pcode}
+                    open={openPDF}
+                />
+            )}
             <div className="titlecontent">
                 <div className="col-9">
                     <h3>
@@ -180,11 +185,16 @@ function PartList({ carid, SubGroupName }) {
                             src={Download}
                             alt="download"
                         />
-                        <span className="download-text"><Changer inp='Download to file' /></span>
+                        <span className="download-text">
+                            <Changer inp="Download to file" />
+                        </span>
                     </button>
-                    {downdrop &&
-                        <DropDown data={premiumData} dropping={handleDropdown} />
-                    }
+                    {downdrop && (
+                        <DropDown
+                            data={premiumData}
+                            dropping={handleDropdown}
+                        />
+                    )}
                 </div>
             </div>
             <div className="partlistscroll" id="pscroll-style">
@@ -224,12 +234,17 @@ function PartList({ carid, SubGroupName }) {
                                             <Changer inp={el.partGroup} />
                                         </td>
                                     )}
-                                    <td><Changer inp={el.partName} /></td>
+                                    <td>
+                                        <Changer inp={el.partName} />
+                                    </td>
                                     <td>{el.OE}</td>
                                     <td>{el.aisinPrem}</td>
                                     <td>{el.aisinSubPrem}</td>
                                     <td>
-                                        <button className="details" onClick={e=>openPDF(el.OE)}>
+                                        <button
+                                            className="details"
+                                            onClick={(e) => openPDF(el.OE)}
+                                        >
                                             <Changer inp="Details" />
                                         </button>
                                     </td>

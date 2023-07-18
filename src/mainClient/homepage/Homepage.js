@@ -48,6 +48,19 @@ function Homepage() {
         setActiveKey(activeKey);
     };
 
+    const addGroup = (formValues) => {
+        const newTabIndex = panes.length;
+        const activeKey = `newTab${newTabIndex}`;
+        console.log(formValues);
+        const newPane = {
+            title: "Result List",
+            content: <ResultList formValues={formValues} />,
+            key: activeKey,
+        };
+        setPanes([...panes, newPane]);
+        setActiveKey(activeKey);
+    };
+
     const remove = (targetKey) => {
         let newActiveKey = activeKey;
         let lastIndex;
@@ -74,6 +87,7 @@ function Homepage() {
             <AdminHeader />
             <div className="hbody">
                 <SearchCriteria
+                    onAdd={addGroup}
                     isOpen={sidebarOpen}
                     toggleSidebar={handleViewSidebar}
                 />
@@ -93,7 +107,7 @@ function Homepage() {
                                 closable={pane.closable}
                             >
                                 {pane.key === "1" ? (
-                                    <ResultList />
+                                    <SearchResult />
                                 ) : pane.key === "2" ? (
                                     <PartSubgroup carid={29} onAdd={add} />
                                 ) : (

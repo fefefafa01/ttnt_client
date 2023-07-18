@@ -6,6 +6,7 @@ import down from "../img/Down.png";
 import up from "../img/Up.png";
 import glass from "../img/Glass.png";
 import arrow from "../img/arrow.png";
+import { ResultList } from "./ResultList/ResultList";
 
 const initialValues = {
     country_name: "",
@@ -115,6 +116,24 @@ function SelectSpeed() {
         );
         setSelectedValue(selectedValueOptions.join(", "));
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
@@ -273,6 +292,24 @@ function SelectYear() {
         setSelectedValue(selectedValueOptions.join(", "));
     };
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
@@ -363,6 +400,24 @@ function SelectCountries() {
     }, []);
 
     const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
@@ -537,6 +592,24 @@ function SelectCarMaker() {
     }, []);
 
     const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
@@ -713,6 +786,24 @@ function SelectModelName() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -886,6 +977,24 @@ function SelectModelCode() {
     }, []);
 
     const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
@@ -1061,6 +1170,24 @@ function SelectPosition() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -1234,6 +1361,24 @@ function SelectEngineCode() {
     }, []);
 
     const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
@@ -1409,6 +1554,24 @@ function SelectDisplacement() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -1582,6 +1745,24 @@ function SelectFuel() {
     }, []);
 
     const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
@@ -1757,6 +1938,24 @@ function SelectTransmission() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -1930,6 +2129,24 @@ function SelectDrivertrain() {
     }, []);
 
     const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
@@ -2105,6 +2322,24 @@ function SelectPartName() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -2279,6 +2514,24 @@ function SelectOE() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -2451,6 +2704,24 @@ function SelectAISIN() {
     }, []);
 
     const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
@@ -2626,6 +2897,24 @@ function SelectCompetitor() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -2769,8 +3058,13 @@ function SelectCompetitor() {
 }
 
 const SearchCriteria = (props) => {
+    const handleAdd = (formValues) => {
+        props.onAdd(formValues);
+    };
     const sidebarClass = props.isOpen ? "sidebar open" : "sidebar";
+
     const [openBasic, setOpenBasic] = useState(true);
+    const [db, setDb] = useState([]);
     const handleOpenBasic = () => {
         setOpenBasic(!openBasic);
         setOpenArrow1(!arrow1);
@@ -2817,8 +3111,13 @@ const SearchCriteria = (props) => {
                 }
                 return res.json();
             })
-            .then((data) => {});
-        console.log(initialValues);
+            .then((data) => {
+                if (!data) return;
+                console.log(data.table);
+                props.onAdd(data.table);
+                setDb(data.table);
+            });
+        console.log(db);
     };
 
     return (
@@ -2826,10 +3125,7 @@ const SearchCriteria = (props) => {
             <div className="searchTitle">
                 <a>Search by Vehicle Info and/or Part Info</a>
                 <button onClick={handleSidebar}>
-                    <img
-                        src={right}
-                        alt="Right"
-                    />
+                    <img src={right} alt="Right" />
                 </button>
             </div>
             <form
@@ -2995,10 +3291,7 @@ const SearchCriteria = (props) => {
                             onClick={handleSidebar}
                             className="sidebar-toggle"
                         >
-                            <img
-                                src={left}
-                                alt="Left"
-                            />
+                            <img src={left} alt="Left" />
                         </button>
                     )}
                 </div>

@@ -1,9 +1,9 @@
 import "./ResultList.css";
-import React from "react";
+import React, { useState } from "react";
 import $ from "jquery";
 import { Changer } from "components/LanguageChange";
 
-function ResultList() {
+function ResultList(formValues) {
     //Synchronizing Scroll:
     $(function () {
         $(".Scrollthebar").on("scroll", function () {
@@ -13,6 +13,10 @@ function ResultList() {
             $(".Scrollthebar").scrollLeft($(".contents-results").scrollLeft());
         });
     });
+
+    var data = Object.values(formValues);
+    console.log(data[0].length);
+
     return (
         <div className="tabcontent">
             <h3> Result found </h3>
@@ -20,7 +24,7 @@ function ResultList() {
                 <div className="contents-results">
                     <div className="resulttabling">
                         <table>
-                            <theader>
+                            <thead>
                                 <tr>
                                     <th rowSpan="2" className="titleResult">
                                         No
@@ -98,25 +102,45 @@ function ResultList() {
                                         <Changer inp="Specification" />
                                     </th>
                                 </tr>
-                            </theader>
+                            </thead>
                             <tbody>
-                                {premiumData.map((el, index) => (
+                                {data[0].map((el, index) => (
                                     <tr key={index}>
-                                        {rowSpan[index] > 0 && (
-                                            <td rowSpan={rowSpan[index]}>
-                                                <Changer inp={el.partGroup} />
-                                            </td>
-                                        )}
-                                        <td>
-                                            <Changer inp={el.partName} />
-                                        </td>
-                                        <td>{el.OE}</td>
-                                        <td>{el.aisinPrem}</td>
-                                        <td>{el.aisinSubPrem}</td>
+                                        <td>{el.no}</td>
+                                        <td>{el.car_maker}</td>
+                                        <td>{el.car_model_name}</td>
+                                        <td>{el.model_code}</td>
+                                        <td>{el.start_of_production}</td>
+                                        <td>{el.end_of_production}</td>
+                                        <td>{el.drivers_position}</td>
+                                        <td>{el.engine_code}</td>
+                                        <td>{el.displacement_code}</td>
+                                        <td>{el.powered_type}</td>
+                                        <td>{el.fuel_type}</td>
+                                        <td>{el.transmission_code}</td>
+                                        <td>{el.transmission_type}</td>
+                                        <td>{el.speed}</td>
+                                        <td>{el.drivetrain}</td>
+                                        <td>{el.oe}</td>
+                                        <td>{el.aisin_premium_code}</td>
+                                        <td>{el.aisin_sub_premium_code}</td>
+
                                         <td>
                                             <button
                                                 className="details"
-                                                onClick={(e) => openPDF(el.OE)}
+                                                // onClick={(e) => openPDF(el.OE)}
+                                            >
+                                                <Changer inp="Details" />
+                                            </button>
+                                        </td>
+                                        <td>{el.oe}</td>
+                                        <td>{el.aisin_premium_code}</td>
+                                        <td>{el.aisin_sub_premium_code}</td>
+
+                                        <td>
+                                            <button
+                                                className="details"
+                                                // onClick={(e) => openPDF(el.OE)}
                                             >
                                                 <Changer inp="Details" />
                                             </button>
