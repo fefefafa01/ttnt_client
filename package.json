@@ -30,6 +30,7 @@
         "material-ui-colors": "^1.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-gauge-chart": "^0.4.1",
         "react-i18next": "^12.3.1",
         "react-paginate": "^8.2.0",
         "react-router-dom": "^6.12.1",

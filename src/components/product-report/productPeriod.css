@@ -1,0 +1,40 @@
+.coverage-summary {
+    display: block;
+    width: 540px;
+}
+.summary-label {
+    background-color: darkblue;
+    font-size: 0.5em;
+    font-weight: bold;
+    height: 30px;
+    align-items: center;
+}
+.summary-item p {
+    margin-bottom: 0px;
+}
+.summary-item {
+    margin-top: 10px;
+    display: flex;
+    font-size: 0.5em;
+}
+.summary-item div {
+    background-color: #d6dff0;
+    color: black;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 0px 5px;
+}
+div#gauge-chart1 {
+    margin-left: 0px;
+    max-width: 150px;
+}
+div#gauge-chart1 svg {
+    scale: 80%;
+}
+g.needle {
+    display: none;
+}
+div text {
+    fill: #f5cd19 !important;
+    font-size: 1.5em !important;
+}
