@@ -1,6 +1,14 @@
+.coverage-report {
+    background-color: black;
+    margin: 10px;
+    text-align: left;
+    font-size: 0.5em;
+    font-weight: 500;
+}
 .dashboard {
     background-color: white;
     display: flex;
+    overflow: auto;
 }
 .overall-vehicle {
     display: block;
@@ -10,13 +18,15 @@
     background-color: white;
     color: black;
     font-size: 0.4em;
-    width: 100%;
+    width: max-content;
+    overflow: auto;
 }
 .overall-table thead {
     height: 50px;
 }
 .overall-table tbody {
     border-top: solid 1px black;
+    width: max-content;
 }
 .coverage-table {
     font-size: 0.4em;
@@ -42,4 +52,35 @@
 .coverage-table tbody td.year {
     background-color: lightskyblue;
     color: black;
+}
+
+/*overal part*/
+.overall-part {
+}
+.part-overall-table {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+.part-overall-table thead {
+    color: black;
+    font-size: 0.5em;
+}
+.part-overall-table thead td {
+    border-right: solid 1px black;
+}
+.part-overall-table th {
+    color: black;
+}
+.part-overall-table tbody {
+    color: black;
+    font-size: 0.5em;
+    border: solid 3px black;
+}
+.part-overall-table tbody th {
+    height: 40px;
+    border: solid 1px black;
+}
+.part-overall-table tbody td {
+    border: dotted 1px black;
 }

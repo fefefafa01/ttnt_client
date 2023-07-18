@@ -5,7 +5,7 @@ import GaugeChart from "react-gauge-chart";
 
 function ProductPeriod() {
     const [totalMarket, setTotalMarket] = useState(10000);
-    const [totalCoverage, setTotalCoverage] = useState(7500);
+    const [totalCoverage, setTotalCoverage] = useState(9000);
     const totalPecent = Number(totalCoverage) / Number(totalMarket);
     console.log(totalPecent);
     return (
@@ -17,22 +17,42 @@ function ProductPeriod() {
                 <div className="summary-item">
                     <div className="col ">
                         <p>Total Market</p>
-                        <p>{totalMarket}</p>
+                        <p className="item">{totalMarket}</p>
                     </div>
                     <div className="col ">
                         <p>Total Coverage</p>
-                        <p>{totalCoverage}</p>
+                        <p className="item">{totalCoverage}</p>
                     </div>
                     <div className="col ">
                         <p>Total % Coverage</p>
-                        <GaugeChart
-                            id="gauge-chart1"
-                            nrOfLevels={420}
-                            arcsLength={[totalPecent, 0.5]}
-                            colors={["#ffff00", "#FFF"]}
-                            percent={totalPecent}
-                            arcPadding={0.02}
-                        />
+                        {totalPecent <= 0.5 ? (
+                            <GaugeChart
+                                id="gauge-chart1"
+                                nrOfLevels={420}
+                                arcsLength={[totalPecent, 1 - totalPecent]}
+                                colors={["red", "#FFF"]}
+                                percent={totalPecent}
+                                arcPadding={0.02}
+                            />
+                        ) : totalPecent < 0.9 ? (
+                            <GaugeChart
+                                id="gauge-chart2"
+                                nrOfLevels={420}
+                                arcsLength={[totalPecent, 1 - totalPecent]}
+                                colors={["yellow", "#FFF"]}
+                                percent={totalPecent}
+                                arcPadding={0.02}
+                            />
+                        ) : (
+                            <GaugeChart
+                                id="gauge-chart3"
+                                nrOfLevels={420}
+                                arcsLength={[totalPecent, 1 - totalPecent]}
+                                colors={["green", "#FFF"]}
+                                percent={totalPecent}
+                                arcPadding={0.02}
+                            />
+                        )}
                     </div>
                 </div>
             </div>
