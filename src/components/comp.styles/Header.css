@@ -5,6 +5,17 @@
     text-align: center;
     font-size: 0.85em;
     font-weight: bold;
+    background-color: white;
+}
+
+.bttn:hover {
+    transform: skew(-35deg);
+    min-height: 10px;
+    width: 150px;
+    text-align: center;
+    font-size: 0.85em;
+    font-weight: bold;
+    background-color: rgb(216, 216, 216);
 }
 
 .srbtngroup {
