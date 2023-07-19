@@ -172,7 +172,6 @@ function Multi_Lang_Home(props) {
             setLang("VI");
             //window.location.replace(loc + "?lng=vi");
             changeLanguage("vi");
-            console.log(t("Login"));
             localStorage.lng = "VI";
         }
     };

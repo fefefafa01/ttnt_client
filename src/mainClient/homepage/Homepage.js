@@ -73,6 +73,7 @@ function Homepage() {
     function handleOpenlang() {
         if(gofirst && langopen) {
             setGofirst(false);
+            setLangopen(false)
         } else if (!gofirst && langopen) {
             setLangopen(false);
         }
@@ -80,7 +81,7 @@ function Homepage() {
 
     return (
         <div onClick = {handleOpenlang}>
-            <AdminHeader langopen={langopen} setLangopen={setLangopen}/>
+            <AdminHeader langopen={langopen} setLangopen={setLangopen} />
             <div className="hbody">
                 <SearchCriteria
                     isOpen={sidebarOpen}
