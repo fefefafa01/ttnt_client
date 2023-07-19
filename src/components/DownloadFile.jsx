@@ -1,5 +1,4 @@
 import * as FileSaver from 'file-saver'
-import react, { useState } from 'react';
 import XLSX from 'sheetjs-style'
 import { backlocale } from 'constants/constindex';
 

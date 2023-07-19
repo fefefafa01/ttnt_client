@@ -854,6 +854,15 @@ function SelectPartName() {
 }
 
 function ReportPage(/*{ type }*/) {
+    const [langopen, setLangopen] = useState(false);
+    const [gofirst, setGofirst] = useState(true);
+    function handleOpenlang() {
+        if (gofirst && langopen) {
+            setGofirst(false);
+        } else if (!gofirst && langopen) {
+            setLangopen(false);
+        }
+    }
     const [activeKey, setActiveKey] = useState("1");
     const panes = [
         {
@@ -922,8 +931,8 @@ function ReportPage(/*{ type }*/) {
         });
     });
     return (
-        <>
-            <ReportHeader />
+        <div onClick={handleOpenlang}>
+            <ReportHeader langopen={langopen} setLangopen={setLangopen} />
             <div className="hbody">
                 <div className="wrappers-report">
                     <div className="report-content">
@@ -1012,7 +1021,7 @@ function ReportPage(/*{ type }*/) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 export default ReportPage;

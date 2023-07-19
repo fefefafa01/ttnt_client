@@ -10,13 +10,13 @@
 }
 
 .bttn:hover {
-    transform: skew(-35deg);
+    transform: skew(-45deg);
     min-height: 10px;
     width: 150px;
     text-align: center;
     font-size: 0.85em;
     font-weight: bold;
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(200, 228, 255);
 }
 
 .srbtngroup {
