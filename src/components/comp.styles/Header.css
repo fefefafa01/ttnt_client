@@ -16,7 +16,7 @@
     text-align: center;
     font-size: 0.85em;
     font-weight: bold;
-    background-color: rgb(200, 228, 255);
+    background-color: #acc0e2;
 }
 
 .srbtngroup {
@@ -116,7 +116,7 @@
 
 /*for header of report*/
 .rep-btn {
-    background-color: #acc0e2;
+    background-color: rgb(200, 228, 255);
 }
 
 .rbttn {

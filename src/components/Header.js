@@ -26,7 +26,7 @@ function AdminHeader(props) {
                     <p className="col-lg logotext">We Touch The Future</p>
                 </div>
                 <div className="lbtngroup col-lg-2 col-sm-4">
-                    <button className="bttn col" onClick={handlePSBtn}>
+                    <button className="bttn col-2 rep-btn" onClick={handlePSBtn}>
                         <span>
                             <Changer inp="Vehicle Part Search" />
                         </span>
