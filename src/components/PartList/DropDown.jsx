@@ -92,8 +92,8 @@ function DropDown (input) {
         console.log(transdata)
         if (type==="csv") {
             DownloadPListFile(transdata, "Parts_List_"+date, "Parts", "csv")
-        } else if (type==="xls") {
-            DownloadPListFile(transdata, "Parts_List_"+date, "Parts", "xls")
+        } else if (type==="xlsx") {
+            DownloadPListFile(transdata, "Parts_List_"+date, "Parts", "xlsx")
         }
     }
 
@@ -103,7 +103,7 @@ function DropDown (input) {
             <br />
             <button className="dropdldbtn" onClick={e=>handleDownload("csv")}>.csv</button>
             <br />
-            <button className="dropdldbtn" onClick={e=>handleDownload("xls")}>.xls</button>
+            <button className="dropdldbtn" onClick={e=>handleDownload("xlsx")}>.xls</button>
         </div>
     )
 }
