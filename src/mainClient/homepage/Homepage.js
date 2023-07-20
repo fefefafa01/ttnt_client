@@ -48,13 +48,17 @@ function Homepage() {
         setActiveKey(activeKey);
     };
 
-    const addGroup = (formValues) => {
+    const addGroup = (formValues, count) => {
         const newTabIndex = panes.length;
         const activeKey = `newTab${newTabIndex}`;
         console.log(formValues);
+        let text = "Result List";
+        if (count === 0) {
+            text = "Vehicel Model List";
+        }
         const newPane = {
-            title: "Result List",
-            content: <ResultList formValues={formValues} />,
+            title: text,
+            content: <ResultList formValues={formValues} count={count} />,
             key: activeKey,
         };
         setPanes([...panes, newPane]);

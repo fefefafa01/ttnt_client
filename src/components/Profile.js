@@ -18,6 +18,11 @@ function Profile() {
         setOpen(!open);
     };
 
+    const [profileOpen, setprofileOpen] = useState(false);
+    const handleProfileOpen = () => {
+        setprofileOpen(!profileOpen);
+    };
+
     const handleOpenProfile = () => {
         setOpenProfile(!openProfile);
         console.log(openProfile);
@@ -68,16 +73,44 @@ function Profile() {
             });
     }
 
+    const selectDropdownRef = useRef(null);
+
+    const toggleDropdown = () => {
+        if (selectDropdownRef.current) {
+            selectDropdownRef.current.classList.toggle("active");
+        }
+    };
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     return (
-        <div className="drop">
+        <div className="drop" ref={selectDropdownRef}>
             <button
                 className="dropbtn"
                 type="button"
                 aria-expanded="false"
                 data-bs-toggle="drop"
-                onClick={setOpenProfile}
             >
-                <img className="profile" src={profile} alt="Profile" />
+                <img
+                    className="profile"
+                    src={profile}
+                    alt="Profile"
+                    onClick={toggleDropdown}
+                />
             </button>
             <div className="dropdown-content">
                 <a href="#" onClick={handleOpen}>

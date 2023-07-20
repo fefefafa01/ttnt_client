@@ -8,6 +8,8 @@ import glass from "../img/Glass.png";
 import arrow from "../img/arrow.png";
 import { ResultList } from "./ResultList/ResultList";
 
+let reset = 0;
+
 const initialValues = {
     country_name: "",
     manufacturer_name: "",
@@ -152,7 +154,9 @@ function SelectSpeed() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -327,7 +331,9 @@ function SelectYear() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -517,7 +523,9 @@ function SelectCountries() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -710,7 +718,9 @@ function SelectCarMaker() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -902,7 +912,9 @@ function SelectModelName() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -1094,7 +1106,9 @@ function SelectModelCode() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -1286,7 +1300,9 @@ function SelectPosition() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -1478,7 +1494,9 @@ function SelectEngineCode() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -1670,7 +1688,9 @@ function SelectDisplacement() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -1862,7 +1882,9 @@ function SelectFuel() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -2054,7 +2076,9 @@ function SelectTransmission() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -2246,7 +2270,9 @@ function SelectDrivertrain() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -2438,7 +2464,9 @@ function SelectPartName() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -2612,6 +2640,7 @@ function SelectOE() {
         setSelectedValue(selectedValueOptions.join(", "));
         console.log(selectedValue);
     };
+
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
@@ -2629,7 +2658,9 @@ function SelectOE() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -2821,7 +2852,9 @@ function SelectAISIN() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -3012,7 +3045,9 @@ function SelectCompetitor() {
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content">
@@ -3058,13 +3093,9 @@ function SelectCompetitor() {
 }
 
 const SearchCriteria = (props) => {
-    const handleAdd = (formValues) => {
-        props.onAdd(formValues);
-    };
     const sidebarClass = props.isOpen ? "sidebar open" : "sidebar";
 
     const [openBasic, setOpenBasic] = useState(true);
-    const [db, setDb] = useState([]);
     const handleOpenBasic = () => {
         setOpenBasic(!openBasic);
         setOpenArrow1(!arrow1);
@@ -3091,6 +3122,15 @@ const SearchCriteria = (props) => {
     const [formValues, setFormvalues] = useState(initialValues);
     const handleSubmit = (e) => {
         e.preventDefault();
+        let count = 1;
+        if (
+            !initialValues.aisin_part_name &&
+            !initialValues.part_code &&
+            !initialValues.aisin_premium_code &&
+            !initialValues.competiter_part_code
+        )
+            count = 0;
+        console.log(count);
         fetch("http://localhost:5000/table/result", {
             method: "POST",
             credentials: "include",
@@ -3113,11 +3153,16 @@ const SearchCriteria = (props) => {
             })
             .then((data) => {
                 if (!data) return;
-                console.log(data.table);
-                props.onAdd(data.table);
-                setDb(data.table);
+                if (data.status === "There is no car matched your search") {
+                    props.onAdd(data.status, count);
+                    return;
+                } else {
+                    console.log(data.table);
+                    props.onAdd(data.table, count);
+                    console.log(formValues);
+                    return;
+                }
             });
-        console.log(db);
     };
 
     return (
@@ -3128,12 +3173,7 @@ const SearchCriteria = (props) => {
                     <img src={right} alt="Right" />
                 </button>
             </div>
-            <form
-                action="#"
-                onSubmit={handleSubmit}
-                className="searchScroll"
-                id="scroll-style"
-            >
+            <div className="searchScroll" id="scroll-style">
                 <div>
                     <div className="boxcontent">
                         <div className="searchBox">
@@ -3279,7 +3319,12 @@ const SearchCriteria = (props) => {
                         </div>
                     </div>
                     <div className="submitbtn">
-                        <button type="submit" value="Submit" id="Submit">
+                        <button
+                            type="submit"
+                            value="Submit"
+                            id="Submit"
+                            onClick={handleSubmit}
+                        >
                             Go
                         </button>
                         <button type="reset" value="Reset" id="Reset">
@@ -3295,7 +3340,7 @@ const SearchCriteria = (props) => {
                         </button>
                     )}
                 </div>
-            </form>
+            </div>
         </div>
     );
 };

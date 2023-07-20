@@ -33,6 +33,10 @@
     border-radius: 20px;
 }
 
+.drop.active .dropdown-content {
+    display: block;
+}
+
 .dropdown-content a {
     text-decoration: none;
     color: #86bac5;
@@ -57,20 +61,6 @@
     margin-top: -3px;
     margin-left: 5px;
     margin-bottom: 2px;
-}
-
-.dropdown-content a:hover {
-    background-color: white;
-    border-radius: inherit;
-}
-
-.dropdown-content span:hover {
-    background-color: white;
-    border-radius: inherit;
-}
-
-.drop:hover .dropdown-content {
-    display: block;
 }
 
 .myProfile {
