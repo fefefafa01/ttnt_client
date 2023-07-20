@@ -10,14 +10,19 @@ import { Route, Routes } from "react-router-dom";
 
 function MainPage() {
     const [langopen, setLangopen] = useState(false);
+    const [clicked, setClicked] = useState(false);
     const [gofirst, setGofirst] = useState(true);
     function handleOpenlang() {
-        if(gofirst && langopen) {
-            setGofirst(false);
-        } else if (!gofirst && langopen) {
-            setLangopen(false);
+        // if (!clicked) {
+            if(gofirst && langopen) {
+                setGofirst(false);
+            } else if (!gofirst && langopen) {
+                setLangopen(false);
+            }
+        // } else {
+            // setClicked(false)
         }
-    }
+    // }
     return (
         <div onClick={handleOpenlang}>
             <div className="header">
@@ -37,7 +42,10 @@ function MainPage() {
                     </p>
                 </div>
                 <div className="col-lg-2 col-sm-1 btn-lng">
-                    <Multi_Lang langopen={langopen} setLangopen={setLangopen}/>
+                    <Multi_Lang 
+                    langopen={langopen} setLangopen={setLangopen} 
+                    clicked = {clicked} setClicked = {setClicked}
+                    />
                 </div>
             </div>
             <div className="body">

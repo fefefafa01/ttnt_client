@@ -9,30 +9,32 @@ import { backlocale } from "constants/constindex";
 const Validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const regexpassupdown = /(?=.*?[A-Z])(?=.*?[a-z])/;
+    const regexpassnum = /(?=.*?[0-9])/;
+
     if (!values.email) {
-        errors.email = <Changer inp="Email is required" />;
+        errors.email = <Changer inp="Invalid email address" />;
     } else if (!regex.test(values.email)) {
         errors.email = <Changer inp="This is not a valid email format!" />;
     }
     if (!values.password) {
         errors.password = <Changer inp="Password is required" />;
-    } else if (values.password.length < 4) {
+    } else if (!regexpassupdown.test(values.password)) {
         errors.password = (
-            <Changer inp="Password must be more than 4 characters" />
+            <Changer inp="Passwords must contain both uppercase and lowercase characters" />
+        )
+    } else if (!regexpassnum.test(values.password)) {
+        errors.password = (
+            <Changer inp="Passwords must contain at least one number" />
+        );
+    } else if (values.password.length < 8) {
+        errors.password = (
+            <Changer inp="Password must be more than 8 characters" />
         );
     }
-    //   } else if (values.password.length > 10) {
-    //     errors.password = "Password cannot exceed more than 10 characters";
-    //   }
 
-    if (!values.confpassword) {
-        errors.confpassword = <Changer inp="Password is required" />;
-    } else if (values.confpassword.length < 4) {
-        errors.confpassword = (
-            <Changer inp="Password must be more than 4 characters" />
-        );
-    } else if (values.confpassword !== values.password) {
-        errors.confpassword = <Changer inp="Password must be the same" />;
+    if (values.confpassword !== values.password) {
+        errors.confpassword = <Changer inp="The confirm password is different from the password" />;
     }
     //   } else if (values.password.length > 10) {
     //     errors.password = "Password cannot exceed more than 10 characters";
@@ -51,7 +53,7 @@ function Register() {
     var loc;
     const { setUser } = useContext(AccountContext) || {};
     var { t } = useTranslation();
-    const [error, setError] = useState(null);
+    const [first, setFirst] = useState(true);
     const [password, setPassword] = useState("");
     const [confpassword, confsetPassword] = useState("");
     const [visible, setVisible] = useState(false);
@@ -65,6 +67,7 @@ function Register() {
         first_name: "",
         last_name: "",
     };
+
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -78,41 +81,42 @@ function Register() {
         e.preventDefault();
         setFormErrors(Validate(formValues));
         setIsSubmit(true);
-        console.log(formValues);
+
+        //Fetch
         loc = backlocale + "auth/reg";
         fetch(loc, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            },
-            body: JSON.stringify(formValues),
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods":
+                "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        },
+        body: JSON.stringify(formValues),
         })
-            .catch((err) => {
+        .catch((err) => {
+            return;
+        })
+        .then((res) => {
+            if (!res || !res.ok || res.status >= 400) {
                 return;
-            })
-            .then((res) => {
-                if (!res || !res.ok || res.status >= 400) {
-                    return;
-                }
-                return res.json();
-            })
-            .then((data) => {
-                if (!data) return;
+            }
+            return res.json();
+        })
+        .then((data) => {
+            if (!data) return;
                 setUser({ ...data });
-                if (data.status === "Email Taken") {
-                    setFormErrors({ email: t("Email Taken") });
-                } else if (data.status === "Registered") {
-                    setVad(!vad);
-                    NsetVad(!Nvad);
-                }
-            });
+            if (data.status === "Email Taken") {
+                setFormErrors({ email: t("Email address already exists") });
+            } else if (data.status === "Registered") {
+                setVad(!vad);
+                NsetVad(!Nvad);
+            }
+        });
     };
     useEffect(() => {
-        console.log(formErrors);
+        // console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             //console.log(formValues);
         }
@@ -179,7 +183,8 @@ function Register() {
                                 />
                                 <div
                                     className="p-2"
-                                    onClick={() => setVisible(!visible)}
+                                    onMouseDown={() => setVisible(true)}
+                                    onMouseUp={() => setVisible(false)}
                                 >
                                     {visible ? (
                                         <EyeOutlined className="eye" />
@@ -201,7 +206,8 @@ function Register() {
                                 />
                                 <div
                                     className="p-2"
-                                    onClick={() => confsetVisible(!confvisible)}
+                                    onMouseDown={() => confsetVisible(true)}
+                                    onMouseUp={() => confsetVisible(false)}
                                 >
                                     {confvisible ? (
                                         <EyeOutlined className="eye" />
