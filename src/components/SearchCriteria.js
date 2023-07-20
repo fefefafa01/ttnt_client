@@ -29,8 +29,7 @@ const initialValues = {
     year: "",
 };
 
-function SelectSpeed() {
-    const [selectedValue, setSelectedValue] = useState("");
+function SelectSpeed(input) {
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -60,7 +59,7 @@ function SelectSpeed() {
             const updatedSelectedOptions = [...options];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setSpd(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -77,7 +76,7 @@ function SelectSpeed() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setSpd(selectedValueOptions.join(", "));
             initialValues.speed = selectedValueOptions;
             console.log(initialValues.speed);
             return;
@@ -91,7 +90,7 @@ function SelectSpeed() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setSpd(selectedValueOptions.join(", "));
             initialValues.speed = selectedValueOptions;
             console.log(initialValues.speed);
             return;
@@ -116,7 +115,7 @@ function SelectSpeed() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
+        input.setSpd(selectedValueOptions.join(", "));
     };
 
     useEffect(() => {
@@ -142,13 +141,13 @@ function SelectSpeed() {
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.spd === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "5"}
+                    {input.spd || "5"}
                 </span>
                 <img
                     src={arrow}
@@ -183,7 +182,7 @@ function SelectSpeed() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.spd.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -199,8 +198,7 @@ function SelectSpeed() {
     );
 }
 
-function SelectYear() {
-    const [selectedValue, setSelectedValue] = useState("");
+function SelectYear(input) {
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -237,7 +235,7 @@ function SelectYear() {
             const updatedSelectedOptions = [...options];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setYear(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -254,7 +252,7 @@ function SelectYear() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setYear(selectedValueOptions.join(", "));
             initialValues.year = selectedValueOptions;
             console.log(initialValues.year);
             return;
@@ -268,7 +266,7 @@ function SelectYear() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setYear(selectedValueOptions.join(", "));
             initialValues.year = selectedValueOptions;
             console.log(initialValues.year);
             return;
@@ -293,7 +291,7 @@ function SelectYear() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
+        input.setYear(selectedValueOptions.join(", "));
     };
 
     useEffect(() => {
@@ -319,13 +317,13 @@ function SelectYear() {
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.year === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "2008"}
+                    {input.year || "2008"}
                 </span>
                 <img
                     src={arrow}
@@ -360,7 +358,7 @@ function SelectYear() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.year.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -376,9 +374,8 @@ function SelectYear() {
     );
 }
 
-function SelectCountries() {
+function SelectCountries(input) {
     const [countryNames, setCountryNames] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -447,7 +444,7 @@ function SelectCountries() {
             const updatedSelectedOptions = [...countryNames];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setCountry(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -464,7 +461,7 @@ function SelectCountries() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setCountry(selectedValueOptions.join(", "));
             initialValues.country_name = selectedValueOptions;
             console.log(initialValues.country_name);
             return;
@@ -478,7 +475,7 @@ function SelectCountries() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setCountry(selectedValueOptions.join(", "));
             initialValues.country_name = selectedValueOptions;
             console.log(initialValues.country_name);
             return;
@@ -503,21 +500,20 @@ function SelectCountries() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setCountry(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.country === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "Thailand"}
+                    {input.country || "Thailand"}
                 </span>
                 <img
                     src={arrow}
@@ -554,7 +550,7 @@ function SelectCountries() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.country.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -570,9 +566,8 @@ function SelectCountries() {
     );
 }
 
-function SelectCarMaker() {
+function SelectCarMaker(input) {
     const [manufacturer_name, setManufacturer] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -641,7 +636,7 @@ function SelectCarMaker() {
             const updatedSelectedOptions = [...manufacturer_name];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setMaker(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -658,7 +653,7 @@ function SelectCarMaker() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setMaker(selectedValueOptions.join(", "));
             initialValues.manufacturer_name = selectedValueOptions;
             console.log(initialValues.manufacturer_name);
             return;
@@ -672,7 +667,7 @@ function SelectCarMaker() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setMaker(selectedValueOptions.join(", "));
             initialValues.manufacturer_name = selectedValueOptions;
             console.log(initialValues.manufacturer_name);
             return;
@@ -697,8 +692,7 @@ function SelectCarMaker() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setMaker(selectedValueOptions.join(", "));
     };
 
     return (
@@ -706,13 +700,13 @@ function SelectCarMaker() {
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.maker === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "Toyota"}
+                    {input.maker || "Toyota"}
                 </span>
                 <img
                     src={arrow}
@@ -749,7 +743,7 @@ function SelectCarMaker() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.maker.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -765,9 +759,8 @@ function SelectCarMaker() {
     );
 }
 
-function SelectModelName() {
+function SelectModelName(input) {
     const [model_name, setModelName] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -836,7 +829,7 @@ function SelectModelName() {
             const updatedSelectedOptions = [...model_name];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setName(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -853,7 +846,7 @@ function SelectModelName() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setName(selectedValueOptions.join(", "));
             initialValues.car_model_name = selectedValueOptions;
             console.log(initialValues.car_model_name);
             return;
@@ -867,7 +860,7 @@ function SelectModelName() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setName(selectedValueOptions.join(", "));
             initialValues.car_model_name = selectedValueOptions;
             console.log(initialValues.car_model_name);
             return;
@@ -892,21 +885,20 @@ function SelectModelName() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setName(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.name === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "Hilux"}
+                    {input.name || "Hilux"}
                 </span>
                 <img
                     src={arrow}
@@ -943,7 +935,7 @@ function SelectModelName() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.name.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -959,9 +951,8 @@ function SelectModelName() {
     );
 }
 
-function SelectModelCode() {
+function SelectModelCode(input) {
     const [modelcode, setModelCode] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -1030,7 +1021,7 @@ function SelectModelCode() {
             const updatedSelectedOptions = [...modelcode];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setCode(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -1047,7 +1038,7 @@ function SelectModelCode() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setCode(selectedValueOptions.join(", "));
             initialValues.model_code = selectedValueOptions;
             console.log(initialValues.model_code);
             return;
@@ -1061,7 +1052,7 @@ function SelectModelCode() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setCode(selectedValueOptions.join(", "));
             initialValues.model_code = selectedValueOptions;
             console.log(initialValues.model_code);
             return;
@@ -1086,21 +1077,20 @@ function SelectModelCode() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setCode(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.code === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "KUN15"}
+                    {input.code || "KUN15"}
                 </span>
                 <img
                     src={arrow}
@@ -1137,7 +1127,7 @@ function SelectModelCode() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.code.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1153,9 +1143,8 @@ function SelectModelCode() {
     );
 }
 
-function SelectPosition() {
+function SelectPosition(input) {
     const [driversposition, setPosition] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -1224,7 +1213,7 @@ function SelectPosition() {
             const updatedSelectedOptions = [...driversposition];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setPosition(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -1241,7 +1230,7 @@ function SelectPosition() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setPosition(selectedValueOptions.join(", "));
             initialValues.drivers_position = selectedValueOptions;
             console.log(initialValues.drivers_position);
             return;
@@ -1255,7 +1244,7 @@ function SelectPosition() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setPosition(selectedValueOptions.join(", "));
             initialValues.drivers_position = selectedValueOptions;
             console.log(initialValues.drivers_position);
             return;
@@ -1280,21 +1269,20 @@ function SelectPosition() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setPosition(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.position === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "RHD"}
+                    {input.position || "RHD"}
                 </span>
                 <img
                     src={arrow}
@@ -1331,7 +1319,7 @@ function SelectPosition() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.position.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1347,9 +1335,8 @@ function SelectPosition() {
     );
 }
 
-function SelectEngineCode() {
+function SelectEngineCode(input) {
     const [enginemodel, setEngineCode] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -1418,7 +1405,7 @@ function SelectEngineCode() {
             const updatedSelectedOptions = [...enginemodel];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setEngine(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -1435,7 +1422,7 @@ function SelectEngineCode() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setEngine(selectedValueOptions.join(", "));
             initialValues.engine_model = selectedValueOptions;
             console.log(initialValues.engine_model);
             return;
@@ -1449,7 +1436,7 @@ function SelectEngineCode() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setEngine(selectedValueOptions.join(", "));
             initialValues.engine_model = selectedValueOptions;
             console.log(initialValues.engine_model);
             return;
@@ -1474,21 +1461,20 @@ function SelectEngineCode() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setEngine(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.engine === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "1GRFE"}
+                    {input.engine || "1GRFE"}
                 </span>
                 <img
                     src={arrow}
@@ -1525,7 +1511,7 @@ function SelectEngineCode() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.engine.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1541,9 +1527,8 @@ function SelectEngineCode() {
     );
 }
 
-function SelectDisplacement() {
+function SelectDisplacement(input) {
     const [displacementcode, setDisplacement] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -1612,7 +1597,7 @@ function SelectDisplacement() {
             const updatedSelectedOptions = [...displacementcode];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setDisplacement(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -1629,7 +1614,7 @@ function SelectDisplacement() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setDisplacement(selectedValueOptions.join(", "));
             initialValues.displacement_code = selectedValueOptions;
             console.log(initialValues.displacement_code);
             return;
@@ -1643,7 +1628,7 @@ function SelectDisplacement() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setDisplacement(selectedValueOptions.join(", "));
             initialValues.displacement_code = selectedValueOptions;
             console.log(initialValues.displacement_code);
             return;
@@ -1668,21 +1653,20 @@ function SelectDisplacement() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setDisplacement(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.displacement === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "4.0L"}
+                    {input.displacement || "4.0L"}
                 </span>
                 <img
                     src={arrow}
@@ -1719,7 +1703,7 @@ function SelectDisplacement() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.displacement.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1735,9 +1719,8 @@ function SelectDisplacement() {
     );
 }
 
-function SelectFuel() {
+function SelectFuel(input) {
     const [fueltype, setFuel] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -1806,7 +1789,7 @@ function SelectFuel() {
             const updatedSelectedOptions = [...fueltype];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setFuel(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -1823,7 +1806,7 @@ function SelectFuel() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setFuel(selectedValueOptions.join(", "));
             initialValues.fuel_type = selectedValueOptions;
             console.log(initialValues.fuel_type);
             return;
@@ -1837,7 +1820,7 @@ function SelectFuel() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setFuel(selectedValueOptions.join(", "));
             initialValues.fuel_type = selectedValueOptions;
             console.log(initialValues.fuel_type);
             return;
@@ -1862,21 +1845,20 @@ function SelectFuel() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setFuel(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.fuel === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "Gasoline"}
+                    {input.fuel || "Gasoline"}
                 </span>
                 <img
                     src={arrow}
@@ -1913,7 +1895,7 @@ function SelectFuel() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.fuel.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1929,9 +1911,8 @@ function SelectFuel() {
     );
 }
 
-function SelectTransmission() {
+function SelectTransmission(input) {
     const [transmissiontype, setTransmission] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -2000,7 +1981,7 @@ function SelectTransmission() {
             const updatedSelectedOptions = [...transmissiontype];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setTrans(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -2017,7 +1998,7 @@ function SelectTransmission() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setTrans(selectedValueOptions.join(", "));
             initialValues.transmission_type = selectedValueOptions;
             console.log(initialValues.transmission_type);
             return;
@@ -2031,7 +2012,7 @@ function SelectTransmission() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setTrans(selectedValueOptions.join(", "));
             initialValues.transmission_type = selectedValueOptions;
             console.log(initialValues.transmission_type);
             return;
@@ -2056,21 +2037,20 @@ function SelectTransmission() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setTrans(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.trans === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "MT"}
+                    {input.trans || "MT"}
                 </span>
                 <img
                     src={arrow}
@@ -2107,7 +2087,7 @@ function SelectTransmission() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.trans.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2123,9 +2103,8 @@ function SelectTransmission() {
     );
 }
 
-function SelectDrivertrain() {
+function SelectDrivertrain(input) {
     const [drivetrainNames, setDrivertrain] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -2194,7 +2173,7 @@ function SelectDrivertrain() {
             const updatedSelectedOptions = [...drivetrainNames];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setTrain(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -2211,7 +2190,7 @@ function SelectDrivertrain() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setTrain(selectedValueOptions.join(", "));
             initialValues.drivetrain = selectedValueOptions;
             console.log(initialValues.drivetrain);
             return;
@@ -2225,7 +2204,7 @@ function SelectDrivertrain() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setTrain(selectedValueOptions.join(", "));
             initialValues.drivetrain = selectedValueOptions;
             console.log(initialValues.drivetrain);
             return;
@@ -2250,21 +2229,20 @@ function SelectDrivertrain() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setTrain(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.train === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "RWD"}
+                    {input.train || "RWD"}
                 </span>
                 <img
                     src={arrow}
@@ -2301,7 +2279,7 @@ function SelectDrivertrain() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.train.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2317,9 +2295,8 @@ function SelectDrivertrain() {
     );
 }
 
-function SelectPartName() {
+function SelectPartName(input) {
     const [aisinpartname, setPartname] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -2388,7 +2365,7 @@ function SelectPartName() {
             const updatedSelectedOptions = [...aisinpartname];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setPart(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -2405,7 +2382,7 @@ function SelectPartName() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setPart(selectedValueOptions.join(", "));
             initialValues.aisin_part_name = selectedValueOptions;
             console.log(initialValues.aisin_part_name);
             return;
@@ -2419,7 +2396,7 @@ function SelectPartName() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setPart(selectedValueOptions.join(", "));
             initialValues.aisin_part_name = selectedValueOptions;
             console.log(initialValues.aisin_part_name);
             return;
@@ -2444,21 +2421,20 @@ function SelectPartName() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setPart(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.part === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "Clutch Cover"}
+                    {input.part || "Clutch Cover"}
                 </span>
                 <img
                     src={arrow}
@@ -2495,7 +2471,7 @@ function SelectPartName() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.part.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2511,9 +2487,8 @@ function SelectPartName() {
     );
 }
 
-function SelectOE() {
+function SelectOE(input) {
     const [partcode, setOE] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -2582,7 +2557,7 @@ function SelectOE() {
             const updatedSelectedOptions = [...partcode];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setOe(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -2598,7 +2573,7 @@ function SelectOE() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setOe(selectedValueOptions.join(", "));
             initialValues.part_code = selectedValueOptions;
             console.log(initialValues.part_code);
             return;
@@ -2612,7 +2587,7 @@ function SelectOE() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setOe(selectedValueOptions.join(", "));
             initialValues.part_code = selectedValueOptions;
             console.log(initialValues.part_code);
             return;
@@ -2637,8 +2612,7 @@ function SelectOE() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setOe(selectedValueOptions.join(", "));
     };
 
     return (
@@ -2646,13 +2620,13 @@ function SelectOE() {
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.oe === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "4882033010"}
+                    {input.oe || "4882033010"}
                 </span>
                 <img
                     src={arrow}
@@ -2689,7 +2663,7 @@ function SelectOE() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.oe.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2705,9 +2679,8 @@ function SelectOE() {
     );
 }
 
-function SelectAISIN() {
+function SelectAISIN(input) {
     const [aisinpremiumcode, setAISIN] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -2776,7 +2749,7 @@ function SelectAISIN() {
             const updatedSelectedOptions = [...aisinpremiumcode];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setAisin(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -2793,7 +2766,7 @@ function SelectAISIN() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setAisin(selectedValueOptions.join(", "));
             initialValues.aisin_premium_code = selectedValueOptions;
             console.log(initialValues.aisin_premium_code);
             return;
@@ -2807,7 +2780,7 @@ function SelectAISIN() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setAisin(selectedValueOptions.join(", "));
             initialValues.aisin_premium_code = selectedValueOptions;
             console.log(initialValues.aisin_premium_code);
             return;
@@ -2832,21 +2805,20 @@ function SelectAISIN() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setAisin(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.aisin === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "AAT001"}
+                    {input.aisin || "AAT001"}
                 </span>
                 <img
                     src={arrow}
@@ -2883,7 +2855,7 @@ function SelectAISIN() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.aisin.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2899,9 +2871,8 @@ function SelectAISIN() {
     );
 }
 
-function SelectCompetitor() {
+function SelectCompetitor(input) {
     const [competiterpartcode, setCompetitor] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -2970,7 +2941,7 @@ function SelectCompetitor() {
             const updatedSelectedOptions = [...competiterpartcode];
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setComp(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
@@ -2987,7 +2958,7 @@ function SelectCompetitor() {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setComp(selectedValueOptions.join(", "));
             initialValues.competiter_part_code = selectedValueOptions;
             console.log(initialValues.competiter_part_code);
             return;
@@ -3001,7 +2972,7 @@ function SelectCompetitor() {
             }
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setComp(selectedValueOptions.join(", "));
             initialValues.competiter_part_code = selectedValueOptions;
             console.log(initialValues.competiter_part_code);
             return;
@@ -3026,20 +2997,20 @@ function SelectCompetitor() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
+        input.setComp(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown" ref={selectDropdownRef}>
             <div className="select-btn" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.comp === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
                     }}
                 >
-                    {selectedValue || "123456789"}
+                    {input.comp || "123456789"}
                 </span>
                 <img
                     src={arrow}
@@ -3076,7 +3047,7 @@ function SelectCompetitor() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.comp.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -3164,6 +3135,28 @@ const SearchCriteria = (props) => {
                 }
             });
     };
+    const [spd, setSpd] = useState("");
+    const [year, setYear] = useState("");
+    const [country, setCountry] = useState("");
+    const [maker, setMaker] = useState("");
+    const [name, setName] = useState("");
+    const [code, setCode] = useState("");
+
+    const [position, setPosition] = useState("");
+    const [engine, setEngine] = useState("");
+    const [displacement, setDisplacement] = useState("");
+    const [fuel, setFuel] = useState("");
+    const [trans, setTrans] = useState("");
+
+    const [train, setTrain] = useState("");
+    const [part, setPart] = useState("");
+    const [oe, setOe] = useState("");
+    const [aisin, setAisin] = useState("");
+    const [comp, setComp] = useState("");
+
+    const handleReset = () => {
+        setComp("");
+    };
 
     return (
         <div className={sidebarClass}>
@@ -3179,7 +3172,10 @@ const SearchCriteria = (props) => {
                         <div className="searchBox">
                             <a> Sales Country </a>
                             <span>
-                                <SelectCountries />
+                                <SelectCountries
+                                    country={country}
+                                    setCountry={setCountry}
+                                />
                             </span>
                         </div>
                         <br></br>
@@ -3197,31 +3193,46 @@ const SearchCriteria = (props) => {
                                     <div className="searchBox">
                                         <a> Car Maker </a>
                                         <span>
-                                            <SelectCarMaker />{" "}
+                                            <SelectCarMaker
+                                                maker={maker}
+                                                setMaker={setMaker}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Model Name </a>
                                         <span>
-                                            <SelectModelName />
+                                            <SelectModelName
+                                                name={name}
+                                                setName={setName}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Model Code </a>
                                         <span>
-                                            <SelectModelCode />
+                                            <SelectModelCode
+                                                code={code}
+                                                setCode={setCode}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Year </a>
                                         <span>
-                                            <SelectYear />
+                                            <SelectYear
+                                                year={year}
+                                                setYear={setYear}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Driver's Position </a>
                                         <span>
-                                            <SelectPosition />
+                                            <SelectPosition
+                                                position={position}
+                                                setPosition={setPosition}
+                                            />
                                         </span>
                                     </div>
                                 </>
@@ -3242,37 +3253,57 @@ const SearchCriteria = (props) => {
                                     <div className="searchBox">
                                         <a> Engine Code </a>
                                         <span>
-                                            <SelectEngineCode />
+                                            <SelectEngineCode
+                                                engine={engine}
+                                                setEngine={setEngine}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Displacement </a>
                                         <span>
-                                            <SelectDisplacement />
+                                            <SelectDisplacement
+                                                displacement={displacement}
+                                                setDisplacement={
+                                                    setDisplacement
+                                                }
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Fuel Type </a>
                                         <span>
-                                            <SelectFuel />
+                                            <SelectFuel
+                                                fuel={fuel}
+                                                setFule={setFuel}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Transmission Type </a>
                                         <span>
-                                            <SelectTransmission />
+                                            <SelectTransmission
+                                                trans={trans}
+                                                setTrans={setTrans}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Speed </a>
                                         <span>
-                                            <SelectSpeed />
+                                            <SelectSpeed
+                                                spd={spd}
+                                                setPds={setSpd}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Drivetrain </a>
                                         <span>
-                                            <SelectDrivertrain />
+                                            <SelectDrivertrain
+                                                train={train}
+                                                setTrain={setTrain}
+                                            />
                                         </span>
                                     </div>
                                 </>
@@ -3293,25 +3324,34 @@ const SearchCriteria = (props) => {
                                     <div className="searchBox">
                                         <a> Part Name </a>
                                         <span>
-                                            <SelectPartName />
+                                            <SelectPartName
+                                                part={part}
+                                                setPart={setPart}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> OE number </a>
                                         <span>
-                                            <SelectOE />
+                                            <SelectOE oe={oe} setOe={setOe} />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> AISIN number </a>
                                         <span>
-                                            <SelectAISIN />
+                                            <SelectAISIN
+                                                aisin={aisin}
+                                                setAisin={setAisin}
+                                            />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> Competitor number </a>
                                         <span>
-                                            <SelectCompetitor />
+                                            <SelectCompetitor
+                                                comp={comp}
+                                                setComp={setComp}
+                                            />
                                         </span>
                                     </div>
                                 </>
@@ -3327,7 +3367,12 @@ const SearchCriteria = (props) => {
                         >
                             Go
                         </button>
-                        <button type="reset" value="Reset" id="Reset">
+                        <button
+                            type="reset"
+                            value="Reset"
+                            id="Reset"
+                            onClick={handleReset}
+                        >
                             Clear
                         </button>
                     </div>
