@@ -4,7 +4,7 @@ import "./partList.css";
 import Download from "../../img/download.png";
 import React, { useState} from "react";
 import { Specpdf } from "components/SpecPDF";
-import { Changer } from "components/LanguageChange";
+import { Changer } from "components/Languages/LanguageChange";
 import { backlocale } from "constants/constindex";
 
 function PartList({ carid, SubGroupName }) {
@@ -12,8 +12,6 @@ function PartList({ carid, SubGroupName }) {
     var loc;
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
-    const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
-    const [firstOpenComp, setFirstOpenComp] = useState(false);
 
     var [opening, setOpening] = useState(false);
     var [pcode, setPcode] = useState("");
@@ -135,7 +133,6 @@ function PartList({ carid, SubGroupName }) {
             .then((data) => {
                 if (!data) return;
                 setFirstOpenPreP(false);
-                setFirstOpenSPreP(true);
                 setPremiumData(data.partList);
             });
     }

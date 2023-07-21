@@ -1,6 +1,6 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { React, useState, useEffect, useContext } from "react";
-import { Changer } from "./LanguageChange";
+import { Changer } from "../Languages/LanguageChange";
 import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
@@ -53,7 +53,6 @@ function Register() {
     var loc;
     const { setUser } = useContext(AccountContext) || {};
     var { t } = useTranslation();
-    const [first, setFirst] = useState(true);
     const [password, setPassword] = useState("");
     const [confpassword, confsetPassword] = useState("");
     const [visible, setVisible] = useState(false);

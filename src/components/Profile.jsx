@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
 import "./comp.styles/profile.css";
-import { Changer } from "./LanguageChange";
+import { Changer } from "./Languages/LanguageChange";
 import { useTranslation } from "react-i18next";
 import { backlocale } from "constants/constindex";
 
@@ -27,7 +27,7 @@ function Profile() {
 
     const handleOpenProfile = () => {
         setOpenProfile(!openProfile);
-        console.log(openProfile);
+        setOpen(false);
     };
 
     const handleSignOut = () => {
@@ -107,6 +107,7 @@ function Profile() {
                 type="button"
                 aria-expanded="false"
                 data-bs-toggle="drop"
+                onClick={handleOpenProfile}
             >
                 <img
                     className="profile"
@@ -115,7 +116,8 @@ function Profile() {
                     onClick={toggleDropdown}
                 />
             </button>
-            <div className="dropdown-content">
+            {openProfile && 
+                <div className="dropdown-content">
                 <a href="#" onClick={handleOpen}>
                     <Changer inp="My Profile" />
                 </a>
@@ -131,6 +133,7 @@ function Profile() {
                     />
                 </a>
             </div>
+            }
             {open && (
                 <div className="dropdown-content profile">
                     <span>

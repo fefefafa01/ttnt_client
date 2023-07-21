@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./report.css";
 import { ReportHeader } from "components/Header";
-import { Changer } from "components/LanguageChange";
+import { Changer } from "components/Languages/LanguageChange";
 import { ProductOverview } from "../../components/product-report/ProductOverview";
 import { ProductPeriod } from "components/product-report/ProductPeriod";
 import "components/product-report/ProductPeriod";
@@ -10,9 +10,9 @@ import arrow from "../../img/arrow.png";
 import glass from "../../img/Glass.png";
 import { Tabs } from "antd";
 import $ from "jquery";
+import { backlocale } from "constants/constindex";
 
 const { TabPane } = Tabs;
-//Link with ReportHandler.js in ./server
 
 function SelectCountries() {
     const [countryNames, setCountryNames] = useState([]);
@@ -25,7 +25,8 @@ function SelectCountries() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/countries", {
+            let loc = backlocale + "sch/countries";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -192,7 +193,8 @@ function SelectCarMaker() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/maker", {
+            let loc = backlocale+"sch/maker";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -361,7 +363,8 @@ function SelectTransmission() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/transmission", {
+            let loc = backlocale+"sch/transmission";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -529,7 +532,8 @@ function SelectPartGroup() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/partgroup", {
+            let loc = backlocale + "sch/partgroup"
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -696,7 +700,8 @@ function SelectPartName() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/partname", {
+            let loc = backlocale + "sch/partname"
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -854,15 +859,6 @@ function SelectPartName() {
 }
 
 function ReportPage(/*{ type }*/) {
-    const [langopen, setLangopen] = useState(false);
-    const [gofirst, setGofirst] = useState(true);
-    function handleOpenlang() {
-        if (gofirst && langopen) {
-            setGofirst(false);
-        } else if (!gofirst && langopen) {
-            setLangopen(false);
-        }
-    }
     const [activeKey, setActiveKey] = useState("1");
     const panes = [
         {
@@ -931,8 +927,8 @@ function ReportPage(/*{ type }*/) {
         });
     });
     return (
-        <div onClick={handleOpenlang}>
-            <ReportHeader langopen={langopen} setLangopen={setLangopen} />
+        <div>
+            <ReportHeader />
             <div className="hbody">
                 <div className="wrappers-report">
                     <div className="report-content">

@@ -1,30 +1,16 @@
-import { Login } from "../../components/Login";
-import { Register } from "components/Register";
-import { ResetPwd } from "components/ResetPwd";
-import { Changer } from "../../components/LanguageChange.js";
-import { Multi_Lang } from "components/Multi_Lang";
+import { Login } from "../../components/Loginpages/Login";
+import { Register } from "components/Loginpages/Register";
+import { ResetPwd } from "components/Loginpages/ResetPwd";
+import { Changer } from "../../components/Languages/LanguageChange";
+import { Multi_Lang } from "components/Languages/Multi_Lang";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./MainPage.css";
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 function MainPage() {
-    const [langopen, setLangopen] = useState(false);
-    const [clicked, setClicked] = useState(false);
-    const [gofirst, setGofirst] = useState(true);
-    function handleOpenlang() {
-        // if (!clicked) {
-            if(gofirst && langopen) {
-                setGofirst(false);
-            } else if (!gofirst && langopen) {
-                setLangopen(false);
-            }
-        // } else {
-            // setClicked(false)
-        }
-    // }
     return (
-        <div onClick={handleOpenlang}>
+        <div>
             <div className="header">
                 <div className="col-2">
                     <link
@@ -42,10 +28,7 @@ function MainPage() {
                     </p>
                 </div>
                 <div className="col-lg-2 col-sm-1 btn-lng">
-                    <Multi_Lang 
-                    langopen={langopen} setLangopen={setLangopen} 
-                    clicked = {clicked} setClicked = {setClicked}
-                    />
+                    <Multi_Lang />
                 </div>
             </div>
             <div className="body">

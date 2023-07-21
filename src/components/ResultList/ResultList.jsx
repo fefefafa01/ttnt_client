@@ -1,7 +1,7 @@
 import "./ResultList.css";
 import React, { useState, useEffect } from "react";
 import $ from "jquery";
-import { Changer } from "components/LanguageChange";
+import { Changer } from "../Languages/LanguageChange";
 import ReactPaginate from "react-paginate";
 import vehiclePart from "./vehiclePart.png";
 import Download from "../../img/download.png";

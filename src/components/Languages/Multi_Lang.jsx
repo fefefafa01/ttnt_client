@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import Globe from "../img/globe.png";
+import Globe from "../../img/globe.png";
 import {
     FormControl,
     FormLabel,
@@ -10,41 +10,22 @@ import {
     Box,
     Typography,
 } from "@mui/material";
-import VI from "../../src/img/vietnamese.png";
-import EN from "../../src/img/english.png";
-import "./comp.styles/LangOption.css";
+import VI from "../../../src/img/vietnamese.png";
+import EN from "../../../src/img/english.png";
+import ".././comp.styles/LangOption.css";
 import { changeLanguage } from "i18next";
 import { useTranslation } from "react-i18next";
 
-function Multi_Lang(props) {
-    // const handleClicked = () => {
-    //     props.setClicked(true)
-    // }
-
-    const handleOpen = () => {
-        // if (!props.clicked) {
-            props.setLangopen(!props.langopen)
-        // }
-    };
-    //let loc = window.location.pathname;
-    // const check = Changer({inp:'Login'});
-    // console.log(check);
+function Multi_Lang() {
     var [lang, setLang] = useState(localStorage.lng);
-    // if (check==='Login') {
-    //     lang = 'EN';
-    // } else {
-    //     lang = 'VI';
-    // }
     const { t } = useTranslation();
     const handleLang = (lng) => {
         if (lng === "en") {
             setLang("EN");
             changeLanguage("en");
             localStorage.lng = "EN";
-            //window.location.replace(loc + "?lng=en");
         } else {
             setLang("VI");
-            //window.location.replace(loc + "?lng=vi");
             changeLanguage("vi");
             console.log(t("Login"));
             localStorage.lng = "VI";
@@ -175,25 +156,14 @@ function Multi_Lang(props) {
 }
 
 function Multi_Lang_Home() {
-    //let loc = window.location.pathname;
-    // const check = Changer({inp:'Login'});
-    // console.log(check);
     var [lang, setLang] = useState(localStorage.lng);
-    // if (check==='Login') {
-    //     lang = 'EN';
-    // } else {
-    //     lang = 'VI';
-    // }
-    const { t } = useTranslation();
     const handleLang = (lng) => {
         if (lng === "en") {
             setLang("EN");
             changeLanguage("en");
             localStorage.lng = "EN";
-            //window.location.replace(loc + "?lng=en");
         } else {
             setLang("VI");
-            //window.location.replace(loc + "?lng=vi");
             changeLanguage("vi");
             localStorage.lng = "VI";
         }

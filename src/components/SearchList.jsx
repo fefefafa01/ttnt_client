@@ -1,4 +1,3 @@
-//Link with SearchingHandler.js in ./server
 import { PartList } from "./PartList/PartList";
 import { DownloadFile } from "./DownloadFile";
 import { PartGroup } from "./PartGroup";
