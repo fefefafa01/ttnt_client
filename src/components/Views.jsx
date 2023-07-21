@@ -6,7 +6,7 @@ import { Specpdf } from "./SpecPDF";
 
 const Views = () => {
     const loggedIn = localStorage.getItem("isLoggedIn");
-    console.log(loggedIn, "login");
+    // console.log(loggedIn, "login");
 
     return (
         <div>

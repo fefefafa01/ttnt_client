@@ -17,7 +17,6 @@ const validate = (values) => {
 
 function Login() {
     const loc = backlocale+"auth/login";
-    console.log(loc)
     const { setUser } = useContext(AccountContext) || {};
     const [password, setPassword] = useState("");
     const [visible, setVisible] = useState(false);
@@ -117,7 +116,7 @@ function Login() {
     };
 
     useEffect(() => {
-        console.log(formErrors);
+        // console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             setError(null);
             //console.log(formValues);

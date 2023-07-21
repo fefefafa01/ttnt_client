@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./Homepage.css";
+import "./Homepage.scss";
 import { Tabs } from "antd";
 import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
-import "../../components/comp.styles/SearchList.css";
+import "../../components/comp.styles/SearchList.scss";
 import { ResultList } from "components/ResultList/ResultList";
 import { PartSubgroup } from "components/PartGroup";
 const { TabPane } = Tabs;

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./comp.styles/SearchCriteria.css";
+import "./comp.styles/SearchCriteria.scss";
 import right from "../img/Right.png";
 import left from "../img/Left.png";
 import down from "../img/Down.png";

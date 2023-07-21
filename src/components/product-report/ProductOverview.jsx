@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../Epic1Filter";
-import "./productOverview.css";
+import "./productOverview.scss";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import { fontWeight } from "@mui/system";
 

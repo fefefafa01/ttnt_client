@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./report.css";
+import "./report.scss";
 import { ReportHeader } from "components/Header";
 import { Changer } from "components/Languages/LanguageChange";
 import { ProductOverview } from "../../components/product-report/ProductOverview";

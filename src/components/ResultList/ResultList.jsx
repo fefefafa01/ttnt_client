@@ -1,4 +1,4 @@
-import "./ResultList.css";
+import "./ResultList.scss";
 import React from "react";
 import $ from "jquery";
 import { Changer } from "components/Languages/LanguageChange";

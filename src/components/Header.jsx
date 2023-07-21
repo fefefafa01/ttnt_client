@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Changer } from "./Languages/LanguageChange";
 import { Multi_Lang_Home } from "./Languages/Multi_Lang";
 import Profile from "./Profile";
-import "./comp.styles/Header.css";
+import "./comp.styles/Header.scss";
 
 //Link with UserHandler.js in ./server for Profile
 

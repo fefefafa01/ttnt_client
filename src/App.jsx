@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./i18n";
-import "./App.css";
+import "./App.scss";
 import { Views } from "components/Views";
 import { changeLanguage } from "i18next";
 
