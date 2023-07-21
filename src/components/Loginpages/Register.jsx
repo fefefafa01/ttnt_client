@@ -36,9 +36,6 @@ const Validate = (values) => {
     if (values.confpassword !== values.password) {
         errors.confpassword = <Changer inp="The confirm password is different from the password" />;
     }
-    //   } else if (values.password.length > 10) {
-    //     errors.password = "Password cannot exceed more than 10 characters";
-    //   }
 
     if (!values.last_name) {
         errors.last_name = <Changer inp="Last Name is required" />;
@@ -58,7 +55,6 @@ function Register() {
     const [visible, setVisible] = useState(false);
     const [confvisible, confsetVisible] = useState(false);
     const [vad, setVad] = useState(true);
-    const [Nvad, NsetVad] = useState(false);
     const initialValues = {
         email: "",
         password: "",
@@ -110,7 +106,6 @@ function Register() {
                 setFormErrors({ email: t("Email address already exists") });
             } else if (data.status === "Registered") {
                 setVad(!vad);
-                NsetVad(!Nvad);
             }
         });
     };
