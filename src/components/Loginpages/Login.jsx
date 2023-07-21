@@ -9,22 +9,9 @@ import { backlocale } from "constants/constindex";
 const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.email) {
-        errors.email = <Changer inp="Email is required" />;
-    } else if (!regex.test(values.email)) {
-        errors.email = <Changer inp="This is not a valid email format!" />;
-    }
-
-    if (!values.password) {
-        errors.password = <Changer inp="Password is required" />;
-    } else if (values.password.length < 4) {
-        errors.password = (
-            <Changer inp="Password must be more than 4 characters" />
-        );
-    }
-    //   } else if (values.password.length > 10) {
-    //     errors.password = "Password cannot exceed more than 10 characters";
-    //   }
+    if (!values.email || !regex.test(values.email)) {
+        errors.email = <Changer inp="Invalid email address" />;
+    } 
     return errors;
 };
 
@@ -72,8 +59,6 @@ function Login() {
         setIsSubmit(true);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             setError(null);
-        } else {
-            setError("incorrect email or password");
         }
         fetch(loc, {
             method: "POST",
@@ -99,19 +84,8 @@ function Login() {
                 if (!data) return;
                 localStorage.setItem("isLoggedIn", false);
                 setUser({ ...data });
-                if (data.status === "Wrong Password") {
-                    setFormErrors({ password: t("Wrong Password") });
-                    setError("Incorrect email or password");
-                    console.log(error);
-                } else if (data.status === "Wrong Email") {
-                    setFormErrors({ email: t("Wrong Email") });
-                    setError("Incorrect email or password");
-                    console.log(error);
-                    //} else if (data.loggedIn && data.status === 'Admin User) {
-                    //    window.location.assign('/homepage/a)
-                    //} else if (data.loggedIn && data.status === 'Viewer User) {
-                    //    window.location.assign('/homepage/u)
-                    //}
+                if (data.status === "Wrong Email" || data.status === "Wrong Password") {
+                    setError("Invalid email or password");
                 } else if (data.loggedIn) {
                     localStorage.isLoggedIn = true;
                     window.location.assign("/homepage");
@@ -154,7 +128,7 @@ function Login() {
         <div className="col-xs-9 col-md-7 col-lg-3 wrapper">
             <div className="form-box login">
                 <h2>
-                    <Changer inp="Login" />
+                    <Changer inp="User Login" />
                 </h2>
                 <form action="#" onSubmit={handleSubmit}>
                     <div className="input-box">
@@ -179,7 +153,8 @@ function Login() {
                         />
                         <div
                             className="p-2"
-                            onClick={() => setVisible(!visible)}
+                            onMouseDown={() => setVisible(true)}
+                            onMouseUp={() => setVisible(false)}
                         >
                             {visible ? (
                                 <EyeOutlined className="eye" />

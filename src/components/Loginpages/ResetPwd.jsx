@@ -12,11 +12,9 @@ const validate = (values) => {
     const regexpassupdown = /(?=.*?[A-Z])(?=.*?[a-z])/;
     const regexpassnum = /(?=.*?[0-9])/;
 
-    if (!values.email) {
+    if (!values.email || !regex.test(values.email)) {
         errors.email = <Changer inp="Invalid email address" />;
-    } else if (!regex.test(values.email)) {
-        errors.email = <Changer inp="This is not a valid email format!" />;
-    }
+    } 
     if (!values.password) {
         errors.password = <Changer inp="Password is required" />;
     } else if (!regexpassupdown.test(values.password)) {
@@ -135,7 +133,11 @@ function ResetPwd() {
                             placeholder={t("Password")}
                             onChange={handleChange}
                             />
-                            <div className="p-2" onClick={() => setVisible(!visible)}>
+                            <div
+                                className="p-2"
+                                onMouseDown={() => setVisible(true)}
+                                onMouseUp={() => setVisible(false)}
+                            >
                                 {visible ? (
                                     <EyeOutlined className="eye" />
                                     ) : (
@@ -155,7 +157,11 @@ function ResetPwd() {
                             placeholder={t("Confirm New Password")}
                             onChange={handleChange}
                             />
-                            <div className="p-2" onClick={() => confsetVisible(!confvisible)}>
+                            <div
+                                className="p-2"
+                                onMouseDown={() => confsetVisible(true)}
+                                onMouseUp={() => confsetVisible(false)}
+                            >
                                 {confvisible ? (
                                     <EyeOutlined className="eye" />
                                     ) : (

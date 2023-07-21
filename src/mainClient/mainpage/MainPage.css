@@ -249,6 +249,10 @@ p.register-link {
     cursor: pointer;
 }
 
+.register-link a {
+    text-decoration-line: none;
+}
+
 .back_login {
     text-decoration: none;
     color: white;

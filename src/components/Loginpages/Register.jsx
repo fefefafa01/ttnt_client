@@ -12,11 +12,9 @@ const Validate = (values) => {
     const regexpassupdown = /(?=.*?[A-Z])(?=.*?[a-z])/;
     const regexpassnum = /(?=.*?[0-9])/;
 
-    if (!values.email) {
+    if (!values.email || !regex.test(values.email)) {
         errors.email = <Changer inp="Invalid email address" />;
-    } else if (!regex.test(values.email)) {
-        errors.email = <Changer inp="This is not a valid email format!" />;
-    }
+    } 
     if (!values.password) {
         errors.password = <Changer inp="Password is required" />;
     } else if (!regexpassupdown.test(values.password)) {
