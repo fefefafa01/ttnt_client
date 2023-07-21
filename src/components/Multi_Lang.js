@@ -12,14 +12,20 @@ import {
 } from "@mui/material";
 import VI from "../../src/img/vietnamese.png";
 import EN from "../../src/img/english.png";
-import { Changer } from "./LanguageChange";
 import "./comp.styles/LangOption.css";
 import { changeLanguage } from "i18next";
 import { useTranslation } from "react-i18next";
 
-import VI_TRANSLATE from "./translation/vi/default.json";
+function Multi_Lang(props) {
+    // const handleClicked = () => {
+    //     props.setClicked(true)
+    // }
 
-function Multi_Lang() {
+    const handleOpen = () => {
+        // if (!props.clicked) {
+            props.setLangopen(!props.langopen)
+        // }
+    };
     //let loc = window.location.pathname;
     // const check = Changer({inp:'Login'});
     // console.log(check);
@@ -189,7 +195,6 @@ function Multi_Lang_Home() {
             setLang("VI");
             //window.location.replace(loc + "?lng=vi");
             changeLanguage("vi");
-            console.log(t("Login"));
             localStorage.lng = "VI";
         }
     };

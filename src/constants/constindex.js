@@ -1,6 +1,6 @@
-import enJsonFile from '../components/translation/en/default.json'
-import vnJsonFile from '../components/translation/vi/default.json'
+import enJsonFile from '../components/translation/en.json'
+import vnJsonFile from '../components/translation/vi.json'
 
 export const EN_TRANSLATE = enJsonFile;
 export const VI_TRANSLATE = vnJsonFile;
-export const backlocale = 'https://localhost:5000/';
+export const backlocale = 'http://localhost:5000/';

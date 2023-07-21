@@ -1,12 +1,14 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
 import "./comp.styles/profile.css";
 import { Changer } from "./LanguageChange";
 import { useTranslation } from "react-i18next";
+import { backlocale } from "constants/constindex";
 
 function Profile() {
+    var loc;
     const [open, setOpen] = useState(false);
     const [openProfile, setOpenProfile] = useState(false);
     const [logOut, setLogOut] = useState(false);
@@ -45,7 +47,8 @@ function Profile() {
     };
 
     if (open && localStorage.email !== "") {
-        fetch("http://localhost:5000/prof/info", {
+        loc = backlocale + "prof/info";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {

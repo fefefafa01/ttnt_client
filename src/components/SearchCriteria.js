@@ -6,6 +6,7 @@ import down from "../img/Down.png";
 import up from "../img/Up.png";
 import glass from "../img/Glass.png";
 import arrow from "../img/arrow.png";
+import { backlocale } from "constants/constindex";
 import { ResultList } from "./ResultList/ResultList";
 
 let reset = 0;
@@ -29,7 +30,10 @@ const initialValues = {
     year: "",
 };
 
+var loc;
+
 function SelectSpeed(input) {
+    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -384,7 +388,8 @@ function SelectCountries(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/countries", {
+            loc = backlocale + "sch/countries";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -576,7 +581,8 @@ function SelectCarMaker(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/maker", {
+            loc = backlocale + "sch/maker";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -769,7 +775,8 @@ function SelectModelName(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/modelcar", {
+            loc = backlocale + "sch/modelcar";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -961,7 +968,8 @@ function SelectModelCode(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/modelcode", {
+            loc = backlocale + "sch/modelcode";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -1153,7 +1161,8 @@ function SelectPosition(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/position", {
+            loc = backlocale + "sch/position";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -1345,7 +1354,8 @@ function SelectEngineCode(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/enginecode", {
+            loc = backlocale + "sch/enginecode";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -1537,7 +1547,8 @@ function SelectDisplacement(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/displacement", {
+            loc = backlocale + "sch/displacement";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -1729,7 +1740,8 @@ function SelectFuel(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/fuel", {
+            loc = backlocale + "sch/fuel";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -1921,7 +1933,8 @@ function SelectTransmission(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/transmission", {
+            loc = backlocale + "sch/transmission";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -2113,7 +2126,8 @@ function SelectDrivertrain(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/drivetrain", {
+            loc = backlocale + "sch/drivetrain"
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -2305,7 +2319,8 @@ function SelectPartName(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/partname", {
+            loc = backlocale + "sch/partname";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -2497,7 +2512,8 @@ function SelectOE(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/oe", {
+            loc = backlocale + "sch/oe"
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -2689,7 +2705,8 @@ function SelectAISIN(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/aisin", {
+            loc = backlocale + "sch/aisin";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -2881,7 +2898,8 @@ function SelectCompetitor(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            fetch("http://localhost:5000/sch/competitor", {
+            loc = backlocale + "sch/competitor";
+            fetch(loc, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -3102,7 +3120,8 @@ const SearchCriteria = (props) => {
         )
             count = 0;
         console.log(count);
-        fetch("http://localhost:5000/table/result", {
+        let loc = backlocale + "table/result";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {

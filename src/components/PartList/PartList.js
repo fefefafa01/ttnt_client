@@ -1,14 +1,15 @@
-//Link with SearchingHandler.js in ./server
 import { PartsDetail } from "../PartDetail";
 import { DropDown } from "./DropDown";
 import "./partList.css";
 import Download from "../../img/download.png";
-import React, { useState, Fragment } from "react";
+import React, { useState} from "react";
 import { Specpdf } from "components/SpecPDF";
 import { Changer } from "components/LanguageChange";
+import { backlocale } from "constants/constindex";
 
 function PartList({ carid, SubGroupName }) {
     //Variables
+    var loc;
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
     const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
@@ -51,7 +52,8 @@ function PartList({ carid, SubGroupName }) {
     //Backend Call
     //Querying Model Name
     if (firstOpenModel) {
-        fetch("http://localhost:5000/exp/model", {
+        loc = backlocale + "exp/model";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -109,7 +111,8 @@ function PartList({ carid, SubGroupName }) {
     //     dt
     // );
     if (firstOpenPreP) {
-        fetch("http://localhost:5000/exp/partList", {
+        loc = backlocale + "exp/partList";
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Changer } from "./LanguageChange";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
+import { backlocale } from "constants/constindex";
 
 const validate = (values) => {
     const errors = {};
@@ -28,6 +29,8 @@ const validate = (values) => {
 };
 
 function Login() {
+    const loc = backlocale+"auth/login";
+    console.log(loc)
     const { setUser } = useContext(AccountContext) || {};
     const [password, setPassword] = useState("");
     const [visible, setVisible] = useState(false);
@@ -49,8 +52,8 @@ function Login() {
             });
         } else if (!localStorage.checkbox) {
             setIsChecked(false);
-            localStorage.delete("checkEmail");
-            localStorage.delete("checkPassword");
+            localStorage.removeItem("checkEmail");
+            localStorage.removeItem("checkPassword");
         }
         console.log(isChecked);
     }, []);
@@ -72,7 +75,7 @@ function Login() {
         } else {
             setError("incorrect email or password");
         }
-        fetch("http://localhost:5000/auth/login", {
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {

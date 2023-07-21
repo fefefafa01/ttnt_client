@@ -77,7 +77,7 @@ p.label {
 
 .input-box {
     position: relative;
-    width: 80%;
+    width: 292px;
     height: 50px;
     border-bottom: 2px solid #172685;
     display: flex;
@@ -134,6 +134,7 @@ input.name-box::placeholder {
 
 .full-name {
     display: block;
+    position: relative;
 }
 
 .name {
@@ -141,11 +142,12 @@ input.name-box::placeholder {
 }
 
 input.name-left {
-    width: 70%;
+    width: 130px;
+    margin-left: 5px;
 }
 
 input.name-right {
-    width: 70%;
+    width: 130px;
     margin-left: -40px;
 }
 

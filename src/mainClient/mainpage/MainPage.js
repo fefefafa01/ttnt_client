@@ -5,12 +5,26 @@ import { Changer } from "../../components/LanguageChange.js";
 import { Multi_Lang } from "components/Multi_Lang";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./MainPage.css";
-import { React } from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 function MainPage() {
+    const [langopen, setLangopen] = useState(false);
+    const [clicked, setClicked] = useState(false);
+    const [gofirst, setGofirst] = useState(true);
+    function handleOpenlang() {
+        // if (!clicked) {
+            if(gofirst && langopen) {
+                setGofirst(false);
+            } else if (!gofirst && langopen) {
+                setLangopen(false);
+            }
+        // } else {
+            // setClicked(false)
+        }
+    // }
     return (
-        <>
+        <div onClick={handleOpenlang}>
             <div className="header">
                 <div className="col-2">
                     <link
@@ -28,7 +42,10 @@ function MainPage() {
                     </p>
                 </div>
                 <div className="col-lg-2 col-sm-1 btn-lng">
-                    <Multi_Lang />
+                    <Multi_Lang 
+                    langopen={langopen} setLangopen={setLangopen} 
+                    clicked = {clicked} setClicked = {setClicked}
+                    />
                 </div>
             </div>
             <div className="body">
@@ -50,7 +67,7 @@ function MainPage() {
                     <div className="col body-img" />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

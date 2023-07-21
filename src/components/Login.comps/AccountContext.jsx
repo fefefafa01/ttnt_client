@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { backlocale } from "constants/constindex";
 
 const { createContext, useState, useEffect } = require("react");
+var loc;
 
 export const AccountContext = createContext({
     user:null,
@@ -10,7 +12,8 @@ export const AccountContext = createContext({
 const UserContext = ({ children }) => {
     const [user, setUser] = useState({ loggedIn: null });
     useEffect(() => {
-        fetch("http://localhost:5000/auth/login", {
+        loc = backlocale + "auth/login";
+        fetch(loc, {
             credentials: "include",
         })
         .catch(err => {
