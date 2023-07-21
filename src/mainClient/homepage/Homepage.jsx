@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Homepage.css";
-import { Tabs, Button } from "antd";
+import { Tabs } from "antd";
 import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
-import { SearchResult } from "components/SearchList";
+import "../../components/comp.styles/SearchList.css";
 import { ResultList } from "components/ResultList/ResultList";
 import { PartSubgroup } from "components/PartGroup";
 const { TabPane } = Tabs;
@@ -68,20 +68,10 @@ function Homepage() {
         setPanes(newPanes);
         setActiveKey(newActiveKey);
     };
-    const [langopen, setLangopen] = useState(false);
-    const [gofirst, setGofirst] = useState(true);
-    function handleOpenlang() {
-        if(gofirst && langopen) {
-            setGofirst(false);
-            setLangopen(false)
-        } else if (!gofirst && langopen) {
-            setLangopen(false);
-        }
-    }
 
     return (
-        <div onClick = {handleOpenlang}>
-            <AdminHeader langopen={langopen} setLangopen={setLangopen} />
+        <div>
+            <AdminHeader />
             <div className="hbody">
                 <SearchCriteria
                     isOpen={sidebarOpen}

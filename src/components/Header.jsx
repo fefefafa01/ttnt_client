@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { Changer } from "./LanguageChange";
-import { Multi_Lang_Home } from "./Multi_Lang";
+import { Changer } from "./Languages/LanguageChange";
+import { Multi_Lang_Home } from "./Languages/Multi_Lang";
 import Profile from "./Profile";
 import "./comp.styles/Header.css";
 
 //Link with UserHandler.js in ./server for Profile
 
-function AdminHeader(props) {
+function AdminHeader() {
     const handlePSBtn = (e) => {
         e.preventDefault();
         window.location.assign("/homepage");
@@ -65,7 +65,7 @@ function AdminHeader(props) {
                     </button>
                 </div>
                 <div className="col-lg-1 col-sm-1 btn-profile">
-                    <Multi_Lang_Home proper={props} />
+                    <Multi_Lang_Home />
                     <Profile />
                 </div>
             </div>
@@ -125,7 +125,7 @@ function StaffHeader() {
     );
 }
 
-function ReportHeader(props) {
+function ReportHeader() {
     const handlePSBtn = (e) => {
         e.preventDefault();
         window.location.assign("/homepage");
@@ -179,7 +179,7 @@ function ReportHeader(props) {
                     </button>
                 </div>
                 <div className="col-lg-1 col-sm-1 btn-profile">
-                    <Multi_Lang_Home proper={props} />
+                    <Multi_Lang_Home />
                     <Profile />
                 </div>
             </div>

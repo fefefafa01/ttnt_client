@@ -39,7 +39,7 @@
     1. Open constindex.js in folder /bin/constants to change where the client is put and server's port.
     2. Open .env in server folder to configure database host and user.
     3. In server folder, open CMD/Terminal and type: `"npm install"` or `"yarn install"` to install dependencies.
-    4. In server folder, open CMD/Terminal and type: `"node ./app.js"` or `"yarn start"` to start the server.
+    4. In server folder, open CMD/Terminal and type: `"npm start"` or `"yarn start"` to start the server.
         __Note:__ Server's default port is 5000. In case of changing port: Inside server folder, open package.json, at line `"start": "node ./app.js"` add `"set PORT=[port] && "` before the "node". After that, access client/src/constants and open constindex.js then update the server's link to fit your port changes. 
 
 **Client (Located in /client folder):**

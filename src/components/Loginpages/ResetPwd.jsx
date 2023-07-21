@@ -1,6 +1,6 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { React, useState, useEffect, useContext } from "react";
-import { Changer } from "./LanguageChange";
+import { Changer } from "../Languages/LanguageChange";
 import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
@@ -33,7 +33,6 @@ function ResetPwd() {
     const [confpassword, confsetPassword] = useState("");
     const [visible, setVisible] = useState(false);
     const [confvisible, confsetVisible] = useState(false);
-    const [error, setError] = useState(null);
     const { setUser } = useContext(AccountContext) || {};
     const [hide, sethide] = useState(true);
     const { t } = useTranslation();

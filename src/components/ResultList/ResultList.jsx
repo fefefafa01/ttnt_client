@@ -1,7 +1,7 @@
 import "./ResultList.css";
 import React from "react";
 import $ from "jquery";
-import { Changer } from "components/LanguageChange";
+import { Changer } from "components/Languages/LanguageChange";
 
 function ResultList() {
     //Synchronizing Scroll:
