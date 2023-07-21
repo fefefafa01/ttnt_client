@@ -1,0 +1,186 @@
+.specpop {
+	position: absolute;
+	height: 70%;
+	width: 35em;
+	background-color: rgba(229, 229, 229, 255);
+	border: 2px solid black;
+	margin-left: 5vh;
+	backdrop-filter: blur(20px);
+	display: block;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	padding-bottom: 20px;
+}
+.pdfpop {
+	height: 90%;
+}
+.specheader {
+	background-color: rgba(204, 204, 204, 255);
+	height: 40px;
+	align-items: center;
+	border-bottom: 2px solid black;
+}
+.specmodel {
+	font-size: 0.65em;
+	font-weight: bold;
+	float: left;
+	padding-left: 20px;
+	margin-top: 10px;
+}
+.closingicon {
+	float: right;
+	background-color: transparent;
+	border: none;
+	font-weight: bold;
+}
+.specbody {
+	height: 95%;
+	margin-top: 5px;
+	margin-left: 30px;
+	margin-right: 10px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	&::-webkit-scrollbar {
+		width: 13px;
+	}
+	&::-webkit-scrollbar-track {
+		margin-top: 10px;
+		margin-bottom: 30px;
+		background-color: white;
+		border-radius: 5px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: rgba(172, 192, 226, 255);
+		border-radius: 5px;
+		background-clip: content-box;
+		height: 20px;
+	}
+}
+.sbcontent {
+	margin-right: 20px;
+}
+.scrollpdf {
+	overflow-x: scroll;
+	margin-bottom: 10px;
+	margin-top: -17px;
+	&::-webkit-scrollbar {
+		height: 13px;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: white;
+		border-radius: 5px;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: rgba(172, 192, 226, 255);
+		border-radius: 5px;
+		background-clip: content-box;
+		height: 20px;
+	}
+}
+.spec_tbl {
+	overflow-x: scroll;
+	margin-bottom: 10px;
+	&::-webkit-scrollbar {
+		height: 13px;
+	}
+}
+.atablea {
+	width: 140%;
+}
+.emptyscrollpdf {
+	width: 140%;
+}
+.partimg {
+	width: 100%;
+	height: 35%;
+	border: 2px solid black;
+}
+.pdfpartimg {
+	width: 100%;
+	height: 35%;
+}
+.speclabel {
+	background-color: white;
+	margin-top: 3px;
+	border: solid 2px black;
+	font-size: 1.15em;
+	text-align: left;
+	padding-left: 7px;
+	width: 100%;
+	font-weight: bold;
+}
+.labelOE {
+	font-size: 1.3em;
+}
+.specpart-table {
+	td {
+		border: 2px solid white;
+		border-collapse: collapse;
+		font-size: 0.85em;
+		height: 50px;
+	}
+	th {
+		border: 2px solid white;
+		border-collapse: collapse;
+		font-size: 0.85em;
+	}
+	tr {
+		&:nth-child(even) {
+			background-color: rgba(203, 203, 203, 255);
+		}
+		&:nth-child(odd) {
+			background-color: rgba(231, 231, 231, 255);
+		}
+	}
+	height: fit-content;
+}
+.spectitle {
+	color: white;
+	background-color: rgba(0, 26, 113, 255);
+	font-weight: bold;
+}
+.infoHeader {
+	color: white;
+	background-color: rgba(0, 26, 113, 255);
+	font-weight: bold;
+	width: 30px;
+}
+.subspectitle {
+	color: white;
+	background-color: rgba(0, 26, 113, 255);
+	font-weight: bold;
+	width: 20px;
+}
+.comptitle {
+	color: white;
+	background-color: rgba(0, 26, 113, 255);
+	font-weight: bold;
+	width: 10%;
+}
+.speccode {
+	width: 60px;
+}
+.comp_tbl {
+	margin-top: -20px;
+	margin-right: -13px;
+}
+.speccomp-table {
+	th {
+		border: 2px solid white;
+	}
+	tr {
+		&:nth-child(odd) {
+			background-color: rgba(203, 203, 203, 255);
+		}
+		&:nth-child(even) {
+			background-color: rgba(231, 231, 231, 255);
+		}
+	}
+	margin-top: 5px;
+}
+td {
+	border: 2px solid white;
+}
