@@ -5,7 +5,7 @@ import { Changer } from "../../components/Languages/LanguageChange";
 import { Multi_Lang } from "components/Languages/Multi_Lang";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./MainPage.css";
-import React, { useState } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 function MainPage() {
