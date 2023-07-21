@@ -1,6 +1,6 @@
 import "../Epic1Filter";
 import React, { useState } from "react";
-import "./productPeriod.css";
+import "./productPeriod.scss";
 import GaugeChart from "react-gauge-chart";
 
 function ProductPeriod() {

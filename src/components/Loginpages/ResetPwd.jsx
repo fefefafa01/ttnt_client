@@ -9,21 +9,32 @@ import { backlocale } from "constants/constindex";
 const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.email) {
-        errors.email = <Changer inp="Email is required" />;
-    } else if (!regex.test(values.email)) {
-        errors.email = <Changer inp="This is not a valid email format!" />;
-    }
+    const regexpassupdown = /(?=.*?[A-Z])(?=.*?[a-z])/;
+    const regexpassnum = /(?=.*?[0-9])/;
+
+    if (!values.email || !regex.test(values.email)) {
+        errors.email = <Changer inp="Invalid email address" />;
+    } 
     if (!values.password) {
         errors.password = <Changer inp="Password is required" />;
-    } else if (values.password.length < 4) {
-        errors.password = <Changer inp="Password must be more than 4 characters" />;
+    } else if (!regexpassupdown.test(values.password)) {
+        errors.password = (
+            <Changer inp="Passwords must contain both uppercase and lowercase characters" />
+        )
+    } else if (!regexpassnum.test(values.password)) {
+        errors.password = (
+            <Changer inp="Passwords must contain at least one number" />
+        );
+    } else if (values.password.length < 8) {
+        errors.password = (
+            <Changer inp="Password must be more than 8 characters" />
+        );
     }
-    if (!values.confpassword) {
-        errors.confpassword = <Changer inp="Password is required" />;
-    } else if (values.confpassword !== values.password) {
-        errors.confpassword = <Changer inp="Password must be the same" />;
+
+    if (values.confpassword !== values.password) {
+        errors.confpassword = <Changer inp="The confirm password is different from the password" />;
     }
+    
     return errors;
 };
 
@@ -76,8 +87,7 @@ function ResetPwd() {
             if (!data) return;
             setUser({ ...data });
             if (data.status === "Email Unavailable") {
-                setFormErrors({ email: t("Email Unavailable") });
-                console.log(data.status);
+                setFormErrors({ email: t("Email address does not exist") });
             } else if (data.status === "Changed Pass") {
                 sethide(!hide);
             }
@@ -123,7 +133,11 @@ function ResetPwd() {
                             placeholder={t("Password")}
                             onChange={handleChange}
                             />
-                            <div className="p-2" onClick={() => setVisible(!visible)}>
+                            <div
+                                className="p-2"
+                                onMouseDown={() => setVisible(true)}
+                                onMouseUp={() => setVisible(false)}
+                            >
                                 {visible ? (
                                     <EyeOutlined className="eye" />
                                     ) : (
@@ -143,7 +157,11 @@ function ResetPwd() {
                             placeholder={t("Confirm New Password")}
                             onChange={handleChange}
                             />
-                            <div className="p-2" onClick={() => confsetVisible(!confvisible)}>
+                            <div
+                                className="p-2"
+                                onMouseDown={() => confsetVisible(true)}
+                                onMouseUp={() => confsetVisible(false)}
+                            >
                                 {confvisible ? (
                                     <EyeOutlined className="eye" />
                                     ) : (

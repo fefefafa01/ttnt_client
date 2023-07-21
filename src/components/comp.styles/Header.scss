@@ -1,0 +1,127 @@
+/*for header of report*/
+.bttn {
+	transform: skew(-45deg);
+	height: 40px;
+	width: 150px;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 0.85em;
+	font-weight: bold;
+	background-color: white;
+	&:hover {
+		transform: skew(-45deg);
+		min-height: 10px;
+		width: 150px;
+		text-align: center;
+		font-size: 0.85em;
+		font-weight: bold;
+		background-color: #acc0e2;
+	}
+}
+.srbtngroup {
+	justify-content: right;
+	display: flex;
+	margin-top: 20px;
+	span {
+		display: inline-block;
+		transform: skew(35deg);
+	}
+}
+.leftalgn {
+	margin-left: 10px;
+}
+.lbtngroup {
+	display: flex;
+	margin-top: 20px;
+	span {
+		display: inline-block;
+		transform: skew(35deg);
+	}
+}
+.rbtngroup {
+	display: flex;
+	margin-top: 20px;
+	align-self: right;
+	span {
+		display: inline-block;
+		transform: skew(35deg);
+	}
+}
+.aheader {
+	display: flex;
+	text-align: center;
+	background-color: hsl(226, 100%, 22%);
+	height: 10vh;
+	padding-bottom: 10px;
+	div {
+		p.logo {
+			font-size: xx-large;
+			margin-top: 20px;
+		}
+	}
+}
+.hlabel {
+	color: white;
+	flex: 10%;
+	text-align: center;
+	display: block;
+	font-family: Tahoma;
+}
+.hlabel-content {
+	font-size: 2.5em;
+	margin-top: 20px;
+}
+.btn-profile {
+	display: flex;
+	flex-wrap: nowrap;
+	margin-top: 15px;
+	padding-left: 150px;
+}
+.dropdown {
+	position: relative;
+	z-index: 3;
+}
+.rep-btn {
+	background-color: rgb(200, 228, 255);
+}
+.rbttn {
+	transform: skew(-45deg);
+	height: 40px;
+	width: 130px;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 0.7em;
+	font-weight: bold;
+}
+@media screen and (max-width: 1024px) {
+	.hlabel-content {
+		font-size: 1.7em;
+		margin-top: 30px;
+	}
+}
+@media screen and (max-width: 991px) {
+	.aheader {
+		padding-bottom: 10px;
+		div {
+			p.logo {
+				margin-top: 25px;
+				font-size: 1em;
+				margin-left: -10px;
+			}
+		}
+	}
+	.bttn {
+		margin-top: 0px;
+		font-size: 0.7em;
+		width: 100px;
+		height: 35px;
+		margin-left: 15px;
+		padding: 0px;
+	}
+	.logotext {
+		display: none;
+	}
+	.hlabel {
+		display: none;
+	}
+}

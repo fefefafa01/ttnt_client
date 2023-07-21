@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
-import "./comp.styles/profile.css";
+import "./comp.styles/profile.scss";
 import { Changer } from "./Languages/LanguageChange";
 import { useTranslation } from "react-i18next";
 import { backlocale } from "constants/constindex";

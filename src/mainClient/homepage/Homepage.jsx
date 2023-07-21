@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Homepage.css";
+import "./Homepage.scss";
 import { Tabs } from "antd";
 import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";

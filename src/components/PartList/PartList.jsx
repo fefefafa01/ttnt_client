@@ -1,6 +1,6 @@
 import { PartsDetail } from "../PartDetail";
 import { DropDown } from "./DropDown";
-import "./partList.css";
+import "./partList.scss";
 import Download from "../../img/download.png";
 import React, { useState} from "react";
 import { Specpdf } from "components/SpecPDF";

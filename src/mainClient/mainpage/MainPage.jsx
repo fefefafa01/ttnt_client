@@ -4,7 +4,7 @@ import { ResetPwd } from "components/Loginpages/ResetPwd";
 import { Changer } from "../../components/Languages/LanguageChange";
 import { Multi_Lang } from "components/Languages/Multi_Lang";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
-import "./MainPage.css";
+import "./MainPage.scss";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 

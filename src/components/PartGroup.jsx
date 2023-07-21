@@ -1,6 +1,6 @@
 import React, { useState} from "react";
-import "./PartList/partList.css";
-import "./comp.styles/subgroup.css";
+import "./PartList/partList.scss";
+import "./comp.styles/subgroup.scss";
 import { PartList } from "./PartList/PartList";
 import { border } from "@mui/system";
 import { backlocale } from "constants/constindex";

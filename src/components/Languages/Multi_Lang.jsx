@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import VI from "../../../src/img/vietnamese.png";
 import EN from "../../../src/img/english.png";
-import ".././comp.styles/LangOption.css";
+import ".././comp.styles/LangOption.scss";
 import { changeLanguage } from "i18next";
 import { useTranslation } from "react-i18next";
 

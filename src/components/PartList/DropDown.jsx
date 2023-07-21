@@ -2,7 +2,7 @@ import { DownloadPListFile } from "../DownloadFile.jsx";
 import { Changer } from "components/Languages/LanguageChange.jsx";
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next'
-import "./partList.css";
+import "./partList.scss";
 import { backlocale } from "constants/constindex";
 
 //Getting Current Date and Time

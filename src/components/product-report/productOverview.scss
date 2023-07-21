@@ -1,0 +1,49 @@
+.dashboard {
+	background-color: white;
+	display: flex;
+}
+.overall-vehicle {
+	display: block;
+	text-align: left;
+}
+.overall-table {
+	background-color: white;
+	color: black;
+	font-size: 0.4em;
+	width: 100%;
+	thead {
+		height: 50px;
+	}
+	tbody {
+		border-top: solid 1px black;
+	}
+}
+.coverage-table {
+	font-size: 0.4em;
+	width: 100%;
+	text-align: left;
+	thead {
+		th {
+			background-color: white;
+			color: black;
+		}
+	}
+	tbody {
+		td.low {
+			background-color: lightcoral;
+			color: red;
+		}
+		td.medium {
+			background-color: lightyellow;
+			color: black;
+		}
+		td.high {
+			background-color: lightgreen;
+			color: black;
+		}
+		td.year {
+			background-color: lightskyblue;
+			color: black;
+		}
+	}
+}
