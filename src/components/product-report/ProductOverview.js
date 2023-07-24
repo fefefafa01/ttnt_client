@@ -198,14 +198,20 @@ function ProductOverview() {
                                         <td rowSpan={3}>{val[key].carName}</td>
                                         <td>Total</td>
                                         {carOverallMT.map((el, index) => (
-                                            <td key={index}>
+                                            <td
+                                                key={index}
+                                                style={{ color: "lightgrey" }}
+                                            >
                                                 {key >= carOverallMT.length
                                                     ? 0
                                                     : el[key].sum}
                                             </td>
                                         ))}
                                         {carOverallMTAT.map((el, index) => (
-                                            <td key={index}>
+                                            <td
+                                                key={index}
+                                                style={{ color: "lightgrey" }}
+                                            >
                                                 {el[key].sumMTAT}
                                             </td>
                                         ))}
@@ -213,14 +219,20 @@ function ProductOverview() {
                                     <tr>
                                         <td>Coverage</td>
                                         {carOverallMT.map((el, index) => (
-                                            <td key={index}>
+                                            <td
+                                                key={index}
+                                                style={{ color: "lightgrey" }}
+                                            >
                                                 {key >= carOverallMT.length
                                                     ? 0
                                                     : el[key].coverage}
                                             </td>
                                         ))}
                                         {carOverallMTAT.map((el, index) => (
-                                            <td key={index}>
+                                            <td
+                                                key={index}
+                                                style={{ color: "lightgrey" }}
+                                            >
                                                 {el[key].coverageMTAT}
                                             </td>
                                         ))}
@@ -269,7 +281,7 @@ function ProductOverview() {
                                                     }}
                                                 >
                                                     {isNaN(percentage)
-                                                        ? "NaN"
+                                                        ? ""
                                                         : `${percentage}%`}
                                                 </td>
                                             );
@@ -303,7 +315,7 @@ function ProductOverview() {
                                                     }}
                                                 >
                                                     {isNaN(percentage)
-                                                        ? "NaN"
+                                                        ? ""
                                                         : `${percentage}%`}
                                                 </td>
                                             );
