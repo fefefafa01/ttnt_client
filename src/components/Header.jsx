@@ -12,6 +12,10 @@ function AdminHeader() {
         window.location.assign("/homepage");
     };
 
+    function handleBlank() {
+        window.location.assign("/blankpage");
+    }
+
     return (
         <>
             <div className="aheader">
@@ -45,12 +49,12 @@ function AdminHeader() {
                     </p>
                 </div>
                 <div className="rbtngroup col-lg-3 col-sm-6">
-                    <button className="bttn col-lg">
+                    <button className="bttn col-lg" onClick={handleBlank}>
                         <span>
                             <Changer inp="Vehicle Management" />
                         </span>
                     </button>
-                    <button className="bttn leftalgn col-lg">
+                    <button className="bttn leftalgn col-lg" onClick={handleBlank}>
                         <span>
                             <Changer inp="Vehicle Part Management" />
                         </span>
