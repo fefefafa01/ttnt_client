@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./PartList/partList.scss";
 import "./comp.styles/subgroup.scss";
 import { PartList } from "./PartList/PartList";
@@ -300,7 +300,7 @@ function PartSubgroup({ carid, onAdd }) {
             </div>
             <div className="Scroll" id="scroll-style">
                 <div className="contents-part-list">
-                    <table>
+                    <table style={{ width: "100%" }}>
                         {subGroup.map((el, index) => (
                             <tr style={{ border: "transparent" }} key={index}>
                                 <td style={{ border: "transparent" }}>
