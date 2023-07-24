@@ -1,0 +1,39 @@
+.titleResult {
+	border: solid 5px white;
+	background-color: darkblue;
+	color: white;
+	height: 50px;
+}
+.contents-results {
+	min-height: 100%;
+	max-width: 100%;
+	max-height: max-content;
+	overflow: auto;
+	background-color: white;
+	padding: 50px 0px 0px 20px;
+	&::-webkit-scrollbar {
+		background-color: transparent;
+	}
+}
+.resulttabling {
+	width: 120%;
+}
+.emptyscrolling {
+	width: 200%;
+}
+.Scrollthebar {
+	overflow-x: scroll;
+	&::-webkit-scrollbar {
+		width: 15px;
+	}
+	&::-webkit-scrollbar-track {
+		border-radius: 20px;
+		background-color: white;
+		width: 50px;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background-color: #b0c4e4;
+		border: 2em solid #7697cb;
+	}
+}

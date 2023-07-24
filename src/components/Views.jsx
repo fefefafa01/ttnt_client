@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import MainPage from "mainClient/mainpage/MainPage";
 import HomePage from "mainClient/homepage/Homepage";
-import { useEffect } from "react";
+import ReportPage from "mainClient/reportpage/report";
 import { Specpdf } from "./SpecPDF";
 
 const Views = () => {
     const loggedIn = localStorage.getItem("isLoggedIn");
-    console.log(loggedIn, "login");
+    // console.log(loggedIn, "login");
 
     return (
         <div>
@@ -18,10 +18,10 @@ const Views = () => {
                 <Route path="*" element={<MainPage />} />
                 <Route
                     path="/homepage"
-                    //element={loggedIn ? <HomePage /> : <MainPage />}
                     element={<HomePage />}
                 />
-                <Route path='/specpdf' element={<Specpdf />}/>
+                <Route path="/report" element={<ReportPage />} />
+                <Route path="/specpdf" element={<Specpdf />} />
             </Routes>
         </div>
     );

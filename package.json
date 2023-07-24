@@ -30,6 +30,7 @@
         "material-ui-colors": "^1.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-gauge-chart": "^0.4.1",
         "react-i18next": "^12.3.1",
         "react-paginate": "^8.2.0",
         "react-router-dom": "^6.12.1",
@@ -38,10 +39,12 @@
         "react-simple-widgets": "^6.7.0",
         "react-tabs": "^6.0.1",
         "react-zoom-pan-pinch": "^3.1.0",
+        "sass": "^1.64.0",
         "semantic-ui-css": "^2.5.0",
         "semantic-ui-react": "^2.1.4",
         "sheetjs-style": "^0.15.8",
-        "web-vitals": "^2.1.4"
+        "web-vitals": "^2.1.4",
+        "xlsx": "^0.18.5"
     },
     "scripts": {
         "start": "react-scripts start",
