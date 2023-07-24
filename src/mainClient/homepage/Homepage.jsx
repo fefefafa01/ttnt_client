@@ -42,7 +42,7 @@ function Homepage() {
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
             title: "Part List",
-            content: <PartList carid={29} SubGroupName={buttonName} />,
+            content: <PartList carid={102} SubGroupName={buttonName} />,
             key: activeKey,
         };
         setPanes([...panes, newPane]);

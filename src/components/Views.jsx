@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MainPage from "mainClient/mainpage/MainPage";
 import HomePage from "mainClient/homepage/Homepage";
 import ReportPage from "mainClient/reportpage/report";
-import { Specpdf } from "./SpecPDF";
+import { BlankPage } from "constants/blankpage";
 
 const Views = () => {
     const loggedIn = localStorage.getItem("isLoggedIn");
@@ -21,7 +21,7 @@ const Views = () => {
                     element={<HomePage />}
                 />
                 <Route path="/report" element={<ReportPage />} />
-                <Route path="/specpdf" element={<Specpdf />} />
+                <Route path="/blankpage" element={<BlankPage />} />
             </Routes>
         </div>
     );

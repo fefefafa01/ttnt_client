@@ -21,10 +21,10 @@ function ResultList(props) {
         });
 
         $(".BarScroll").on("scroll", function () {
-            $(".Scroll").scrollLeft($(".BarScroll").scrollLeft());
+            $(".Scroll").scrollTop($(".BarScroll").scrollLeft());
         });
         $(".Scroll").on("scroll", function () {
-            $(".BarScroll").scrollTop($(".Scroll").scrollTop());
+            $(".BarScroll").scrollTop($(".Scroll").scrollLeft());
         });
     });
 
