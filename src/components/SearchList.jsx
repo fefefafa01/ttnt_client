@@ -2,7 +2,7 @@ import { PartList } from "./PartList/PartList";
 import { DownloadFile } from "./DownloadFile";
 import { PartGroup } from "./PartGroup";
 import Profile from "components/Profile";
-import "./comp.styles/SearchList.css";
+import "./comp.styles/SearchList.scss";
 
 function SearchResult() {
     return (

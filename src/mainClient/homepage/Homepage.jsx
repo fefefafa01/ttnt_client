@@ -4,7 +4,7 @@ import { Tabs } from "antd";
 import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
-import "../../components/comp.styles/SearchList.scss";
+import { SearchResult } from "components/SearchList"
 import { ResultList } from "components/ResultList/ResultList";
 import { PartSubgroup } from "components/PartGroup";
 const { TabPane } = Tabs;
@@ -48,13 +48,17 @@ function Homepage() {
         setActiveKey(activeKey);
     };
 
-    const addGroup = (formValues) => {
+    const addGroup = (formValues, count) => {
         const newTabIndex = panes.length;
         const activeKey = `newTab${newTabIndex}`;
         console.log(formValues);
+        let text = "Result List";
+        if (count === 0) {
+            text = "Vehicel Model List";
+        }
         const newPane = {
-            title: "Result List",
-            content: <ResultList formValues={formValues} />,
+            title: text,
+            content: <ResultList formValues={formValues} count={count} />,
             key: activeKey,
         };
         setPanes([...panes, newPane]);
@@ -107,7 +111,7 @@ function Homepage() {
                                 closable={pane.closable}
                             >
                                 {pane.key === "1" ? (
-                                    <ResultList />
+                                    <SearchResult />
                                 ) : pane.key === "2" ? (
                                     <PartSubgroup carid={29} onAdd={add} />
                                 ) : (

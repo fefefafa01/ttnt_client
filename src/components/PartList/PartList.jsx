@@ -1,4 +1,5 @@
-import { DropDown } from "./DropDown"
+import { PartsDetail } from "../PartDetail";
+import { DropDown } from "./DropDown";
 import "./partList.scss";
 import Download from "../../img/download.png";
 import React, { useState} from "react";

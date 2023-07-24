@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
 import "./comp.styles/profile.scss";
@@ -18,6 +18,11 @@ function Profile() {
     const { t } = useTranslation();
     const handleOpen = () => {
         setOpen(!open);
+    };
+
+    const [profileOpen, setprofileOpen] = useState(false);
+    const handleProfileOpen = () => {
+        setprofileOpen(!profileOpen);
     };
 
     const handleOpenProfile = () => {
@@ -71,8 +76,32 @@ function Profile() {
             });
     }
 
+    const selectDropdownRef = useRef(null);
+
+    const toggleDropdown = () => {
+        if (selectDropdownRef.current) {
+            selectDropdownRef.current.classList.toggle("active");
+        }
+    };
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     return (
-        <div className="drop">
+        <div className="drop" ref={selectDropdownRef}>
             <button
                 className="dropbtn"
                 type="button"
@@ -80,7 +109,12 @@ function Profile() {
                 data-bs-toggle="drop"
                 onClick={handleOpenProfile}
             >
-                <img className="profile" src={profile} alt="Profile" />
+                <img
+                    className="profile"
+                    src={profile}
+                    alt="Profile"
+                    onClick={toggleDropdown}
+                />
             </button>
             {openProfile && 
                 <div className="dropdown-content">
