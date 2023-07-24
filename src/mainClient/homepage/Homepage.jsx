@@ -41,7 +41,7 @@ function Homepage() {
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
             title: "Part List",
-            content: <PartList carid={150} SubGroupName={buttonName} />,
+            content: <PartList carid={102} SubGroupName={buttonName} />,
             key: activeKey,
         };
         setPanes([...panes, newPane]);
@@ -113,7 +113,7 @@ function Homepage() {
                                 {pane.key === "1" ? (
                                     <SearchResult />
                                 ) : pane.key === "2" ? (
-                                    <PartSubgroup carid={150} onAdd={add} />
+                                    <PartSubgroup carid={102} onAdd={add} />
                                 ) : (
                                     pane.content
                                 )}

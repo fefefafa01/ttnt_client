@@ -40,7 +40,7 @@ function MainPage() {
                     <Route path="*" element={<Login />} />
                 </Routes>
                 <div className="bigcontent">
-                    <div className="col-sm-12 col-md content">
+                    <div className="col-sm-12 col-md maincontent">
                         <p className="logo">AISIN</p>
                         <br></br>
                         <p className="contenttext">
