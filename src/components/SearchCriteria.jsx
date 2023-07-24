@@ -9,8 +9,6 @@ import arrow from "../img/arrow.png";
 import { backlocale } from "constants/constindex";
 import { ResultList } from "./ResultList/ResultList";
 
-let reset = 0;
-
 const initialValues = {
     country_name: "",
     manufacturer_name: "",
@@ -2365,6 +2363,8 @@ function SelectPartName(input) {
         }
     };
 
+    
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2402,18 +2402,24 @@ function SelectPartName(input) {
             console.log(initialValues.aisin_part_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
+            let updatedSelectedOptions = [];
+            console.log(selectedOption)
+            updatedSelectedOptions = [...selectedOptions];
+            console.log(updatedSelectedOptions)
             const index = updatedSelectedOptions.indexOf(selectedOption);
             if (index > -1) {
                 updatedSelectedOptions.splice(index, 1);
             } else {
                 updatedSelectedOptions.push(selectedOption);
             }
+            console.log(updatedSelectedOptions)
             setSelectedOptions(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setPart(selectedValueOptions.join(", "));
             initialValues.aisin_part_name = selectedValueOptions;
             console.log(initialValues.aisin_part_name);
+            console.log(selectedOption)
+            console.log(updatedSelectedOptions)
             return;
         }
     };
@@ -3119,7 +3125,6 @@ const SearchCriteria = (props) => {
             !initialValues.competiter_part_code
         )
             count = 0;
-        console.log(count);
         let loc = backlocale + "table/result";
         fetch(loc, {
             method: "POST",
@@ -3174,6 +3179,21 @@ const SearchCriteria = (props) => {
     const [comp, setComp] = useState("");
 
     const handleReset = () => {
+        setSpd("");
+        setYear("");
+        setCountry("");
+        setMaker("");
+        setName("");
+        setCode("");
+        setPosition("");
+        setEngine("");
+        setDisplacement("");
+        setFuel("");
+        setTrans(""); 
+        setTrain("");
+        setPart("");
+        setOe("");
+        setAisin("");
         setComp("");
     };
 
