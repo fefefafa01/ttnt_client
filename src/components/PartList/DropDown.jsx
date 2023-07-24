@@ -1,9 +1,9 @@
-import { DownloadFile } from "../DownloadFile.jsx";
-import { Changer } from "components/LanguageChange";
+import { DownloadPListFile } from "../DownloadFile.jsx";
+import { Changer } from "components/Languages/LanguageChange.jsx";
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next'
-import "./partList.css";
-import { backlocale } from "constants/constindex.js";
+import "./partList.scss";
+import { backlocale } from "constants/constindex";
 
 //Getting Current Date and Time
 var tempDate = new Date();
@@ -74,7 +74,6 @@ function DropDown (input) {
     if(queried) {
         for (let i = 0; i < input.data.length; i++) {
             var newob = {};
-            if (t("Home")==="Home") {
                 newob.OE = input.data[i].OE;
                 newob.AisinPremium = input.data[i].aisinPrem;
                 newob.AisinSubpremium = input.data[i].aisinSubPrem;
@@ -83,16 +82,6 @@ function DropDown (input) {
                 newob.Competitor = exdata[i].Competitor;
                 newob.PremiumDimensionValue = exdata[i].PremiumData;
                 newob.SubPremiumDimensionValue = exdata[i].SubPremiumData
-            } else {
-                newob.OE = input.data[i].OE;
-                newob.AisinPremium = input.data[i].aisinPrem;
-                newob.AisinSubpremium = input.data[i].aisinSubPrem;
-                newob.NhómBộPhận = t(input.data[i].partGroup); 
-                newob.TênBộPhận = t(input.data[i].partName);
-                newob.Competitor = exdata[i].Competitor;
-                newob.PremiumDimensionValue = exdata[i].PremiumData;
-                newob.SubPremiumDimensionValue = exdata[i].SubPremiumData
-            }
             transdata.push(newob);
         }
     }
@@ -102,9 +91,9 @@ function DropDown (input) {
         input.dropping()
         console.log(transdata)
         if (type==="csv") {
-            DownloadFile(transdata, "Parts_List_"+date, "Parts", "csv")
-        } else if (type==="xls") {
-            DownloadFile(transdata, "Parts_List_"+date, "Parts", "xls")
+            DownloadPListFile(transdata, "Parts_List_"+date, "Parts", "csv")
+        } else if (type==="xlsx") {
+            DownloadPListFile(transdata, "Parts_List_"+date, "Parts", "xlsx")
         }
     }
 
@@ -114,7 +103,7 @@ function DropDown (input) {
             <br />
             <button className="dropdldbtn" onClick={e=>handleDownload("csv")}>.csv</button>
             <br />
-            <button className="dropdldbtn" onClick={e=>handleDownload("xls")}>.xls</button>
+            <button className="dropdldbtn" onClick={e=>handleDownload("xlsx")}>.xls</button>
         </div>
     )
 }

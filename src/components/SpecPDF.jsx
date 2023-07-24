@@ -1,5 +1,5 @@
-import "./comp.styles/SpecPDF.css";
-import { Changer } from "./LanguageChange";
+import "./comp.styles/SpecPDF.scss";
+import { Changer } from "./Languages/LanguageChange";
 import spec from "../img/car.png";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { useState } from "react";
