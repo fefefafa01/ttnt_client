@@ -1,49 +1,86 @@
+.coverage-report {
+    background-color: black;
+    margin: 10px;
+    text-align: left;
+    font-size: 0.5em;
+    font-weight: 500;
+}
 .dashboard {
-	background-color: white;
-	display: flex;
+    background-color: white;
+    display: flex;
 }
 .overall-vehicle {
-	display: block;
-	text-align: left;
+    display: block;
+    text-align: left;
 }
 .overall-table {
-	background-color: white;
-	color: black;
-	font-size: 0.4em;
-	width: 100%;
-	thead {
-		height: 50px;
-	}
-	tbody {
-		border-top: solid 1px black;
-	}
+    background-color: white;
+    color: black;
+    font-size: 0.4em;
+    width: 100%;
+    thead {
+        height: 50px;
+    }
+    tbody {
+        border-top: solid 1px black;
+    }
 }
 .coverage-table {
-	font-size: 0.4em;
-	width: 100%;
-	text-align: left;
-	thead {
-		th {
-			background-color: white;
-			color: black;
-		}
-	}
-	tbody {
-		td.low {
-			background-color: lightcoral;
-			color: red;
-		}
-		td.medium {
-			background-color: lightyellow;
-			color: black;
-		}
-		td.high {
-			background-color: lightgreen;
-			color: black;
-		}
-		td.year {
-			background-color: lightskyblue;
-			color: black;
-		}
-	}
+    font-size: 0.4em;
+    width: 100%;
+    text-align: left;
+    thead {
+        th {
+            background-color: white;
+            color: black;
+        }
+    }
+    tbody {
+        td.low {
+            background-color: lightcoral;
+            color: red;
+        }
+        td.medium {
+            background-color: lightyellow;
+            color: black;
+        }
+        td.high {
+            background-color: lightgreen;
+            color: black;
+        }
+        td.year {
+            background-color: lightskyblue;
+            color: black;
+        }
+    }
+}
+/*overal part*/
+.overall-part {
+}
+.part-overall-table {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    thead {
+        color: black;
+        font-size: 0.5em;
+        td {
+            border-right: solid 1px black;
+        }
+    }
+    th {
+        color: black;
+    }
+    tbody {
+        color: black;
+        font-size: 0.5em;
+        border: solid 3px black;
+        th {
+            height: 40px;
+            border: solid 1px black;
+        }
+        td {
+            border: dotted 1px black;
+        }
+    }
 }
