@@ -75,7 +75,7 @@ p.label {
 	height: 50px;
 	border-bottom: 2px solid #172685;
 	display: flex;
-	margin: 10px 30px 20px;
+	margin: 30px 30px 20px;
 	input {
 		width: 100%;
 		height: 100%;
@@ -137,6 +137,7 @@ input.name-box {
 	}
 }
 .full-name {
+	margin-top: 35px;
 	display: block;
 	position: relative;
 }
@@ -223,11 +224,10 @@ button.btn {
 	margin-top: 100px;
 }
 button.regbtn {
-	margin-bottom: 5vh;
+	margin-top: 30px;
+	margin-bottom: 4vh;
 }
-.regbtn {
-	margin-bottom: 5vh;
-}
+
 .login-register {
 	font-size: 0.9em;
 	text-align: center;
