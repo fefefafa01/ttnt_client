@@ -7,7 +7,6 @@ import up from "../img/Up.png";
 import glass from "../img/Glass.png";
 import arrow from "../img/arrow.png";
 import { backlocale } from "constants/constindex";
-import { ResultList } from "./ResultList/ResultList";
 
 const initialValues = {
     country_name: "",
@@ -31,7 +30,6 @@ const initialValues = {
 var loc;
 
 function SelectSpeed(input) {
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -59,7 +57,7 @@ function SelectSpeed(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...options];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setSpd(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -71,10 +69,10 @@ function SelectSpeed(input) {
             console.log(initialValues.speed);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -83,15 +81,13 @@ function SelectSpeed(input) {
             console.log(initialValues.speed);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setSpd(selectedValueOptions.join(", "));
             initialValues.speed = selectedValueOptions;
             console.log(initialValues.speed);
@@ -235,7 +231,7 @@ function SelectYear(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...options];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setYear(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -247,10 +243,10 @@ function SelectYear(input) {
             console.log(initialValues.year);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -259,15 +255,13 @@ function SelectYear(input) {
             console.log(initialValues.year);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setYear(selectedValueOptions.join(", "));
             initialValues.year = selectedValueOptions;
             console.log(initialValues.year);
@@ -434,6 +428,7 @@ function SelectCountries(input) {
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
+        
         if (selectedOption === "Xóa") {
             selectedOption = "clear";
         } else if (selectedOption.slice(-3) === "Xóa") {
@@ -445,7 +440,7 @@ function SelectCountries(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...countryNames];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setCountry(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -457,10 +452,10 @@ function SelectCountries(input) {
             console.log(initialValues.country_name);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -469,15 +464,13 @@ function SelectCountries(input) {
             console.log(initialValues.country_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setCountry(selectedValueOptions.join(", "));
             initialValues.country_name = selectedValueOptions;
             console.log(initialValues.country_name);
@@ -638,7 +631,7 @@ function SelectCarMaker(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...manufacturer_name];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setMaker(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -650,10 +643,10 @@ function SelectCarMaker(input) {
             console.log(initialValues.manufacturer_name);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -662,15 +655,13 @@ function SelectCarMaker(input) {
             console.log(initialValues.manufacturer_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setMaker(selectedValueOptions.join(", "));
             initialValues.manufacturer_name = selectedValueOptions;
             console.log(initialValues.manufacturer_name);
@@ -832,7 +823,7 @@ function SelectModelName(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...model_name];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setName(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -844,10 +835,10 @@ function SelectModelName(input) {
             console.log(initialValues.car_model_name);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -856,15 +847,13 @@ function SelectModelName(input) {
             console.log(initialValues.car_model_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setName(selectedValueOptions.join(", "));
             initialValues.car_model_name = selectedValueOptions;
             console.log(initialValues.car_model_name);
@@ -1025,7 +1014,7 @@ function SelectModelCode(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...modelcode];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setCode(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -1037,10 +1026,10 @@ function SelectModelCode(input) {
             console.log(initialValues.model_code);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -1049,15 +1038,13 @@ function SelectModelCode(input) {
             console.log(initialValues.model_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setCode(selectedValueOptions.join(", "));
             initialValues.model_code = selectedValueOptions;
             console.log(initialValues.model_code);
@@ -1218,7 +1205,7 @@ function SelectPosition(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...driversposition];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setPosition(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -1230,10 +1217,10 @@ function SelectPosition(input) {
             console.log(initialValues.drivers_position);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -1242,15 +1229,13 @@ function SelectPosition(input) {
             console.log(initialValues.drivers_position);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setPosition(selectedValueOptions.join(", "));
             initialValues.drivers_position = selectedValueOptions;
             console.log(initialValues.drivers_position);
@@ -1411,7 +1396,7 @@ function SelectEngineCode(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...enginemodel];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setEngine(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -1423,10 +1408,10 @@ function SelectEngineCode(input) {
             console.log(initialValues.engine_model);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -1435,15 +1420,13 @@ function SelectEngineCode(input) {
             console.log(initialValues.engine_model);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setEngine(selectedValueOptions.join(", "));
             initialValues.engine_model = selectedValueOptions;
             console.log(initialValues.engine_model);
@@ -1604,7 +1587,7 @@ function SelectDisplacement(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...displacementcode];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setDisplacement(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -1616,10 +1599,10 @@ function SelectDisplacement(input) {
             console.log(initialValues.displacement_code);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -1628,15 +1611,13 @@ function SelectDisplacement(input) {
             console.log(initialValues.displacement_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setDisplacement(selectedValueOptions.join(", "));
             initialValues.displacement_code = selectedValueOptions;
             console.log(initialValues.displacement_code);
@@ -1797,7 +1778,7 @@ function SelectFuel(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...fueltype];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setFuel(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -1809,10 +1790,10 @@ function SelectFuel(input) {
             console.log(initialValues.fuel_type);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -1821,15 +1802,13 @@ function SelectFuel(input) {
             console.log(initialValues.fuel_type);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setFuel(selectedValueOptions.join(", "));
             initialValues.fuel_type = selectedValueOptions;
             console.log(initialValues.fuel_type);
@@ -1990,7 +1969,7 @@ function SelectTransmission(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...transmissiontype];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setTrans(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -2002,10 +1981,10 @@ function SelectTransmission(input) {
             console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -2014,15 +1993,13 @@ function SelectTransmission(input) {
             console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setTrans(selectedValueOptions.join(", "));
             initialValues.transmission_type = selectedValueOptions;
             console.log(initialValues.transmission_type);
@@ -2183,7 +2160,7 @@ function SelectDrivertrain(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...drivetrainNames];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setTrain(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -2195,10 +2172,10 @@ function SelectDrivertrain(input) {
             console.log(initialValues.drivetrain);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -2207,15 +2184,13 @@ function SelectDrivertrain(input) {
             console.log(initialValues.drivetrain);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setTrain(selectedValueOptions.join(", "));
             initialValues.drivetrain = selectedValueOptions;
             console.log(initialValues.drivetrain);
@@ -2378,7 +2353,7 @@ function SelectPartName(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...aisinpartname];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setPart(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -2390,10 +2365,10 @@ function SelectPartName(input) {
             console.log(initialValues.aisin_part_name);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -2402,24 +2377,16 @@ function SelectPartName(input) {
             console.log(initialValues.aisin_part_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            let updatedSelectedOptions = [];
-            console.log(selectedOption)
-            updatedSelectedOptions = [...selectedOptions];
-            console.log(updatedSelectedOptions)
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            console.log(updatedSelectedOptions)
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setPart(selectedValueOptions.join(", "));
             initialValues.aisin_part_name = selectedValueOptions;
             console.log(initialValues.aisin_part_name);
-            console.log(selectedOption)
-            console.log(updatedSelectedOptions)
             return;
         }
     };
@@ -2577,7 +2544,7 @@ function SelectOE(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...partcode];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setOe(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -2588,10 +2555,10 @@ function SelectOE(input) {
             initialValues.part_code = selectedValueOptions;
             console.log(initialValues.part_code);
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -2600,15 +2567,13 @@ function SelectOE(input) {
             console.log(initialValues.part_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setOe(selectedValueOptions.join(", "));
             initialValues.part_code = selectedValueOptions;
             console.log(initialValues.part_code);
@@ -2770,7 +2735,7 @@ function SelectAISIN(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...aisinpremiumcode];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setAisin(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -2782,10 +2747,10 @@ function SelectAISIN(input) {
             console.log(initialValues.aisin_premium_code);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -2794,15 +2759,13 @@ function SelectAISIN(input) {
             console.log(initialValues.aisin_premium_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setAisin(selectedValueOptions.join(", "));
             initialValues.aisin_premium_code = selectedValueOptions;
             console.log(initialValues.aisin_premium_code);
@@ -2963,7 +2926,7 @@ function SelectCompetitor(input) {
             selectedOption === "Chọn tất cả"
         ) {
             const updatedSelectedOptions = [...competiterpartcode];
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
             input.setComp(selectedValueOptions.join(", "));
             const selectedOptionElements =
@@ -2975,10 +2938,10 @@ function SelectCompetitor(input) {
             console.log(initialValues.competiter_part_code);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
@@ -2987,15 +2950,13 @@ function SelectCompetitor(input) {
             console.log(initialValues.competiter_part_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
+            const selectedValueOptions = [...input.update];
             input.setComp(selectedValueOptions.join(", "));
             initialValues.competiter_part_code = selectedValueOptions;
             console.log(initialValues.competiter_part_code);
@@ -3178,6 +3139,23 @@ const SearchCriteria = (props) => {
     const [aisin, setAisin] = useState("");
     const [comp, setComp] = useState("");
 
+    var [update1, setUpdate1] = useState([])
+    var [update2, setUpdate2] = useState([])
+    var [update3, setUpdate3] = useState([])
+    var [update4, setUpdate4] = useState([])
+    var [update5, setUpdate5] = useState([])
+    var [update6, setUpdate6] = useState([])
+    var [update7, setUpdate7] = useState([])
+    var [update8, setUpdate8] = useState([])
+    var [update9, setUpdate9] = useState([])
+    var [update10, setUpdate10] = useState([])
+    var [update11, setUpdate11] = useState([])
+    var [update12, setUpdate12] = useState([])
+    var [update13, setUpdate13] = useState([])
+    var [update14, setUpdate14] = useState([])
+    var [update15, setUpdate15] = useState([])
+    var [update16, setUpdate16] = useState([])
+
     const handleReset = () => {
         setSpd("");
         setYear("");
@@ -3195,6 +3173,23 @@ const SearchCriteria = (props) => {
         setOe("");
         setAisin("");
         setComp("");
+
+        setUpdate1([]);
+        setUpdate2([]);
+        setUpdate3([]);
+        setUpdate4([]);
+        setUpdate5([]);
+        setUpdate6([]);
+        setUpdate7([]);
+        setUpdate8([]);
+        setUpdate9([]);
+        setUpdate10([]);
+        setUpdate11([]);
+        setUpdate12([]);
+        setUpdate13([]);
+        setUpdate14([]);
+        setUpdate15([]);
+        setUpdate16([]);
     };
 
     return (
@@ -3207,13 +3202,15 @@ const SearchCriteria = (props) => {
             </div>
             <div className="searchScroll" id="scroll-style">
                 <div>
-                    <div className="boxcontent">
+                    <div className="boxcontent1">
                         <div className="searchBox">
                             <a> Sales Country </a>
                             <span>
                                 <SelectCountries
                                     country={country}
                                     setCountry={setCountry}
+                                    update = {update1}
+                                    setUpdate = {setUpdate1}
                                 />
                             </span>
                         </div>
@@ -3235,6 +3232,8 @@ const SearchCriteria = (props) => {
                                             <SelectCarMaker
                                                 maker={maker}
                                                 setMaker={setMaker}
+                                                update = {update2}
+                                    setUpdate = {setUpdate2}
                                             />
                                         </span>
                                     </div>
@@ -3244,6 +3243,8 @@ const SearchCriteria = (props) => {
                                             <SelectModelName
                                                 name={name}
                                                 setName={setName}
+                                                update = {update3}
+                                    setUpdate = {setUpdate3}
                                             />
                                         </span>
                                     </div>
@@ -3253,6 +3254,8 @@ const SearchCriteria = (props) => {
                                             <SelectModelCode
                                                 code={code}
                                                 setCode={setCode}
+                                                update = {update4}
+                                    setUpdate = {setUpdate4}
                                             />
                                         </span>
                                     </div>
@@ -3262,6 +3265,8 @@ const SearchCriteria = (props) => {
                                             <SelectYear
                                                 year={year}
                                                 setYear={setYear}
+                                                update = {update5}
+                                    setUpdate = {setUpdate5}
                                             />
                                         </span>
                                     </div>
@@ -3271,6 +3276,8 @@ const SearchCriteria = (props) => {
                                             <SelectPosition
                                                 position={position}
                                                 setPosition={setPosition}
+                                                update = {update6}
+                                    setUpdate = {setUpdate6}
                                             />
                                         </span>
                                     </div>
@@ -3295,6 +3302,8 @@ const SearchCriteria = (props) => {
                                             <SelectEngineCode
                                                 engine={engine}
                                                 setEngine={setEngine}
+                                                update = {update7}
+                                    setUpdate = {setUpdate7}
                                             />
                                         </span>
                                     </div>
@@ -3306,6 +3315,8 @@ const SearchCriteria = (props) => {
                                                 setDisplacement={
                                                     setDisplacement
                                                 }
+                                                update = {update8}
+                                    setUpdate = {setUpdate8}
                                             />
                                         </span>
                                     </div>
@@ -3315,6 +3326,8 @@ const SearchCriteria = (props) => {
                                             <SelectFuel
                                                 fuel={fuel}
                                                 setFule={setFuel}
+                                                update = {update9}
+                                    setUpdate = {setUpdate9}
                                             />
                                         </span>
                                     </div>
@@ -3324,6 +3337,8 @@ const SearchCriteria = (props) => {
                                             <SelectTransmission
                                                 trans={trans}
                                                 setTrans={setTrans}
+                                                update = {update10}
+                                    setUpdate = {setUpdate10}
                                             />
                                         </span>
                                     </div>
@@ -3333,6 +3348,8 @@ const SearchCriteria = (props) => {
                                             <SelectSpeed
                                                 spd={spd}
                                                 setPds={setSpd}
+                                                update = {update11}
+                                    setUpdate = {setUpdate11}
                                             />
                                         </span>
                                     </div>
@@ -3342,6 +3359,8 @@ const SearchCriteria = (props) => {
                                             <SelectDrivertrain
                                                 train={train}
                                                 setTrain={setTrain}
+                                                update = {update12}
+                                    setUpdate = {setUpdate12}
                                             />
                                         </span>
                                     </div>
@@ -3366,13 +3385,17 @@ const SearchCriteria = (props) => {
                                             <SelectPartName
                                                 part={part}
                                                 setPart={setPart}
+                                                update = {update13}
+                                    setUpdate = {setUpdate13}
                                             />
                                         </span>
                                     </div>
                                     <div className="searchBox">
                                         <a> OE number </a>
                                         <span>
-                                            <SelectOE oe={oe} setOe={setOe} />
+                                            <SelectOE oe={oe} setOe={setOe} 
+                                            update = {update14}
+                                            setUpdate = {setUpdate14}/>
                                         </span>
                                     </div>
                                     <div className="searchBox">
@@ -3381,6 +3404,8 @@ const SearchCriteria = (props) => {
                                             <SelectAISIN
                                                 aisin={aisin}
                                                 setAisin={setAisin}
+                                                update = {update15}
+                                    setUpdate = {setUpdate15}
                                             />
                                         </span>
                                     </div>
@@ -3390,6 +3415,8 @@ const SearchCriteria = (props) => {
                                             <SelectCompetitor
                                                 comp={comp}
                                                 setComp={setComp}
+                                                update = {update16}
+                                    setUpdate = {setUpdate16}
                                             />
                                         </span>
                                     </div>

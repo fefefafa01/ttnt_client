@@ -6,11 +6,12 @@ import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
 import { SearchResult } from "components/SearchList"
 import { ResultList } from "components/ResultList/ResultList";
-import { PartSubgroup } from "components/PartGroup";
+import { PartSubgroup, PartGroup } from "components/PartGroup";
 const { TabPane } = Tabs;
 
 function Homepage() {
     const [sidebarOpen, setSideBarOpen] = useState(true);
+    const [partSubName, setPartSubName] = useState("");
     const handleViewSidebar = () => {
         setSideBarOpen(!sidebarOpen);
     };
@@ -23,7 +24,7 @@ function Homepage() {
             closable: false,
         },
         {
-            title: "KUN25, Engine/Fuel group-Parts subgroup list",
+            title: "KUN25, Parts group list",
             key: "2",
         },
     ]);
@@ -48,6 +49,26 @@ function Homepage() {
         setActiveKey(activeKey);
     };
 
+    const addSub = (buttonSubName) => {
+        console.log(buttonSubName);
+        const newTabIndex = panes.length;
+        const activeKey = `newTab${newTabIndex}`;
+        const newPane = {
+            title: `KUN25, ${buttonSubName} group-Parts subgroup list`,
+            content: (
+                <PartSubgroup
+                    carid={150}
+                    partGroupName={buttonSubName}
+                    onAdd={add}
+                />
+            ),
+            key: activeKey,
+        };
+        setPartSubName(buttonSubName);
+        setPanes([...panes, newPane]);
+        setActiveKey(activeKey);
+    };
+
     const addGroup = (formValues, count) => {
         const newTabIndex = panes.length;
         const activeKey = `newTab${newTabIndex}`;
@@ -58,7 +79,7 @@ function Homepage() {
         }
         const newPane = {
             title: text,
-            content: <ResultList formValues={formValues} count={count} />,
+            content: <ResultList formValues={formValues} count={count} onAdd={addSub}/>,
             key: activeKey,
         };
         setPanes([...panes, newPane]);
@@ -110,10 +131,18 @@ function Homepage() {
                                 key={pane.key}
                                 closable={pane.closable}
                             >
-                                {pane.key === "1" ? (
+                                {pane.title === "Search Result" ? (
                                     <SearchResult />
-                                ) : pane.key === "2" ? (
-                                    <PartSubgroup carid={29} onAdd={add} />
+                                ) : pane.title.includes("Parts group list") ? (
+                                    <PartGroup carid={150} onAdd={addSub} />
+                                ) : pane.title.includes(
+                                      "Parts subgroup list"
+                                  ) ? (
+                                    <PartSubgroup
+                                        carid={29}
+                                        partGroupName={partSubName}
+                                        onAdd={add}
+                                    />
                                 ) : (
                                     pane.content
                                 )}

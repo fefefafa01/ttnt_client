@@ -9,15 +9,22 @@ import Prev from "../../img/prev_btn.png";
 import Next from "../../img/next_btn.png";
 
 function ResultList(props) {
-    const { formValues, count } = props;
+    const { formValues, count, onAdd } = props;
     console.log(formValues);
     //Synchronizing Scroll:
     $(function () {
         $(".Scrollthebar").on("scroll", function () {
-            $(".contents-results").scrollLeft($(".Scrollthebar").scrollLeft());
+            $(".Scroll").scrollLeft($(".Scrollthebar").scrollLeft());
         });
-        $(".contents-results").on("scroll", function () {
-            $(".Scrollthebar").scrollLeft($(".contents-results").scrollLeft());
+        $(".Scroll").on("scroll", function () {
+            $(".Scrollthebar").scrollLeft($(".Scroll").scrollLeft());
+        });
+
+        $(".BarScroll").on("scroll", function () {
+            $(".Scroll").scrollLeft($(".BarScroll").scrollLeft());
+        });
+        $(".Scroll").on("scroll", function () {
+            $(".BarScroll").scrollTop($(".Scroll").scrollTop());
         });
     });
 
@@ -55,15 +62,21 @@ function ResultList(props) {
     var add = [];
     let a = 0;
     add[a] = formValues[0];
+    console.log(add[0])
     for (let i = 1; i < formValues.length; i++) {
         if (formValues[i - 1].car_info_id !== formValues[i].car_info_id) {
-            add[a++] = formValues[i];
+            add[a+1] = formValues[i];
+            a++;
         }
     }
     const currentItemss = add.slice(itemOffset, endOffset);
     console.log(add);
 
     const pageCounts = Math.ceil(add.length / itemsPerPage);
+
+    const openPart = () => {
+        onAdd();
+    }
 
     if (formValues === "There is no car matched your search") {
         return (
@@ -341,11 +354,12 @@ function ResultList(props) {
                                 </table>
                             </div>
                         </div>
-                        <div className="Scrollthebar">
-                            <html className="emptyscrolling">&nbsp;</html>
-                        </div>
                     </div>
+                <div className="Scrollthebar">
+                    <html className="emptyscrolling">&nbsp;</html>
                 </div>
+                
+            </div>
             );
         } else {
             return (
@@ -425,8 +439,7 @@ function ResultList(props) {
                     )} */}
                         </div>
                     </div>
-                    <div className="Scroll" id="scroll-style">
-                        <div className="contents-results">
+                    <div className="Scroll">
                             <div className="resulttabling">
                                 <table>
                                     <thead>
@@ -534,11 +547,11 @@ function ResultList(props) {
                                             <tr key={index}>
                                                 <td>{no++}</td>
                                                 <td>
-                                                    {" "}
                                                     <img
                                                         src={vehiclePart}
                                                         id="VehiclePart"
                                                         alt="vehiclePart"
+                                                        onClick={openPart}
                                                     />
                                                 </td>
                                                 <td>{el.car_maker}</td>
@@ -563,9 +576,11 @@ function ResultList(props) {
                                 </table>
                             </div>
                         </div>
-                        <div className="Scrollthebar">
-                            <html className="emptyscrolling">&nbsp;</html>
-                        </div>
+                    <div className="Scrollthebar">
+                        <html className="emptyscrolling">&nbsp;</html>
+                    </div>
+                    <div className="BarScroll">
+                        <html className="emptyscroll">&nbsp;</html>
                     </div>
                 </div>
             );
