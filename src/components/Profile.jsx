@@ -10,7 +10,6 @@ import { backlocale } from "constants/constindex";
 function Profile() {
     var loc;
     const [open, setOpen] = useState(false);
-    const [openProfile, setOpenProfile] = useState(false);
     const [logOut, setLogOut] = useState(false);
     var [firstname, setFirstname] = useState("");
     var [lastname, setLastname] = useState("");
@@ -18,16 +17,6 @@ function Profile() {
     const { t } = useTranslation();
     const handleOpen = () => {
         setOpen(!open);
-    };
-
-    const [profileOpen, setprofileOpen] = useState(false);
-    const handleProfileOpen = () => {
-        setprofileOpen(!profileOpen);
-    };
-
-    const handleOpenProfile = () => {
-        setOpenProfile(!openProfile);
-        setOpen(false);
     };
 
     const handleSignOut = () => {
@@ -107,7 +96,6 @@ function Profile() {
                 type="button"
                 aria-expanded="false"
                 data-bs-toggle="drop"
-                onClick={handleOpenProfile}
             >
                 <img
                     className="profile"
@@ -116,7 +104,6 @@ function Profile() {
                     onClick={toggleDropdown}
                 />
             </button>
-            {openProfile && 
                 <div className="dropdown-content">
                 <a href="#" onClick={handleOpen}>
                     <Changer inp="My Profile" />
@@ -133,7 +120,6 @@ function Profile() {
                     />
                 </a>
             </div>
-            }
             {open && (
                 <div className="dropdown-content profile">
                     <span>
