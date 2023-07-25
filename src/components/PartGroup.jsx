@@ -35,7 +35,8 @@ function PartGroup({ carid, onAdd }) {
     //Backend Call
     //Querying Model Name
     if (firstOpenModel) {
-        fetch("http://localhost:5000/exp/model", {
+        let loc = backlocale + "exp/model"
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -93,7 +94,8 @@ function PartGroup({ carid, onAdd }) {
     //     dt
     // );
     if (firstOpenPreP) {
-        fetch("http://localhost:5000/exp/partGroup", {
+        let loc = backlocale + "exp/partGroup"
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {

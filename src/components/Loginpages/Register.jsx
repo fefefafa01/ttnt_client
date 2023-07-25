@@ -4,7 +4,7 @@ import { Changer } from "../Languages/LanguageChange";
 import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
-import { backlocale } from "constants/constindex";
+import { backlocale, japregex, vietregex } from "constants/constindex";
 
 const Validate = (values) => {
     const errors = {};
@@ -12,9 +12,11 @@ const Validate = (values) => {
     const regexpassupdown = /(?=.*?[A-Z])(?=.*?[a-z])/;
     const regexpassnum = /(?=.*?[0-9])/;
 
-    if (!values.email || !regex.test(values.email)) {
-        errors.email = <Changer inp="Invalid email address" />;
-    } 
+    if (!values.email) {
+        errors.email = <Changer inp="Email is required" />;
+    } else if (!regex.test(values.email)) {
+        errors.email = <Changer inp="Invalid email address" />
+    }
     if (!values.password) {
         errors.password = <Changer inp="Password is required" />;
     } else if (!regexpassupdown.test(values.password)) {
@@ -27,11 +29,12 @@ const Validate = (values) => {
         );
     } else if (values.password.length < 8) {
         errors.password = (
-            <Changer inp="Password must be more than 8 characters" />
+            <Changer inp="Passwords must contain at least 8 characters" />
         );
     }
-
-    if (values.confpassword !== values.password) {
+    if (!values.confpassword) {
+        errors.confpassword = <Changer inp="Password is required" />;
+    } else if (values.confpassword !== values.password) {
         errors.confpassword = <Changer inp="The confirm password is different from the password" />;
     }
 
@@ -48,8 +51,6 @@ function Register() {
     var loc;
     const { setUser } = useContext(AccountContext) || {};
     var { t } = useTranslation();
-    const [password, setPassword] = useState("");
-    const [confpassword, confsetPassword] = useState("");
     const [visible, setVisible] = useState(false);
     const [confvisible, confsetVisible] = useState(false);
     const [vad, setVad] = useState(true);
@@ -65,10 +66,14 @@ function Register() {
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormvalues({ ...formValues, [name]: value });
-        setPassword(e.target.value);
-        confsetPassword(e.target.value);
+        var { name, value } = e.target;
+        const viregex = vietregex;
+        const jpregex = japregex;
+        if ((name==="first_name") || (name==="last_name")) {
+            setFormvalues({ ...formValues, [name]: value });
+        } else if (((name==="email") || (name==="password") || (name==="confpassword")) && !viregex.test(value) && !jpregex.test(value)) {
+            if (!jpregex.test(value)) setFormvalues({ ...formValues, [name]: value });
+        }
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -107,6 +112,14 @@ function Register() {
             }
         });
     };
+
+    function handleBlur(name) {
+        console.log("Blurred", formValues)
+        if (name==="email") {
+            console.log("Worked")
+        }
+    }
+
     useEffect(() => {
         // console.log(formErrors);
         if (Object.keys(formErrors).length === 0 && isSubmit) {
@@ -129,6 +142,7 @@ function Register() {
                                     placeholder={t("Email Address")}
                                     value={formValues.email}
                                     onChange={handleChange}
+                                    onBlur={() => handleBlur("email")}
                                 />
                             </div>
                             <div className="error">
