@@ -197,12 +197,23 @@ function ProductOverview() {
                                                 &nbsp;
                                             </td>
                                         ) : null}
-                                        <td rowSpan={3}>{val[key].carName}</td>
+                                        <td
+                                            rowSpan={3}
+                                            style={{
+                                                border: "solid 1px black",
+                                            }}
+                                        >
+                                            {val[key].carName}
+                                        </td>
                                         <td>Total</td>
                                         {carOverallMT.map((el, index) => (
                                             <td
                                                 key={index}
-                                                style={{ color: "lightgrey" }}
+                                                style={{
+                                                    color: "lightgrey",
+                                                    borderRight:
+                                                        "solid 1px black",
+                                                }}
                                             >
                                                 {key >= carOverallMT.length
                                                     ? 0
@@ -212,7 +223,11 @@ function ProductOverview() {
                                         {carOverallMTAT.map((el, index) => (
                                             <td
                                                 key={index}
-                                                style={{ color: "lightgrey" }}
+                                                style={{
+                                                    color: "lightgrey",
+                                                    borderRight:
+                                                        "solid 1px black",
+                                                }}
                                             >
                                                 {el[key].sumMTAT}
                                             </td>
@@ -223,7 +238,11 @@ function ProductOverview() {
                                         {carOverallMT.map((el, index) => (
                                             <td
                                                 key={index}
-                                                style={{ color: "lightgrey" }}
+                                                style={{
+                                                    color: "lightgrey",
+                                                    borderRight:
+                                                        "solid 1px black",
+                                                }}
                                             >
                                                 {key >= carOverallMT.length
                                                     ? 0
@@ -233,7 +252,11 @@ function ProductOverview() {
                                         {carOverallMTAT.map((el, index) => (
                                             <td
                                                 key={index}
-                                                style={{ color: "lightgrey" }}
+                                                style={{
+                                                    color: "lightgrey",
+                                                    borderRight:
+                                                        "solid 1px black",
+                                                }}
                                             >
                                                 {el[key].coverageMTAT}
                                             </td>
@@ -280,6 +303,10 @@ function ProductOverview() {
                                                             percentage <= 50
                                                                 ? "red"
                                                                 : "black",
+                                                        borderRight:
+                                                            "solid 1px black",
+                                                        borderBottom:
+                                                            "solid 1px black",
                                                     }}
                                                 >
                                                     {isNaN(percentage)
@@ -314,6 +341,10 @@ function ProductOverview() {
                                                             percentage <= 50
                                                                 ? "red"
                                                                 : "black",
+                                                        borderRight:
+                                                            "solid 1px black",
+                                                        borderBottom:
+                                                            "solid 1px black",
                                                     }}
                                                 >
                                                     {isNaN(percentage)
