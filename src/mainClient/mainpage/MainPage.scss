@@ -182,8 +182,7 @@ input.name-right {
 .eye {
 	color: #64a5b4;
 	scale: 150%;
-	padding-top: 15px;
-	margin-right: 20px;
+	margin-top: -30px;
 }
 .remember-forgot {
 	font-size: 0.9em;
@@ -210,6 +209,11 @@ input.name-right {
 .p-error {
 	position: absolute;
 	margin: 65px 130px;
+	color: red;
+}
+.preg-error {
+	position: absolute;
+	margin-left: 85px;
 	color: red;
 }
 button.btn {
@@ -243,6 +247,19 @@ p.register-link {
 		text-decoration-line: none;
 	}
 }
+
+.regbackbtn {
+	width: 100%;
+	height: 50px;
+	background-color: black;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 1em;
+	color: #fff;
+	font-weight: 500;
+	margin-top: 100px;
+}
+
 .back_login {
 	text-decoration: none;
 	color: white;
