@@ -29,6 +29,25 @@ const initialValues = {
 
 var loc;
 
+function resetInitialValues() {
+    initialValues.country_name = "";
+    initialValues.manufacturer_name = "";
+    initialValues.car_model_name = "";
+    initialValues.model_code = "";
+    initialValues.drivers_position = "";
+    initialValues.engine_model = "";
+    initialValues.displacement_code = "";
+    initialValues.fuel_type = "";
+    initialValues.transmission_type = "";
+    initialValues.drivetrain = "";
+    initialValues.aisin_part_name = "";
+    initialValues.part_code = "";
+    initialValues.aisin_premium_code = "";
+    initialValues.competiter_part_code = "";
+    initialValues.speed = "";
+    initialValues.year = "";
+  }
+
 function SelectSpeed(input) {
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
@@ -52,6 +71,13 @@ function SelectSpeed(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         }
+        if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setSpd("");
+            input.setUpdate([])
+            return
+        }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -80,7 +106,7 @@ function SelectSpeed(input) {
             initialValues.speed = selectedValueOptions;
             console.log(initialValues.speed);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -88,8 +114,8 @@ function SelectSpeed(input) {
                 input.update.push(selectedOption);
             }
             const selectedValueOptions = [...input.update];
-            input.setSpd(selectedValueOptions.join(", "));
             initialValues.speed = selectedValueOptions;
+            input.setSpd(selectedValueOptions.join(", "));
             console.log(initialValues.speed);
             return;
         }
@@ -172,7 +198,14 @@ function SelectSpeed(input) {
                 </div>
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.spd != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -180,7 +213,7 @@ function SelectSpeed(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.spd.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -225,7 +258,13 @@ function SelectYear(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setYear("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -254,7 +293,7 @@ function SelectYear(input) {
             initialValues.year = selectedValueOptions;
             console.log(initialValues.year);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -346,7 +385,14 @@ function SelectYear(input) {
                 </div>
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.year != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -354,7 +400,7 @@ function SelectYear(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.year.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -434,8 +480,14 @@ function SelectCountries(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } 
+        if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setCountry("");
+            input.setUpdate([])
+            return
         }
-        if (
+        else if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
@@ -450,7 +502,7 @@ function SelectCountries(input) {
             );
             initialValues.country_name = selectedValueOptions;
             console.log(initialValues.country_name);
-            return;
+            return
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
@@ -463,7 +515,7 @@ function SelectCountries(input) {
             initialValues.country_name = selectedValueOptions;
             console.log(initialValues.country_name);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -538,7 +590,14 @@ function SelectCountries(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.country != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -546,7 +605,7 @@ function SelectCountries(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.country.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -625,7 +684,13 @@ function SelectCarMaker(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all" ) {
+            initialValues.car_model_name = "";
+            input.setMaker("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -654,7 +719,7 @@ function SelectCarMaker(input) {
             initialValues.manufacturer_name = selectedValueOptions;
             console.log(initialValues.manufacturer_name);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -730,7 +795,14 @@ function SelectCarMaker(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.maker != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -738,7 +810,7 @@ function SelectCarMaker(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.maker.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -810,6 +882,8 @@ function SelectModelName(input) {
         }
     };
 
+    
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -818,7 +892,13 @@ function SelectModelName(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         }
-        if (
+        if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setName("");
+            input.setUpdate([])
+            return
+        }
+        else if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
@@ -833,7 +913,7 @@ function SelectModelName(input) {
             );
             initialValues.car_model_name = selectedValueOptions;
             console.log(initialValues.car_model_name);
-            return;
+            return
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
@@ -842,11 +922,12 @@ function SelectModelName(input) {
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
+            
             input.setName(selectedValueOptions.join(", "));
             initialValues.car_model_name = selectedValueOptions;
             console.log(initialValues.car_model_name);
-            return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+            return
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -857,8 +938,9 @@ function SelectModelName(input) {
             input.setName(selectedValueOptions.join(", "));
             initialValues.car_model_name = selectedValueOptions;
             console.log(initialValues.car_model_name);
-            return;
+            return
         }
+        
     };
 
     const handleSearch = (event) => {
@@ -922,14 +1004,21 @@ function SelectModelName(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All
+                        {input.name != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
                             key={name}
                             onClick={(event) => handleSelection(event, name)}
-                        >
+                        >   
                             {name}
-                            {input.name.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1008,7 +1097,13 @@ function SelectModelCode(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setCode("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1037,7 +1132,7 @@ function SelectModelCode(input) {
             initialValues.model_code = selectedValueOptions;
             console.log(initialValues.model_code);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -1112,7 +1207,14 @@ function SelectModelCode(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.code != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1120,7 +1222,7 @@ function SelectModelCode(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.code.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1199,7 +1301,13 @@ function SelectPosition(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setPosition("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1228,7 +1336,7 @@ function SelectPosition(input) {
             initialValues.drivers_position = selectedValueOptions;
             console.log(initialValues.drivers_position);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -1303,7 +1411,14 @@ function SelectPosition(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.position != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1311,7 +1426,7 @@ function SelectPosition(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.position.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1390,7 +1505,13 @@ function SelectEngineCode(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setEngine("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1419,7 +1540,7 @@ function SelectEngineCode(input) {
             initialValues.engine_model = selectedValueOptions;
             console.log(initialValues.engine_model);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -1494,7 +1615,14 @@ function SelectEngineCode(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.engine != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1502,7 +1630,7 @@ function SelectEngineCode(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.engine.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1581,7 +1709,13 @@ function SelectDisplacement(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setDisplacement("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1610,7 +1744,7 @@ function SelectDisplacement(input) {
             initialValues.displacement_code = selectedValueOptions;
             console.log(initialValues.displacement_code);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -1685,7 +1819,14 @@ function SelectDisplacement(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.displacement != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1693,7 +1834,7 @@ function SelectDisplacement(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.displacement.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1772,7 +1913,13 @@ function SelectFuel(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setFuel("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1801,7 +1948,7 @@ function SelectFuel(input) {
             initialValues.fuel_type = selectedValueOptions;
             console.log(initialValues.fuel_type);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -1876,7 +2023,14 @@ function SelectFuel(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.fuel != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -1884,7 +2038,7 @@ function SelectFuel(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.fuel.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1963,7 +2117,13 @@ function SelectTransmission(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setTrans("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1992,7 +2152,7 @@ function SelectTransmission(input) {
             initialValues.transmission_type = selectedValueOptions;
             console.log(initialValues.transmission_type);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -2067,7 +2227,14 @@ function SelectTransmission(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.trans != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -2075,7 +2242,7 @@ function SelectTransmission(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.trans.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2154,7 +2321,13 @@ function SelectDrivertrain(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setTrain("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -2183,7 +2356,7 @@ function SelectDrivertrain(input) {
             initialValues.drivetrain = selectedValueOptions;
             console.log(initialValues.drivetrain);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -2258,7 +2431,14 @@ function SelectDrivertrain(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.train != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -2266,7 +2446,7 @@ function SelectDrivertrain(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.train.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2347,7 +2527,13 @@ function SelectPartName(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setPart("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -2376,7 +2562,7 @@ function SelectPartName(input) {
             initialValues.aisin_part_name = selectedValueOptions;
             console.log(initialValues.aisin_part_name);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -2451,7 +2637,14 @@ function SelectPartName(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.part != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -2459,7 +2652,7 @@ function SelectPartName(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.part.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2538,7 +2731,13 @@ function SelectOE(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setOe("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -2566,7 +2765,7 @@ function SelectOE(input) {
             initialValues.part_code = selectedValueOptions;
             console.log(initialValues.part_code);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -2643,6 +2842,13 @@ function SelectOE(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All
+                        {input.oe != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -2650,7 +2856,7 @@ function SelectOE(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.oe.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2729,7 +2935,13 @@ function SelectAISIN(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setAisin("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -2758,7 +2970,7 @@ function SelectAISIN(input) {
             initialValues.aisin_premium_code = selectedValueOptions;
             console.log(initialValues.aisin_premium_code);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -2833,7 +3045,14 @@ function SelectAISIN(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.aisin != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -2841,7 +3060,7 @@ function SelectAISIN(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.aisin.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -2920,7 +3139,13 @@ function SelectCompetitor(input) {
         } else if (selectedOption.slice(-3) === "Xóa") {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
+        } if (selectedOption === "clear all") {
+            initialValues.car_model_name = "";
+            input.setComp("");
+            input.setUpdate([])
+            return
         }
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -2949,7 +3174,7 @@ function SelectCompetitor(input) {
             initialValues.competiter_part_code = selectedValueOptions;
             console.log(initialValues.competiter_part_code);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -3024,7 +3249,14 @@ function SelectCompetitor(input) {
 
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
-                        Select All
+                        Select All 
+                        {input.comp != "" && (
+                            <button
+                            className="remove-btn"
+                        >
+                            clear all
+                        </button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -3032,7 +3264,7 @@ function SelectCompetitor(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.comp.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -3078,6 +3310,7 @@ const SearchCriteria = (props) => {
     const [formValues, setFormvalues] = useState(initialValues);
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(initialValues)
         let count = 1;
         if (
             !initialValues.aisin_part_name &&
@@ -3190,6 +3423,8 @@ const SearchCriteria = (props) => {
         setUpdate14([]);
         setUpdate15([]);
         setUpdate16([]);
+
+        resetInitialValues()
     };
 
     return (
@@ -3325,7 +3560,7 @@ const SearchCriteria = (props) => {
                                         <span>
                                             <SelectFuel
                                                 fuel={fuel}
-                                                setFule={setFuel}
+                                                setFuel={setFuel}
                                                 update = {update9}
                                     setUpdate = {setUpdate9}
                                             />
@@ -3347,7 +3582,7 @@ const SearchCriteria = (props) => {
                                         <span>
                                             <SelectSpeed
                                                 spd={spd}
-                                                setPds={setSpd}
+                                                setSpd={setSpd}
                                                 update = {update11}
                                     setUpdate = {setUpdate11}
                                             />

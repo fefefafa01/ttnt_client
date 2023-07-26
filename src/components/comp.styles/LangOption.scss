@@ -41,14 +41,14 @@
 .hmulti-lang {
 	background-color: transparent;
 	border: none;
+	padding: 0 0;
 }
 .hlangbtn {
 	color: white;
 	position: absolute;
-	margin-left: -110px;
+	margin-left: -105px;
 	font-size: 1.2em;
-	margin-top: -5px;
-	margin-left: -110px;
+	margin-top: -4px;
 }
 .hbox {
 	border: solid black 1px;
@@ -68,7 +68,7 @@
 .hglobe {
 	max-width: 20px;
 	margin-left: -230px;
-	margin-top: -10px;
+	margin-top: -5px;
 }
 @media screen and (max-width: 1024px) {
 	.globe {
@@ -121,4 +121,8 @@
 	.hlang-name {
 		display: none;
 	}
+}
+
+.css-hyxlzm {
+	margin-bottom: 10px;
 }

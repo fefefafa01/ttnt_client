@@ -12,6 +12,7 @@ const { TabPane } = Tabs;
 function Homepage() {
     const [sidebarOpen, setSideBarOpen] = useState(true);
     const [partSubName, setPartSubName] = useState("");
+
     const handleViewSidebar = () => {
         setSideBarOpen(!sidebarOpen);
     };
@@ -69,17 +70,42 @@ function Homepage() {
         setActiveKey(activeKey);
     };
 
-    const addGroup = (formValues, count) => {
-        const newTabIndex = panes.length;
-        const activeKey = `newTab${newTabIndex}`;
+    const [resultListPane, setResultListPane] = useState(null);
+    
+    const addGroup = (formValues, count) => { 
+        
         console.log(formValues);
         let text = "Result List";
         if (count === 0) {
             text = "Vehicel Model List";
         }
+        if (resultListPane) {
+            // Tab ResultList đã được tạo, chỉ cập nhật nội dung của tab đó
+            resultListPane.title = text;
+            resultListPane.content = <ResultList formValues={formValues} count={count} Add={addList}/>;
+            setPanes([...panes]);
+            setActiveKey(resultListPane.key);
+        } else {
+            // Tab ResultList chưa được tạo, tạo một tab mới
+            const newTabIndex = panes.length;
+            const activeKey = `newTab${newTabIndex}`;
+            const newPane = {
+                title: text,
+                content: <ResultList formValues={formValues} count={count} Add={addList}/>,
+                key: activeKey,
+            };
+            setPanes([...panes, newPane]);
+            setResultListPane(newPane);
+            setActiveKey(activeKey);
+            }
+    };
+
+    const addList = (buttonName) => {
+        const newTabIndex = panes.length;
+        const activeKey = `newTab${newTabIndex}`;
         const newPane = {
-            title: text,
-            content: <ResultList formValues={formValues} count={count} onAdd={addSub}/>,
+            title: "Part List",
+            content: <PartList carid={102} SubGroupName={buttonName} />,
             key: activeKey,
         };
         setPanes([...panes, newPane]);
@@ -105,6 +131,7 @@ function Homepage() {
         }
         setPanes(newPanes);
         setActiveKey(newActiveKey);
+        setResultListPane(null)
     };
 
     return (

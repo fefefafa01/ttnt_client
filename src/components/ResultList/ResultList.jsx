@@ -9,7 +9,8 @@ import Prev from "../../img/prev_btn.png";
 import Next from "../../img/next_btn.png";
 
 function ResultList(props) {
-    const { formValues, count, onAdd } = props;
+    
+    const { formValues, count, Add } = props;
     console.log(formValues);
     //Synchronizing Scroll:
     $(function () {
@@ -74,10 +75,9 @@ function ResultList(props) {
 
     const pageCounts = Math.ceil(add.length / itemsPerPage);
 
-    const openPart = () => {
-        onAdd();
+    const openPart = (buttonName) => {
+        Add(buttonName);
     }
-
     if (formValues === "There is no car matched your search") {
         return (
             <div className="tabcontent">
@@ -551,7 +551,7 @@ function ResultList(props) {
                                                         src={vehiclePart}
                                                         id="VehiclePart"
                                                         alt="vehiclePart"
-                                                        onClick={openPart}
+                                                        onClick={() => openPart(el.car_maker)}
                                                     />
                                                 </td>
                                                 <td>{el.car_maker}</td>

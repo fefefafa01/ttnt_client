@@ -112,38 +112,15 @@
 		font-style: italic;
 	}
 }
-.Scroll {
+.Scrolll {
 	background-color: #b0c4e4;
-	height: 85%;
+	height: 90%;
 	width: 100%;
 	border-radius: 20px;
 	display: block;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	max-height: 98%;
-	max-width: 99%;
 	padding-bottom: 20px;
-	padding-right: 50px;
+	padding-right: 20px;
 	margin-right: 5px;
-}
-#scroll-style {
-	&::-webkit-scrollbar-corner {
-		background-color: transparent;
-		background-color: transparent;
-	}
-	&::-webkit-scrollbar {
-		width: 15px;
-	}
-	&::-webkit-scrollbar-track {
-		border-radius: 20px;
-		background-color: white;
-		width: 50px;
-	}
-	&::-webkit-scrollbar-thumb {
-		border-radius: 10px;
-		background-color: #b0c4e4;
-		border: 2em solid #7697cb;
-	}
 }
 .contents {
 	display: flex;
@@ -164,6 +141,7 @@
 	h2 {
 		color: lightblue;
 		font-size: large;
+		margin-left: -75px;
 	}
 }
 @media screen and (max-width: 1024px) {

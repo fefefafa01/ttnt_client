@@ -8,7 +8,7 @@ function SearchResult() {
     return (
         <div className="tabcontent">
             <h3> Welcome! </h3>
-            <div className="Scroll" id="scroll-style">
+            <div className="Scrolll">
                 <div className="contents">
                     <h1>Please Enter Search Criteria</h1>
                     <h2>to see your result!</h2>
