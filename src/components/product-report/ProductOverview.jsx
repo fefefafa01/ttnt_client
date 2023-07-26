@@ -214,7 +214,7 @@ function ProductOverview() {
                                                 {data.sum}
                                             </td>
                                         ))}
-                            
+
                                         {carOverallMTAT.map((el, index) => (
                                             <td
                                                 key={index}
@@ -242,10 +242,7 @@ function ProductOverview() {
                                                 {data.coverage}
                                             </td>
                                         ))}
-                                </>
-                            ))}
-                            {carOverallMTAT.map((el, index) => (
-                                <>
+                                        {carOverallMTAT.map((el, index) => (
                                             <td
                                                 key={index}
                                                 style={{
@@ -349,8 +346,9 @@ function ProductOverview() {
                                                 </td>
                                             );
                                         })}
-                                        </>
                                     </tr>
+                                </>
+                            ))}
                         </tbody>
                     </table>
                 </div>
