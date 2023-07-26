@@ -6,7 +6,10 @@ import { fontWeight } from "@mui/system";
 
 function ProductOverview() {
     const [maker, setMaker] = useState([]);
+    const [car, setCar] = useState([]);
     const [carOverallMT, setCarOverallMT] = useState([]);
+    const [partMT, setPartMT] = useState([]);
+    const [partMTAT, setPartMTAT] = useState([]);
     const [carOverallMTAT, setCarOverallMTAT] = useState([]);
     const [sumMaker, setSumMaker] = useState(0);
     const [firstOpen, setFirstOpen] = useState(true);
@@ -69,13 +72,17 @@ function ProductOverview() {
                 setOpenOverall(false);
                 setCarOverallMT(data.overallValMT);
                 setCarOverallMTAT(data.overallValMTAT);
+                setPartMT(data.partMT);
+                setPartMTAT(data.partMTAT);
+                setCar(data.carName);
+                console.log(data.carName);
 
-                console.log(data.overallValMT[1].sum);
-                //console.log(data.overallValMTAT);
-
-                console.log(data.overallValMT.length);
+                console.log(data.overallValMT);
+                console.log(data.overallValMTAT);
             });
     }
+    const mergedObject = [...carOverallMT, ...carOverallMTAT];
+    console.log(mergedObject);
     return (
         <div>
             <div className="coverage-report">
@@ -147,13 +154,13 @@ function ProductOverview() {
                                     AT = Auto transmission
                                 </td>
                                 <th
-                                    colSpan={2}
+                                    colSpan={3}
                                     style={{ border: "3px solid black" }}
                                 >
                                     MT
                                 </th>
                                 <th
-                                    colSpan={8}
+                                    colSpan={7}
                                     style={{ border: "3px solid black" }}
                                 >
                                     MT&AT
@@ -165,29 +172,18 @@ function ProductOverview() {
                                 <th>VehicleType</th>
                                 <th>Maker</th>
                                 <th>&nbsp;</th>
-                                {carOverallMT.map((el, index) => (
-                                    <th key={index}>{el[index].partName}</th>
+                                {partMT.map((el, index) => (
+                                    <th key={index}>{el}</th>
                                 ))}
 
-                                {carOverallMTAT.map((el, index) => (
-                                    <th key={index}>
-                                        {el[index].partNameMTAT}
-                                    </th>
+                                {partMTAT.map((el, index) => (
+                                    <th key={index}>{el}</th>
                                 ))}
                             </tr>
-                            {carOverallMTAT.map((val, key) => (
+                            {carOverallMT.map((val, key) => (
                                 <>
                                     <tr key={key}>
-                                        {key === 0 ? (
-                                            <td
-                                                rowSpan={6}
-                                                style={{
-                                                    border: "solid 1px black",
-                                                }}
-                                            >
-                                                &nbsp;
-                                            </td>
-                                        ) : key === 2 ? (
+                                        {key % 2 === 0 ? (
                                             <td
                                                 rowSpan={6}
                                                 style={{
@@ -203,23 +199,22 @@ function ProductOverview() {
                                                 border: "solid 1px black",
                                             }}
                                         >
-                                            {val[key].carName}
+                                            {car[key]}
                                         </td>
                                         <td>Total</td>
-                                        {carOverallMT.map((el, index) => (
+                                        {val.map((data, k) => (
                                             <td
-                                                key={index}
+                                                key={k}
                                                 style={{
                                                     color: "lightgrey",
                                                     borderRight:
                                                         "solid 1px black",
                                                 }}
                                             >
-                                                {key >= carOverallMT.length
-                                                    ? 0
-                                                    : el[key].sum}
+                                                {data.sum}
                                             </td>
                                         ))}
+
                                         {carOverallMTAT.map((el, index) => (
                                             <td
                                                 key={index}
@@ -229,24 +224,22 @@ function ProductOverview() {
                                                         "solid 1px black",
                                                 }}
                                             >
-                                                {el[key].sumMTAT}
+                                                {el[key].sum}
                                             </td>
                                         ))}
                                     </tr>
                                     <tr>
                                         <td>Coverage</td>
-                                        {carOverallMT.map((el, index) => (
+                                        {val.map((data, k) => (
                                             <td
-                                                key={index}
+                                                key={k}
                                                 style={{
                                                     color: "lightgrey",
                                                     borderRight:
                                                         "solid 1px black",
                                                 }}
                                             >
-                                                {key >= carOverallMT.length
-                                                    ? 0
-                                                    : el[key].coverage}
+                                                {data.coverage}
                                             </td>
                                         ))}
                                         {carOverallMTAT.map((el, index) => (
@@ -264,7 +257,7 @@ function ProductOverview() {
                                     </tr>
                                     <tr>
                                         <td>%</td>
-                                        {carOverallMT.map((el, index) => {
+                                        {/* {carOverallMT.map((el, index) => {
                                             const percentage = parseInt(
                                                 (Number(
                                                     key >= carOverallMT.length
@@ -314,7 +307,7 @@ function ProductOverview() {
                                                         : `${percentage}%`}
                                                 </td>
                                             );
-                                        })}
+                                        })} */}
                                         {carOverallMTAT.map((el, index) => {
                                             const percentage = parseInt(
                                                 (Number(el[key].coverageMTAT) *

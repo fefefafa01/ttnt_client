@@ -14,9 +14,22 @@ import { backlocale } from "constants/constindex";
 
 const { TabPane } = Tabs;
 
-function SelectCountries() {
+const initialValues = {
+    country_name: "",
+    manufacturer_name: "",
+    transmission_type: "",
+    part_name: "",
+    part_group: "",
+    start_year: "2000",
+    end_year: "2000",
+    start_cover: "25",
+    end_cover: "75",
+};
+
+var loc;
+
+function SelectCountries(input) {
     const [countryNames, setCountryNames] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -25,7 +38,7 @@ function SelectCountries() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            let loc = backlocale + "sch/countries";
+            loc = backlocale + "sch/countries";
             fetch(loc, {
                 method: "POST",
                 credentials: "include",
@@ -46,6 +59,24 @@ function SelectCountries() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -55,6 +86,7 @@ function SelectCountries() {
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
+
         if (selectedOption === "Xóa") {
             selectedOption = "clear";
         } else if (selectedOption.slice(-3) === "Xóa") {
@@ -65,35 +97,41 @@ function SelectCountries() {
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
-            setSelectedOptions([...countryNames]);
-            setSelectedValue([...countryNames].join(", "));
+            const updatedSelectedOptions = [...countryNames];
+            input.setUpdate(updatedSelectedOptions);
+            const selectedValueOptions = [...updatedSelectedOptions];
+            input.setCountry(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
                 optionElement.classList.add("selected")
             );
+            initialValues.country_name = selectedValueOptions;
+            console.log(initialValues.country_name);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setCountry(selectedValueOptions.join(", "));
+            initialValues.country_name = selectedValueOptions;
+            console.log(initialValues.country_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            const selectedValueOptions = [...input.update];
+            input.setCountry(selectedValueOptions.join(", "));
+            initialValues.country_name = selectedValueOptions;
+            console.log(initialValues.country_name);
             return;
         }
     };
@@ -116,15 +154,14 @@ function SelectCountries() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setCountry(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown-report" ref={selectDropdownRef}>
             <div className="select-btn-report" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.country === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
@@ -132,13 +169,15 @@ function SelectCountries() {
                         fontWeight: "500",
                     }}
                 >
-                    {selectedValue || "Country"}
+                    {input.country || "Country"}
                 </span>
                 <img
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content-report">
@@ -167,9 +206,9 @@ function SelectCountries() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.country.includes(name) && (
                                 <button
-                                    className="remove-btn-report"
+                                    className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
                                     <Changer inp="clear" />
@@ -182,9 +221,9 @@ function SelectCountries() {
         </div>
     );
 }
-function SelectCarMaker() {
+
+function SelectCarMaker(input) {
     const [manufacturer_name, setManufacturer] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -193,7 +232,7 @@ function SelectCarMaker() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            let loc = backlocale+"sch/maker";
+            loc = backlocale + "sch/maker";
             fetch(loc, {
                 method: "POST",
                 credentials: "include",
@@ -214,6 +253,24 @@ function SelectCarMaker() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -233,35 +290,41 @@ function SelectCarMaker() {
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
-            setSelectedOptions([...manufacturer_name]);
-            setSelectedValue([...manufacturer_name].join(", "));
+            const updatedSelectedOptions = [...manufacturer_name];
+            input.setUpdate(updatedSelectedOptions);
+            const selectedValueOptions = [...updatedSelectedOptions];
+            input.setMaker(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
                 optionElement.classList.add("selected")
             );
+            initialValues.manufacturer_name = selectedValueOptions;
+            console.log(initialValues.manufacturer_name);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setMaker(selectedValueOptions.join(", "));
+            initialValues.manufacturer_name = selectedValueOptions;
+            console.log(initialValues.manufacturer_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            const selectedValueOptions = [...input.update];
+            input.setMaker(selectedValueOptions.join(", "));
+            initialValues.manufacturer_name = selectedValueOptions;
+            console.log(initialValues.manufacturer_name);
             return;
         }
     };
@@ -284,8 +347,7 @@ function SelectCarMaker() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setMaker(selectedValueOptions.join(", "));
     };
 
     return (
@@ -293,7 +355,7 @@ function SelectCarMaker() {
             <div className="select-btn-report" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.maker === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
@@ -301,13 +363,15 @@ function SelectCarMaker() {
                         fontWeight: "500",
                     }}
                 >
-                    {selectedValue || "Toyota"}
+                    {input.maker || "Toyota"}
                 </span>
                 <img
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content-report">
@@ -336,7 +400,7 @@ function SelectCarMaker() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.maker.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -352,9 +416,8 @@ function SelectCarMaker() {
     );
 }
 
-function SelectTransmission() {
+function SelectTransmission(input) {
     const [transmissiontype, setTransmission] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -363,7 +426,7 @@ function SelectTransmission() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            let loc = backlocale+"sch/transmission";
+            loc = backlocale + "sch/transmission";
             fetch(loc, {
                 method: "POST",
                 credentials: "include",
@@ -384,6 +447,24 @@ function SelectTransmission() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -403,35 +484,41 @@ function SelectTransmission() {
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
-            setSelectedOptions([...transmissiontype]);
-            setSelectedValue([...transmissiontype].join(", "));
+            const updatedSelectedOptions = [...transmissiontype];
+            input.setUpdate(updatedSelectedOptions);
+            const selectedValueOptions = [...updatedSelectedOptions];
+            input.setTrans(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
                 optionElement.classList.add("selected")
             );
+            initialValues.transmission_type = selectedValueOptions;
+            console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setTrans(selectedValueOptions.join(", "));
+            initialValues.transmission_type = selectedValueOptions;
+            console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            const selectedValueOptions = [...input.update];
+            input.setTrans(selectedValueOptions.join(", "));
+            initialValues.transmission_type = selectedValueOptions;
+            console.log(initialValues.transmission_type);
             return;
         }
     };
@@ -454,15 +541,14 @@ function SelectTransmission() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setTrans(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown-report" ref={selectDropdownRef}>
             <div className="select-btn-report" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.trans === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
@@ -470,13 +556,15 @@ function SelectTransmission() {
                         fontWeight: "500",
                     }}
                 >
-                    {selectedValue || "MT"}
+                    {input.trans || "MT"}
                 </span>
                 <img
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content-report">
@@ -505,7 +593,7 @@ function SelectTransmission() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.trans.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -521,7 +609,7 @@ function SelectTransmission() {
     );
 }
 
-function SelectPartGroup() {
+function SelectPartGroup(input) {
     const [partGroupName, setPartGroupName] = useState([]);
     const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
@@ -532,7 +620,7 @@ function SelectPartGroup() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            let loc = backlocale + "sch/partgroup"
+            let loc = backlocale + "sch/partgroup";
             fetch(loc, {
                 method: "POST",
                 credentials: "include",
@@ -551,6 +639,24 @@ function SelectPartGroup() {
     }, []);
 
     const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
 
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
@@ -571,35 +677,41 @@ function SelectPartGroup() {
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
-            setSelectedOptions([...partGroupName]);
-            setSelectedValue([...partGroupName].join(", "));
+            const updatedSelectedOptions = [...partGroupName];
+            input.setUpdate(updatedSelectedOptions);
+            const selectedValueOptions = [...updatedSelectedOptions];
+            input.setPartGroup(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
                 optionElement.classList.add("selected")
             );
+            initialValues.part_group = selectedValueOptions;
+            console.log(initialValues.part_group);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setPartGroup(selectedValueOptions.join(", "));
+            initialValues.part_group = selectedValueOptions;
+            console.log(initialValues.part_group);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            const selectedValueOptions = [...input.update];
+            input.setPartGroup(selectedValueOptions.join(", "));
+            initialValues.part_group = selectedValueOptions;
+            console.log(initialValues.part_group);
             return;
         }
     };
@@ -622,15 +734,14 @@ function SelectPartGroup() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setPartGroup(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown-report" ref={selectDropdownRef}>
             <div className="select-btn-report" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.partGroup === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
@@ -638,7 +749,7 @@ function SelectPartGroup() {
                         fontWeight: "500",
                     }}
                 >
-                    {selectedValue || "Electrical"}
+                    {input.partGroup || "Electrical"}
                 </span>
                 <img
                     src={arrow}
@@ -689,9 +800,8 @@ function SelectPartGroup() {
     );
 }
 
-function SelectPartName() {
+function SelectPartName(input) {
     const [aisinpartname, setPartname] = useState([]);
-    const [selectedValue, setSelectedValue] = useState("");
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const isFirstRender = useRef(true);
@@ -700,7 +810,7 @@ function SelectPartName() {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            let loc = backlocale + "sch/partname"
+            loc = backlocale + "sch/partname";
             fetch(loc, {
                 method: "POST",
                 credentials: "include",
@@ -721,6 +831,24 @@ function SelectPartName() {
 
     const selectDropdownRef = useRef(null);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     const toggleDropdown = () => {
         if (selectDropdownRef.current) {
             selectDropdownRef.current.classList.toggle("active");
@@ -740,35 +868,41 @@ function SelectPartName() {
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
-            setSelectedOptions([...aisinpartname]);
-            setSelectedValue([...aisinpartname].join(", "));
+            const updatedSelectedOptions = [...aisinpartname];
+            input.setUpdate(updatedSelectedOptions);
+            const selectedValueOptions = [...updatedSelectedOptions];
+            input.setPart(selectedValueOptions.join(", "));
             const selectedOptionElements =
                 document.querySelectorAll(".options li");
             selectedOptionElements.forEach((optionElement) =>
                 optionElement.classList.add("selected")
             );
+            initialValues.part_name = selectedValueOptions;
+            console.log(initialValues.part_name);
             return;
         } else if (selectedOption === "clear") {
-            const updatedSelectedOptions = selectedOptions.filter(
+            const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
             );
-            setSelectedOptions(updatedSelectedOptions);
+            input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = updatedSelectedOptions.filter(
                 (name) => name !== "Select All"
             );
-            setSelectedValue(selectedValueOptions.join(", "));
+            input.setPart(selectedValueOptions.join(", "));
+            initialValues.part_name = selectedValueOptions;
+            console.log(initialValues.part_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
-            const updatedSelectedOptions = [...selectedOptions];
-            const index = updatedSelectedOptions.indexOf(selectedOption);
+            const index = input.update.indexOf(selectedOption);
             if (index > -1) {
-                updatedSelectedOptions.splice(index, 1);
+                input.update.splice(index, 1);
             } else {
-                updatedSelectedOptions.push(selectedOption);
+                input.update.push(selectedOption);
             }
-            setSelectedOptions(updatedSelectedOptions);
-            const selectedValueOptions = [...updatedSelectedOptions];
-            setSelectedValue(selectedValueOptions.join(", "));
+            const selectedValueOptions = [...input.update];
+            input.setPart(selectedValueOptions.join(", "));
+            initialValues.part_name = selectedValueOptions;
+            console.log(initialValues.part_name);
             return;
         }
     };
@@ -791,15 +925,14 @@ function SelectPartName() {
         const selectedValueOptions = updatedSelectedOptions.filter(
             (name) => name !== "Select All"
         );
-        setSelectedValue(selectedValueOptions.join(", "));
-        console.log(selectedValue);
+        input.setPart(selectedValueOptions.join(", "));
     };
     return (
         <div className="selectDropdown-report" ref={selectDropdownRef}>
             <div className="select-btn-report" onClick={toggleDropdown}>
                 <span
                     style={{
-                        color: selectedValue === "" ? "" : "black",
+                        color: input.part === "" ? "" : "black",
                         textOverflow: "clip",
                         overflow: "hidden",
                         whiteSpace: "nowrap",
@@ -807,13 +940,15 @@ function SelectPartName() {
                         fontWeight: "500",
                     }}
                 >
-                    {selectedValue || "Clutch Cover"}
+                    {input.part || "Clutch Cover"}
                 </span>
                 <img
                     src={arrow}
                     id="arrow"
                     alt="arrow"
-                    style={{ transform: showArrow ? "rotate(180deg)" : "none" }}
+                    style={{
+                        transform: showArrow ? "rotate(180deg)" : "none",
+                    }}
                 />
             </div>
             <div className="content-report">
@@ -834,7 +969,7 @@ function SelectPartName() {
 
                 <ul className="options-report">
                     <li key="*" onClick={handleSelection}>
-                        <Changer inp="Select All" />
+                        Select All
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -842,12 +977,12 @@ function SelectPartName() {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.part.includes(name) && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
                                 >
-                                    <Changer inp="clear" />
+                                    clear
                                 </button>
                             )}
                         </li>
@@ -858,7 +993,7 @@ function SelectPartName() {
     );
 }
 
-function ReportPage(/*{ type }*/) {
+function ReportPage(props) {
     const [activeKey, setActiveKey] = useState("1");
     const panes = [
         {
@@ -879,12 +1014,77 @@ function ReportPage(/*{ type }*/) {
         setActiveKey(activeKey);
     };
 
-    const [value, setValue] = useState([30, 75]);
+    const [value, setValue] = useState([25, 75]);
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        initialValues.start_cover = newValue[0];
+        initialValues.end_cover = newValue[1];
+    };
+    const handleChangeStYear = (e) => {
+        initialValues.start_year = e.target.value;
+    };
+    const handleChangeEnYear = (e) => {
+        initialValues.end_year = e.target.value;
     };
 
     const valueText = (value) => `${value}%`;
+
+    const [formValues, setFormvalues] = useState(initialValues);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formValues);
+        //let count = 1;
+        // if (
+        //     !initialValues.part_name &&
+        //     !initialValues.part_code &&
+        //     !initialValues.aisin_premium_code &&
+        //     !initialValues.competiter_part_code
+        // )
+        //     count = 0;
+        let loc = backlocale + "overall/result";
+        fetch(loc, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                    "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            },
+            body: JSON.stringify(formValues),
+        })
+            .catch((err) => {
+                return;
+            })
+            .then((res) => {
+                if (!res || !res.ok || res.status >= 400) {
+                    return;
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if (!data) return;
+                if (data.status === "There is no car matched your search") {
+                    return;
+                } else {
+                    console.log(data.table);
+
+                    console.log(formValues);
+                    return;
+                }
+            });
+    };
+    const [country, setCountry] = useState("");
+    const [maker, setMaker] = useState("");
+    const [trans, setTrans] = useState("");
+    const [part, setPart] = useState("");
+    const [partGroup, setPartGroup] = useState("");
+
+    var [update1, setUpdate1] = useState([]);
+    var [update2, setUpdate2] = useState([]);
+    var [update3, setUpdate3] = useState([]);
+    var [update4, setUpdate4] = useState([]);
+    var [update5, setUpdate5] = useState([]);
     //scroll
     $(document).ready(function () {
         // Create a scroll bar element
@@ -964,23 +1164,48 @@ function ReportPage(/*{ type }*/) {
                             <div className="boxcontent">
                                 <p className="first-item re-item">Country</p>
                                 <div>
-                                    <SelectCountries />
+                                    <SelectCountries
+                                        country={country}
+                                        setCountry={setCountry}
+                                        update={update1}
+                                        setUpdate={setUpdate1}
+                                    />
                                 </div>
                                 <p className="re-item">Car Maker</p>
                                 <div>
-                                    <SelectCarMaker />
+                                    <SelectCarMaker
+                                        maker={maker}
+                                        setMaker={setMaker}
+                                        update={update2}
+                                        setUpdate={setUpdate2}
+                                    />
                                 </div>
                                 <p className="re-item">Tranmission Type</p>
                                 <div>
-                                    <SelectTransmission />
+                                    <SelectTransmission
+                                        trans={trans}
+                                        setTrans={setTrans}
+                                        update={update3}
+                                        setUpdate={setUpdate3}
+                                    />
                                 </div>
                                 <p className="re-item">Part Group</p>
                                 <div>
-                                    <SelectPartGroup />
+                                    <SelectPartGroup
+                                        partGroup={partGroup}
+                                        setPartGroup={setPartGroup}
+                                        update={update4}
+                                        setUpdate={setUpdate4}
+                                    />
                                 </div>
                                 <p className="re-item">Part Name</p>
                                 <div>
-                                    <SelectPartName />
+                                    <SelectPartName
+                                        part={part}
+                                        setPart={setPart}
+                                        update={update5}
+                                        setUpdate={setUpdate5}
+                                    />
                                 </div>
                                 <div className="from-to">
                                     <div className="from-input col">
@@ -988,6 +1213,7 @@ function ReportPage(/*{ type }*/) {
                                         <input
                                             type="year"
                                             className="from-year"
+                                            onInput={handleChangeStYear}
                                         />
                                     </div>
                                     <div className="to-input col">
@@ -995,6 +1221,7 @@ function ReportPage(/*{ type }*/) {
                                         <input
                                             type="year"
                                             className="to-year"
+                                            onInput={handleChangeEnYear}
                                         />
                                     </div>
                                 </div>
@@ -1011,7 +1238,12 @@ function ReportPage(/*{ type }*/) {
                                 </div>
                             </div>
                             <div className="export-btn">
-                                <button className="export">Export Data</button>
+                                <button
+                                    className="export"
+                                    onClick={handleSubmit}
+                                >
+                                    Export Data
+                                </button>
                             </div>
                         </div>
                     </div>
