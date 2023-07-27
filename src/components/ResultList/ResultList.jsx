@@ -63,7 +63,6 @@ function ResultList(props) {
     var add = [];
     let a = 0;
     add[a] = formValues[0];
-    console.log(add[0])
     for (let i = 1; i < formValues.length; i++) {
         if (formValues[i - 1].car_info_id !== formValues[i].car_info_id) {
             add[a+1] = formValues[i];
@@ -75,8 +74,8 @@ function ResultList(props) {
 
     const pageCounts = Math.ceil(add.length / itemsPerPage);
 
-    const openPart = (buttonName) => {
-        Add(buttonName);
+    const openPart = (id, formValues) => {
+        Add(id, formValues);
     }
     if (formValues === "There is no car matched your search") {
         return (
@@ -166,8 +165,7 @@ function ResultList(props) {
                     )} */}
                         </div>
                     </div>
-                    <div className="Scroll" id="scroll-style">
-                        <div className="contents-results">
+                    <div className="Scroll">
                             <div className="resulttabling">
                                 <table>
                                     <thead>
@@ -352,13 +350,14 @@ function ResultList(props) {
                                         ))}
                                     </tbody>
                                 </table>
-                            </div>
                         </div>
                     </div>
                 <div className="Scrollthebar">
                     <html className="emptyscrolling">&nbsp;</html>
                 </div>
-                
+                <div className="BarScroll">
+                        <html className="emptyscroll">&nbsp;</html>
+                    </div>
             </div>
             );
         } else {
@@ -439,9 +438,9 @@ function ResultList(props) {
                     )} */}
                         </div>
                     </div>
-                    <div className="Scroll">
-                            <div className="resulttabling">
-                                <table>
+                    <div className="partlistscroll" id="pscroll-style">
+                <div className="contents-part-list">
+                    <table className="part-table">
                                     <thead>
                                         <tr>
                                             <th
@@ -551,7 +550,7 @@ function ResultList(props) {
                                                         src={vehiclePart}
                                                         id="VehiclePart"
                                                         alt="vehiclePart"
-                                                        onClick={() => openPart(el.car_maker)}
+                                                        onClick={() => openPart(el.car_info_id, formValues)}
                                                     />
                                                 </td>
                                                 <td>{el.car_maker}</td>
@@ -578,9 +577,6 @@ function ResultList(props) {
                         </div>
                     <div className="Scrollthebar">
                         <html className="emptyscrolling">&nbsp;</html>
-                    </div>
-                    <div className="BarScroll">
-                        <html className="emptyscroll">&nbsp;</html>
                     </div>
                 </div>
             );
