@@ -11,6 +11,9 @@ import glass from "../../img/Glass.png";
 import { Tabs } from "antd";
 import $ from "jquery";
 import { backlocale } from "constants/constindex";
+import XLSX from 'sheetjs-style'
+import * as FileSaver from 'file-saver'
+
 
 const { TabPane } = Tabs;
 
@@ -995,6 +998,7 @@ function SelectPartName(input) {
 
 function ReportPage(props) {
     const [activeKey, setActiveKey] = useState("1");
+    const [formValues, setFormvalues] = useState(initialValues);
     const panes = [
         {
             title: "Product Coverage Overview",
@@ -1027,12 +1031,58 @@ function ReportPage(props) {
         initialValues.end_year = e.target.value;
     };
 
+    function handleDownload() {
+        const curr = new Date();
+        var month, day;
+        if (curr.getMonth()+1 < 10) {
+            month = "0"+(curr.getMonth()+1);
+        } else {
+            month = curr.getMonth()+1;
+        }
+        if (curr.getDate() < 10) {
+            day = "0"+curr.getDate();
+        } else {
+            day = curr.getDate();
+        }
+        const fileName = `GMP Data_${curr.getFullYear()}-${month}-${day}`
+        // console.log(fileName)
+        let loc = backlocale + "overall/downoverall"
+        fetch(loc, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Acess-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+            },
+            body: JSON.stringify(formValues),
+        })
+        .catch((err) => {
+            return;
+        })
+        .then((res) => {
+            return res.blob()
+        })
+        .then((data) => {
+            if (!data) return;
+            const url = URL.createObjectURL(data);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = fileName+".xlsx";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            URL.revokeObjectURL(url);
+        });
+    }
+
     const valueText = (value) => `${value}%`;
 
-    const [formValues, setFormvalues] = useState(initialValues);
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formValues);
+        // console.log(formValues);
         //let count = 1;
         // if (
         //     !initialValues.part_name &&
@@ -1053,26 +1103,25 @@ function ReportPage(props) {
             },
             body: JSON.stringify(formValues),
         })
-            .catch((err) => {
+        .catch((err) => {
+            return;
+        })
+        .then((res) => {
+            if (!res || !res.ok || res.status >= 400) {
                 return;
-            })
-            .then((res) => {
-                if (!res || !res.ok || res.status >= 400) {
-                    return;
-                }
-                return res.json();
-            })
-            .then((data) => {
-                if (!data) return;
-                if (data.status === "There is no car matched your search") {
-                    return;
-                } else {
-                    console.log(data.table);
-
-                    console.log(formValues);
-                    return;
-                }
-            });
+            }
+            return res.json();
+        })
+        .then((data) => {
+            if (!data) return;
+            if (data.status === "There is no car matched your search") {
+                return;
+            } else {
+                console.log(data.table);
+                console.log(formValues);
+                return;
+            }
+        });
     };
     const [country, setCountry] = useState("");
     const [maker, setMaker] = useState("");
@@ -1241,6 +1290,7 @@ function ReportPage(props) {
                                 <button
                                     className="export"
                                     onClick={handleSubmit}
+                                    onMouseDown={handleDownload}
                                 >
                                     Export Data
                                 </button>

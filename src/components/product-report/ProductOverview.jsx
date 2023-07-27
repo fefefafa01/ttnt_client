@@ -1,10 +1,11 @@
 import { useState } from "react";
 import "../Epic1Filter";
 import "./productOverview.scss";
+import { backlocale } from "constants/constindex";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import { fontWeight } from "@mui/system";
 
-function ProductOverview() {
+function ProductOverview(input) {
     const [maker, setMaker] = useState([]);
     const [car, setCar] = useState([]);
     const [carOverallMT, setCarOverallMT] = useState([]);
@@ -15,7 +16,8 @@ function ProductOverview() {
     const [firstOpen, setFirstOpen] = useState(true);
     const [openOverall, setOpenOverall] = useState(true);
     if (firstOpen) {
-        fetch("http://localhost:5000/overall/maker", {
+        let loc = backlocale + "overall/maker"
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -48,7 +50,8 @@ function ProductOverview() {
             });
     }
     if (openOverall) {
-        fetch("http://localhost:5000/overall/overallTable", {
+        let loc = backlocale + "overall/overallTable"
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -81,8 +84,10 @@ function ProductOverview() {
                 console.log(data.overallValMTAT);
             });
     }
+
     const mergedObject = [...carOverallMT, ...carOverallMTAT];
-    console.log(mergedObject);
+    // console.log(mergedObject);
+
     return (
         <div>
             <div className="coverage-report">
