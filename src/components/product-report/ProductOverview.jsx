@@ -180,7 +180,7 @@ function ProductOverview() {
                                     <th key={index}>{el}</th>
                                 ))}
                             </tr>
-                            {carOverallMT.map((val, key) => (
+                            {car.map((val, key) => (
                                 <>
                                     <tr key={key}>
                                         {key % 2 === 0 ? (
@@ -199,10 +199,10 @@ function ProductOverview() {
                                                 border: "solid 1px black",
                                             }}
                                         >
-                                            {car[key]}
+                                            {val}
                                         </td>
                                         <td>Total</td>
-                                        {val.map((data, k) => (
+                                        {carOverallMT[key].map((data, k) => (
                                             <td
                                                 key={k}
                                                 style={{
@@ -215,22 +215,24 @@ function ProductOverview() {
                                             </td>
                                         ))}
 
-                                        {carOverallMTAT.map((el, index) => (
-                                            <td
-                                                key={index}
-                                                style={{
-                                                    color: "lightgrey",
-                                                    borderRight:
-                                                        "solid 1px black",
-                                                }}
-                                            >
-                                                {el[key].sum}
-                                            </td>
-                                        ))}
+                                        {carOverallMTAT[key].map(
+                                            (el, index) => (
+                                                <td
+                                                    key={index}
+                                                    style={{
+                                                        color: "lightgrey",
+                                                        borderRight:
+                                                            "solid 1px black",
+                                                    }}
+                                                >
+                                                    {el.sum}
+                                                </td>
+                                            )
+                                        )}
                                     </tr>
                                     <tr>
                                         <td>Coverage</td>
-                                        {val.map((data, k) => (
+                                        {carOverallMT[key].map((data, k) => (
                                             <td
                                                 key={k}
                                                 style={{
@@ -242,34 +244,36 @@ function ProductOverview() {
                                                 {data.coverage}
                                             </td>
                                         ))}
-                                        {carOverallMTAT.map((el, index) => (
-                                            <td
-                                                key={index}
-                                                style={{
-                                                    color: "lightgrey",
-                                                    borderRight:
-                                                        "solid 1px black",
-                                                }}
-                                            >
-                                                {el[key].coverageMTAT}
-                                            </td>
-                                        ))}
+                                        {carOverallMTAT[key].map(
+                                            (el, index) => (
+                                                <td
+                                                    key={index}
+                                                    style={{
+                                                        color: "lightgrey",
+                                                        borderRight:
+                                                            "solid 1px black",
+                                                    }}
+                                                >
+                                                    {el.coverage}
+                                                </td>
+                                            )
+                                        )}
                                     </tr>
                                     <tr>
                                         <td>%</td>
-                                        {/* {carOverallMT.map((el, index) => {
+                                        {carOverallMT[key].map((el, index) => {
                                             const percentage = parseInt(
                                                 (Number(
                                                     key >= carOverallMT.length
                                                         ? 0
-                                                        : el[key].coverage
+                                                        : el.coverage
                                                 ) *
                                                     100) /
                                                     Number(
                                                         key >=
                                                             carOverallMT.length
                                                             ? 0
-                                                            : el[key].sum
+                                                            : el.sum
                                                     )
                                             );
                                             return (
@@ -281,46 +285,7 @@ function ProductOverview() {
                                                             key >=
                                                                 carOverallMT.length
                                                                 ? 0
-                                                                : el[key]
-                                                                      .sum === 0
-                                                                ? "transparent"
-                                                                : percentage <=
-                                                                  50
-                                                                ? "lightcoral"
-                                                                : percentage <
-                                                                  90
-                                                                ? "yellow"
-                                                                : "green"
-                                                        }`,
-                                                        color:
-                                                            percentage <= 50
-                                                                ? "red"
-                                                                : "black",
-                                                        borderRight:
-                                                            "solid 1px black",
-                                                        borderBottom:
-                                                            "solid 1px black",
-                                                    }}
-                                                >
-                                                    {isNaN(percentage)
-                                                        ? ""
-                                                        : `${percentage}%`}
-                                                </td>
-                                            );
-                                        })} */}
-                                        {carOverallMTAT.map((el, index) => {
-                                            const percentage = parseInt(
-                                                (Number(el[key].coverageMTAT) *
-                                                    100) /
-                                                    Number(el[key].sumMTAT)
-                                            );
-                                            return (
-                                                <td
-                                                    key={index}
-                                                    style={{
-                                                        backgroundColor: `${
-                                                            isNaN(percentage) ||
-                                                            el[key].sum === 0
+                                                                : el.sum === 0
                                                                 ? "transparent"
                                                                 : percentage <=
                                                                   50
@@ -346,6 +311,48 @@ function ProductOverview() {
                                                 </td>
                                             );
                                         })}
+                                        {carOverallMTAT[key].map(
+                                            (el, index) => {
+                                                const percentage = parseInt(
+                                                    (Number(el.coverage) *
+                                                        100) /
+                                                        Number(el.sum)
+                                                );
+                                                return (
+                                                    <td
+                                                        key={index}
+                                                        style={{
+                                                            backgroundColor: `${
+                                                                isNaN(
+                                                                    percentage
+                                                                ) ||
+                                                                el.sum === 0
+                                                                    ? "transparent"
+                                                                    : percentage <=
+                                                                      50
+                                                                    ? "lightcoral"
+                                                                    : percentage <
+                                                                      90
+                                                                    ? "yellow"
+                                                                    : "green"
+                                                            }`,
+                                                            color:
+                                                                percentage <= 50
+                                                                    ? "red"
+                                                                    : "black",
+                                                            borderRight:
+                                                                "solid 1px black",
+                                                            borderBottom:
+                                                                "solid 1px black",
+                                                        }}
+                                                    >
+                                                        {isNaN(percentage)
+                                                            ? ""
+                                                            : `${percentage}%`}
+                                                    </td>
+                                                );
+                                            }
+                                        )}
                                     </tr>
                                 </>
                             ))}
