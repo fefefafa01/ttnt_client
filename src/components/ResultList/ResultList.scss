@@ -1,46 +1,44 @@
-
-.titleResult{
+.titleResult {
     border: solid 5px white;
     background-color: darkblue;
     color: white;
     height: 50px;
 }
 
-.Scroll{
-    height: 480px;
-    width: 900px;
+.Scroll {
+    height: 85%;
+    width: 95%;
     overflow: hidden;
     background-color: white;
     padding: 50px 0px 0px 20px;
-	border-radius: 20px;
-	margin-bottom: 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 .resulttabling {
     width: 120%;
-	td {
-		border: solid 2px white;
-		height: 40px;
-		font-size: 1em;
-	}
-	tr {
-		border: solid 2px white;
-		height: 40px;
-		font-size: 1em;
-	}
-	height: 100%;
-	margin-top: -10px;
-	tbody {
-		tr {
-			&:nth-child(odd) {
-				background-color: #e7e7e7;
-			}
-			&:nth-child(even) {
-				background-color: #cbcbcb;
-			}
-		}
-	}
-	
+    td {
+        border: solid 2px white;
+        height: 40px;
+        font-size: 1em;
+    }
+    tr {
+        border: solid 2px white;
+        height: 40px;
+        font-size: 1em;
+    }
+    height: 100%;
+    margin-top: -10px;
+    tbody {
+        tr {
+            &:nth-child(odd) {
+                background-color: #e7e7e7;
+            }
+            &:nth-child(even) {
+                background-color: #cbcbcb;
+            }
+        }
+    }
 }
 
 .emptyscrolling {
@@ -53,11 +51,11 @@
 
 .Scrollthebar {
     overflow-x: auto;
-	margin-top: -10px;
-	width: 900px;
-	display: block;
-	float: left;
-	float:inline-start;
+    margin-top: -10px;
+    width: 900px;
+    display: block;
+    float: left;
+    float: inline-start;
 }
 
 .Scrollthebar::-webkit-scrollbar {
@@ -86,14 +84,14 @@
 
 .BarScroll {
     overflow-x: auto;
-	margin-top: -10px;
-	width: 520px;
-	display: block;
-	float: right;
-	float:inline-start;
-	transform: rotate(90deg);
-	margin-right: -240px;
-	margin-top: -280px;
+    margin-top: -10px;
+    width: 520px;
+    display: block;
+    float: right;
+    float: inline-start;
+    transform: rotate(90deg);
+    margin-right: -240px;
+    margin-top: -280px;
 }
 
 .BarScroll::-webkit-scrollbar {
@@ -170,13 +168,10 @@
     text-align: center;
 }
 
-.col-3{
-	
+.col-3 {
 }
 
-.col-4{
+.col-4 {
     margin-top: 10px;
     display: flex;
 }
-
-

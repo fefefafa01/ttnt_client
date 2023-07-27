@@ -22,7 +22,7 @@ const validate = (values) => {
 };
 
 function Login() {
-    const loc = backlocale+"auth/login";
+    const loc = backlocale + "auth/login";
     const { setUser } = useContext(AccountContext) || {};
     const [visible, setVisible] = useState(false);
     const [error, setError] = useState(null);
@@ -33,6 +33,7 @@ function Login() {
     const [isSubmit, setIsSubmit] = useState(false);
 
     const [isChecked, setIsChecked] = useState(false);
+    const [dateLogin, setDateLogin] = useState("");
 
     useEffect(() => {
         if (localStorage.checkbox && localStorage.username !== "") {
@@ -41,6 +42,9 @@ function Login() {
                 email: localStorage.checkEmail,
                 password: localStorage.checkPassword,
             });
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 7);
+            setDateLogin(expirationDate.toISOString());
         } else if (!localStorage.checkbox) {
             setIsChecked(false);
             localStorage.removeItem("checkEmail");
@@ -80,26 +84,29 @@ function Login() {
             },
             body: JSON.stringify(formValues),
         })
-        .catch((err) => {
-            return;
-        })
-        .then((res) => {
-            if (!res || !res.ok || res.status >= 400) {
+            .catch((err) => {
                 return;
-            }
-            return res.json();
-        })
-        .then((data) => {
-            if (!data) return;
-            localStorage.setItem("isLoggedIn", false);
-            setUser({ ...data });
-            if (data.status === "Wrong Email" || data.status === "Wrong Password") {
-                setError("Invalid email or password");
-            } else if (data.loggedIn) {
-                localStorage.isLoggedIn = true;
-                window.location.assign("/homepage");
-            }
-        });
+            })
+            .then((res) => {
+                if (!res || !res.ok || res.status >= 400) {
+                    return;
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if (!data) return;
+                localStorage.setItem("isLoggedIn", false);
+                setUser({ ...data });
+                if (
+                    data.status === "Wrong Email" ||
+                    data.status === "Wrong Password"
+                ) {
+                    setError("Invalid email or password");
+                } else if (data.loggedIn) {
+                    localStorage.isLoggedIn = true;
+                    window.location.assign("/homepage");
+                }
+            });
     };
 
     const handleCheck = (e) => {
@@ -114,6 +121,7 @@ function Login() {
             localStorage.checkbox = isChecked;
             localStorage.checkEmail = formValues.email;
             localStorage.checkPassword = formValues.password;
+            localStorage.expirationDate = dateLogin;
         }
         // here call the API to signup/login
         else if (!isChecked) {
@@ -130,20 +138,20 @@ function Login() {
     const [passwordblurred, setPassb] = useState(false);
 
     function handleBlur(name) {
-        let erro = {}
-        if (name==="email" || emailblurred) {
+        let erro = {};
+        if (name === "email" || emailblurred) {
             const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
             if (!formValues.email) {
                 erro.email = t("Email is required");
             } else if (!regex.test(formValues.email)) {
                 erro.email = t("Invalid email address");
-            } 
+            }
             if (!emailblurred) {
                 setEmailb(true);
             }
         }
 
-        if (name==="password" || passwordblurred) {
+        if (name === "password" || passwordblurred) {
             if (!formValues.password) {
                 erro.password = t("Password is required");
             }
@@ -175,7 +183,11 @@ function Login() {
                             type="text"
                             name="email"
                             placeholder={t("Email Address")}
-                            value={formValues.email}
+                            value={
+                                localStorage.expirationDate === Date()
+                                    ? ""
+                                    : formValues.email
+                            }
                             onChange={handleChange}
                             onBlur={() => handleBlur("email")}
                         />
@@ -186,7 +198,11 @@ function Login() {
                     <div className="input-box">
                         <input
                             name="password"
-                            value={formValues.password}
+                            value={
+                                localStorage.expirationDate === Date()
+                                    ? ""
+                                    : formValues.password
+                            }
                             type={visible ? "text" : "password"}
                             placeholder={t("Password")}
                             onChange={handleChange}
@@ -211,7 +227,6 @@ function Login() {
                         <label htmlFor="">
                             <input
                                 type={"checkbox"}
-                                checked={isChecked}
                                 name="IsRememberMe"
                                 onChange={handleCheck}
                             />

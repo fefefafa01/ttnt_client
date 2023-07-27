@@ -81,8 +81,6 @@ function ProductOverview() {
                 console.log(data.overallValMTAT);
             });
     }
-    const mergedObject = [...carOverallMT, ...carOverallMTAT];
-    console.log(mergedObject);
     return (
         <div>
             <div className="coverage-report">

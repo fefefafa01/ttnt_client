@@ -15,14 +15,14 @@ const Validate = (values) => {
     if (!values.email) {
         errors.email = <Changer inp="Email is required" />;
     } else if (!regex.test(values.email)) {
-        errors.email = <Changer inp="Invalid email address" />
+        errors.email = <Changer inp="Invalid email address" />;
     }
     if (!values.password) {
         errors.password = <Changer inp="Password is required" />;
     } else if (!regexpassupdown.test(values.password)) {
         errors.password = (
             <Changer inp="Passwords must contain both uppercase and lowercase characters" />
-        )
+        );
     } else if (!regexpassnum.test(values.password)) {
         errors.password = (
             <Changer inp="Passwords must contain at least one number" />
@@ -35,7 +35,9 @@ const Validate = (values) => {
     if (!values.confpassword) {
         errors.confpassword = <Changer inp="Password is required" />;
     } else if (values.confpassword !== values.password) {
-        errors.confpassword = <Changer inp="The confirm password is different from the password" />;
+        errors.confpassword = (
+            <Changer inp="The confirm password is different from the password" />
+        );
     }
 
     if (!values.last_name) {
@@ -70,10 +72,17 @@ function Register() {
         var { name, value } = e.target;
         const viregex = vietregex;
         const jpregex = japregex;
-        if ((name==="first_name") || (name==="last_name")) {
+        if (name === "first_name" || name === "last_name") {
             setFormvalues({ ...formValues, [name]: value });
-        } else if (((name==="email") || (name==="password") || (name==="confpassword")) && !viregex.test(value) && !jpregex.test(value)) {
-            if (!jpregex.test(value)) setFormvalues({ ...formValues, [name]: value });
+        } else if (
+            (name === "email" ||
+                name === "password" ||
+                name === "confpassword") &&
+            !viregex.test(value) &&
+            !jpregex.test(value)
+        ) {
+            if (!jpregex.test(value))
+                setFormvalues({ ...formValues, [name]: value });
         }
     };
     const handleSubmit = (e) => {
@@ -86,34 +95,34 @@ function Register() {
         //Fetch
         loc = backlocale + "auth/reg";
         fetch(loc, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods":
-                "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-        },
-        body: JSON.stringify(formValues),
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                    "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            },
+            body: JSON.stringify(formValues),
         })
-        .catch((err) => {
-            return;
-        })
-        .then((res) => {
-            if (!res || !res.ok || res.status >= 400) {
+            .catch((err) => {
                 return;
-            }
-            return res.json();
-        })
-        .then((data) => {
-            if (!data) return;
+            })
+            .then((res) => {
+                if (!res || !res.ok || res.status >= 400) {
+                    return;
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if (!data) return;
                 setUser({ ...data });
-            if (data.status === "Email Taken") {
-                setErrormsg(t("Email address already exists"));
-            } else if (data.status === "Registered") {
-                setVad(!vad);
-            }
-        });
+                if (data.status === "Email Taken") {
+                    setErrormsg(t("Email address already exists"));
+                } else if (data.status === "Registered") {
+                    setVad(!vad);
+                }
+            });
     };
 
     //Out Focus
@@ -124,8 +133,8 @@ function Register() {
     const [confpblurred, setCPassb] = useState(false);
 
     function handleBlur(name) {
-        let erro = {}
-        if (name==="email" || emailblurred) {
+        let erro = {};
+        if (name === "email" || emailblurred) {
             const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
             if (!formValues.email) {
@@ -138,36 +147,42 @@ function Register() {
             }
         }
 
-        if (name==="password" || passwordblurred) {
+        if (name === "password" || passwordblurred) {
             const regexpassupdown = /(?=.*?[A-Z])(?=.*?[a-z])/;
             const regexpassnum = /(?=.*?[0-9])/;
 
             if (!formValues.password) {
                 erro.password = t("Password is required");
             } else if (!regexpassupdown.test(formValues.password)) {
-                erro.password = t("Passwords must contain both uppercase and lowercase characters");
+                erro.password = t(
+                    "Passwords must contain both uppercase and lowercase characters"
+                );
             } else if (!regexpassnum.test(formValues.password)) {
                 erro.password = t("Passwords must contain at least one number");
             } else if (formValues.password.length < 8) {
-                erro.password = t("Passwords must contain at least 8 characters");
+                erro.password = t(
+                    "Passwords must contain at least 8 characters"
+                );
             }
             if (!passwordblurred) {
                 setPassb(true);
             }
         }
 
-        if (name==="confpass" || confpblurred) {
+        if (name === "confpass" || confpblurred) {
             if (!formValues.confpassword) {
                 erro.confpassword = t("Password is required");
             } else if (formValues.confpassword !== formValues.password) {
-                erro.confpassword = t("The confirm password is different from the password");
+                erro.confpassword = t(
+                    "The confirm password is different from the password"
+                );
             }
             if (!confpblurred) {
                 setCPassb(true);
             }
         }
-    
-        if (name==="FN" || fstnblurred) {
+
+        if (name === "FN" || fstnblurred) {
             if (!formValues.first_name) {
                 erro.first_name = t("First Name is required");
             }
@@ -175,12 +190,12 @@ function Register() {
                 setFNb(true);
             }
         }
-        if (name==="LN" || lstnblurred) {
+        if (name === "LN" || lstnblurred) {
             if (!formValues.last_name) {
                 erro.last_name = t("Last Name is required");
             }
             if (!lstnblurred) {
-                setLNb(true)
+                setLNb(true);
             }
         }
         setFormErrors(erro);
@@ -193,6 +208,7 @@ function Register() {
             setErrormsg(null);
         }
     }, [formErrors]);
+
     return (
         <>
             {vad && (
@@ -217,7 +233,7 @@ function Register() {
                             </div>
                             <div className="full-name">
                                 <div className="name">
-                                    <div className="col-lg-6 col-sm-12">
+                                    <div className="col-lg-6 col-sm-12 left">
                                         <input
                                             name="first_name"
                                             value={formValues.first_name}
@@ -232,7 +248,7 @@ function Register() {
                                         </span>
                                     </div>
 
-                                    <div className="col-lg-6 col-sm-12">
+                                    <div className="col-lg-6 col-sm-12 right">
                                         <input
                                             name="last_name"
                                             value={formValues.last_name}
@@ -240,7 +256,9 @@ function Register() {
                                             type="text"
                                             placeholder={t("Last Name")}
                                             onChange={handleChange}
-                                            onBlurCapture={() => handleBlur("LN")}
+                                            onBlurCapture={() =>
+                                                handleBlur("LN")
+                                            }
                                         />
                                         <span className="name-error error_last_name">
                                             {formErrors.last_name}
@@ -296,7 +314,9 @@ function Register() {
                             <div className="error">
                                 <span>{formErrors.confpassword}</span>
                             </div>
-                            <p className="preg-error">{errormsg ? errormsg : null}</p>
+                            <p className="preg-error">
+                                {errormsg ? errormsg : null}
+                            </p>
                             <button
                                 className="btn btn-dark regbtn"
                                 type="submit"

@@ -30,7 +30,10 @@ function AdminHeader() {
                     <p className="col-lg logotext">We Touch The Future</p>
                 </div>
                 <div className="lbtngroup col-lg-2 col-sm-4">
-                    <button className="bttn col-2 rep-btn" onClick={handlePSBtn}>
+                    <button
+                        className="bttn col-2 rep-btn"
+                        onClick={handlePSBtn}
+                    >
                         <span>
                             <Changer inp="Vehicle Part Search" />
                         </span>
@@ -54,7 +57,10 @@ function AdminHeader() {
                             <Changer inp="Vehicle Management" />
                         </span>
                     </button>
-                    <button className="bttn leftalgn col-lg" onClick={handleBlank}>
+                    <button
+                        className="bttn leftalgn col-lg"
+                        onClick={handleBlank}
+                    >
                         <span>
                             <Changer inp="Vehicle Part Management" />
                         </span>
@@ -162,7 +168,7 @@ function ReportHeader() {
                         </button>
                     </Link>
                 </div>
-                <div className="hlabel col-lg ">
+                <div className="hlabel-report col-lg ">
                     <p className="hlabel-content">
                         <Changer inp="Product Coverage by Period" />
                     </p>
