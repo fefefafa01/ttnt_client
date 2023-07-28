@@ -813,7 +813,7 @@ function SelectPartName(input) {
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
-            loc = backlocale + "sch/partname";
+            loc = backlocale + "overall/partname";
             fetch(loc, {
                 method: "POST",
                 credentials: "include",
