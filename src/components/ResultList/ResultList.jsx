@@ -10,7 +10,7 @@ import Next from "../../img/next_btn.png";
 
 function ResultList(props) {
     
-    const { formValues, count, Add } = props;
+    const { formValues, count, Add, onAdd} = props;
     console.log(formValues);
     //Synchronizing Scroll:
     $(function () {
@@ -76,6 +76,10 @@ function ResultList(props) {
 
     const openPart = (id, formValues) => {
         Add(id, formValues);
+    }
+
+    const openSubGroup = (id, formValues) => {
+        onAdd(id, formValues);
     }
     if (formValues === "There is no car matched your search") {
         return (
@@ -544,7 +548,7 @@ function ResultList(props) {
                                     <tbody>
                                         {currentItemss.map((el, index) => (
                                             <tr key={index}>
-                                                <td>{no++}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{no++}</td>
                                                 <td>
                                                     <img
                                                         src={vehiclePart}
@@ -553,22 +557,22 @@ function ResultList(props) {
                                                         onClick={() => openPart(el.car_info_id, formValues)}
                                                     />
                                                 </td>
-                                                <td>{el.car_maker}</td>
-                                                <td>{el.car_model_name}</td>
-                                                <td>{el.model_code}</td>
-                                                <td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.car_maker}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.car_model_name}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.model_code}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>
                                                     {el.start_of_production}
                                                 </td>
-                                                <td>{el.end_of_production}</td>
-                                                <td>{el.drivers_position}</td>
-                                                <td>{el.engine_code}</td>
-                                                <td>{el.displacement_code}</td>
-                                                <td>{el.powered_type}</td>
-                                                <td>{el.fuel_type}</td>
-                                                <td>{el.transmission_code}</td>
-                                                <td>{el.transmission_type}</td>
-                                                <td>{el.speed}</td>
-                                                <td>{el.drivetrain}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.end_of_production}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.drivers_position}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.engine_code}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.displacement_code}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.powered_type}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.fuel_type}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.transmission_code}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.transmission_type}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.speed}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.drivetrain}</td>
                                             </tr>
                                         ))}
                                     </tbody>

@@ -83,7 +83,7 @@ function Homepage() {
             const activeKey = `newTab${newTabIndex}`;
             const newPane = {
                 title: text,
-                content: <ResultList formValues={formValues} count={count} Add={addList}/>,
+                content: <ResultList formValues={formValues} count={count} Add={addList} onAdd = {addSGroup}/>,
                 key: activeKey,
             };
             panes.current = [...panes.current, newPane];
@@ -98,6 +98,18 @@ function Homepage() {
         const newPane = {
             title: "Part List",
             content: <ResultPartList formValues = {formValues} id = {id}/>,
+            key: activeKey,
+        };
+        panes.current = [...panes.current, newPane];
+        setActiveKey(activeKey);
+    };
+
+    const addSGroup = (id, formValues) => {
+        const newTabIndex = panes.current.length;
+        const activeKey = `newTab${newTabIndex}`;
+        const newPane = {
+            title: "Parts group list",
+            content: <PartGroup carid={id} onAdd={addSub}/>,
             key: activeKey,
         };
         panes.current = [...panes.current, newPane];

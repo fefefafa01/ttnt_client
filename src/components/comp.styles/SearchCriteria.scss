@@ -158,8 +158,8 @@
 	flex-direction: row;
 	justify-content: space-between;
 	height: 50px;
-	width: 90%;
-	margin: 20px 0px 20px 30px;
+	width: 92%;
+	margin: 20px 0px 20px 20px;
 	button {
 		border: none;
 		border-radius: 10px;
@@ -174,7 +174,7 @@
 #Reset {
 	width: 25%;
 	background-color: grey;
-	height: 40.5px;
+	height: 50px;
 }
 .selectDropdown {
 	width: 200px;
@@ -265,6 +265,7 @@
 	text-decoration: underline;
 	color: grey;
 }
+
 @media screen and (max-width: 1024px) {
 	.sidebar {
 		width: 380px;

@@ -27,6 +27,25 @@ const initialValues = {
     year: "",
 };
 
+const allValues = {
+    country_name: "",
+    manufacturer_name: "",
+    car_model_name: "",
+    model_code: "",
+    drivers_position: "",
+    engine_model: "",
+    displacement_code: "",
+    fuel_type: "",
+    transmission_type: "",
+    drivetrain: "",
+    aisin_part_name: "",
+    part_code: "",
+    aisin_premium_code: "",
+    competiter_part_code: "",
+    speed: "",
+    year: "",
+};
+
 var loc;
 
 function resetInitialValues() {
@@ -52,7 +71,7 @@ function SelectSpeed(input) {
     const [showArrow, setShowArrow] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedOptions, setSelectedOptions] = useState([]);
-    const options = ["3", "4", "5", "6", "7", "8", "9", "10", "-"];
+    const options = ["3", "4", "5", "6", "7", "8", "9", "10"];
 
     const selectDropdownRef = useRef(null);
 
@@ -62,6 +81,8 @@ function SelectSpeed(input) {
             setShowArrow(!showArrow);
         }
     };
+
+    allValues.speed = [...options];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -250,6 +271,8 @@ function SelectYear(input) {
             setShowArrow(!showArrow);
         }
     };
+
+    allValues.year = [options];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -472,6 +495,8 @@ function SelectCountries(input) {
         }
     };
 
+    allValues.country = [countryNames];
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         
@@ -676,6 +701,8 @@ function SelectCarMaker(input) {
             setShowArrow(!showArrow);
         }
     };
+
+    allValues.manufacturer_name = [...manufacturer_name];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -882,7 +909,7 @@ function SelectModelName(input) {
         }
     };
 
-    
+    allValues.car_model_name = [...model_name];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -1090,6 +1117,8 @@ function SelectModelCode(input) {
         }
     };
 
+    allValues.model_code = [...modelcode];
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -1293,6 +1322,8 @@ function SelectPosition(input) {
             setShowArrow(!showArrow);
         }
     };
+
+    allValues.drivers_position = [...driversposition];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -1498,6 +1529,8 @@ function SelectEngineCode(input) {
         }
     };
 
+    allValues.engine_model = [...enginemodel];
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -1701,6 +1734,8 @@ function SelectDisplacement(input) {
             setShowArrow(!showArrow);
         }
     };
+
+    allValues.displacement_code = [...displacementcode]
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -1906,6 +1941,8 @@ function SelectFuel(input) {
         }
     };
 
+    allValues.fuel_type = [...fueltype]
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2109,6 +2146,8 @@ function SelectTransmission(input) {
             setShowArrow(!showArrow);
         }
     };
+
+    allValues.transmission_type = [...transmissiontype];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -2314,6 +2353,8 @@ function SelectDrivertrain(input) {
         }
     };
 
+    allValues.drivetrain = [...drivetrainNames];
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2518,7 +2559,7 @@ function SelectPartName(input) {
         }
     };
 
-    
+    allValues.aisin_part_name = [...aisinpartname];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -2724,6 +2765,8 @@ function SelectOE(input) {
         }
     };
 
+    allValues.part_code = [...partcode];
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2927,6 +2970,8 @@ function SelectAISIN(input) {
             setShowArrow(!showArrow);
         }
     };
+
+    allValues.aisin_premium_code = [...aisinpremiumcode];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -3132,6 +3177,8 @@ function SelectCompetitor(input) {
         }
     };
 
+    allValues.competiter_part_code = [...competiterpartcode];
+
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -3306,20 +3353,46 @@ const SearchCriteria = (props) => {
     const [arrow1, setOpenArrow1] = useState(false);
     const [arrow2, setOpenArrow2] = useState(false);
     const [arrow3, setOpenArrow3] = useState(false);
-
-    const [formValues, setFormvalues] = useState(initialValues);
+    const formValues = useRef()
+    
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(initialValues)
+        
         let count = 1;
-        if (
+        let loc = backlocale + "table/result";
+        
+        if( 
+            !initialValues.country_name &&
+            !initialValues.manufacturer_name &&
+            !initialValues.car_model_name &&
+            !initialValues.model_code &&
+            !initialValues.drivers_position &&
+            !initialValues.engine_model &&
+            !initialValues.displacement_code &&
+            !initialValues.fuel_type &&
+            !initialValues.transmission_type &&
+            !initialValues.drivetrain &&
+            !initialValues.speed &&
+            !initialValues.year &&
             !initialValues.aisin_part_name &&
             !initialValues.part_code &&
             !initialValues.aisin_premium_code &&
-            !initialValues.competiter_part_code
-        )
+            !initialValues.competiter_part_code)
+        {
+            formValues.current = allValues;
             count = 0;
-        let loc = backlocale + "table/result";
+        }
+        else {
+            formValues.current = initialValues;
+            if (
+                !initialValues.aisin_part_name &&
+                !initialValues.part_code &&
+                !initialValues.aisin_premium_code &&
+                !initialValues.competiter_part_code
+            )
+            count = 0;
+        }
+        console.log(formValues)
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -3329,7 +3402,7 @@ const SearchCriteria = (props) => {
                 "Access-Control-Allow-Methods":
                     "GET,PUT,POST,DELETE,PATCH,OPTIONS",
             },
-            body: JSON.stringify(formValues),
+            body: JSON.stringify(formValues.current),
         })
             .catch((err) => {
                 return;
@@ -3348,10 +3421,10 @@ const SearchCriteria = (props) => {
                 } else {
                     console.log(data.table);
                     props.onAdd(data.table, count);
-                    console.log(formValues);
                     return;
                 }
-            });
+            
+        });
     };
     const [spd, setSpd] = useState("");
     const [year, setYear] = useState("");
