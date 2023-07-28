@@ -60,7 +60,7 @@ function Homepage() {
             title: `KUN25, ${buttonSubName} group-Parts subgroup list`,
             content: (
                 <PartSubgroup
-                    carid={150}
+                    carid={102}
                     partGroupName={buttonSubName}
                     onAdd={add}
                 />
@@ -165,12 +165,12 @@ function Homepage() {
                                 {pane.title === "Search Result" ? (
                                     <SearchResult />
                                 ) : pane.title.includes("Parts group list") ? (
-                                    <PartGroup carid={150} onAdd={addSub} />
+                                    <PartGroup carid={102} onAdd={addSub} />
                                 ) : pane.title.includes(
                                       "Parts subgroup list"
                                   ) ? (
                                     <PartSubgroup
-                                        carid={29}
+                                        carid={102}
                                         partGroupName={partSubName}
                                         onAdd={add}
                                     />

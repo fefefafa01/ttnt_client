@@ -4,7 +4,7 @@ import { Changer } from "../Languages/LanguageChange";
 import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
-import { backlocale } from "constants/constindex";
+import { backlocale, japregex, vietregex } from "constants/constindex";
 
 const validate = (values) => {
     const errors = {};
@@ -27,11 +27,13 @@ const validate = (values) => {
         );
     } else if (values.password.length < 8) {
         errors.password = (
-            <Changer inp="Password must be more than 8 characters" />
+            <Changer inp="Passwords must contain at least 8 characters" />
         );
     }
 
-    if (values.confpassword !== values.password) {
+    if (!values.confpassword) {
+        errors.confpassword = <Changer inp="Password is required" />;
+    } else if (values.confpassword !== values.password) {
         errors.confpassword = <Changer inp="The confirm password is different from the password" />;
     }
     
@@ -40,8 +42,6 @@ const validate = (values) => {
 
 function ResetPwd() {
     var loc;
-    const [password, setPassword] = useState("");
-    const [confpassword, confsetPassword] = useState("");
     const [visible, setVisible] = useState(false);
     const [confvisible, confsetVisible] = useState(false);
     const { setUser } = useContext(AccountContext) || {};
@@ -50,13 +50,18 @@ function ResetPwd() {
     const initialValues = { email: "", password: "", confpassword: "" };
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
+    const [errormsg, setErrormsg] = useState(null);
     const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e) => {
+        const viregex = vietregex;
+        const jpregex = japregex;
         const { name, value } = e.target;
-        setFormvalues({ ...formValues, [name]: value });
-        setPassword(e.target.value);
-        confsetPassword(e.target.value);
+        if (!viregex.test(value) && !jpregex.test(value)) {
+            if (!jpregex.test(value)) {
+                setFormvalues({ ...formValues, [name]: value });
+            }
+        }
     };
 
     const handleSubmit = (e) => {
@@ -87,7 +92,7 @@ function ResetPwd() {
             if (!data) return;
             setUser({ ...data });
             if (data.status === "Email Unavailable") {
-                setFormErrors({ email: t("Email address does not exist") });
+                setErrormsg(t("Email address does not exist"));
             } else if (data.status === "Changed Pass") {
                 sethide(!hide);
             }
@@ -95,14 +100,65 @@ function ResetPwd() {
     };
 
     useEffect(() => {
-            console.log(formErrors);
-            console.log("is Submit:", isSubmit);
+            // console.log(formErrors);
+            // console.log("is Submit:", isSubmit);
             if (Object.keys(formErrors).length === 0 && isSubmit) {
-                console.log(formValues);
+                // console.log(formValues);
             }
         }, 
         [formErrors]
     );
+
+    //Out Focus
+    const [emailblurred, setEmailb] = useState(false);
+    const [passwordblurred, setPassb] = useState(false);
+    const [confpblurred, setCPassb] = useState(false);
+
+    function handleBlur(name) {
+        let erro = {}
+        if (name==="email" || emailblurred) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+            if (!formValues.email) {
+                erro.email = t("Email is required");
+            } else if (!regex.test(formValues.email)) {
+                erro.email = t("Invalid email address");
+            }
+            if (!emailblurred) {
+                setEmailb(true);
+            }
+        }
+
+        if (name==="password" || passwordblurred) {
+            const regexpassupdown = /(?=.*?[A-Z])(?=.*?[a-z])/;
+            const regexpassnum = /(?=.*?[0-9])/;
+
+            if (!formValues.password) {
+                erro.password = t("Password is required");
+            } else if (!regexpassupdown.test(formValues.password)) {
+                erro.password = t("Passwords must contain both uppercase and lowercase characters");
+            } else if (!regexpassnum.test(formValues.password)) {
+                erro.password = t("Passwords must contain at least one number");
+            } else if (formValues.password.length < 8) {
+                erro.password = t("Passwords must contain at least 8 characters");
+            }
+            if (!passwordblurred) {
+                setPassb(true);
+            }
+        }
+
+        if (name==="confpass" || confpblurred) {
+            if (!formValues.confpassword) {
+                erro.confpassword = t("Password is required");
+            } else if (formValues.confpassword !== formValues.password) {
+                erro.confpassword = t("The confirm password is different from the password");
+            }
+            if (!confpblurred) {
+                setCPassb(true);
+            }
+        }
+        setFormErrors(erro);
+    }
 
     return (
     <>
@@ -120,6 +176,7 @@ function ResetPwd() {
                             placeholder={t("Email Address")}
                             value={formValues.email}
                             onChange={handleChange}
+                            onBlur={() => handleBlur("email")}
                             />
                         </div>
                         <div className="error">
@@ -132,6 +189,7 @@ function ResetPwd() {
                             type={visible ? "text" : "password"}
                             placeholder={t("Password")}
                             onChange={handleChange}
+                            onBlur={() => handleBlur("password")}
                             />
                             <div
                                 className="p-2"
@@ -156,6 +214,7 @@ function ResetPwd() {
                             type={confvisible ? "text" : "password"}
                             placeholder={t("Confirm New Password")}
                             onChange={handleChange}
+                            onBlur={() => handleBlur("confpass")}
                             />
                             <div
                                 className="p-2"
@@ -173,7 +232,10 @@ function ResetPwd() {
                         <div className="error">
                             <span>{formErrors.confpassword}</span>
                         </div>
-                        <button className="btn btn-dark">
+                        <p className="preg-error">
+                            {errormsg ? errormsg : null}
+                        </p>
+                        <button className="btn btn-dark resetpwdscalebottom">
                             <Changer inp="Reset Password" />
                         </button>
                     </form>
@@ -194,7 +256,7 @@ function ResetPwd() {
                             <p>
                                 <Changer inp="please log in" />
                             </p>
-                            <button className="btn">
+                            <button className="regbackbtn">
                                 <Link className="back_login" to="/login">
                                     <Changer inp="Go to Login" />
                                 </Link>

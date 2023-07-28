@@ -13,13 +13,13 @@ const Views = () => {
             <Routes>
                 <Route
                     path="/"
-                    element={loggedIn ? <HomePage /> : <MainPage />}
+                    element={loggedIn === true ? <HomePage /> : <MainPage />}
                 />
-                <Route path="*" element={<MainPage />} />
                 <Route
-                    path="/homepage"
-                    element={<HomePage />}
+                    path="*"
+                    element={loggedIn === true ? <HomePage /> : <MainPage />}
                 />
+                <Route path="/homepage" element={<HomePage />} />
                 <Route path="/report" element={<ReportPage />} />
                 <Route path="/blankpage" element={<BlankPage />} />
             </Routes>
