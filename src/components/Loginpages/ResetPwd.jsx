@@ -50,6 +50,7 @@ function ResetPwd() {
     const initialValues = { email: "", password: "", confpassword: "" };
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
+    const [errormsg, setErrormsg] = useState(null);
     const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e) => {
@@ -91,7 +92,7 @@ function ResetPwd() {
             if (!data) return;
             setUser({ ...data });
             if (data.status === "Email Unavailable") {
-                setFormErrors({ email: t("Email address does not exist") });
+                setErrormsg(t("Email address does not exist"));
             } else if (data.status === "Changed Pass") {
                 sethide(!hide);
             }
@@ -231,7 +232,10 @@ function ResetPwd() {
                         <div className="error">
                             <span>{formErrors.confpassword}</span>
                         </div>
-                        <button className="btn btn-dark">
+                        <p className="preg-error">
+                            {errormsg ? errormsg : null}
+                        </p>
+                        <button className="btn btn-dark resetpwdscalebottom">
                             <Changer inp="Reset Password" />
                         </button>
                     </form>
@@ -252,7 +256,7 @@ function ResetPwd() {
                             <p>
                                 <Changer inp="please log in" />
                             </p>
-                            <button className="btn">
+                            <button className="regbackbtn">
                                 <Link className="back_login" to="/login">
                                     <Changer inp="Go to Login" />
                                 </Link>

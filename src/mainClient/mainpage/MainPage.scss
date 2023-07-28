@@ -67,6 +67,7 @@ p.label {
         padding-top: 20px;
         color: black;
         text-align: center;
+        margin-bottom: -10px;
     }
 }
 .input-box {
@@ -75,7 +76,7 @@ p.label {
     height: 50px;
     border-bottom: 2px solid #172685;
     display: flex;
-    margin: 30px 30px 20px;
+    margin: 30px 10% 30px 10%;
     input {
         width: 100%;
         height: 100%;
@@ -109,7 +110,6 @@ p.label {
 }
 
 input.name-box {
-    width: 35%;
     display: inline;
     border: transparent;
     border-bottom: 2px solid #172685;
@@ -117,58 +117,56 @@ input.name-box {
     outline: none;
     margin-top: 5px;
     font-size: 1.2em;
-    margin-left: -2px;
     &::placeholder {
         color: #64a5b4;
     }
 }
 .error {
-    width: 80%;
-    margin-left: 30px;
+    margin: -20px 10% 0px 10%;
     text-align: left;
-    margin-top: -20px;
-    position: absolute;
-    width: 80%;
-    margin-left: 30px;
-    text-align: left;
-    margin-top: -20px;
-    position: absolute;
+    float: left;
     color: red;
+    font-size: 0.85em;
     span {
         color: red;
     }
 }
 .full-name {
-    margin-top: 35px;
+    margin: 35px 10% 0px 10%;
     display: block;
     position: relative;
 }
 .name {
     display: flex;
-    div.right {
-        padding-right: 20px;
-    }
+}
+
+.left {
+    max-width: 55%;
+    min-width: 50%;
+}
+
+.right {
+    max-width: 55%;
+    min-width: 50%;
 }
 input.name-left {
-    width: 80%;
-    margin-left: 5px;
+    width: 90%;
+    float: left;
 }
 input.name-right {
-    width: 80%;
-    margin-left: -40px;
+    width: 100%;
+    float: right;
 }
-.error_last_name {
+.error_last_name, .error_first_name {
+    margin-top: 10px;
     float: left;
-    margin-left: 10px;
     color: red;
+    margin-bottom: -30px;
 }
-.error_first_name {
-    float: left;
-    margin-left: 30px;
-    color: red;
-}
+
 .name-error {
     display: inline;
+    font-size: 0.85em;
 }
 .valid-box {
     height: fit-content;
@@ -193,7 +191,7 @@ input.name-right {
     font-size: 0.9em;
     color: #172685;
     font-weight: 500;
-    margin: 10px 28px 15px;
+    margin: 40px 10% 15px 10%;
     display: flex;
     justify-content: space-between;
     label {
@@ -213,12 +211,13 @@ input.name-right {
 }
 .p-error {
     position: absolute;
-    margin: 65px 130px;
+    width: 100%;
     color: red;
 }
 .preg-error {
+    width: 100%;
     position: absolute;
-    margin-left: 85px;
+    text-align: center;
     color: red;
 }
 button.btn {
@@ -230,8 +229,13 @@ button.btn {
     font-size: 1em;
     color: #fff;
     font-weight: 500;
-    margin-top: 100px;
+    margin-top: 40px;
 }
+
+button.resetpwdscalebottom {
+    margin-bottom: 20px;
+}
+
 button.regbtn {
     margin-top: 30px;
     margin-bottom: 4vh;
@@ -334,7 +338,7 @@ p.register-link {
             padding-right: 0px;
         }
         div.left {
-            padding-left: 10px;
+            padding-left: 0px;
         }
     }
     .p-error {
@@ -343,7 +347,6 @@ p.register-link {
     }
     .error_first_name {
         margin-left: 0px;
-        padding-left: 20px;
     }
     .error_last_name {
         margin-left: 0px;

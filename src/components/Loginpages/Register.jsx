@@ -233,7 +233,7 @@ function Register() {
                             </div>
                             <div className="full-name">
                                 <div className="name">
-                                    <div className="col-lg-6 col-sm-12 left">
+                                    <div className="left">
                                         <input
                                             name="first_name"
                                             value={formValues.first_name}
@@ -248,7 +248,7 @@ function Register() {
                                         </span>
                                     </div>
 
-                                    <div className="col-lg-6 col-sm-12 right">
+                                    <div className="right">
                                         <input
                                             name="last_name"
                                             value={formValues.last_name}
