@@ -2,7 +2,7 @@
 .bttn {
     transform: skew(-45deg);
     height: 45px;
-    width: 150px;
+    width: 130px;
     margin-top: 10px;
     text-align: center;
     font-size: 0.85em;
@@ -11,7 +11,7 @@
     &:hover {
         transform: skew(-45deg);
         min-height: 10px;
-        width: 150px;
+        width: 130px;
         text-align: center;
         font-size: 0.85em;
         font-weight: bold;
@@ -73,7 +73,11 @@
     text-align: center;
     display: block;
     font-family: Tahoma;
-    margin-left: 60px;
+}
+@media screen and (max-width: 1024px) {
+    .hlabel {
+        margin-left: 40px;
+    }
 }
 .hlabel-report {
     color: white;
