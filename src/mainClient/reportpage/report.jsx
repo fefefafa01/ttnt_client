@@ -23,8 +23,8 @@ const initialValues = {
     transmission_type: "",
     part_name: "",
     part_group: "",
-    start_year: "2000",
-    end_year: "2000",
+    start_year: "",
+    end_year: "",
     start_cover: "25",
     end_cover: "75",
 };
@@ -1032,50 +1032,58 @@ function ReportPage(props) {
     };
 
     function handleDownload() {
-        const curr = new Date();
-        var month, day;
-        if (curr.getMonth()+1 < 10) {
-            month = "0"+(curr.getMonth()+1);
+        if (((formValues.start_year!=="" && formValues.end_year!=="") && (parseInt(formValues.start_year) <= parseInt(formValues.end_year)))
+            ||
+            (formValues.start_year==="")
+            ||
+            (formValues.end_year==="")
+        ) {
+            const curr = new Date();
+            var month, day;
+            if (curr.getMonth()+1 < 10) {
+                month = "0"+(curr.getMonth()+1);
+            } else {
+                month = curr.getMonth()+1;
+            }
+            if (curr.getDate() < 10) {
+                day = "0"+curr.getDate();
+            } else {
+                day = curr.getDate();
+            }
+            const fileName = `GMP Data_${curr.getFullYear()}-${month}-${day}`
+            // console.log(fileName)
+            let loc = backlocale + "overall/downoverall"
+            fetch(loc, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Acess-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods":
+                        "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+                },
+                body: JSON.stringify(formValues),
+            })
+            .catch((err) => {
+                return;
+            })
+            .then((res) => {
+                return res.blob()
+            })
+            .then((data) => {
+                if (!data) return;
+                const url = URL.createObjectURL(data);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = fileName+".xlsx";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            });
         } else {
-            month = curr.getMonth()+1;
-        }
-        if (curr.getDate() < 10) {
-            day = "0"+curr.getDate();
-        } else {
-            day = curr.getDate();
-        }
-        const fileName = `GMP Data_${curr.getFullYear()}-${month}-${day}`
-        // console.log(fileName)
-        let loc = backlocale + "overall/downoverall"
-        fetch(loc, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Acess-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
-            },
-            body: JSON.stringify(formValues),
-        })
-        .catch((err) => {
             return;
-        })
-        .then((res) => {
-            return res.blob()
-        })
-        .then((data) => {
-            if (!data) return;
-            const url = URL.createObjectURL(data);
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = fileName+".xlsx";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-            URL.revokeObjectURL(url);
-        });
+        }
     }
 
     const valueText = (value) => `${value}%`;
