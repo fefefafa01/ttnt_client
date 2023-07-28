@@ -1088,49 +1088,6 @@ function ReportPage(props) {
 
     const valueText = (value) => `${value}%`;
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // console.log(formValues);
-        //let count = 1;
-        // if (
-        //     !initialValues.part_name &&
-        //     !initialValues.part_code &&
-        //     !initialValues.aisin_premium_code &&
-        //     !initialValues.competiter_part_code
-        // )
-        //     count = 0;
-        let loc = backlocale + "overall/result";
-        fetch(loc, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            },
-            body: JSON.stringify(formValues),
-        })
-        .catch((err) => {
-            return;
-        })
-        .then((res) => {
-            if (!res || !res.ok || res.status >= 400) {
-                return;
-            }
-            return res.json();
-        })
-        .then((data) => {
-            if (!data) return;
-            if (data.status === "There is no car matched your search") {
-                return;
-            } else {
-                console.log(data.table);
-                console.log(formValues);
-                return;
-            }
-        });
-    };
     const [country, setCountry] = useState("");
     const [maker, setMaker] = useState("");
     const [trans, setTrans] = useState("");
@@ -1297,8 +1254,7 @@ function ReportPage(props) {
                             <div className="export-btn">
                                 <button
                                     className="export"
-                                    onClick={handleSubmit}
-                                    onMouseDown={handleDownload}
+                                    onClick={handleDownload}
                                 >
                                     Export Data
                                 </button>
