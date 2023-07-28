@@ -2,13 +2,15 @@ import "../Epic1Filter";
 import React, { useState } from "react";
 import "./productPeriod.scss";
 import GaugeChart from "react-gauge-chart";
+import { backlocale } from "constants/constindex";
 
 function ProductPeriod(GaugeNum) {
     const [openSummary, setOpenSummary] = useState(true);
     const [summary, setSummary] = useState({});
 
     if (openSummary) {
-        fetch("http://localhost:5000/period/summary", {
+        let loc = backlocale + "period/summary"
+        fetch(loc, {
             method: "POST",
             credentials: "include",
             headers: {
