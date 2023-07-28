@@ -38,8 +38,8 @@ function AdminHeader() {
                             <Changer inp="Vehicle Part Search" />
                         </span>
                     </button>
-                    <Link to="/report">
-                        <button className="bttn leftalgn col">
+                    <Link className="col" to="/report">
+                        <button className="bttn leftalgn ">
                             <span>
                                 <Changer inp="Report" />
                             </span>

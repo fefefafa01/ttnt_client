@@ -1009,7 +1009,7 @@ function ReportPage(props) {
         {
             title: "Product Coverage by Period",
             key: "2",
-            content: <ProductPeriod />,
+            content: <ProductPeriod GaugeNum={0.5} />,
             closable: false,
         },
     ];
