@@ -4,13 +4,14 @@ import { Tabs } from "antd";
 import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
-import "../../components/comp.styles/SearchList.scss";
+import { SearchResult } from "components/SearchList"
 import { ResultList } from "components/ResultList/ResultList";
-import { PartSubgroup } from "components/PartGroup";
+import { PartSubgroup, PartGroup } from "components/PartGroup";
 const { TabPane } = Tabs;
 
 function Homepage() {
     const [sidebarOpen, setSideBarOpen] = useState(true);
+    const [partSubName, setPartSubName] = useState("");
     const handleViewSidebar = () => {
         setSideBarOpen(!sidebarOpen);
     };
@@ -23,7 +24,7 @@ function Homepage() {
             closable: false,
         },
         {
-            title: "KUN25, Engine/Fuel group-Parts subgroup list",
+            title: "KUN25, Parts group list",
             key: "2",
         },
     ]);
@@ -41,7 +42,44 @@ function Homepage() {
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
             title: "Part List",
-            content: <PartList carid={29} SubGroupName={buttonName} />,
+            content: <PartList carid={102} SubGroupName={buttonName} />,
+            key: activeKey,
+        };
+        setPanes([...panes, newPane]);
+        setActiveKey(activeKey);
+    };
+
+    const addSub = (buttonSubName) => {
+        console.log(buttonSubName);
+        const newTabIndex = panes.length;
+        const activeKey = `newTab${newTabIndex}`;
+        const newPane = {
+            title: `KUN25, ${buttonSubName} group-Parts subgroup list`,
+            content: (
+                <PartSubgroup
+                    carid={102}
+                    partGroupName={buttonSubName}
+                    onAdd={add}
+                />
+            ),
+            key: activeKey,
+        };
+        setPartSubName(buttonSubName);
+        setPanes([...panes, newPane]);
+        setActiveKey(activeKey);
+    };
+
+    const addGroup = (formValues, count) => {
+        const newTabIndex = panes.length;
+        const activeKey = `newTab${newTabIndex}`;
+        console.log(formValues);
+        let text = "Result List";
+        if (count === 0) {
+            text = "Vehicel Model List";
+        }
+        const newPane = {
+            title: text,
+            content: <ResultList formValues={formValues} count={count} onAdd={addSub}/>,
             key: activeKey,
         };
         setPanes([...panes, newPane]);
@@ -74,6 +112,7 @@ function Homepage() {
             <AdminHeader />
             <div className="hbody">
                 <SearchCriteria
+                    onAdd={addGroup}
                     isOpen={sidebarOpen}
                     toggleSidebar={handleViewSidebar}
                 />
@@ -92,10 +131,18 @@ function Homepage() {
                                 key={pane.key}
                                 closable={pane.closable}
                             >
-                                {pane.key === "1" ? (
-                                    <ResultList />
-                                ) : pane.key === "2" ? (
-                                    <PartSubgroup carid={29} onAdd={add} />
+                                {pane.title === "Search Result" ? (
+                                    <SearchResult />
+                                ) : pane.title.includes("Parts group list") ? (
+                                    <PartGroup carid={102} onAdd={addSub} />
+                                ) : pane.title.includes(
+                                      "Parts subgroup list"
+                                  ) ? (
+                                    <PartSubgroup
+                                        carid={102}
+                                        partGroupName={partSubName}
+                                        onAdd={add}
+                                    />
                                 ) : (
                                     pane.content
                                 )}

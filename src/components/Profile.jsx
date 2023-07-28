@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import profile from "../img/Profile.png";
 import PowerButton from "../img/PowerButton.png";
 import "./comp.styles/profile.scss";
@@ -10,7 +10,6 @@ import { backlocale } from "constants/constindex";
 function Profile() {
     var loc;
     const [open, setOpen] = useState(false);
-    const [openProfile, setOpenProfile] = useState(false);
     const [logOut, setLogOut] = useState(false);
     var [firstname, setFirstname] = useState("");
     var [lastname, setLastname] = useState("");
@@ -18,11 +17,6 @@ function Profile() {
     const { t } = useTranslation();
     const handleOpen = () => {
         setOpen(!open);
-    };
-
-    const handleOpenProfile = () => {
-        setOpenProfile(!openProfile);
-        setOpen(false);
     };
 
     const handleSignOut = () => {
@@ -71,18 +65,45 @@ function Profile() {
             });
     }
 
+    const selectDropdownRef = useRef(null);
+
+    const toggleDropdown = () => {
+        if (selectDropdownRef.current) {
+            selectDropdownRef.current.classList.toggle("active");
+        }
+    };
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
     return (
-        <div className="drop">
+        <div className="drop" ref={selectDropdownRef}>
             <button
                 className="dropbtn"
                 type="button"
                 aria-expanded="false"
                 data-bs-toggle="drop"
-                onClick={handleOpenProfile}
             >
-                <img className="profile" src={profile} alt="Profile" />
+                <img
+                    className="profile"
+                    src={profile}
+                    alt="Profile"
+                    onClick={toggleDropdown}
+                />
             </button>
-            {openProfile && 
                 <div className="dropdown-content">
                 <a href="#" onClick={handleOpen}>
                     <Changer inp="My Profile" />
@@ -99,7 +120,6 @@ function Profile() {
                     />
                 </a>
             </div>
-            }
             {open && (
                 <div className="dropdown-content profile">
                     <span>

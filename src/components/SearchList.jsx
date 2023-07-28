@@ -2,7 +2,7 @@ import { PartList } from "./PartList/PartList";
 import { DownloadFile } from "./DownloadFile";
 import { PartGroup } from "./PartGroup";
 import Profile from "components/Profile";
-import "./comp.styles/SearchList.css";
+import "./comp.styles/SearchList.scss";
 
 function SearchResult() {
     return (
@@ -12,29 +12,6 @@ function SearchResult() {
                 <div className="contents">
                     <h1>Please Enter Search Criteria</h1>
                     <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
-                    <h1>Please Enter Search Criteria</h1>
                 </div>
             </div>
         </div>

@@ -28,7 +28,6 @@
 	z-index: 1;
 	border: 1px solid black;
 	border-radius: 20px;
-	display: block;
 	a {
 		text-decoration: none;
 		color: #86bac5;
@@ -49,6 +48,12 @@
 		}
 	}
 }
+
+
+.drop.active .dropdown-content {
+    display: block;
+}
+
 .dropdown-content.profile {
 	width: fit-content;
 	margin-right: 20px;
@@ -87,3 +92,4 @@
 		margin: 50px;
 	}
 }
+

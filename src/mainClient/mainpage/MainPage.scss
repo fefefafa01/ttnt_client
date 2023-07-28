@@ -1,345 +1,406 @@
 .header {
-	display: flex;
-	text-align: center;
-	background-color: #001a71;
-	height: 10vh;
-	div {
-		p.logo {
-			font-size: xx-large;
-			margin-top: 20px;
-		}
-	}
+    display: flex;
+    text-align: center;
+    background-color: #001a71;
+    height: 10vh;
+    div {
+        p.logo {
+            font-size: xx-large;
+            margin-top: 20px;
+        }
+    }
 }
 .logo {
-	color: white;
-	font-family: "VLNL Decks";
-	font-style: italic;
+    color: white;
+    font-family: "VLNL Decks";
+    font-style: italic;
 }
 .logotext {
-	color: white;
-	margin-top: -50px;
-	font-weight: bold;
-	font-size: x-small;
+    color: white;
+    margin-top: -50px;
+    font-weight: bold;
+    font-size: x-small;
 }
 .label {
-	color: white;
-	flex: 10%;
-	text-align: center;
-	display: block;
-	font-family: Tahoma;
-	font-size: xx-large;
+    color: white;
+    flex: 10%;
+    text-align: center;
+    display: block;
+    font-family: Tahoma;
+    font-size: xx-large;
 }
 p.label {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 .btn-lng {
-	display: flex;
-	flex-wrap: nowrap;
-	margin-top: 15px;
-	padding-left: 150px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 15px;
+    padding-left: 150px;
 }
 .body {
-	background-color: #001a71;
-	height: 90vh;
-	padding-top: 1em;
-	display: block;
+    background-color: #001a71;
+    height: 90vh;
+    padding-top: 1em;
+    display: block;
 }
 .wrapper {
-	position: absolute;
-	height: fit-content;
-	width: 25vw;
-	background-color: #d8dcf4;
-	border: 2px solid rgba(255, 255, 255, 0.5);
-	border-radius: 20px;
-	margin-left: 10vh;
-	margin-top: 75px;
-	backdrop-filter: blur(20px);
-	display: block;
-	justify-content: center;
-	align-items: center;
-	margin-top: 10vh;
-	padding-bottom: 20px;
+    position: absolute;
+    height: fit-content;
+    width: 25vw;
+    background-color: #d8dcf4;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    margin-left: 10vh;
+    margin-top: 75px;
+    backdrop-filter: blur(20px);
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    padding-bottom: 20px;
 }
 .form-box {
-	h2 {
-		margin-top: 20px;
-		font-size: 2em;
-		padding-top: 20px;
-		color: black;
-		text-align: center;
-	}
+    h2 {
+        margin-top: 20px;
+        font-size: 2em;
+        padding-top: 20px;
+        color: black;
+        text-align: center;
+    }
 }
 .input-box {
-	position: relative;
-	width: 292px;
-	height: 50px;
-	border-bottom: 2px solid #172685;
-	display: flex;
-	margin: 10px 30px 20px;
-	input {
-		width: 100%;
-		height: 100%;
-		background: transparent;
-		border: none;
-		outline: none;
-		margin-top: 5px;
-		font-size: 1.2em;
-		&:-webkit-autofill {
-			-webkit-box-shadow: transparent;
-		}
-        &::placeholder {
-		    color: #64a5b4;
+    position: relative;
+    width: 80%;
+    height: 50px;
+    border-bottom: 2px solid #172685;
+    display: flex;
+    margin: 30px 30px 20px;
+    input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        margin-top: 5px;
+        font-size: 1.2em;
+        &:-webkit-autofill {
+            -webkit-box-shadow: transparent;
         }
-	}
+        &::placeholder {
+            color: #64a5b4;
+        }
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+    input:-webkit-autofill::first-line {
+        font-size: 1.2em !important;
+    }
 }
 
-input {
-	&:-webkit-autofill {
-		&:hover {
-			-webkit-box-shadow: transparent;
-		}
-		&:focus {
-			-webkit-box-shadow: transparent;
-		}
-		&:active {
-			-webkit-box-shadow: transparent;
-		}
-	}
-}
 input.name-box {
-	width: 35%;
-	display: inline;
-	border: transparent;
-	border-bottom: 2px solid #172685;
-	background-color: transparent;
-	outline: none;
-	margin-top: 5px;
-	font-size: 1.2em;
-	margin-left: -2px;
-	&::placeholder {
-		color: #64a5b4;
-	}
+    width: 35%;
+    display: inline;
+    border: transparent;
+    border-bottom: 2px solid #172685;
+    background-color: transparent;
+    outline: none;
+    margin-top: 5px;
+    font-size: 1.2em;
+    margin-left: -2px;
+    &::placeholder {
+        color: #64a5b4;
+    }
 }
 .error {
-	width: 80%;
-	margin-left: 30px;
-	text-align: left;
-	margin-top: -20px;
-	position: absolute;
-	width: 80%;
-	margin-left: 30px;
-	text-align: left;
-	margin-top: -20px;
-	position: absolute;
-	color: red;
-	span {
-		color: red;
-	}
+    width: 80%;
+    margin-left: 30px;
+    text-align: left;
+    margin-top: -20px;
+    position: absolute;
+    width: 80%;
+    margin-left: 30px;
+    text-align: left;
+    margin-top: -20px;
+    position: absolute;
+    color: red;
+    span {
+        color: red;
+    }
 }
 .full-name {
-	display: block;
-	position: relative;
+    margin-top: 35px;
+    display: block;
+    position: relative;
 }
 .name {
-	display: flex;
+    display: flex;
+    div.right {
+        padding-right: 20px;
+    }
 }
 input.name-left {
-	width: 130px;
-	margin-left: 5px;
+    width: 80%;
+    margin-left: 5px;
 }
 input.name-right {
-	width: 130px;
-	margin-left: -40px;
+    width: 80%;
+    margin-left: -40px;
 }
 .error_last_name {
-	float: left;
-	margin-left: 10px;
-	color: red;
+    float: left;
+    margin-left: 10px;
+    color: red;
 }
 .error_first_name {
-	float: left;
-	margin-left: 30px;
-	color: red;
+    float: left;
+    margin-left: 30px;
+    color: red;
 }
 .name-error {
-	display: inline;
+    display: inline;
 }
 .valid-box {
-	height: fit-content;
-	font-size: 1.5em;
-	text-align: left;
-	margin: 5%;
-	margin-top: 15%;
-	border: solid 1px black;
-	border-radius: 5%;
-	padding: 20px;
-	padding-top: 40px;
-	.btn {
-		margin-top: 20%;
-	}
+    height: fit-content;
+    font-size: 1.5em;
+    text-align: left;
+    margin: 5%;
+    margin-top: 15%;
+    border: solid 1px black;
+    border-radius: 5%;
+    padding: 20px;
+    padding-top: 40px;
+    .btn {
+        margin-top: 20%;
+    }
 }
 .eye {
-	color: #64a5b4;
-	scale: 150%;
-	padding-top: 15px;
-	margin-right: 20px;
+    color: #64a5b4;
+    scale: 150%;
+    margin-top: -30px;
 }
 .remember-forgot {
-	font-size: 0.9em;
-	color: #172685;
-	font-weight: 500;
-	margin: 10px 28px 15px;
-	display: flex;
-	justify-content: space-between;
-	label {
-		input {
-			accent-color: black;
-			margin-right: 3px;
-		}
-	}
-	a {
-		color: #172685;
-		text-decoration: none;
-		&:hover {
-			color: black;
-			text-decoration: none;
-		}
-	}
+    font-size: 0.9em;
+    color: #172685;
+    font-weight: 500;
+    margin: 10px 28px 15px;
+    display: flex;
+    justify-content: space-between;
+    label {
+        input {
+            accent-color: black;
+            margin-right: 3px;
+        }
+    }
+    a {
+        color: #172685;
+        text-decoration: none;
+        &:hover {
+            color: black;
+            text-decoration: none;
+        }
+    }
 }
 .p-error {
-	position: absolute;
-	margin: 65px 130px;
-	color: red;
+    position: absolute;
+    margin: 65px 130px;
+    color: red;
+}
+.preg-error {
+    position: absolute;
+    margin-left: 85px;
+    color: red;
 }
 button.btn {
-	width: 85%;
-	height: 50px;
-	background-color: black;
-	border-radius: 10px;
-	cursor: pointer;
-	font-size: 1em;
-	color: #fff;
-	font-weight: 500;
-	margin-top: 100px;
+    width: 85%;
+    height: 50px;
+    background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 100px;
 }
 button.regbtn {
-	margin-bottom: 5vh;
+    margin-top: 30px;
+    margin-bottom: 4vh;
 }
-.regbtn {
-	margin-bottom: 5vh;
-}
+
 .login-register {
-	font-size: 0.9em;
-	text-align: center;
-	font-weight: 500;
-	margin: 10px 0px 20px 0px;
+    font-size: 0.9em;
+    text-align: center;
+    font-weight: 500;
+    margin: 10px 0px 20px 0px;
 }
 p.register-link {
-	color: #172685;
-	cursor: pointer;
+    color: #172685;
+    cursor: pointer;
 }
 .register-link {
-	a {
-		text-decoration-line: none;
-	}
+    a {
+        text-decoration-line: none;
+    }
 }
+
+.regbackbtn {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 100px;
+}
+
 .back_login {
-	text-decoration: none;
-	color: white;
+    text-decoration: none;
+    color: white;
 }
-.content {
-	p.logo {
-		font-style: italic;
-		font-size: 5em;
-		margin-top: 2%;
-		margin-left: 30vw;
-	}
-	p.contenttext {
-		color: #64a5b4;
-		margin-left: 30vw;
-		margin-top: -30px;
-		font-weight: bold;
-		font-style: italic;
-		font-size: 2em;
-	}
+.maincontent {
+    p.logo {
+        font-style: italic;
+        font-size: 5em;
+        margin-top: 2%;
+        margin-left: 30vw;
+    }
+    p.contenttext {
+        color: #64a5b4;
+        margin-left: 30vw;
+        margin-top: -30px;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 2em;
+    }
 }
 .body-img {
-	background-size: cover;
-	background-image: url("../../img/car.png");
-	background-position: center;
-	height: 50vh;
-	margin-top: 15%;
+    background-size: cover;
+    background-image: url("../../img/car.png");
+    background-position: center;
+    height: 50vh;
+    margin-top: 8%;
 }
 .bigcontent {
-	width: 100%;
+    width: 100%;
 }
-@media screen and (max-width: 1440) {
-	.wrapper {
-		width: 30vw;
-	}
+@media screen and (min-width: 1440) {
+    .wrapper {
+        width: 30vw;
+    }
+    .name {
+        div.right {
+            padding-right: 0px;
+        }
+        div.left {
+            padding-right: 0px;
+        }
+    }
 }
 @media screen and (max-width: 1024px) {
-	.wrapper {
-		width: 35vw;
-	}
-	.content {
-		p.logo {
-			margin-left: 40vw;
-		}
-		p.contenttext {
-			margin-left: 40vw;
-			font-size: 1.7em;
-			margin-top: -50px;
-		}
-	}
+    .wrapper {
+        width: 35vw;
+        margin-left: 5vw;
+    }
+    .content {
+        p.logo {
+            margin-left: 40vw;
+        }
+        p.contenttext {
+            margin-left: 40vw;
+            font-size: 1.7em;
+            margin-top: -50px;
+        }
+    }
+    button.btn {
+        margin-top: 25px;
+    }
+    .body-img {
+        margin-top: 12%;
+    }
+    .name {
+        div.right {
+            padding-right: 0px;
+        }
+        div.left {
+            padding-left: 10px;
+        }
+    }
+    .p-error {
+        margin: 0px;
+        margin-left: 25%;
+    }
+    .error_first_name {
+        margin-left: 0px;
+        padding-left: 20px;
+    }
+    .error_last_name {
+        margin-left: 0px;
+    }
+    .error,
+    .error_first_name,
+    .error_last_name {
+        font-size: 0.8em;
+    }
 }
 @media screen and (max-width: 768px) {
-	.wrapper {
-		margin-left: 10px;
-		width: 40vw;
-		margin-top: 50px;
-	}
-	.form-box {
-		h2 {
-			margin-top: 0px;
-			font-size: 1.75em;
-		}
-	}
-	button.btn {
-		margin-top: 5vh;
-	}
-	.content {
-		p.logo {
-			margin-left: 45vw;
-		}
-		p.contenttext {
-			margin-left: 40vw;
-			font-size: 1.7em;
-			margin-top: -50px;
-		}
-	}
-	.name {
-		display: block;
-	}
-	input.name-left {
-		width: 80%;
-	}
-	input.name-right {
-		width: 80%;
-		margin-left: 0px;
-		margin-top: 30px;
-	}
-	.error_first_name {
-		position: absolute;
-		margin-top: 40px;
-		margin-left: -243px;
-	}
-	.error_last_name {
-		position: absolute;
-		margin-top: 60px;
-		margin-left: -243px;
-	}
-	button.regbtn {
-		margin-bottom: 0px;
-	}
+    .wrapper {
+        margin-left: 10px;
+        width: 40vw;
+        margin-top: 50px;
+    }
+    .form-box {
+        h2 {
+            margin-top: 0px;
+            font-size: 1.75em;
+        }
+    }
+    button.btn {
+        margin-top: 5vh;
+    }
+    .content {
+        p.logo {
+            margin-left: 45vw;
+        }
+        p.contenttext {
+            margin-left: 40vw;
+            font-size: 1.7em;
+            margin-top: -50px;
+        }
+    }
+    .name {
+        display: block;
+    }
+    input.name-left {
+        width: 80%;
+    }
+    input.name-right {
+        width: 80%;
+        margin-left: 0px;
+        margin-top: 30px;
+    }
+    .error_first_name {
+        position: absolute;
+        margin-top: 40px;
+        margin-left: -243px;
+    }
+    .error_last_name {
+        position: absolute;
+        margin-top: 60px;
+        margin-left: -243px;
+    }
+    button.regbtn {
+        margin-bottom: 0px;
+    }
 }

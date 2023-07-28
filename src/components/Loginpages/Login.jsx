@@ -4,21 +4,26 @@ import { Link } from "react-router-dom";
 import { Changer } from "../Languages/LanguageChange";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
-import { backlocale } from "constants/constindex";
+import { backlocale, japregex, vietregex } from "constants/constindex";
 
 const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.email || !regex.test(values.email)) {
+    if (!values.email) {
+        errors.email = <Changer inp="Email is required" />;
+    } else if (!regex.test(values.email)) {
         errors.email = <Changer inp="Invalid email address" />;
-    } 
+    }
+
+    if (!values.password) {
+        errors.password = <Changer inp="Password is required" />;
+    }
     return errors;
 };
 
 function Login() {
-    const loc = backlocale+"auth/login";
+    const loc = backlocale + "auth/login";
     const { setUser } = useContext(AccountContext) || {};
-    const [password, setPassword] = useState("");
     const [visible, setVisible] = useState(false);
     const [error, setError] = useState(null);
 
@@ -28,6 +33,7 @@ function Login() {
     const [isSubmit, setIsSubmit] = useState(false);
 
     const [isChecked, setIsChecked] = useState(false);
+    const [dateLogin, setDateLogin] = useState("");
 
     useEffect(() => {
         if (localStorage.checkbox && localStorage.username !== "") {
@@ -36,6 +42,9 @@ function Login() {
                 email: localStorage.checkEmail,
                 password: localStorage.checkPassword,
             });
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 7);
+            setDateLogin(expirationDate.toISOString());
         } else if (!localStorage.checkbox) {
             setIsChecked(false);
             localStorage.removeItem("checkEmail");
@@ -47,9 +56,14 @@ function Login() {
     const { t } = useTranslation();
 
     const handleChange = (e) => {
+        const viregex = vietregex;
+        const jpregex = japregex;
         const { name, value } = e.target;
-        setFormvalues({ ...formValues, [name]: value });
-        setPassword(e.target.value);
+        if (!viregex.test(value) && !jpregex.test(value)) {
+            if (!jpregex.test(value)) {
+                setFormvalues({ ...formValues, [name]: value });
+            }
+        }
     };
 
     const handleSubmit = (e) => {
@@ -83,7 +97,10 @@ function Login() {
                 if (!data) return;
                 localStorage.setItem("isLoggedIn", false);
                 setUser({ ...data });
-                if (data.status === "Wrong Email" || data.status === "Wrong Password") {
+                if (
+                    data.status === "Wrong Email" ||
+                    data.status === "Wrong Password"
+                ) {
                     setError("Invalid email or password");
                 } else if (data.loggedIn) {
                     localStorage.isLoggedIn = true;
@@ -104,6 +121,7 @@ function Login() {
             localStorage.checkbox = isChecked;
             localStorage.checkEmail = formValues.email;
             localStorage.checkPassword = formValues.password;
+            localStorage.expirationDate = dateLogin;
         }
         // here call the API to signup/login
         else if (!isChecked) {
@@ -114,6 +132,36 @@ function Login() {
             localStorage.checkPassword = "";
         }
     };
+
+    //Out Focus
+    const [emailblurred, setEmailb] = useState(false);
+    const [passwordblurred, setPassb] = useState(false);
+
+    function handleBlur(name) {
+        let erro = {};
+        if (name === "email" || emailblurred) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+            if (!formValues.email) {
+                erro.email = t("Email is required");
+            } else if (!regex.test(formValues.email)) {
+                erro.email = t("Invalid email address");
+            }
+            if (!emailblurred) {
+                setEmailb(true);
+            }
+        }
+
+        if (name === "password" || passwordblurred) {
+            if (!formValues.password) {
+                erro.password = t("Password is required");
+            }
+            if (!passwordblurred) {
+                setPassb(true);
+            }
+        }
+
+        setFormErrors(erro);
+    }
 
     useEffect(() => {
         // console.log(formErrors);
@@ -135,8 +183,13 @@ function Login() {
                             type="text"
                             name="email"
                             placeholder={t("Email Address")}
-                            value={formValues.email}
+                            value={
+                                localStorage.expirationDate === Date()
+                                    ? ""
+                                    : formValues.email
+                            }
                             onChange={handleChange}
+                            onBlur={() => handleBlur("email")}
                         />
                     </div>
                     <div className="error">
@@ -145,10 +198,15 @@ function Login() {
                     <div className="input-box">
                         <input
                             name="password"
-                            value={formValues.password}
+                            value={
+                                localStorage.expirationDate === Date()
+                                    ? ""
+                                    : formValues.password
+                            }
                             type={visible ? "text" : "password"}
                             placeholder={t("Password")}
                             onChange={handleChange}
+                            onBlur={() => handleBlur("password")}
                         />
                         <div
                             className="p-2"
@@ -169,7 +227,6 @@ function Login() {
                         <label htmlFor="">
                             <input
                                 type={"checkbox"}
-                                checked={isChecked}
                                 name="IsRememberMe"
                                 onChange={handleCheck}
                             />

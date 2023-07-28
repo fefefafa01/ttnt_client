@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MainPage from "mainClient/mainpage/MainPage";
 import HomePage from "mainClient/homepage/Homepage";
 import ReportPage from "mainClient/reportpage/report";
-import { Specpdf } from "./SpecPDF";
+import { BlankPage } from "constants/blankpage";
 
 const Views = () => {
     const loggedIn = localStorage.getItem("isLoggedIn");
@@ -13,15 +13,15 @@ const Views = () => {
             <Routes>
                 <Route
                     path="/"
-                    element={loggedIn ? <HomePage /> : <MainPage />}
+                    element={loggedIn === true ? <HomePage /> : <MainPage />}
                 />
-                <Route path="*" element={<MainPage />} />
                 <Route
-                    path="/homepage"
-                    element={<HomePage />}
+                    path="*"
+                    element={loggedIn === true ? <HomePage /> : <MainPage />}
                 />
+                <Route path="/homepage" element={<HomePage />} />
                 <Route path="/report" element={<ReportPage />} />
-                <Route path="/specpdf" element={<Specpdf />} />
+                <Route path="/blankpage" element={<BlankPage />} />
             </Routes>
         </div>
     );
