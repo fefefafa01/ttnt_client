@@ -168,7 +168,34 @@
     text-align: center;
 }
 
-.col-3 {
+.droplist {
+    position: fixed;
+    background-color: white;
+    align-items: left;
+    margin-left: 5%;
+    margin-top: -10px;
+    width: 12.6vw;
+    display: block;
+    padding: 5px;
+    border-radius: 3px;
+    border: solid 1px grey;
+}
+.dropdldtxt {
+    margin-top: 10px;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 5px;
+}
+.dropdldbtn {
+    text-align: left;
+    border: transparent;
+    background-color: transparent;
+    float: left;
+    width: 100%;
+    padding: 5px;
+    &:hover {
+        background-color: rgb(185, 185, 185);
+    }
 }
 
 .col-4 {

@@ -7,6 +7,7 @@ import vehiclePart from "./vehiclePart.png";
 import Download from "../../img/download.png";
 import Prev from "../../img/prev_btn.png";
 import Next from "../../img/next_btn.png";
+import { DropDown } from "./ResDown";
 
 function ResultList(props) {
     
@@ -31,10 +32,12 @@ function ResultList(props) {
 
     let no = 1;
 
+    //Downloader
     const [downdrop, setDowndrop] = useState(false);
     const handleDropdown = () => {
         setDowndrop(!downdrop);
     };
+    //--------
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const [itemOffset, setItemOffset] = useState(0);
 
@@ -81,6 +84,7 @@ function ResultList(props) {
     const openSubGroup = (id, formValues) => {
         onAdd(id, formValues);
     }
+
     if (formValues === "There is no car matched your search") {
         return (
             <div className="tabcontent">
@@ -162,11 +166,11 @@ function ResultList(props) {
                                 </span>
                             </button>
                             {/* {downdrop && (
-                        <DropDown
-                            data={premiumData}
-                            dropping={handleDropdown}
-                        />
-                    )} */}
+                                <DropDown
+                                    data={formValues}
+                                    dropping={handleDropdown}
+                                />
+                            )} */}
                         </div>
                     </div>
                     <div className="Scroll">
@@ -434,12 +438,12 @@ function ResultList(props) {
                                     <Changer inp="Download to file" />
                                 </span>
                             </button>
-                            {/* {downdrop && (
-                        <DropDown
-                            data={premiumData}
-                            dropping={handleDropdown}
-                        />
-                    )} */}
+                            {downdrop && (
+                                <DropDown
+                                    data={add}
+                                    dropping={handleDropdown}
+                                />
+                            )}
                         </div>
                     </div>
                     <div className="partlistscroll" id="pscroll-style">

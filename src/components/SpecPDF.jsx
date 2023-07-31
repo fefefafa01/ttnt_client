@@ -425,9 +425,9 @@ function Specpdf(input) {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="scrollpdf"><html className="emptyscrollpdf">&nbsp;</html></div>
                     </div>
                 </div>
+                <div className="scrollpdf"><html className="emptyscrollpdf">&nbsp;</html></div>
             </div>
         </>
     );

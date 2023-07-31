@@ -35,7 +35,7 @@
 	font-weight: bold;
 }
 .specbody {
-	height: 95%;
+	height: 90%;
 	margin-top: 5px;
 	margin-left: 30px;
 	margin-right: 10px;
@@ -62,8 +62,7 @@
 }
 .scrollpdf {
 	overflow-x: scroll;
-	margin-bottom: 10px;
-	margin-top: -17px;
+	margin-top: -1%;
 	&::-webkit-scrollbar {
 		height: 13px;
 	}

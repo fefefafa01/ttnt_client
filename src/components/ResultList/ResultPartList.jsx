@@ -2,17 +2,17 @@ import "./ResultList.scss";
 import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import { Changer } from "../Languages/LanguageChange";
+import { Specpdf } from "components/SpecPDF";
 import ReactPaginate from "react-paginate";
 import vehiclePart from "./vehiclePart.png";
 import Download from "../../img/download.png";
 import Prev from "../../img/prev_btn.png";
 import Next from "../../img/next_btn.png";
+import { DropDown } from "./ResPDown";
 
 function ResultPartList(props) {
     const { formValues, id} = props;
-    console.log(formValues);
     //Synchronizing Scroll:
-    console.log(id)
     $(function () {
         $(".Scrollthebar").on("scroll", function () {
             $(".Scroll").scrollLeft($(".Scrollthebar").scrollLeft());
@@ -29,6 +29,7 @@ function ResultPartList(props) {
         });
     });
 
+    //Download
     const [downdrop, setDowndrop] = useState(false);
     const handleDropdown = () => {
         setDowndrop(!downdrop);
@@ -44,8 +45,20 @@ function ResultPartList(props) {
         }
     }
 
+    //Open Detail Button
+    var [pcode, setPcode] = useState("");
+    var [pdfcarid, setPdfcarid] = useState("");
+    var [opening, setOpening] = useState(false);
+    const openPDF = (code) => {
+        var oecode = code.oe + " (" + code.start_of_production.slice(0, 2) + "-" + code.end_of_production.slice(0, 2) + ")";
+        setPcode(oecode);
+        setPdfcarid(code.car_info_id);
+        setOpening(!opening);
+    }
+
     return (
         <div className="tabcontent">
+            {opening && <Specpdf carid={""+pdfcarid} partcode={""+pcode} open={openPDF} />}
             <div className="titlecontent">
                 <h3>Hello</h3>
                 <div className="col">
@@ -62,12 +75,12 @@ function ResultPartList(props) {
                             <Changer inp="Download to file" />
                         </span>
                     </button>
-                            {/* {downdrop && (
+                    {downdrop && (
                         <DropDown
-                            data={premiumData}
+                            data={partId}
                             dropping={handleDropdown}
                         />
-                    )} */}
+                    )}
                 </div>
             </div>
             <div className="partlistscroll" id="pscroll-style">
@@ -105,7 +118,7 @@ function ResultPartList(props) {
                                             {el.aisin_sub_premium_code}
                                         </td>
                                         <td>
-                                            <button className="details">
+                                            <button className="details" onClick={e=>openPDF(el)}>
                                                 <Changer inp="Details" />
                                             </button>
                                         </td>
