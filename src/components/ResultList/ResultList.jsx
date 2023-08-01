@@ -7,12 +7,11 @@ import vehiclePart from "./vehiclePart.png";
 import Download from "../../img/download.png";
 import Prev from "../../img/prev_btn.png";
 import Next from "../../img/next_btn.png";
-import { DropDown } from "./ResDown";
+import {DropDown, DropingDown } from "./ResDown";
 
 function ResultList(props) {
     
     const { formValues, count, Add, onAdd} = props;
-    console.log(formValues);
     //Synchronizing Scroll:
     $(function () {
         $(".Scrollthebar").on("scroll", function () {
@@ -173,12 +172,12 @@ function ResultList(props) {
                                     <Changer inp="Download to file" />
                                 </span>
                             </button>
-                            {/* {downdrop && (
-                                <DropDown
+                            {downdrop && (
+                                <DropingDown
                                     data={formValues}
                                     dropping={handleDropdown}
                                 />
-                            )} */}
+                            )}
                         </div>
                     </div>
                     <div className="Scroll">

@@ -52,7 +52,7 @@ function ResultPartList(props) {
     const openPDF = (code) => {
         if (typeof(code)==="object") {
             if (code.oe!==(undefined && null && "") && code.start_of_production!==(undefined && null && "") && code.end_of_production!==(undefined && null && "")) {
-                var oecode = code.oe + " (" + code.start_of_production.slice(0, 2) + "-" + code.end_of_production.slice(0, 2) + ")";
+                var oecode = code.oe + " (" + code.start_of_production.slice(2, 4) + "-" + code.end_of_production.slice(2, 4) + ")";
             }
             setPcode(oecode);
             setPdfcarid(code.car_info_id);
