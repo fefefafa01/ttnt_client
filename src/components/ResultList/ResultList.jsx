@@ -13,21 +13,6 @@ function ResultList(props) {
     
     const { formValues, count, Add, onAdd} = props;
     //Synchronizing Scroll:
-    $(function () {
-        $(".Scrollthebar").on("scroll", function () {
-            $(".Scroll").scrollLeft($(".Scrollthebar").scrollLeft());
-        });
-        $(".Scroll").on("scroll", function () {
-            $(".Scrollthebar").scrollLeft($(".Scroll").scrollLeft());
-        });
-
-        $(".BarScroll").on("scroll", function () {
-            $(".Scroll").scrollTop($(".BarScroll").scrollLeft());
-        });
-        $(".Scroll").on("scroll", function () {
-            $(".BarScroll").scrollTop($(".Scroll").scrollLeft());
-        });
-    });
 
     let no = 1;
 
@@ -80,8 +65,8 @@ function ResultList(props) {
         Add(id, formValues);
     }
 
-    const openSubGroup = (id, formValues) => {
-        onAdd(id, formValues);
+    const openSubGroup = (id, buttonName) => {
+        onAdd(id, buttonName);
     }
 
     function checkrecord (length) {
@@ -180,9 +165,9 @@ function ResultList(props) {
                             )}
                         </div>
                     </div>
-                    <div className="Scroll">
-                            <div className="resulttabling">
-                                <table>
+                    <div className="plistscroll" id="pscrolling-style">
+                <div className="contents-p-list">
+                    <table className="p-table">
                                     <thead>
                                         <tr>
                                             <th
@@ -333,7 +318,7 @@ function ResultList(props) {
                                                 <td>{el.transmission_type}</td>
                                                 <td>{el.speed}</td>
                                                 <td>{el.drivetrain}</td>
-                                                <td>{el.oe}</td>
+                                                <td>{el.oe} {"(" + el.part_start_time} - {el.part_end_time + ")"}</td>
                                                 <td>{el.aisin_premium_code}</td>
                                                 <td>
                                                     {el.aisin_sub_premium_code}
@@ -367,12 +352,7 @@ function ResultList(props) {
                                 </table>
                         </div>
                     </div>
-                <div className="Scrollthebar">
-                    <html className="emptyscrolling">&nbsp;</html>
-                </div>
-                <div className="BarScroll">
-                        <html className="emptyscroll">&nbsp;</html>
-                    </div>
+
             </div>
             );
         } else {
@@ -559,7 +539,7 @@ function ResultList(props) {
                                     <tbody>
                                         {currentItemss.map((el, index) => (
                                             <tr key={index}>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{no++}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{no++}</td>
                                                 <td>
                                                     <img
                                                         src={vehiclePart}
@@ -568,31 +548,28 @@ function ResultList(props) {
                                                         onClick={() => openPart(el.car_info_id, formValues)}
                                                     />
                                                 </td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.car_maker}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.car_model_name}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.model_code}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.car_maker}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.car_model_name}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.model_code}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>
                                                     {el.start_of_production}
                                                 </td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.end_of_production}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.drivers_position}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.engine_code}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.displacement_code}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.powered_type}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.fuel_type}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.transmission_code}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.transmission_type}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.speed}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, formValues)}>{el.drivetrain}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.end_of_production}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.drivers_position}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.engine_code}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.displacement_code}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.powered_type}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.fuel_type}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.transmission_code}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.transmission_type}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.speed}</td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.drivetrain}</td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    <div className="Scrollthebar">
-                        <html className="emptyscrolling">&nbsp;</html>
-                    </div>
                 </div>
             );
         }

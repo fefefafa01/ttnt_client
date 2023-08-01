@@ -13,21 +13,7 @@ import { DropDown } from "./ResPDown";
 function ResultPartList(props) {
     const { formValues, id} = props;
     //Synchronizing Scroll:
-    $(function () {
-        $(".Scrollthebar").on("scroll", function () {
-            $(".Scroll").scrollLeft($(".Scrollthebar").scrollLeft());
-        });
-        $(".Scroll").on("scroll", function () {
-            $(".Scrollthebar").scrollLeft($(".Scroll").scrollLeft());
-        });
-
-        $(".BarScroll").on("scroll", function () {
-            $(".Scroll").scrollTop($(".BarScroll").scrollLeft());
-        });
-        $(".Scroll").on("scroll", function () {
-            $(".BarScroll").scrollTop($(".Scroll").scrollLeft());
-        });
-    });
+    console.log(formValues)
 
     //Download
     const [downdrop, setDowndrop] = useState(false);
@@ -66,18 +52,18 @@ function ResultPartList(props) {
         <div className="tabcontent">
             {opening && <Specpdf carid={""+pdfcarid} partcode={""+pcode} open={openPDF} />}
             <div className="titlecontent">
-                <h3>Hello</h3>
+                <h3>{partId[0].car_maker}, {partId[0].model_code} {"(" + partId[0].start_of_production} - {partId[0].end_of_production + ")"} {partId[0].speed}{partId[0].transmission_type} </h3>
                 <div className="col">
                     <button
-                        className="col download"
+                        className="col dwnload"
                         onClick={handleDropdown}
                     >
                         <img
-                            className="downloadbutton"
+                            className="download-button"
                             src={Download}
                             alt="download"
                         />
-                        <span className="download-text">
+                        <span className="downloadtext">
                             <Changer inp="Download to file" />
                         </span>
                     </button>
@@ -133,9 +119,6 @@ function ResultPartList(props) {
                             </tbody>
                         </table>
                     </div>
-            </div>
-            <div className="Scrollthebar">
-                <html className="emptyscrolling">&nbsp;</html>
             </div>
         </div>
             );
