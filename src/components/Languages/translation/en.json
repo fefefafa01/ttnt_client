@@ -85,5 +85,10 @@
     "Diesel": "Diesel",
     "clear": "clear",
     "From": "From",
-    "To": "To"
+    "To": "To",
+
+    "Records per Page:": "Records per Page:",
+    "Model Found:": "Model Found:",
+    "record": "record",
+    "records": "records"
 }

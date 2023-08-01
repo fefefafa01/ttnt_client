@@ -85,6 +85,14 @@ function ResultList(props) {
         onAdd(id, formValues);
     }
 
+    function checkrecord (length) {
+        if (length===1) {
+            return "record";
+        } else {
+            return "records";
+        }
+    }
+
     if (formValues === "There is no car matched your search") {
         return (
             <div className="tabcontent">
@@ -101,7 +109,7 @@ function ResultList(props) {
             return (
                 <div className="tabcontent">
                     <div className="titlecontent">
-                        <h3>Model Found: {formValues.length} records</h3>
+                        <h3><Changer inp="Model Found:" /> {formValues.length} <Changer inp={checkrecord(formValues.length)} /></h3>
                         <div className="col-3">
                             <ReactPaginate
                                 previousLabel={
@@ -139,7 +147,7 @@ function ResultList(props) {
                         </div>
                         <div className="col-4">
                             <label htmlFor="itemsPerPage">
-                                Records per Page:
+                                <Changer inp="Records per Page:" />
                             </label>
                             <select
                                 id="itemsPerPage"
@@ -373,7 +381,7 @@ function ResultList(props) {
                 <div className="tabcontent">
                     <div className="titlecontent">
                         <div className="col-2">
-                            <h3>Model Found: {add.length} records</h3>
+                            <h3><Changer inp="Model Found:" /> {add.length} <Changer inp={checkrecord(add.length)} /></h3>
                         </div>
                         <div className="col-3">
                             <ReactPaginate
@@ -412,7 +420,7 @@ function ResultList(props) {
                         </div>
                         <div className="col-4">
                             <label htmlFor="itemsPerPage">
-                                Records per Page:
+                                <Changer inp="Records per Page:" />
                             </label>
                             <select
                                 id="itemsPerPage"

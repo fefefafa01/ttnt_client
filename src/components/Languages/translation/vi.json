@@ -85,5 +85,10 @@
     "Diesel": "Dầu DO",
     "clear": "Xóa",
     "From": "Từ",
-    "To": "Đến"
+    "To": "Đến",
+
+    "Records per Page:": "Số kết quả mỗi trang:",
+    "Model Found:": "Đã tìm thấy mẫu xe:",
+    "record": "kết quả",
+    "records": "kết quả"
 }   
