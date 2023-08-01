@@ -11,9 +11,8 @@ import glass from "../../img/Glass.png";
 import { Tabs } from "antd";
 import $ from "jquery";
 import { backlocale } from "constants/constindex";
-import XLSX from 'sheetjs-style'
-import * as FileSaver from 'file-saver'
-
+import XLSX from "sheetjs-style";
+import * as FileSaver from "file-saver";
 
 const { TabPane } = Tabs;
 
@@ -1032,27 +1031,29 @@ function ReportPage(props) {
     };
 
     function handleDownload() {
-        if (((formValues.start_year!=="" && formValues.end_year!=="") && (parseInt(formValues.start_year) <= parseInt(formValues.end_year)))
-            ||
-            (formValues.start_year==="")
-            ||
-            (formValues.end_year==="")
+        if (
+            (formValues.start_year !== "" &&
+                formValues.end_year !== "" &&
+                parseInt(formValues.start_year) <=
+                    parseInt(formValues.end_year)) ||
+            formValues.start_year === "" ||
+            formValues.end_year === ""
         ) {
             const curr = new Date();
             var month, day;
-            if (curr.getMonth()+1 < 10) {
-                month = "0"+(curr.getMonth()+1);
+            if (curr.getMonth() + 1 < 10) {
+                month = "0" + (curr.getMonth() + 1);
             } else {
-                month = curr.getMonth()+1;
+                month = curr.getMonth() + 1;
             }
             if (curr.getDate() < 10) {
-                day = "0"+curr.getDate();
+                day = "0" + curr.getDate();
             } else {
                 day = curr.getDate();
             }
-            const fileName = `GMP Data_${curr.getFullYear()}-${month}-${day}`
+            const fileName = `GMP Data_${curr.getFullYear()}-${month}-${day}`;
             // console.log(fileName)
-            let loc = backlocale + "overall/downoverall"
+            let loc = backlocale + "overall/downoverall";
             fetch(loc, {
                 method: "POST",
                 credentials: "include",
@@ -1064,23 +1065,23 @@ function ReportPage(props) {
                 },
                 body: JSON.stringify(formValues),
             })
-            .catch((err) => {
-                return;
-            })
-            .then((res) => {
-                return res.blob()
-            })
-            .then((data) => {
-                if (!data) return;
-                const url = URL.createObjectURL(data);
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = fileName+".xlsx";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-            });
+                .catch((err) => {
+                    return;
+                })
+                .then((res) => {
+                    return res.blob();
+                })
+                .then((data) => {
+                    if (!data) return;
+                    const url = URL.createObjectURL(data);
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.download = fileName + ".xlsx";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                });
         } else {
             return;
         }
@@ -1223,7 +1224,7 @@ function ReportPage(props) {
                                 </div>
                                 <div className="from-to">
                                     <div className="from-input col">
-                                        From
+                                        <span>From</span>
                                         <input
                                             type="year"
                                             className="from-year"
@@ -1231,7 +1232,7 @@ function ReportPage(props) {
                                         />
                                     </div>
                                     <div className="to-input col">
-                                        To
+                                        <span>To</span>
                                         <input
                                             type="year"
                                             className="to-year"
