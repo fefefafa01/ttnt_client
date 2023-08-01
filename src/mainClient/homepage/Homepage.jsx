@@ -8,6 +8,7 @@ import { SearchResult } from "components/SearchList"
 import { ResultList } from "components/ResultList/ResultList";
 import { PartSubgroup, PartGroup } from "components/PartGroup";
 import { ResultPartList } from "components/ResultList/ResultPartList";
+import {PartListGroup} from "components/ResultList/PartListGroup"
 
 const { TabPane } = Tabs;
 
@@ -104,39 +105,23 @@ function Homepage() {
         setActiveKey(activeKey);
     };
 
-    const addSGroup = (id, formValues) => {
+    const addSGroup = (id, buttonName) => {
         const newTabIndex = panes.current.length;
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
-            title: "Parts group list",
-            content: <PartGroup carid={id} onAdd={addSub}/>,
+            title: buttonName + " - " + "Parts Group List",
+            content: <PartListGroup carid = {id} onAdd = {add}/>,
             key: activeKey,
         };
         panes.current = [...panes.current, newPane];
         setActiveKey(activeKey);
     };
 
-    const remove = (targetKey) => {
-        let newActiveKey = activeKey;
-        let lastIndex;
-        const newPanes = panes.current.filter((pane, i) => {
-            if (pane.key === targetKey) {
-                lastIndex = i - 1;
-            }
-            return pane.key !== targetKey;
-        });
-
-        if (newPanes.length && newActiveKey === targetKey) {
-            if (lastIndex >= 0) {
-                newActiveKey = newPanes[lastIndex].key;
-            } else {
-                newActiveKey = newPanes[0].key;
-            }
-        }
-        panes.current = newPanes;
+      const remove = (targetKey) => {
+        panes.current = panes.current.filter((pane) => pane.key !== targetKey);
+        const newActiveKey = activeKey === targetKey ? panes.current[panes.current.length - 1]?.key : activeKey;
         setActiveKey(newActiveKey);
-
-    };
+      };
 
     return (
         <div>

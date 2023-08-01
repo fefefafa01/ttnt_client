@@ -27,25 +27,6 @@ const initialValues = {
     year: "",
 };
 
-const allValues = {
-    country_name: "",
-    manufacturer_name: "",
-    car_model_name: "",
-    model_code: "",
-    drivers_position: "",
-    engine_model: "",
-    displacement_code: "",
-    fuel_type: "",
-    transmission_type: "",
-    drivetrain: "",
-    aisin_part_name: "",
-    part_code: "",
-    aisin_premium_code: "",
-    competiter_part_code: "",
-    speed: "",
-    year: "",
-};
-
 var loc;
 
 function resetInitialValues() {
@@ -82,8 +63,6 @@ function SelectSpeed(input) {
         }
     };
 
-    allValues.speed = [...options];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -93,7 +72,7 @@ function SelectSpeed(input) {
                 selectedOption - selectedOption.slice(-3) + "clear";
         }
         if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.speed = "";
             input.setSpd("");
             input.setUpdate([])
             return
@@ -220,7 +199,7 @@ function SelectSpeed(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.spd != "" && (
+                        {input.spd !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -272,8 +251,6 @@ function SelectYear(input) {
         }
     };
 
-    allValues.year = [options];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -282,7 +259,7 @@ function SelectYear(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.year = "";
             input.setYear("");
             input.setUpdate([])
             return
@@ -409,7 +386,7 @@ function SelectYear(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.year != "" && (
+                        {input.year !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -495,8 +472,6 @@ function SelectCountries(input) {
         }
     };
 
-    allValues.country = [countryNames];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         
@@ -507,7 +482,7 @@ function SelectCountries(input) {
                 selectedOption - selectedOption.slice(-3) + "clear";
         } 
         if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.country_name = "";
             input.setCountry("");
             input.setUpdate([])
             return
@@ -616,7 +591,7 @@ function SelectCountries(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.country != "" && (
+                        {input.country !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -702,8 +677,6 @@ function SelectCarMaker(input) {
         }
     };
 
-    allValues.manufacturer_name = [...manufacturer_name];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -712,7 +685,7 @@ function SelectCarMaker(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all" ) {
-            initialValues.car_model_name = "";
+            initialValues.manufacturer_name = "";
             input.setMaker("");
             input.setUpdate([])
             return
@@ -823,7 +796,7 @@ function SelectCarMaker(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.maker != "" && (
+                        {input.maker !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -908,8 +881,6 @@ function SelectModelName(input) {
             setShowArrow(!showArrow);
         }
     };
-
-    allValues.car_model_name = [...model_name];
 
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
@@ -1031,7 +1002,7 @@ function SelectModelName(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All
-                        {input.name != "" && (
+                        {input.name !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -1117,8 +1088,6 @@ function SelectModelCode(input) {
         }
     };
 
-    allValues.model_code = [...modelcode];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -1127,7 +1096,7 @@ function SelectModelCode(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.model_code = "";
             input.setCode("");
             input.setUpdate([])
             return
@@ -1237,7 +1206,7 @@ function SelectModelCode(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.code != "" && (
+                        {input.code !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -1323,8 +1292,6 @@ function SelectPosition(input) {
         }
     };
 
-    allValues.drivers_position = [...driversposition];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -1333,7 +1300,7 @@ function SelectPosition(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.drivers_position = "";
             input.setPosition("");
             input.setUpdate([])
             return
@@ -1443,7 +1410,7 @@ function SelectPosition(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.position != "" && (
+                        {input.position !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -1529,8 +1496,6 @@ function SelectEngineCode(input) {
         }
     };
 
-    allValues.engine_model = [...enginemodel];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -1539,7 +1504,7 @@ function SelectEngineCode(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.engine_model = "";
             input.setEngine("");
             input.setUpdate([])
             return
@@ -1649,7 +1614,7 @@ function SelectEngineCode(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.engine != "" && (
+                        {input.engine !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -1735,8 +1700,6 @@ function SelectDisplacement(input) {
         }
     };
 
-    allValues.displacement_code = [...displacementcode]
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -1745,7 +1708,7 @@ function SelectDisplacement(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.displacement_code = "";
             input.setDisplacement("");
             input.setUpdate([])
             return
@@ -1855,7 +1818,7 @@ function SelectDisplacement(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.displacement != "" && (
+                        {input.displacement !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -1941,8 +1904,6 @@ function SelectFuel(input) {
         }
     };
 
-    allValues.fuel_type = [...fueltype]
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -1951,7 +1912,7 @@ function SelectFuel(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.fuel_type = "";
             input.setFuel("");
             input.setUpdate([])
             return
@@ -2061,7 +2022,7 @@ function SelectFuel(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.fuel != "" && (
+                        {input.fuel !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -2147,8 +2108,6 @@ function SelectTransmission(input) {
         }
     };
 
-    allValues.transmission_type = [...transmissiontype];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2157,7 +2116,7 @@ function SelectTransmission(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.transmission_type = "";
             input.setTrans("");
             input.setUpdate([])
             return
@@ -2267,7 +2226,7 @@ function SelectTransmission(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.trans != "" && (
+                        {input.trans !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -2353,8 +2312,6 @@ function SelectDrivertrain(input) {
         }
     };
 
-    allValues.drivetrain = [...drivetrainNames];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2363,7 +2320,7 @@ function SelectDrivertrain(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.drivetrain = "";
             input.setTrain("");
             input.setUpdate([])
             return
@@ -2473,7 +2430,7 @@ function SelectDrivertrain(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.train != "" && (
+                        {input.train !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -2559,8 +2516,6 @@ function SelectPartName(input) {
         }
     };
 
-    allValues.aisin_part_name = [...aisinpartname];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2569,7 +2524,7 @@ function SelectPartName(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.aisin_part_name = "";
             input.setPart("");
             input.setUpdate([])
             return
@@ -2679,7 +2634,7 @@ function SelectPartName(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.part != "" && (
+                        {input.part !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -2765,8 +2720,6 @@ function SelectOE(input) {
         }
     };
 
-    allValues.part_code = [...partcode];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2775,7 +2728,7 @@ function SelectOE(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.part_code = "";
             input.setOe("");
             input.setUpdate([])
             return
@@ -2885,7 +2838,7 @@ function SelectOE(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All
-                        {input.oe != "" && (
+                        {input.oe !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -2971,8 +2924,6 @@ function SelectAISIN(input) {
         }
     };
 
-    allValues.aisin_premium_code = [...aisinpremiumcode];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -2981,7 +2932,7 @@ function SelectAISIN(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.aisin_premium_code = "";
             input.setAisin("");
             input.setUpdate([])
             return
@@ -3091,7 +3042,7 @@ function SelectAISIN(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.aisin != "" && (
+                        {input.aisin !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -3177,8 +3128,6 @@ function SelectCompetitor(input) {
         }
     };
 
-    allValues.competiter_part_code = [...competiterpartcode];
-
     const handleSelection = (event, optionToRemove) => {
         var selectedOption = event.target.textContent;
         if (selectedOption === "Xóa") {
@@ -3187,7 +3136,7 @@ function SelectCompetitor(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         } if (selectedOption === "clear all") {
-            initialValues.car_model_name = "";
+            initialValues.competiter_part_code = "";
             input.setComp("");
             input.setUpdate([])
             return
@@ -3297,7 +3246,7 @@ function SelectCompetitor(input) {
                 <ul className="options">
                     <li key="*" onClick={handleSelection}>
                         Select All 
-                        {input.comp != "" && (
+                        {input.comp !== "" && (
                             <button
                             className="remove-btn"
                         >
@@ -3379,8 +3328,7 @@ const SearchCriteria = (props) => {
             !initialValues.aisin_premium_code &&
             !initialValues.competiter_part_code)
         {
-            formValues.current = allValues;
-            count = 0;
+            formValues.current = "All";
         }
         else {
             formValues.current = initialValues;
