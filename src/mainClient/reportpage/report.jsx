@@ -47,7 +47,7 @@ function SelectCountries(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -241,7 +241,7 @@ function SelectCarMaker(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -435,7 +435,7 @@ function SelectTransmission(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -819,7 +819,7 @@ function SelectPartName(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {

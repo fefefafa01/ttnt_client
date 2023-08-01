@@ -456,7 +456,7 @@ function SelectCountries(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -663,7 +663,7 @@ function SelectCarMaker(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -870,7 +870,7 @@ function SelectModelName(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -1078,7 +1078,7 @@ function SelectModelCode(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -1284,7 +1284,7 @@ function SelectPosition(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -1490,7 +1490,7 @@ function SelectEngineCode(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -1696,7 +1696,7 @@ function SelectDisplacement(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -1902,7 +1902,7 @@ function SelectFuel(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -2108,7 +2108,7 @@ function SelectTransmission(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -2314,7 +2314,7 @@ function SelectDrivertrain(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -2520,7 +2520,7 @@ function SelectPartName(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -2726,7 +2726,7 @@ function SelectOE(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -2932,7 +2932,7 @@ function SelectAISIN(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -3138,7 +3138,7 @@ function SelectCompetitor(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {

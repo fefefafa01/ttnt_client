@@ -174,7 +174,7 @@ function ResultList(props) {
                             </button>
                             {downdrop && (
                                 <DropingDown
-                                    data={formValues}
+                                    data={currentItems}
                                     dropping={handleDropdown}
                                 />
                             )}
@@ -447,7 +447,7 @@ function ResultList(props) {
                             </button>
                             {downdrop && (
                                 <DropDown
-                                    data={add}
+                                    data={currentItemss}
                                     dropping={handleDropdown}
                                 />
                             )}
