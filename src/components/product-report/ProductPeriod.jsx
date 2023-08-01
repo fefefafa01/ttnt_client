@@ -1,15 +1,15 @@
 import "../Epic1Filter";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./productPeriod.scss";
-import GaugeChart from "react-gauge-chart";
 import { backlocale } from "constants/constindex";
+import ReactApexChart from "react-apexcharts";
 
-function ProductPeriod(GaugeNum) {
+function ProductPeriod() {
     const [openSummary, setOpenSummary] = useState(true);
     const [summary, setSummary] = useState({});
 
     if (openSummary) {
-        let loc = backlocale + "period/summary"
+        let loc = backlocale + "period/summary";
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -37,6 +37,60 @@ function ProductPeriod(GaugeNum) {
             });
     }
 
+    // gauge chart
+    const [series, setSeries] = useState([10]);
+    useEffect(() => {
+        // Calculate the new value for series based on coverage_rate
+        const newSeries = [summary.coverage_rate * 100];
+        setSeries(newSeries);
+    }, [summary.coverage_rate]);
+    const [options, setOptions] = useState({
+        chart: {
+            type: "radialBar",
+            offsetY: -20,
+            sparkline: {
+                enabled: true,
+            },
+        },
+        plotOptions: {
+            radialBar: {
+                startAngle: -90,
+                endAngle: 90,
+                track: {
+                    background: "#FFFFFF",
+                    strokeWidth: "97%",
+                    margin: 5,
+                    dropShadow: {
+                        enabled: true,
+                        top: 2,
+                        left: 0,
+                        color: "#999",
+                        opacity: 1,
+                        blur: 2,
+                    },
+                },
+                dataLabels: {
+                    name: {
+                        show: false,
+                    },
+                    value: {
+                        offsetY: -2,
+                        fontSize: "22px",
+                    },
+                },
+            },
+        },
+        grid: {
+            padding: {
+                top: -10,
+            },
+        },
+        colors:
+            series < 50 ? ["#FF0000"] : series < 90 ? ["#FFFF00"] : ["#008000"],
+
+        labels: ["Average Results"],
+    });
+
     return (
         <div>
             <div className="coverage-summary">
@@ -54,40 +108,18 @@ function ProductPeriod(GaugeNum) {
                     </div>
                     <div className="col ">
                         <p>Total % Coverage</p>
-                        {GaugeNum <= 0.5 ? (
-                            <GaugeChart
-                                id="gauge-chart1"
-                                nrOfLevels={420}
-                                arcsLength={[GaugeNum, 1 - GaugeNum]}
-                                colors={["red", "#FFF"]}
-                                percent={GaugeNum}
-                                arcPadding={0.02}
-                            />
-                        ) : summary.coverage_rate < 0.9 ? (
-                            <GaugeChart
-                                id="gauge-chart2"
-                                nrOfLevels={420}
-                                arcsLength={[
-                                    summary.coverage_rate,
-                                    1 - summary.coverage_rate,
-                                ]}
-                                colors={["yellow", "#FFF"]}
-                                percent={summary.coverage_rate}
-                                arcPadding={0.02}
-                            />
-                        ) : (
-                            <GaugeChart
-                                id="gauge-chart3"
-                                nrOfLevels={420}
-                                arcsLength={[
-                                    summary.coverage_rate,
-                                    1 - summary.coverage_rate,
-                                ]}
-                                colors={["green", "#FFF"]}
-                                percent={summary.coverage_rate}
-                                arcPadding={0.02}
-                            />
-                        )}
+                        <ReactApexChart
+                            id={
+                                series <= 50
+                                    ? "gauge-chart1"
+                                    : series <= 90
+                                    ? "gauge-chart2"
+                                    : "gauge-chart3"
+                            }
+                            options={options}
+                            series={series}
+                            type="radialBar"
+                        />
                     </div>
                 </div>
             </div>
