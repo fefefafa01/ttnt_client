@@ -4,12 +4,39 @@ import "./productPeriod.scss";
 import { backlocale } from "constants/constindex";
 import ReactApexChart from "react-apexcharts";
 
-function ProductPeriod() {
+function ProductPeriod(props) {
     const [openSummary, setOpenSummary] = useState(true);
     const [summary, setSummary] = useState({});
+    const [formValues, setFormValues] = useState({
+        country_name: props.country_name,
+        manufacturer_name: props.manufacturer_name,
+        transmission_type: props.transmission_type,
+        part_name: props.part_name,
+        part_group: props.part_group,
+        start_year: props.start_year,
+        end_year: props.end_year,
+        start_cover: props.start_cover,
+        end_cover: props.end_cover,
+    });
 
-    if (openSummary) {
-        let loc = backlocale + "period/summary";
+    // Update formValues when the initialValues prop changes
+    useEffect(() => {
+        setFormValues({
+            ...formValues,
+            country_name: props.country_name,
+            manufacturer_name: props.manufacturer_name,
+            transmission_type: props.transmission_type,
+            part_name: props.part_name,
+            part_group: props.part_group,
+            start_year: props.start_year,
+            end_year: props.end_year,
+            start_cover: props.start_cover,
+            end_cover: props.end_cover,
+        });
+    }, [props]);
+    useEffect(() => {
+        console.log(formValues);
+        let loc = backlocale + "period/downoverall";
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -19,6 +46,7 @@ function ProductPeriod() {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
+            body: JSON.stringify(formValues),
         })
             .catch((err) => {
                 return;
@@ -35,15 +63,20 @@ function ProductPeriod() {
                 setSummary(data.summary);
                 console.log(data.summary);
             });
-    }
+    }, [formValues]);
+    //let loc = backlocale + "period/summary";
 
     // gauge chart
-    const [series, setSeries] = useState([10]);
-    useEffect(() => {
-        // Calculate the new value for series based on coverage_rate
-        const newSeries = [summary.coverage_rate * 100];
-        setSeries(newSeries);
-    }, [summary.coverage_rate]);
+    const [series, setSeries] = useState([]);
+    useEffect(
+        () => {
+            // Calculate the new value for series based on coverage_rate
+            const newSeries = [Number(summary.coverage_rate)];
+            setSeries(newSeries);
+        },
+        [summary.coverage_rate],
+        summary
+    );
     const [options, setOptions] = useState({
         chart: {
             type: "radialBar",
@@ -100,7 +133,7 @@ function ProductPeriod() {
                 <div className="summary-item">
                     <div className="col ">
                         <p>Total Market</p>
-                        <p className="item">{summary.maker}</p>
+                        <p className="item">{summary.sum}</p>
                     </div>
                     <div className="col ">
                         <p>Total Coverage</p>

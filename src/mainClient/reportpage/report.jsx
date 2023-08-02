@@ -16,16 +16,17 @@ import * as FileSaver from "file-saver";
 
 const { TabPane } = Tabs;
 
+const currentYear = new Date().getFullYear();
 const initialValues = {
     country_name: "",
     manufacturer_name: "",
     transmission_type: "",
     part_name: "",
     part_group: "",
-    start_year: "",
-    end_year: "",
-    start_cover: "25",
-    end_cover: "75",
+    end_year: currentYear,
+    start_year: currentYear,
+    start_cover: 25,
+    end_cover: 75,
 };
 
 var loc;
@@ -997,7 +998,7 @@ function SelectPartName(input) {
 
 function ReportPage(props) {
     const [activeKey, setActiveKey] = useState("1");
-    const [formValues, setFormvalues] = useState(initialValues);
+    const [formValues, setFormValues] = useState(initialValues);
     const panes = [
         {
             title: "Product Coverage Overview",
@@ -1008,7 +1009,19 @@ function ReportPage(props) {
         {
             title: "Product Coverage by Period",
             key: "2",
-            content: <ProductPeriod />,
+            content: (
+                <ProductPeriod
+                    country_name={initialValues.country_name}
+                    manufacturer_name={initialValues.manufacturer_name}
+                    transmission_type={initialValues.transmission_type}
+                    part_name={initialValues.part_name}
+                    part_group={initialValues.part_group}
+                    start_year={initialValues.start_year}
+                    end_year={initialValues.end_year}
+                    start_cover={initialValues.start_cover}
+                    end_cover={initialValues.end_cover}
+                />
+            ),
             closable: false,
         },
     ];
