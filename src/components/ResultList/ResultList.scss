@@ -41,75 +41,6 @@
     }
 }
 
-.emptyscrolling {
-    width: 200%;
-}
-
-.contents-results::-webkit-scrollbar {
-    background-color: transparent;
-}
-
-.Scrollthebar {
-    overflow-x: auto;
-    margin-top: -10px;
-    width: 900px;
-    display: block;
-    float: left;
-    float: inline-start;
-}
-
-.Scrollthebar::-webkit-scrollbar {
-    width: 15px;
-}
-
-.Scrollthebar::-webkit-scrollbar-track {
-    border-radius: 20px;
-    background-color: white;
-    width: 50px;
-}
-
-.Scrollthebar::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #b0c4e4;
-    border: 2em solid #7697cb;
-}
-
-.emptyscroll {
-    width: 200%;
-}
-
-.contents-results::-webkit-scrollbar {
-    background-color: transparent;
-}
-
-.BarScroll {
-    overflow-x: auto;
-    margin-top: -10px;
-    width: 520px;
-    display: block;
-    float: right;
-    float: inline-start;
-    transform: rotate(90deg);
-    margin-right: -240px;
-    margin-top: -280px;
-}
-
-.BarScroll::-webkit-scrollbar {
-    width: 15px;
-}
-
-.BarScroll::-webkit-scrollbar-track {
-    border-radius: 20px;
-    background-color: white;
-    width: 50px;
-}
-
-.BarScroll::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #b0c4e4;
-    border: 2em solid #7697cb;
-}
-
 #VehiclePart {
     height: 70px;
 }
@@ -247,13 +178,15 @@
     height: 85%;
     width: 100%;
     border-radius: 20px;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
     display: block;
     max-height: 98%;
     max-width: 99%;
     padding-bottom: 20px;
     padding-right: 50px;
 }
+
 #pscrolling-style {
     &::-webkit-scrollbar-corner {
         background-color: transparent;
@@ -296,4 +229,28 @@
 }
 .titlecontent h3{
     font-style: normal;
+}
+
+.scrollsynch {
+    max-width: 98%;
+	overflow-x: scroll;
+	&::-webkit-scrollbar {
+		height: 13px;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: white;
+		border-radius: 5px;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: rgba(118,151,203,255);
+		border-radius: 5px;
+		background-clip: content-box;
+		height: 20px;
+	}
+}
+
+.emptyscroll {
+    width: 187%;
 }
