@@ -114,9 +114,9 @@ function ResultList(props) {
             return (
                 <div className="tabcontent">
                     {opening && <Specpdf carid={""+pdfcarid} partcode={""+pcode} open={openPDF} />}
-                    <div className="titlecontent">
+                    <div className="titleresultcontent">
                         <h3><Changer inp="Model Found:" /> {formValues.length} <Changer inp={checkrecord(formValues.length)} /></h3>
-                        <div className="col-3">
+                        <div className="paginatingpage">
                             <ReactPaginate
                                 previousLabel={
                                     <img
@@ -151,7 +151,7 @@ function ResultList(props) {
                                 nextLinkClassName={"next-link"}
                             />
                         </div>
-                        <div className="col-4">
+                        <div className="splittingrecordpages">
                             <label htmlFor="itemsPerPage">
                                 <Changer inp="Records per Page:" />
                             </label>
@@ -165,9 +165,9 @@ function ResultList(props) {
                                 <option value="15">15</option>
                             </select>
                         </div>
-                        <div className="col">
+                        <div className="downloadingbuttondrop">
                             <button
-                                className="col download"
+                                className="download"
                                 onClick={handleDropdown}
                             >
                                 <img
@@ -372,11 +372,9 @@ function ResultList(props) {
         } else {
             return (
                 <div className="tabcontent">
-                    <div className="titlecontent">
-                        <div className="col-2">
-                            <h3><Changer inp="Model Found:" /> {add.length} <Changer inp={checkrecord(add.length)} /></h3>
-                        </div>
-                        <div className="col-3">
+                    <div className="titleresultcontent">
+                        <h3><Changer inp="Model Found:" /> {add.length} <Changer inp={checkrecord(add.length)} /></h3>
+                        <div className="paginatingpage">
                             <ReactPaginate
                                 previousLabel={
                                     <img
@@ -411,7 +409,7 @@ function ResultList(props) {
                                 nextLinkClassName={"next-link"}
                             />
                         </div>
-                        <div className="col-4">
+                        <div className="splittingrecordpages">
                             <label htmlFor="itemsPerPage">
                                 <Changer inp="Records per Page:" />
                             </label>
@@ -425,9 +423,9 @@ function ResultList(props) {
                                 <option value="15">15</option>
                             </select>
                         </div>
-                        <div className="col">
+                        <div className="downloadingbuttondrop">
                             <button
-                                className="col download"
+                                className="download"
                                 onClick={handleDropdown}
                             >
                                 <img

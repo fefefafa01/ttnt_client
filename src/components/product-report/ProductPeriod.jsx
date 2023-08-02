@@ -1,4 +1,3 @@
-import "../Epic1Filter";
 import React, { useState, useEffect } from "react";
 import "./productPeriod.scss";
 import { backlocale } from "constants/constindex";

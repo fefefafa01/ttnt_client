@@ -6,6 +6,7 @@ import down from "../img/Down.png";
 import up from "../img/Up.png";
 import glass from "../img/Glass.png";
 import arrow from "../img/arrow.png";
+import loading from "../img/Loading.gif"
 import { backlocale } from "constants/constindex";
 
 const initialValues = {
@@ -3302,6 +3303,7 @@ const SearchCriteria = (props) => {
     const [arrow1, setOpenArrow1] = useState(false);
     const [arrow2, setOpenArrow2] = useState(false);
     const [arrow3, setOpenArrow3] = useState(false);
+    const [queryingcriteria, setQueryingcrit] = useState(false);
     const formValues = useRef()
     
     const handleSubmit = (e) => {
@@ -3309,7 +3311,7 @@ const SearchCriteria = (props) => {
         
         let count = 1;
         let loc = backlocale + "table/result";
-        
+        setQueryingcrit(true);
         if( 
             !initialValues.country_name &&
             !initialValues.manufacturer_name &&
@@ -3365,10 +3367,12 @@ const SearchCriteria = (props) => {
                 if (!data) return;
                 if (data.status === "There is no car matched your search") {
                     props.onAdd(data.status, count);
+                    setQueryingcrit(false);
                     return;
                 } else {
                     console.log(data.table);
                     props.onAdd(data.table, count);
+                    setQueryingcrit(false);
                     return;
                 }
             
@@ -3681,14 +3685,25 @@ const SearchCriteria = (props) => {
                         </div>
                     </div>
                     <div className="submitbtn">
-                        <button
+                        {!queryingcriteria && 
+                            <button
+                                type="submit"
+                                value="Submit"
+                                id="Submit"
+                                onClick={handleSubmit}
+                            >
+                                Go
+                            </button>
+                        }
+                        {queryingcriteria && 
+                            <button
                             type="submit"
                             value="Submit"
                             id="Submit"
-                            onClick={handleSubmit}
-                        >
-                            Go
-                        </button>
+                            >
+                                <img className="CriteriaLoading" src={loading} alt="loading..."/>
+                            </button>
+                        }
                         <button
                             type="reset"
                             value="Reset"

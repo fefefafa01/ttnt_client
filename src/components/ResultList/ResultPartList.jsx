@@ -51,11 +51,11 @@ function ResultPartList(props) {
     return (
         <div className="tabcontent">
             {opening && <Specpdf carid={""+pdfcarid} partcode={""+pcode} open={openPDF} />}
-            <div className="titlecontent">
+            <div className="resultparttitle">
                 <h3>{partId[0].car_maker}, {partId[0].model_code} {"(" + partId[0].start_of_production} - {partId[0].end_of_production + ")"} {partId[0].speed}{partId[0].transmission_type} </h3>
-                <div className="col">
+                <div className="resultpartdown">
                     <button
-                        className="col dwnload"
+                        className="download"
                         onClick={handleDropdown}
                     >
                         <img

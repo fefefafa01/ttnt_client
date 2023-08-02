@@ -5,6 +5,34 @@
     height: 50px;
 }
 
+.titleresultcontent h3, .splittingrecordpages, .paginatingpage {
+    margin-top: 1.5%;
+    margin-bottom: -1%;
+    padding-right: 5px;
+    float:left;
+}
+
+.downloadingbuttondrop {
+    margin-top: 0.5%;
+    margin-right: 1%;
+    float:right;
+}
+
+.resultparttitle h3 {
+    margin-top: 1.5%;
+    margin-bottom: -1%;
+    padding-right: 5px;
+    float:left;
+    padding: 3px 0px 0px 0px;
+}
+
+.resultpartdown {
+    margin-top: 0.5%;
+    margin-right: 2%;
+    width: fit-content;
+    float:right;
+}
+
 .Scroll {
     height: 85%;
     width: 95%;
@@ -46,7 +74,6 @@
 }
 
 .pagination {
-    margin-top: 10px;
     margin-left: 10px;
 }
 
@@ -69,6 +96,10 @@
     background-color: transparent;
     color: black;
     border: solid 1.5px #5894f2;
+}
+
+.page-item {
+    padding-left: 2px;
 }
 
 .active > .page-link {
@@ -103,7 +134,7 @@
     position: fixed;
     background-color: white;
     align-items: left;
-    margin-left: 5%;
+    margin-left: -4%;
     margin-top: -10px;
     width: 12.6vw;
     display: block;
@@ -111,6 +142,13 @@
     border-radius: 3px;
     border: solid 1px grey;
 }
+
+@media (resolution: 1.25dppx) {
+	.droplist {
+		margin-left: -1%;
+	}
+}
+
 .dropdldtxt {
     margin-top: 10px;
     font-weight: bold;
@@ -129,10 +167,10 @@
     }
 }
 
-.col-4 {
-    margin-top: 10px;
-    display: flex;
-}
+// .col-4 {
+//     margin-top: 10px;
+//     display: flex;
+// }
 
 .p-table {
     td {
@@ -227,8 +265,9 @@
     font-weight: bold;
     margin-top: -5px;
 }
-.titlecontent h3{
+.titleresultcontent h3{
     font-style: normal;
+    padding: 3px 0px 0px 0px;
 }
 
 .scrollsynch {
