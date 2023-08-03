@@ -103,7 +103,8 @@ function SelectSpeed(input) {
                 (name) => name !== "Select All"
             );
             input.setSpd(selectedValueOptions.join(", "));
-            initialValues.speed = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.speed = ""
+            else initialValues.speed = selectedValueOptions;
             console.log(initialValues.speed);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -290,7 +291,8 @@ function SelectYear(input) {
                 (name) => name !== "Select All"
             );
             input.setYear(selectedValueOptions.join(", "));
-            initialValues.year = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.year = ""
+            else initialValues.year = selectedValueOptions;
             console.log(initialValues.year);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -512,7 +514,8 @@ function SelectCountries(input) {
                 (name) => name !== "Select All"
             );
             input.setCountry(selectedValueOptions.join(", "));
-            initialValues.country_name = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.country_name = ""
+            else initialValues.country_name = selectedValueOptions;
             console.log(initialValues.country_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -716,8 +719,10 @@ function SelectCarMaker(input) {
                 (name) => name !== "Select All"
             );
             input.setMaker(selectedValueOptions.join(", "));
-            initialValues.manufacturer_name = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.manufacturer_name = ""
+            else initialValues.manufacturer_name = selectedValueOptions;
             console.log(initialValues.manufacturer_name);
+            
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -922,7 +927,8 @@ function SelectModelName(input) {
             );
             
             input.setName(selectedValueOptions.join(", "));
-            initialValues.car_model_name = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.car_model_name = ""
+            else initialValues.car_model_name = selectedValueOptions;
             console.log(initialValues.car_model_name);
             return
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -1127,7 +1133,8 @@ function SelectModelCode(input) {
                 (name) => name !== "Select All"
             );
             input.setCode(selectedValueOptions.join(", "));
-            initialValues.model_code = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.model_code = ""
+            else initialValues.model_code = selectedValueOptions;
             console.log(initialValues.model_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -1331,7 +1338,8 @@ function SelectPosition(input) {
                 (name) => name !== "Select All"
             );
             input.setPosition(selectedValueOptions.join(", "));
-            initialValues.drivers_position = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.drivers_position = ""
+            else initialValues.drivers_position = selectedValueOptions;
             console.log(initialValues.drivers_position);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -1535,7 +1543,8 @@ function SelectEngineCode(input) {
                 (name) => name !== "Select All"
             );
             input.setEngine(selectedValueOptions.join(", "));
-            initialValues.engine_model = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.engine_model = ""
+            else initialValues.engine_model = selectedValueOptions;
             console.log(initialValues.engine_model);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -1739,7 +1748,8 @@ function SelectDisplacement(input) {
                 (name) => name !== "Select All"
             );
             input.setDisplacement(selectedValueOptions.join(", "));
-            initialValues.displacement_code = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.displacement_code = ""
+            else initialValues.displacement_code = selectedValueOptions;
             console.log(initialValues.displacement_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -1943,7 +1953,8 @@ function SelectFuel(input) {
                 (name) => name !== "Select All"
             );
             input.setFuel(selectedValueOptions.join(", "));
-            initialValues.fuel_type = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.fuel_type = ""
+            else initialValues.fuel_type = selectedValueOptions;
             console.log(initialValues.fuel_type);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -2147,7 +2158,8 @@ function SelectTransmission(input) {
                 (name) => name !== "Select All"
             );
             input.setTrans(selectedValueOptions.join(", "));
-            initialValues.transmission_type = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.transmission_type = ""
+            else initialValues.transmission_type = selectedValueOptions;
             console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -2351,7 +2363,8 @@ function SelectDrivertrain(input) {
                 (name) => name !== "Select All"
             );
             input.setTrain(selectedValueOptions.join(", "));
-            initialValues.drivetrain = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.drivetrain = ""
+            else initialValues.drivetrain = selectedValueOptions;
             console.log(initialValues.drivetrain);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -2555,7 +2568,8 @@ function SelectPartName(input) {
                 (name) => name !== "Select All"
             );
             input.setPart(selectedValueOptions.join(", "));
-            initialValues.aisin_part_name = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.aisin_part_name = ""
+            else initialValues.aisin_part_name = selectedValueOptions;
             console.log(initialValues.aisin_part_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -2758,7 +2772,8 @@ function SelectOE(input) {
                 (name) => name !== "Select All"
             );
             input.setOe(selectedValueOptions.join(", "));
-            initialValues.part_code = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.part_code = ""
+            else initialValues.part_code = selectedValueOptions;
             console.log(initialValues.part_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -2963,7 +2978,8 @@ function SelectAISIN(input) {
                 (name) => name !== "Select All"
             );
             input.setAisin(selectedValueOptions.join(", "));
-            initialValues.aisin_premium_code = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.aisin_premium_code = ""
+            else initialValues.aisin_premium_code = selectedValueOptions;
             console.log(initialValues.aisin_premium_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -3167,7 +3183,8 @@ function SelectCompetitor(input) {
                 (name) => name !== "Select All"
             );
             input.setComp(selectedValueOptions.join(", "));
-            initialValues.competiter_part_code = selectedValueOptions;
+            if(selectedValueOptions.length === 0) initialValues.competiter_part_code = ""
+            else initialValues.competiter_part_code = selectedValueOptions;
             console.log(initialValues.competiter_part_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {

@@ -159,9 +159,11 @@ function PartGroup({ carid, onAdd }) {
     );
 }
 
-function PartSubgroup({ carid, onAdd }) {
-    const handleAdd = (buttonName) => {
-        onAdd(buttonName);
+function PartSubgroup(props) {
+    const {carid, partGroupName, onAdd} = props;
+
+    const handleAdd = (buttonName, carid) => {
+        onAdd(buttonName, carid);
     };
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
@@ -308,7 +310,7 @@ function PartSubgroup({ carid, onAdd }) {
                                 <td style={{ border: "transparent" }}>
                                     <button
                                         className="subgroup"
-                                        onClick={() => handleAdd(el.subGroup)}
+                                        onClick={() => handleAdd(el.subGroup, carid)}
                                     >
                                         {index + 1}. {el.subGroup}
                                     </button>

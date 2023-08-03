@@ -114,16 +114,15 @@ button.details {
 }
 .partlistscroll {
     background-color: #b0c4e4;
-    height: 85%;
-    width: 100%;
+    height: 90%;
+    width: 98%;
     border-radius: 20px;
-    overflow: auto;
-    display: flex;
-    max-height: 98%;
-    max-width: 99%;
-    padding-bottom: 20px;
-    padding-right: 50px;
+    overflow: hidden;
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
 }
+
 #pscroll-style {
     &::-webkit-scrollbar-corner {
         background-color: transparent;

@@ -98,7 +98,7 @@ function ResultPartList(props) {
                                 {partId.map((el, index) => (
                                     <tr key = {index}>
                                         <td><Changer inp={el.aisin_part_name} /></td>
-                                        <td>{el.oe}</td>
+                                        <td>{el.oe} {"(" + el.part_start_time}-{el.part_end_time + ")"}</td>
                                         <td>{el.aisin_premium_code}</td>
                                         <td>
                                             {el.aisin_sub_premium_code}

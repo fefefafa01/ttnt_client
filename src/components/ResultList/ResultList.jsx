@@ -15,6 +15,17 @@ function ResultList(props) {
     console.log(formValues);
     //Synchronizing Scroll:
 
+    $(function() {
+        $(".plistscroll").on("scroll", function() {
+            $(".scrollpdf")
+                .scrollLeft($(".plistscroll").scrollLeft());
+        });
+        $(".scrollpdf").on("scroll", function() {
+            $(".plistscroll")
+                .scrollLeft($(".scrollpdf").scrollLeft())
+        });
+    });
+
     let no = 1;
 
     //Downloader
@@ -311,7 +322,7 @@ function ResultList(props) {
                                                 <td>{el.transmission_type}</td>
                                                 <td>{el.speed}</td>
                                                 <td>{el.drivetrain}</td>
-                                                <td>{el.oe} {"(" + el.part_start_time} - {el.part_end_time + ")"}</td>
+                                                <td>{el.oe} {"(" + el.part_start_time}-{el.part_end_time + ")"}</td>
                                                 <td>{el.aisin_premium_code}</td>
                                                 <td>
                                                     {el.aisin_sub_premium_code}
@@ -345,7 +356,7 @@ function ResultList(props) {
                                 </table>
                         </div>
                     </div>
-
+                        <div className="scrollpdf"><html className="emptyscroll">&nbsp;</html></div>
             </div>
             );
         } else {
@@ -426,9 +437,9 @@ function ResultList(props) {
                             )}
                         </div>
                     </div>
-                    <div className="partlistscroll" id="pscroll-style">
-                <div className="contents-part-list">
-                    <table className="part-table">
+                    <div className="plistscroll" id="pscrolling-style">
+                <div className="contents-p-list">
+                    <table className="p-table">
                                     <thead>
                                         <tr>
                                             <th

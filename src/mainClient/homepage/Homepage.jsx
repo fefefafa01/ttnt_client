@@ -9,6 +9,7 @@ import { ResultList } from "components/ResultList/ResultList";
 import { PartSubgroup, PartGroup } from "components/PartGroup";
 import { ResultPartList } from "components/ResultList/ResultPartList";
 import {PartListGroup} from "components/ResultList/PartListGroup"
+import { useForceUpdate } from "framer-motion";
 
 const { TabPane } = Tabs;
 
@@ -27,10 +28,6 @@ function Homepage() {
             key: "1",
             closable: false,
         },
-        {
-            title: "KUN25, Parts group list",
-            key: "2",
-        },
     ]);
 
     const onChange = (activeKey) => {
@@ -41,27 +38,27 @@ function Homepage() {
         action === "remove" ? remove(targetKey) : add();
     };
 
-    const add = (buttonName) => {
+    const add = (buttonName, carid) => {
         const newTabIndex = panes.current.length;
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
             title: "Part List",
-            content: <PartList carid={102} SubGroupName={buttonName} />,
+            content: <PartList carid={carid} SubGroupName={buttonName} />,
             key: activeKey,
         };
         panes.current = [...panes.current, newPane];
         setActiveKey(activeKey);
     };
 
-    const addSub = (buttonSubName) => {
+    const addSub = (carid, buttonSubName) => {
         console.log(buttonSubName);
         const newTabIndex = panes.current.length;
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
-            title: `KUN25, ${buttonSubName} group-Parts subgroup list`,
+            title: buttonSubName + ` - Parts subgroup list`,
             content: (
                 <PartSubgroup
-                    carid={102}
+                    carid={carid}
                     partGroupName={buttonSubName}
                     onAdd={add}
                 />
@@ -90,7 +87,6 @@ function Homepage() {
             panes.current = [...panes.current, newPane];
             setActiveKey(activeKey);
             console.log(panes)
-
     };
 
     const addList = (id, formValues) => {
@@ -110,17 +106,17 @@ function Homepage() {
         const activeKey = `newTab${newTabIndex}`;
         const newPane = {
             title: buttonName + " - " + "Parts Group List",
-            content: <PartListGroup carid = {id} onAdd = {add}/>,
+            content: <PartListGroup carid = {id} onAdd = {addSub} buttonName = {buttonName}/>,
             key: activeKey,
         };
         panes.current = [...panes.current, newPane];
         setActiveKey(activeKey);
     };
 
-      const remove = (targetKey) => {
-        panes.current = panes.current.filter((pane) => pane.key !== targetKey);
-        const newActiveKey = activeKey === targetKey ? panes.current[panes.current.length - 1]?.key : activeKey;
-        setActiveKey(newActiveKey);
+    const remove = (targetKey) => {
+        const newPanes = panes.current.filter(pane => pane.key !== targetKey);
+        panes.current = newPanes;
+        setActiveKey(newPanes.length > 0 ? newPanes[newPanes.length - 1].key : "");
       };
 
     return (
@@ -149,16 +145,6 @@ function Homepage() {
                             >
                                 {pane.title === "Search Result" ? (
                                     <SearchResult />
-                                ) : pane.title.includes("Parts group list") ? (
-                                    <PartGroup carid={102} onAdd={addSub} />
-                                ) : pane.title.includes(
-                                      "Parts subgroup list"
-                                  ) ? (
-                                    <PartSubgroup
-                                        carid={102}
-                                        partGroupName={partSubName}
-                                        onAdd={add}
-                                    />
                                 ) : (
                                     pane.content
                                 )}

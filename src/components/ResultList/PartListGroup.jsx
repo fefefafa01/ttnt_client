@@ -4,10 +4,10 @@ import "../comp.styles/subgroup.scss";
 import { backlocale } from "constants/constindex";
 
 function PartListGroup(props) {
-    const {carid, onAdd} = props;
+    const {carid, onAdd, buttonName} = props;
 
-    const handleAdd = (buttonName) => {
-        onAdd(buttonName);
+    const handleAdd = (carid, buttonName) => {
+        onAdd(carid, buttonName);
     };
 
     const [firstOpenModel, setFirstOpenModel] = useState(true);
@@ -139,29 +139,55 @@ function PartListGroup(props) {
             <div className="titlecontent">
                 <div className="">
                     <h3>
-                        {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
-                        {dpos}, {ecode}, {displace}, {ptype}, {ftype},
-                        {" " + transc}, {spd}
-                        {trans}, {dt} - Part sub group : {subGroup.length}{" "}
-                        records
+                        {maker}, {model}, {vcode} {"(" + start.substring(0, 4)} - {end.substring(0, 4) + ")"},{" "}
+                        {dpos}, {ecode}, {displace}, {ptype}, {ftype}, {spd}
+                        {trans}, {dt} - Part group found : 4 records
                     </h3>
                 </div>
             </div>
             <div className="Scroll" id="scroll-style">
                 <div className="contents-part-list">
                     <table style={{ width: "100%" }}>
-                        {subGroup.map((el, index) => (
-                            <tr style={{ border: "transparent" }} key={index}>
+                            <tr style={{ border: "transparent" }} >
                                 <td style={{ border: "transparent" }}>
                                     <button
                                         className="subgroup"
-                                        onClick={() => handleAdd(el.subGroup)}
+                                        onClick={() => handleAdd(carid, buttonName)}
                                     >
-                                        {index + 1}. {el.subGroup}
+                                        1. DRIVETRAIN
                                     </button>
                                 </td>
                             </tr>
-                        ))}
+                            <tr>
+                                <td style={{ border: "transparent" }}>
+                                    <button
+                                        className="subgroup"
+                                        onClick={() => handleAdd(carid, buttonName)}
+                                    >
+                                        2. ENGINE
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{ border: "transparent" }}>
+                                    <button
+                                        className="subgroup"
+                                        onClick={() => handleAdd(carid, buttonName)}
+                                    >
+                                        3. BRAKE & CHASSIS
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>  
+                                <td style={{ border: "transparent" }}>
+                                    <button
+                                        className="subgroup"
+                                        onClick={() => handleAdd(carid, buttonName)}
+                                    >
+                                        4. OTHERS
+                                    </button>
+                                </td>
+                            </tr>
                     </table>
                 </div>
             </div>
