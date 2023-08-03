@@ -164,17 +164,15 @@ function PartList({ carid, SubGroupName }) {
     return (
         <div className="tabcontent">
             {opening && <Specpdf carid={""+carid} partcode={""+pcode} open={openPDF} />}
-            <div className="titlecontent">
-                <div className="col-9">
-                    <h3>
-                        {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
-                        {dpos}, {ecode}, {displace}, {ptype}, {ftype},
-                        {" " + transc}, {spd}
-                        {trans}, {dt} - Part list
-                    </h3>
-                </div>
-                <div className="col">
-                    <button className="col download" onClick={handleDropdown}>
+            <div className="titleplcontent">
+                <h3>
+                    {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
+                    {dpos}, {ecode}, {displace}, {ptype}, {ftype},
+                    {" " + transc}, {spd}
+                    {trans}, {dt} - Part list
+                </h3>
+                <div className="downloadpldrop">
+                    <button className="download" onClick={handleDropdown}>
                         <img
                             className="downloadbutton"
                             src={Download}

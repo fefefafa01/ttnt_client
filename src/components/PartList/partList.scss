@@ -13,6 +13,18 @@
 .titlecontent {
     display: block;
 }
+
+.titleplcontent {
+    display: block;
+    h3 {
+        float: left;
+    }
+    .downloadpldrop {
+        float: right;
+        margin-right: 1%;
+    }
+}
+
 .download {
     align-items: center;
     text-align: center;
