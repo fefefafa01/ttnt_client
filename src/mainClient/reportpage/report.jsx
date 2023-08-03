@@ -11,22 +11,22 @@ import glass from "../../img/Glass.png";
 import { Tabs } from "antd";
 import $ from "jquery";
 import { backlocale } from "constants/constindex";
-import XLSX from 'sheetjs-style'
-import * as FileSaver from 'file-saver'
-
+import XLSX from "sheetjs-style";
+import * as FileSaver from "file-saver";
 
 const { TabPane } = Tabs;
 
+const currentYear = new Date().getFullYear();
 const initialValues = {
     country_name: "",
     manufacturer_name: "",
     transmission_type: "",
     part_name: "",
     part_group: "",
-    start_year: "",
-    end_year: "",
-    start_cover: "25",
-    end_cover: "75",
+    end_year: currentYear,
+    start_year: currentYear,
+    start_cover: 25,
+    end_cover: 75,
 };
 
 var loc;
@@ -48,7 +48,7 @@ function SelectCountries(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -242,7 +242,7 @@ function SelectCarMaker(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -436,7 +436,7 @@ function SelectTransmission(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -820,7 +820,7 @@ function SelectPartName(input) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(""),
+                body: null,
             })
                 .then((res) => res.json())
                 .then((data) => {
@@ -998,7 +998,7 @@ function SelectPartName(input) {
 
 function ReportPage(props) {
     const [activeKey, setActiveKey] = useState("1");
-    const [formValues, setFormvalues] = useState(initialValues);
+    const [formValues, setFormValues] = useState(initialValues);
     const panes = [
         {
             title: "Product Coverage Overview",
@@ -1009,7 +1009,19 @@ function ReportPage(props) {
         {
             title: "Product Coverage by Period",
             key: "2",
-            content: <ProductPeriod GaugeNum={0.5} />,
+            content: (
+                <ProductPeriod
+                    country_name={initialValues.country_name}
+                    manufacturer_name={initialValues.manufacturer_name}
+                    transmission_type={initialValues.transmission_type}
+                    part_name={initialValues.part_name}
+                    part_group={initialValues.part_group}
+                    start_year={initialValues.start_year}
+                    end_year={initialValues.end_year}
+                    start_cover={initialValues.start_cover}
+                    end_cover={initialValues.end_cover}
+                />
+            ),
             closable: false,
         },
     ];
@@ -1032,27 +1044,29 @@ function ReportPage(props) {
     };
 
     function handleDownload() {
-        if (((formValues.start_year!=="" && formValues.end_year!=="") && (parseInt(formValues.start_year) <= parseInt(formValues.end_year)))
-            ||
-            (formValues.start_year==="")
-            ||
-            (formValues.end_year==="")
+        if (
+            (formValues.start_year !== "" &&
+                formValues.end_year !== "" &&
+                parseInt(formValues.start_year) <=
+                    parseInt(formValues.end_year)) ||
+            formValues.start_year === "" ||
+            formValues.end_year === ""
         ) {
             const curr = new Date();
             var month, day;
-            if (curr.getMonth()+1 < 10) {
-                month = "0"+(curr.getMonth()+1);
+            if (curr.getMonth() + 1 < 10) {
+                month = "0" + (curr.getMonth() + 1);
             } else {
-                month = curr.getMonth()+1;
+                month = curr.getMonth() + 1;
             }
             if (curr.getDate() < 10) {
-                day = "0"+curr.getDate();
+                day = "0" + curr.getDate();
             } else {
                 day = curr.getDate();
             }
-            const fileName = `GMP Data_${curr.getFullYear()}-${month}-${day}`
+            const fileName = `GMP Data_${curr.getFullYear()}-${month}-${day}`;
             // console.log(fileName)
-            let loc = backlocale + "overall/downoverall"
+            let loc = backlocale + "overall/downoverall";
             fetch(loc, {
                 method: "POST",
                 credentials: "include",
@@ -1064,23 +1078,23 @@ function ReportPage(props) {
                 },
                 body: JSON.stringify(formValues),
             })
-            .catch((err) => {
-                return;
-            })
-            .then((res) => {
-                return res.blob()
-            })
-            .then((data) => {
-                if (!data) return;
-                const url = URL.createObjectURL(data);
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = fileName+".xlsx";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-            });
+                .catch((err) => {
+                    return;
+                })
+                .then((res) => {
+                    return res.blob();
+                })
+                .then((data) => {
+                    if (!data) return;
+                    const url = URL.createObjectURL(data);
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.download = fileName + ".xlsx";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                });
         } else {
             return;
         }
@@ -1223,7 +1237,7 @@ function ReportPage(props) {
                                 </div>
                                 <div className="from-to">
                                     <div className="from-input col">
-                                        From
+                                        <span>From</span>
                                         <input
                                             type="year"
                                             className="from-year"
@@ -1231,7 +1245,7 @@ function ReportPage(props) {
                                         />
                                     </div>
                                     <div className="to-input col">
-                                        To
+                                        <span>To</span>
                                         <input
                                             type="year"
                                             className="to-year"

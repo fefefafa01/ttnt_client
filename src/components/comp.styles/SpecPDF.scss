@@ -11,6 +11,7 @@
 	align-items: center;
 	margin-top: 20px;
 	padding-bottom: 20px;
+	z-index:9999;
 }
 .pdfpop {
 	height: 90%;
@@ -79,6 +80,25 @@
 		height: 20px;
 	}
 }
+
+@media (resolution: 1.25dppx) {
+	.scrollpdf {
+		margin-top: -3%;
+	}
+}
+
+@media (resolution: 1.5dppx) {
+	.scrollpdf {
+		margin-top: -4.5%;
+	}
+}
+
+@media (resolution: 1.75dppx) {
+	.scrollpdf {
+		margin-top: -6%;
+	}
+}
+
 .spec_tbl {
 	overflow-x: scroll;
 	margin-bottom: 10px;

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../Epic1Filter";
 import "./productOverview.scss";
 import { backlocale } from "constants/constindex";
 import { faL } from "@fortawesome/free-solid-svg-icons";
