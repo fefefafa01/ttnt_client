@@ -1,11 +1,11 @@
 import "../Epic1Filter";
 import React, { useState, useEffect } from "react";
 import "./productPeriod.scss";
+import { BrandCoverage } from "components/BrandCoverage";
 import { backlocale } from "constants/constindex";
 import ReactApexChart from "react-apexcharts";
 
 function ProductPeriod(props) {
-    const [openSummary, setOpenSummary] = useState(true);
     const [summary, setSummary] = useState({});
     const [formValues, setFormValues] = useState({
         country_name: props.country_name,
@@ -36,7 +36,7 @@ function ProductPeriod(props) {
     }, [props]);
     useEffect(() => {
         console.log(formValues);
-        let loc = backlocale + "period/downoverall";
+        let loc = backlocale + "period/summary";
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -59,12 +59,11 @@ function ProductPeriod(props) {
             })
             .then((data) => {
                 if (!data) return;
-                setOpenSummary(false);
+
                 setSummary(data.summary);
                 console.log(data.summary);
             });
     }, [formValues]);
-    //let loc = backlocale + "period/summary";
 
     // gauge chart
     const [series, setSeries] = useState([]);
@@ -120,13 +119,14 @@ function ProductPeriod(props) {
         },
         colors:
             series < 50 ? ["#FF0000"] : series < 90 ? ["#FFFF00"] : ["#008000"],
-
-        labels: ["Average Results"],
     });
 
     return (
-        <div>
-            <div className="coverage-summary">
+        <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
+            <div className="item">
+                <BrandCoverage formValues={formValues} />
+            </div>
+            <div className="item coverage-summary">
                 <div className="summary-label">
                     <p>AISIN Total Coverage Summary</p>
                 </div>
