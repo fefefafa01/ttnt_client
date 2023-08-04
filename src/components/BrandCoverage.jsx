@@ -11,10 +11,11 @@ function BrandCoverage(props) {
     useEffect(() => {
         setFormValues(props.formValues);
     }, [props]);
-    const [firstOpen, setFirstOpen] = useState(true);
+
     const [brandName, setBrandName] = useState([]);
     const [rate, setRate] = useState([]);
-    if (firstOpen) {
+
+    useEffect(() => {
         let loc = backlocale + "period/brandChart";
         fetch(loc, {
             method: "POST",
@@ -25,6 +26,7 @@ function BrandCoverage(props) {
                 "Access-Control-Allow-Methods":
                     "GET, PUT, POST, DELETE, PATCH, OPTIONS",
             },
+            body: JSON.stringify(formValues),
         })
             .catch((err) => {
                 return;
@@ -36,13 +38,12 @@ function BrandCoverage(props) {
                 return res.json();
             })
             .then((data) => {
-                setFirstOpen(false);
                 if (!data) return;
+                console.log("T", data.coverageRate, data.brandName);
                 setBrandName(data.brandName);
                 setRate(data.coverageRate);
-                console.log(data.coverageRate);
             });
-    }
+    }, [props]);
 
     useEffect(() => {
         // Update the series in the chartData whenever rate state changes
@@ -68,6 +69,7 @@ function BrandCoverage(props) {
     const [chartData, setChartData] = useState({
         series: [
             {
+                name: brandName,
                 data: rate,
             },
         ],
@@ -122,8 +124,15 @@ function BrandCoverage(props) {
                 categories: brandName,
                 labels: {
                     style: {
-                        fontSize: "0.7em", // Set the desired font size for x-axis labels
+                        fontSize: "0.5em", // Set the desired font size for x-axis labels
                         colors: ["#000000"],
+                    },
+                },
+                title: {
+                    text: "Total Percent Coverage", // Set the x-axis label
+                    style: {
+                        fontSize: "16px", // Set the font size for the x-axis label
+                        fontWeight: "bold", // Set the font weight for the x-axis label
                     },
                 },
             },
@@ -136,13 +145,25 @@ function BrandCoverage(props) {
                 },
                 min: 0,
                 max: 100,
+                title: {
+                    text: "Maker", // Set the y-axis label
+                    style: {
+                        fontSize: "16px", // Set the font size for the y-axis label
+                        fontWeight: "bold", // Set the font weight for the y-axis label
+                    },
+                },
+            },
+            legend: {
+                show: true, // Set to true to display the legend
+                position: "top", // Set the position of the legend (top, right, bottom, or left)
+                offsetY: 20, // Set the margin-top for the legend
             },
             title: {
                 text: "Product Coverage by % Brand", // Set the main title of the chart
                 align: "center", // Set the alignment of the title (left, center, or right)
                 style: {
                     fontSize: "15px", // Set the font size for the title
-                    marginTop: "10px",
+                    offsetY: 10,
                 },
             },
         },
