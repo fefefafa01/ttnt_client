@@ -119,11 +119,6 @@ button.details {
     font-weight: bold;
     cursor: pointer;
 }
-.details {
-    &:focus {
-        border: solid 3px black;
-    }
-}
 .partlistscroll {
     background-color: #b0c4e4;
     height: 90%;

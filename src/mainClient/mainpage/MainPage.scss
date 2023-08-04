@@ -185,7 +185,8 @@ input.name-right {
 .eye {
     color: #64a5b4;
     scale: 150%;
-    margin-top: -30px;
+    padding-bottom: 40px;
+    padding-right: 20px;
 }
 .remember-forgot {
     font-size: 0.9em;
@@ -254,6 +255,7 @@ p.register-link {
 .register-link {
     a {
         text-decoration-line: none;
+        color: #172685;
     }
 }
 

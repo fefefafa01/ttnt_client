@@ -39,6 +39,18 @@
 			border-radius: inherit;
 		}
 	}
+
+	p {
+		text-decoration: none;
+		color: #86bac5;
+		width: max-content;
+		padding: 12px 16px;
+		margin-bottom: -20px;
+		display: block;
+		font-weight: bold;
+		font-size: 1.3em;
+	}
+
 	span {
 		display: flex;
 		justify-content: space-between;
@@ -57,6 +69,12 @@
 .dropdown-content.profile {
 	width: fit-content;
 	margin-right: 20px;
+	span {
+		padding-left: 20px;
+	}
+	a {
+		padding-left: 50px;
+	}
 }
 .powerbutton {
 	width: 13px;

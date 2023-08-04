@@ -246,7 +246,7 @@ function Login() {
                         type="submit"
                         onClick={loginSubmit}
                     >
-                        <Changer inp="User Login" />
+                        <Changer inp="Login" />
                     </button>
                 </form>
             </div>

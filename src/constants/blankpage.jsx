@@ -1,3 +1,5 @@
+import { Changer } from "components/Languages/LanguageChange"
+
 function BlankPage () {
     function handleHome() {
         window.location.assign("/")
@@ -5,9 +7,9 @@ function BlankPage () {
     return (
         <>
             <button onClick={handleHome}>
-                Home
+                <Changer inp="Home" />
             </button>
-            <h4>You switched to a blank page (Testing button Function)</h4>
+            <h4><Changer inp="You switched to a blank page (Testing button Function)" /></h4>
         </>
     )
 }

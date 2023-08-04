@@ -196,7 +196,7 @@ function ResultList(props) {
                                             rowSpan="2"
                                             className="titleResult"
                                         >
-                                            No
+                                            <Changer inp="No" />
                                         </th>
                                         <th
                                             rowSpan="2"
@@ -454,19 +454,19 @@ function ResultList(props) {
                                                 rowSpan="2"
                                                 className="titleResult"
                                             >
-                                                No
+                                                <Changer inp="No" />
                                             </th>
                                             <th
                                                 rowSpan="2"
                                                 className="titleResult"
                                             >
-                                                All Part List
+                                                <Changer inp="All Part List" />
                                             </th>
                                             <th
                                                 rowSpan="2"
                                                 className="titleResult"
                                             >
-                                                <Changer inp="Car Maker" />
+                                                <Changer inp="Vehicle Maker" />
                                             </th>
                                             <th
                                                 rowSpan="2"
@@ -491,12 +491,6 @@ function ResultList(props) {
                                                 className="titleResult"
                                             >
                                                 <Changer inp="To" />
-                                            </th>
-                                            <th
-                                                rowSpan="2"
-                                                className="titleResult"
-                                            >
-                                                <Changer inp="Driver's Position" />
                                             </th>
                                             <th
                                                 rowSpan="2"
@@ -563,11 +557,8 @@ function ResultList(props) {
                                                 <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.car_maker}</td>
                                                 <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.car_model_name}</td>
                                                 <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.model_code}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>
-                                                    {el.start_of_production}
-                                                </td>
+                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.start_of_production}</td>
                                                 <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.end_of_production}</td>
-                                                <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.drivers_position}</td>
                                                 <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.engine_code}</td>
                                                 <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.displacement_code}</td>
                                                 <td onClick={() => openSubGroup(el.car_info_id, el.model_code)}>{el.powered_type}</td>

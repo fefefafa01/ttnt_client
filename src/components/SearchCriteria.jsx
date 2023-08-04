@@ -8,6 +8,7 @@ import glass from "../img/Glass.png";
 import arrow from "../img/arrow.png";
 import loading from "../img/Loading.gif"
 import { backlocale } from "constants/constindex";
+import { Changer } from "./Languages/LanguageChange";
 
 const initialValues = {
     country_name: "",
@@ -3472,7 +3473,7 @@ const SearchCriteria = (props) => {
     return (
         <div className={sidebarClass}>
             <div className="searchTitle">
-                <a>Search by Vehicle Info and/or Part Info</a>
+                <a><Changer inp="Search by Vehicle Info and/or Part Info" /></a>
                 <button onClick={handleSidebar}>
                     <img src={right} alt="Right" />
                 </button>
@@ -3481,7 +3482,7 @@ const SearchCriteria = (props) => {
                 <div>
                     <div className="boxcontent1">
                         <div className="searchBox">
-                            <a> Sales Country </a>
+                            <a><Changer inp="Sales Country" /></a>
                             <span>
                                 <SelectCountries
                                     country={country}
@@ -3497,14 +3498,14 @@ const SearchCriteria = (props) => {
                                 className="subSearchbtn"
                                 onClick={handleOpenBasic}
                             >
-                                Basic Info
+                                <Changer inp="Basic Info" />
                                 {arrow1 && <img src={down} alt="Down"></img>}
                                 {openBasic && <img src={up} alt="Up"></img>}
                             </button>
                             {openBasic && (
                                 <>
                                     <div className="searchBox">
-                                        <a> Car Maker </a>
+                                        <a><Changer inp="Car Maker" /></a>
                                         <span>
                                             <SelectCarMaker
                                                 maker={maker}
@@ -3515,7 +3516,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Model Name </a>
+                                        <a><Changer inp="Model Name" /></a>
                                         <span>
                                             <SelectModelName
                                                 name={name}
@@ -3526,7 +3527,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Model Code </a>
+                                        <a><Changer inp="Model Code" /></a>
                                         <span>
                                             <SelectModelCode
                                                 code={code}
@@ -3537,7 +3538,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Year </a>
+                                        <a><Changer inp="Year" /></a>
                                         <span>
                                             <SelectYear
                                                 year={year}
@@ -3548,7 +3549,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Driver's Position </a>
+                                        <a><Changer inp="Driver's Position" /></a>
                                         <span>
                                             <SelectPosition
                                                 position={position}
@@ -3567,14 +3568,14 @@ const SearchCriteria = (props) => {
                                 className="subSearchbtn"
                                 onClick={handleOpenDetailed}
                             >
-                                Detailed Info
+                                <Changer inp="Detailed Info" />
                                 {arrow2 && <img src={down} alt="Down"></img>}
                                 {openDetailed && <img src={up} alt="Up"></img>}
                             </button>
                             {openDetailed && (
                                 <>
                                     <div className="searchBox">
-                                        <a> Engine Code </a>
+                                        <a><Changer inp="Engine Code" /></a>
                                         <span>
                                             <SelectEngineCode
                                                 engine={engine}
@@ -3585,7 +3586,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Displacement </a>
+                                        <a><Changer inp="Displacement" /></a>
                                         <span>
                                             <SelectDisplacement
                                                 displacement={displacement}
@@ -3598,7 +3599,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Fuel Type </a>
+                                        <a><Changer inp="Fuel Type" /></a>
                                         <span>
                                             <SelectFuel
                                                 fuel={fuel}
@@ -3609,7 +3610,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Transmission Type </a>
+                                        <a><Changer inp="Transmission Type" /></a>
                                         <span>
                                             <SelectTransmission
                                                 trans={trans}
@@ -3620,7 +3621,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Speed </a>
+                                        <a><Changer inp="Speed" /></a>
                                         <span>
                                             <SelectSpeed
                                                 spd={spd}
@@ -3631,7 +3632,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Drivetrain </a>
+                                        <a><Changer inp="Drivetrain" /></a>
                                         <span>
                                             <SelectDrivertrain
                                                 train={train}
@@ -3650,14 +3651,14 @@ const SearchCriteria = (props) => {
                                 className="subSearchbtn"
                                 onClick={handleOpenPart}
                             >
-                                Part Info
+                                <Changer inp="Part Info" />
                                 {arrow3 && <img src={down} alt="Down"></img>}
                                 {openPart && <img src={up} alt="Up"></img>}
                             </button>
                             {openPart && (
                                 <>
                                     <div className="searchBox">
-                                        <a> Part Name </a>
+                                        <a><Changer inp="Part Name" /></a>
                                         <span>
                                             <SelectPartName
                                                 part={part}
@@ -3668,7 +3669,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> OE number </a>
+                                        <a><Changer inp="OE number" /></a>
                                         <span>
                                             <SelectOE oe={oe} setOe={setOe} 
                                             update = {update14}
@@ -3676,7 +3677,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> AISIN number </a>
+                                        <a><Changer inp="AISIN number" /></a>
                                         <span>
                                             <SelectAISIN
                                                 aisin={aisin}
@@ -3687,13 +3688,13 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a> Competitor number </a>
+                                        <a><Changer inp="Competitor number" /></a>
                                         <span>
                                             <SelectCompetitor
                                                 comp={comp}
                                                 setComp={setComp}
                                                 update = {update16}
-                                    setUpdate = {setUpdate16}
+                                                setUpdate = {setUpdate16}
                                             />
                                         </span>
                                     </div>
@@ -3709,7 +3710,7 @@ const SearchCriteria = (props) => {
                                 id="Submit"
                                 onClick={handleSubmit}
                             >
-                                Go
+                                <Changer inp="Go" />
                             </button>
                         }
                         {queryingcriteria && 
@@ -3727,7 +3728,7 @@ const SearchCriteria = (props) => {
                             id="Reset"
                             onClick={handleReset}
                         >
-                            Clear
+                            <Changer inp="Clear" />
                         </button>
                     </div>
                     {show && (

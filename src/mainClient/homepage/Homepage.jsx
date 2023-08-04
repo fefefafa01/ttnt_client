@@ -10,10 +10,12 @@ import { PartSubgroup, PartGroup } from "components/PartGroup";
 import { ResultPartList } from "components/ResultList/ResultPartList";
 import {PartListGroup} from "components/ResultList/PartListGroup"
 import { useForceUpdate } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const { TabPane } = Tabs;
 
 function Homepage() {
+    const {t} = useTranslation();
     const [sidebarOpen, setSideBarOpen] = useState(true);
     const [partSubName, setPartSubName] = useState("");
 
@@ -75,7 +77,7 @@ function Homepage() {
         console.log(formValues);
         let text = "Result List";
         if (count === 0) {
-            text = "Vehicel Model List";
+            text = "Vehicle Model List";
         }
             const newTabIndex = panes.current.length;
             const activeKey = `newTab${newTabIndex}`;

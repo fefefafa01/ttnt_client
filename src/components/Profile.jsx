@@ -123,9 +123,9 @@ function Profile() {
             {open && (
                 <div className="dropdown-content profile">
                     <span>
-                        <a href="#">
+                        <p>
                             <Changer inp="My Profile" />
-                        </a>
+                        </p>
                         <a href="#" onClick={handleOpen}>
                             <Changer inp="Back" />
                         </a>

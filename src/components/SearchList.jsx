@@ -1,17 +1,14 @@
-import { PartList } from "./PartList/PartList";
-import { DownloadFile } from "./DownloadFile";
-import { PartGroup } from "./PartGroup";
-import Profile from "components/Profile";
 import "./comp.styles/SearchList.scss";
+import { Changer } from "./Languages/LanguageChange";
 
 function SearchResult() {
     return (
         <div className="tabcontent">
-            <h3> Welcome! </h3>
+            <h3><Changer inp="Welcome!" /></h3>
             <div className="Scrolll">
                 <div className="contents">
-                    <h1>Please Enter Search Criteria</h1>
-                    <h2>to see your result!</h2>
+                    <h1><Changer inp="Please Enter Search Criteria" /></h1>
+                    <h2><Changer inp="to see your result!" /></h2>
                 </div>
             </div>
         </div>
