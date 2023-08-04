@@ -25,8 +25,8 @@ const initialValues = {
     part_group: "",
     end_year: currentYear,
     start_year: currentYear,
-    start_cover: 25,
-    end_cover: 75,
+    start_cover: 0,
+    end_cover: 100,
 };
 
 var loc;
@@ -1030,7 +1030,7 @@ function ReportPage(props) {
         setActiveKey(activeKey);
     };
 
-    const [value, setValue] = useState([25, 75]);
+    const [value, setValue] = useState([0, 100]);
     const handleChange = (event, newValue) => {
         setValue(newValue);
         initialValues.start_cover = newValue[0];

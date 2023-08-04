@@ -35,6 +35,10 @@
     .ant-tabs-content {
         height: 70vh;
     }
+    #report-panel-2 {
+        display: grid;
+        grid-template-rows: 50% 50%;
+    }
 }
 .tab-panel {
     height: 100%;
