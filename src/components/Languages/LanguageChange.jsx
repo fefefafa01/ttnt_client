@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 function Changer({ inp }) {
-var { t, i18n } = useTranslation();
+var { t } = useTranslation();
     return (
         t(inp)
     )

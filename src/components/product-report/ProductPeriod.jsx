@@ -119,7 +119,10 @@ function ProductPeriod(props) {
         colors:
             series < 50 ? ["#FF0000"] : series < 90 ? ["#FFFF00"] : ["#008000"],
     });
-
+    const removeerror = true
+    if (!removeerror) {
+        setOptions(options)
+    }
     return (
         <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
             <div className="item">

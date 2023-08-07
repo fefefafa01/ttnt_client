@@ -3473,7 +3473,7 @@ const SearchCriteria = (props) => {
     return (
         <div className={sidebarClass}>
             <div className="searchTitle">
-                <a><Changer inp="Search by Vehicle Info and/or Part Info" /></a>
+                <p><Changer inp="Search by Vehicle Info and/or Part Info" /></p>
                 <button onClick={handleSidebar}>
                     <img src={right} alt="Right" />
                 </button>
@@ -3482,7 +3482,7 @@ const SearchCriteria = (props) => {
                 <div>
                     <div className="boxcontent1">
                         <div className="searchBox">
-                            <a><Changer inp="Sales Country" /></a>
+                            <p><Changer inp="Sales Country" /></p>
                             <span>
                                 <SelectCountries
                                     country={country}
@@ -3505,7 +3505,7 @@ const SearchCriteria = (props) => {
                             {openBasic && (
                                 <>
                                     <div className="searchBox">
-                                        <a><Changer inp="Car Maker" /></a>
+                                        <p><Changer inp="Car Maker" /></p>
                                         <span>
                                             <SelectCarMaker
                                                 maker={maker}
@@ -3516,7 +3516,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Model Name" /></a>
+                                        <p><Changer inp="Model Name" /></p>
                                         <span>
                                             <SelectModelName
                                                 name={name}
@@ -3527,7 +3527,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Model Code" /></a>
+                                        <p><Changer inp="Model Code" /></p>
                                         <span>
                                             <SelectModelCode
                                                 code={code}
@@ -3538,7 +3538,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Year" /></a>
+                                        <p><Changer inp="Year" /></p>
                                         <span>
                                             <SelectYear
                                                 year={year}
@@ -3549,7 +3549,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Driver's Position" /></a>
+                                        <p><Changer inp="Driver's Position" /></p>
                                         <span>
                                             <SelectPosition
                                                 position={position}
@@ -3575,7 +3575,7 @@ const SearchCriteria = (props) => {
                             {openDetailed && (
                                 <>
                                     <div className="searchBox">
-                                        <a><Changer inp="Engine Code" /></a>
+                                        <p><Changer inp="Engine Code" /></p>
                                         <span>
                                             <SelectEngineCode
                                                 engine={engine}
@@ -3586,7 +3586,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Displacement" /></a>
+                                        <p><Changer inp="Displacement" /></p>
                                         <span>
                                             <SelectDisplacement
                                                 displacement={displacement}
@@ -3599,7 +3599,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Fuel Type" /></a>
+                                        <p><Changer inp="Fuel Type" /></p>
                                         <span>
                                             <SelectFuel
                                                 fuel={fuel}
@@ -3610,7 +3610,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Transmission Type" /></a>
+                                        <p><Changer inp="Transmission Type" /></p>
                                         <span>
                                             <SelectTransmission
                                                 trans={trans}
@@ -3621,7 +3621,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Speed" /></a>
+                                        <p><Changer inp="Speed" /></p>
                                         <span>
                                             <SelectSpeed
                                                 spd={spd}
@@ -3632,7 +3632,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Drivetrain" /></a>
+                                        <p><Changer inp="Drivetrain" /></p>
                                         <span>
                                             <SelectDrivertrain
                                                 train={train}
@@ -3658,7 +3658,7 @@ const SearchCriteria = (props) => {
                             {openPart && (
                                 <>
                                     <div className="searchBox">
-                                        <a><Changer inp="Part Name" /></a>
+                                        <p><Changer inp="Part Name" /></p>
                                         <span>
                                             <SelectPartName
                                                 part={part}
@@ -3669,7 +3669,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="OE number" /></a>
+                                        <p><Changer inp="OE number" /></p>
                                         <span>
                                             <SelectOE oe={oe} setOe={setOe} 
                                             update = {update14}
@@ -3677,7 +3677,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="AISIN number" /></a>
+                                        <p><Changer inp="AISIN number" /></p>
                                         <span>
                                             <SelectAISIN
                                                 aisin={aisin}
@@ -3688,7 +3688,7 @@ const SearchCriteria = (props) => {
                                         </span>
                                     </div>
                                     <div className="searchBox">
-                                        <a><Changer inp="Competitor number" /></a>
+                                        <p><Changer inp="Competitor number" /></p>
                                         <span>
                                             <SelectCompetitor
                                                 comp={comp}

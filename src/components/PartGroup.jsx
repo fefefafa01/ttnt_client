@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./PartList/partList.scss";
 import "./comp.styles/subgroup.scss";
-import { PartList } from "./PartList/PartList";
-import { border } from "@mui/system";
 import { backlocale } from "constants/constindex";
 
 function PartGroup({ carid, onAdd }) {
@@ -11,7 +9,6 @@ function PartGroup({ carid, onAdd }) {
     };
     const [firstOpenModel, setFirstOpenModel] = useState(true);
     const [firstOpenPreP, setFirstOpenPreP] = useState(false);
-    const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
 
     //Variables for Car Model
     var [maker, setMaker] = useState("");
@@ -77,22 +74,7 @@ function PartGroup({ carid, onAdd }) {
                 setDt(data.dtrain);
             });
     }
-    // console.log(
-    //     maker,
-    //     model,
-    //     vcode,
-    //     start,
-    //     end,
-    //     dpos,
-    //     ecode,
-    //     displace,
-    //     ptype,
-    //     ftype,
-    //     transc,
-    //     spd,
-    //     trans,
-    //     dt
-    // );
+
     if (firstOpenPreP) {
         let loc = backlocale + "exp/partGroup"
         fetch(loc, {
@@ -118,7 +100,6 @@ function PartGroup({ carid, onAdd }) {
             .then((data) => {
                 if (!data) return;
                 setFirstOpenPreP(false);
-                setFirstOpenSPreP(true);
                 setPartGroup(data.partGroupList);
                 console.log(partGroup);
             });
@@ -160,7 +141,7 @@ function PartGroup({ carid, onAdd }) {
 }
 
 function PartSubgroup(props) {
-    const {carid, partGroupName, onAdd} = props;
+    const {carid, onAdd} = props;
 
     const handleAdd = (buttonName, carid) => {
         onAdd(buttonName, carid);
@@ -233,22 +214,7 @@ function PartSubgroup(props) {
                 setDt(data.dtrain);
             });
     }
-    // console.log(
-    //     maker,
-    //     model,
-    //     vcode,
-    //     start,
-    //     end,
-    //     dpos,
-    //     ecode,
-    //     displace,
-    //     ptype,
-    //     ftype,
-    //     transc,
-    //     spd,
-    //     trans,
-    //     dt
-    // );
+    
     if (firstOpenPreP) {
         loc = backlocale + "exp/subGroup";
         fetch(loc, {
@@ -278,16 +244,6 @@ function PartSubgroup(props) {
                 console.log(subGroup);
             });
     }
-    const [isClicked, setIsClicked] = useState(false);
-
-    const handleClick = () => {
-        setIsClicked(true);
-
-        // After a certain duration, revert the button style back to the original state
-        setTimeout(() => {
-            setIsClicked(false);
-        }, 1000); // Change the duration as needed
-    };
 
     return (
         <div className="tabcontent">

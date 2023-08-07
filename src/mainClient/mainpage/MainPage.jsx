@@ -2,7 +2,7 @@ import { Login } from "../../components/Loginpages/Login";
 import { Register } from "components/Loginpages/Register";
 import { ResetPwd } from "components/Loginpages/ResetPwd";
 import { Changer } from "../../components/Languages/LanguageChange";
-import { Multi_Lang } from "components/Languages/Multi_Lang";
+import { MultiLang } from "components/Languages/Multi_Lang";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./MainPage.scss";
 import React from "react";
@@ -28,7 +28,7 @@ function MainPage() {
                     </p>
                 </div>
                 <div className="col-lg-2 col-sm-1 btn-lng">
-                    <Multi_Lang />
+                    <MultiLang />
                 </div>
             </div>
             <div className="body">

@@ -11,8 +11,6 @@ import glass from "../../img/Glass.png";
 import { Tabs } from "antd";
 import $ from "jquery";
 import { backlocale } from "constants/constindex";
-import XLSX from "sheetjs-style";
-import * as FileSaver from "file-saver";
 
 const { TabPane } = Tabs;
 
@@ -620,6 +618,13 @@ function SelectPartGroup(input) {
     const isFirstRender = useRef(true);
     const [selectedOptions, setSelectedOptions] = useState([]);
 
+    //Remove Warning
+    const removewarning = false;
+    if (removewarning) {
+        setSelectedValue(selectedValue);
+    }
+    //...
+
     useEffect(() => {
         if (isFirstRender.current) {
             isFirstRender.current = false;
@@ -999,6 +1004,12 @@ function SelectPartName(input) {
 function ReportPage(props) {
     const [activeKey, setActiveKey] = useState("1");
     const [formValues, setFormValues] = useState(initialValues);
+    //Remove Warning
+    const removewarning = false;
+    if (removewarning) {
+        setFormValues(formValues);
+    }
+    //...
     const panes = [
         {
             title: "Product Coverage Overview",

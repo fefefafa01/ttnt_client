@@ -6,13 +6,9 @@ import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
 import { SearchResult } from "components/SearchList"
 import { ResultList } from "components/ResultList/ResultList";
-import { PartSubgroup, PartGroup } from "components/PartGroup";
+import { PartSubgroup } from "components/PartGroup";
 import { ResultPartList } from "components/ResultList/ResultPartList";
 import {PartListGroup} from "components/ResultList/PartListGroup"
-import { useForceUpdate } from "framer-motion";
-import { useTranslation } from "react-i18next";
-
-
 
 const initialItems = [
     {
@@ -26,9 +22,8 @@ const { TabPane } = Tabs;
 let c = 1;
 
 function Homepage() {
-    const {t} = useTranslation();
     const [sidebarOpen, setSideBarOpen] = useState(true);
-    const [partSubName, setPartSubName] = useState("");
+    // const [partSubName, setPartSubName] = useState("");
 
     const handleViewSidebar = () => {
         setSideBarOpen(!sidebarOpen);
@@ -76,7 +71,7 @@ function Homepage() {
             ),
             key: activeKey,
         };
-        setPartSubName(buttonSubName);
+        // setPartSubName(buttonSubName);
         panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
         c++;
@@ -121,7 +116,7 @@ function Homepage() {
         const newTabIndex = c;
         const activeKey = `${newTabIndex}`;
         const newPane = {
-            title: buttonName + " - " + "Parts Group List",
+            title: `${buttonName}  -  Parts Group List`,
             content: <PartListGroup carid = {id} onAdd = {addSub} buttonName = {buttonName}/>,
             key: activeKey,
         };

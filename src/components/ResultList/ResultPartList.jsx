@@ -1,13 +1,8 @@
 import "./ResultList.scss";
-import React, { useState, useEffect } from "react";
-import $ from "jquery";
+import React, { useState } from "react";
 import { Changer } from "../Languages/LanguageChange";
 import { Specpdf } from "components/SpecPDF";
-import ReactPaginate from "react-paginate";
-import vehiclePart from "./vehiclePart.png";
 import Download from "../../img/download.png";
-import Prev from "../../img/prev_btn.png";
-import Next from "../../img/next_btn.png";
 import { DropDown } from "./ResPDown";
 
 function ResultPartList(props) {

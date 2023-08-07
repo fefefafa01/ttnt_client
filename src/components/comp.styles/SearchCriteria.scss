@@ -54,9 +54,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    a {
-        padding-bottom: 5px;
-        padding-left: 10px;
+    p {
+        padding-top: 10px;
+        padding-left: 20px;
     }
     img {
         height: 50px;
@@ -113,7 +113,8 @@
     padding-bottom: 10px;
     border: none;
     font-size: 15px;
-    a {
+    p {
+        margin-top: 15px;
         justify-self: flex-start;
         align-self: center;
     }

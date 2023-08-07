@@ -16,7 +16,7 @@ import ".././comp.styles/LangOption.scss";
 import { changeLanguage } from "i18next";
 import { useTranslation } from "react-i18next";
 
-function Multi_Lang() {
+function MultiLang() {
     var [lang, setLang] = useState(localStorage.lng);
     const { t } = useTranslation();
     const handleLang = (lng) => {
@@ -155,7 +155,7 @@ function Multi_Lang() {
     );
 }
 
-function Multi_Lang_Home() {
+function MultiLangHome() {
     var [lang, setLang] = useState(localStorage.lng);
     const handleLang = (lng) => {
         if (lng === "en") {
@@ -292,4 +292,4 @@ function Multi_Lang_Home() {
     );
 }
 
-export { Multi_Lang, Multi_Lang_Home };
+export { MultiLang, MultiLangHome };

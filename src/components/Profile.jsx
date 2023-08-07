@@ -10,7 +10,7 @@ import { backlocale } from "constants/constindex";
 function Profile() {
     var loc;
     const [open, setOpen] = useState(false);
-    const [logOut, setLogOut] = useState(false);
+    // const [logOut, setLogOut] = useState(false);
     var [firstname, setFirstname] = useState("");
     var [lastname, setLastname] = useState("");
     var [role, setRole] = useState("");
@@ -23,7 +23,8 @@ function Profile() {
         localStorage.removeItem("email");
         localStorage.removeItem("password");
         localStorage.removeItem("isLoggedIn");
-        setLogOut(true);
+        localStorage.removeItem("remembered");
+        // setLogOut(true);
         window.location.assign("/login");
     };
 
@@ -31,7 +32,8 @@ function Profile() {
         localStorage.removeItem("email");
         localStorage.removeItem("password");
         localStorage.removeItem("isLoggedIn");
-        setLogOut(true);
+        localStorage.removeItem("remembered");
+        // setLogOut(true);
         window.location.assign("/resetpwd");
     };
 
@@ -105,45 +107,45 @@ function Profile() {
                 />
             </button>
                 <div className="dropdown-content">
-                <a href="#" onClick={handleOpen}>
+                <p className="openerprofile" onClick={handleOpen}>
                     <Changer inp="My Profile" />
-                </a>
-                <a href="#" onClick={handleRP}>
+                </p>
+                <p className="openerprofile" onClick={handleRP}>
                     <Changer inp="Reset Password" />
-                </a>
-                <a href="#" onClick={handleSignOut}>
+                </p>
+                <p className="openerprofile" onClick={handleSignOut}>
                     <Changer inp="Sign Out" />
                     <img
                         className="powerbutton"
                         src={PowerButton}
                         alt="PowerButton"
                     />
-                </a>
+                </p>
             </div>
             {open && (
                 <div className="dropdown-content profile">
                     <span>
-                        <p>
+                        <p className="myProfile">
                             <Changer inp="My Profile" />
                         </p>
-                        <a href="#" onClick={handleOpen}>
+                        <p className="backprofile" onClick={handleOpen}>
                             <Changer inp="Back" />
-                        </a>
+                        </p>
                     </span>
                     <div className="myProfile">
-                        <a>
+                        <p>
                             <Changer inp="First Name" />: {firstname}
-                        </a>
-                        <a>
+                        </p>
+                        <p>
                             <Changer inp="Last Name" />: {lastname}
-                        </a>
-                        <a>
+                        </p>
+                        <p>
                             <Changer inp="Email Address" />:{" "}
                             {localStorage.email}
-                        </a>
-                        <a>
+                        </p>
+                        <p>
                             <Changer inp="Role" />: {role}
-                        </a>
+                        </p>
                     </div>
                 </div>
             )}

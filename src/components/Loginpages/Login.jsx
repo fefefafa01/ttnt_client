@@ -31,12 +31,11 @@ function Login() {
     const [formValues, setFormvalues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-
     const [isChecked, setIsChecked] = useState(false);
     const [dateLogin, setDateLogin] = useState("");
 
     useEffect(() => {
-        if (localStorage.checkbox && localStorage.username !== "") {
+        if (localStorage.checkbox && localStorage.email !== "") {
             setIsChecked(true);
             setFormvalues({
                 email: localStorage.checkEmail,
@@ -66,7 +65,7 @@ function Login() {
         }
     };
 
-    const handleSubmit = (e) => {
+    function handleSubmit (e) {
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
@@ -126,7 +125,7 @@ function Login() {
         }
         // here call the API to signup/login
         else if (!isChecked) {
-            localStorage.email = "";
+            localStorage.email = formValues.email;
             localStorage.password = "";
             localStorage.checkbox = false;
             localStorage.checkEmail = "";

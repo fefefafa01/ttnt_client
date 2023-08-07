@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Changer } from "./Languages/LanguageChange";
-import { Multi_Lang_Home } from "./Languages/Multi_Lang";
+import { MultiLangHome } from "./Languages/Multi_Lang";
 import Profile from "./Profile";
 import "./comp.styles/Header.scss";
 
@@ -75,7 +75,7 @@ function AdminHeader() {
                     </button>
                 </div>
                 <div className="col-lg-1 col-sm-1 btn-profile">
-                    <Multi_Lang_Home />
+                    <MultiLangHome />
                     <Profile />
                 </div>
             </div>
@@ -127,7 +127,7 @@ function StaffHeader() {
                     </button>
                 </div>
                 <div className="col-1 btn-profile">
-                    <Multi_Lang_Home />
+                    <MultiLangHome />
                     <Profile />
                 </div>
             </div>
@@ -189,7 +189,7 @@ function ReportHeader() {
                     </button>
                 </div>
                 <div className="col-lg-1 col-sm-1 btn-profile">
-                    <Multi_Lang_Home />
+                    <MultiLangHome />
                     <Profile />
                 </div>
             </div>

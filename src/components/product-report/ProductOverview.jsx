@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "./productOverview.scss";
 import { backlocale } from "constants/constindex";
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import { fontWeight } from "@mui/system";
 
 function ProductOverview(input) {
     const [maker, setMaker] = useState([]);
@@ -83,9 +81,6 @@ function ProductOverview(input) {
                 console.log(data.overallValMTAT);
             });
     }
-
-    const mergedObject = [...carOverallMT, ...carOverallMTAT];
-    // console.log(mergedObject);
 
     return (
         <div>

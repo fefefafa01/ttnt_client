@@ -25,7 +25,6 @@ function PartListGroup(props) {
     var [displace, setDisplace] = useState("");
     var [ptype, setPtype] = useState("");
     var [ftype, setFtype] = useState("");
-    var [transc, setTransc] = useState("");
     var [spd, setSpd] = useState("");
     var [trans, setTrans] = useState("");
     var [dt, setDt] = useState("");
@@ -72,28 +71,12 @@ function PartListGroup(props) {
                 setDisplace(data.disp);
                 setPtype(data.powered);
                 setFtype(data.fuel);
-                setTransc(data.transc);
                 setSpd(data.spd);
                 setTrans(data.trans);
                 setDt(data.dtrain);
             });
     }
-    // console.log(
-    //     maker,
-    //     model,
-    //     vcode,
-    //     start,
-    //     end,
-    //     dpos,
-    //     ecode,
-    //     displace,
-    //     ptype,
-    //     ftype,
-    //     transc,
-    //     spd,
-    //     trans,
-    //     dt
-    // );
+
     if (firstOpenPreP) {
         loc = backlocale + "exp/subGroup";
         fetch(loc, {
@@ -123,16 +106,6 @@ function PartListGroup(props) {
                 console.log(subGroup);
             });
     }
-    const [isClicked, setIsClicked] = useState(false);
-
-    const handleClick = () => {
-        setIsClicked(true);
-
-        // After a certain duration, revert the button style back to the original state
-        setTimeout(() => {
-            setIsClicked(false);
-        }, 1000); // Change the duration as needed
-    };
 
     return (
         <div className="tabcontent">
