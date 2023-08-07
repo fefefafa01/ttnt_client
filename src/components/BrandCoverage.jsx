@@ -39,7 +39,6 @@ function BrandCoverage(props) {
             })
             .then((data) => {
                 if (!data) return;
-                console.log("T", data.coverageRate, data.brandName);
                 setBrandName(data.brandName);
                 setRate(data.coverageRate);
             });
@@ -76,7 +75,6 @@ function BrandCoverage(props) {
         options: {
             chart: {
                 type: "bar",
-                height: 350,
                 background: "#ffffff",
                 toolbar: {
                     show: false, // Set to true to show the default chart toolbar
@@ -89,6 +87,7 @@ function BrandCoverage(props) {
                     dataLabels: {
                         position: "top",
                     },
+
                     colors: {
                         ranges: [
                             {
@@ -115,8 +114,9 @@ function BrandCoverage(props) {
                 offsetX: 15,
                 offsetY: 10,
                 style: {
-                    fontSize: "0.7em",
+                    fontSize: "0.5em",
                     colors: ["#000000"],
+                    fontWeight: "normal",
                 },
             },
 
@@ -134,12 +134,13 @@ function BrandCoverage(props) {
                         fontSize: "16px", // Set the font size for the x-axis label
                         fontWeight: "bold", // Set the font weight for the x-axis label
                     },
+                    offsetY: 20,
                 },
             },
             yaxis: {
                 labels: {
                     style: {
-                        fontSize: "0.7em", // Set the desired font size for x-axis labels
+                        fontSize: "0.5em", // Set the desired font size for x-axis labels
                         colors: ["#000000"],
                     },
                 },
@@ -153,11 +154,6 @@ function BrandCoverage(props) {
                     },
                 },
             },
-            legend: {
-                show: true, // Set to true to display the legend
-                position: "top", // Set the position of the legend (top, right, bottom, or left)
-                offsetY: 20, // Set the margin-top for the legend
-            },
             title: {
                 text: "Product Coverage by % Brand", // Set the main title of the chart
                 align: "center", // Set the alignment of the title (left, center, or right)
@@ -165,6 +161,9 @@ function BrandCoverage(props) {
                     fontSize: "15px", // Set the font size for the title
                     offsetY: 10,
                 },
+            },
+            tooltip: {
+                enabled: false, // Set to false to hide the tooltip box on hover
             },
         },
     });
@@ -179,7 +178,7 @@ function BrandCoverage(props) {
                     options={chartData.options}
                     series={chartData.series}
                     type="bar"
-                    height={350}
+                    height={"100%"}
                 />
             </div>
         </>
