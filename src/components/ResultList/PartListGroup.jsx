@@ -103,7 +103,7 @@ function PartListGroup(props) {
                 if (!data) return;
                 setFirstOpenPreP(false);
                 setSubGroup(data.subGroupList);
-                console.log(subGroup);
+                console.log("Part List SubGroup:", subGroup);
             });
     }
 

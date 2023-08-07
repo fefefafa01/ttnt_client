@@ -35,7 +35,7 @@ function Homepage() {
 
     const onChange = (activeKey) => {
         setActiveKey(activeKey);
-        console.log(activeKey)
+        console.log("Current Active Key: ",activeKey)
     };
 
     const onEdit = (targetKey, action) => {
@@ -53,11 +53,11 @@ function Homepage() {
         panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
         c++;
-        console.log(panes.current)
+        console.log("Current Panes: ",panes.current)
     };
 
     const addSub = (carid, buttonSubName) => {
-        console.log(buttonSubName);
+        console.log("Part Subgroup Name: ",buttonSubName);
         const newTabIndex = c;
         const activeKey = `${newTabIndex}`;
         const newPane = {
@@ -75,7 +75,7 @@ function Homepage() {
         panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
         c++;
-        console.log(panes.current)
+        console.log("Current Panes: ",panes.current)
     };
 
     
@@ -93,7 +93,7 @@ function Homepage() {
             };
             panes.current = [...panes.current, newPane]
             setActiveKey(activeKey);
-            console.log(panes.current);
+            console.log("Current Panes: ",panes.current);
             c++;
 
     };
@@ -109,7 +109,7 @@ function Homepage() {
         panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
         c++;
-        console.log(panes.current)
+        console.log("Current Panes: ",panes.current)
     };
 
     const addSGroup = (id, buttonName) => {
@@ -123,7 +123,7 @@ function Homepage() {
         panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
         c++;
-        console.log(panes.current)
+        console.log("Current Panes: ",panes.current)
     };
 
     // const remove = (targetKey) => {

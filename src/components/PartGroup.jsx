@@ -101,7 +101,7 @@ function PartGroup({ carid, onAdd }) {
                 if (!data) return;
                 setFirstOpenPreP(false);
                 setPartGroup(data.partGroupList);
-                console.log(partGroup);
+                console.log("PartGroup:", partGroup);
             });
     }
 
@@ -241,7 +241,7 @@ function PartSubgroup(props) {
                 if (!data) return;
                 setFirstOpenPreP(false);
                 setSubGroup(data.subGroupList);
-                console.log(subGroup);
+                console.log("Part SubGroup: ",subGroup);
             });
     }
 

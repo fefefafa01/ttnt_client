@@ -18,7 +18,6 @@ const UserContext = ({ children }) => {
         })
         .catch(err => {
             setUser({ loggedIn: false });
-            console.log(err)
             return;
         })
         .then(r => {

@@ -14,11 +14,9 @@ import VI from "../../../src/img/vietnamese.png";
 import EN from "../../../src/img/english.png";
 import ".././comp.styles/LangOption.scss";
 import { changeLanguage } from "i18next";
-import { useTranslation } from "react-i18next";
 
 function MultiLang() {
     var [lang, setLang] = useState(localStorage.lng);
-    const { t } = useTranslation();
     const handleLang = (lng) => {
         if (lng === "en") {
             setLang("EN");
@@ -27,7 +25,6 @@ function MultiLang() {
         } else {
             setLang("VI");
             changeLanguage("vi");
-            console.log(t("Login"));
             localStorage.lng = "VI";
         }
     };

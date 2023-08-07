@@ -89,7 +89,6 @@ function DropDown (input) {
     //Downloading
     const handleDownload = (type) => {
         input.dropping()
-        console.log(transdata)
         if (type==="csv") {
             DownloadPListFile(transdata, "Parts_List_"+date, "Parts", "csv")
         } else if (type==="xlsx") {

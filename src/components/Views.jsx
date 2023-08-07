@@ -7,7 +7,6 @@ import { BlankPage } from "constants/blankpage";
 const Views = () => {
     const remembered = localStorage.getItem("remembered")
     const loggedIn = localStorage.getItem("isLoggedIn");
-    console.log(loggedIn);
 
     return (
         <div>
