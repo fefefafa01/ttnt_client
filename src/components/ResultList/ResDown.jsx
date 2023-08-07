@@ -70,6 +70,7 @@ function DropDown (input) {
     }
     
     if(queried) {
+        console.log(input.data)
         for (let i = 0; i < input.data.length; i++) {
             var newob = {};
                 newob.CarMaker = input.data[i].car_maker;
@@ -92,21 +93,21 @@ function DropDown (input) {
                     &&
                     (input.data[i].aisin_sub_premium_code!=="" && input.data[i].aisin_sub_premium_code !== undefined && input.data[i].aisin_sub_premium_code !== null)
                 ) {
-                    newob.VehicleCode = exdata[i] + "\r\n" + input.data[i].aisin_premium_code + "\r\n" + input.data[i].aisin_sub_premium_code;
+                    newob.VehicleCode = exdata[i] + "\r\n" + input.data[i].oe + "\r\n" + input.data[i].aisin_premium_code + "\r\n" + input.data[i].aisin_sub_premium_code;
                 } else if (
                     (input.data[i].aisin_premium_code==="" || input.data[i].aisin_premium_code === undefined || input.data[i].aisin_premium_code === null)
                     &&
                     (input.data[i].aisin_sub_premium_code!=="" && input.data[i].aisin_sub_premium_code !== undefined && input.data[i].aisin_sub_premium_code !== null)
                 ) {
-                    newob.VehicleCode = exdata[i] + "\r\nNo Premium Coden\r\n" + input.data[i].aisin_sub_premium_code;
+                    newob.VehicleCode = exdata[i] + "\r\n" + input.data[i].oe + "\r\nNo Premium Coden\r\n" + input.data[i].aisin_sub_premium_code;
                 } else if (
                     (input.data[i].aisin_premium_code!=="" && input.data[i].aisin_premium_code !== undefined && input.data[i].aisin_premium_code !== null)
                     &&
                     (input.data[i].aisin_sub_premium_code==="" || input.data[i].aisin_sub_premium_code === undefined || input.data[i].aisin_sub_premium_code === null)
                 ) {
-                    newob.VehicleCode = exdata[i] + "\r\n" + input.data[i].aisin_premium_code + "\r\nNo Sub-Premium Code";
+                    newob.VehicleCode = exdata[i] + "\r\n" + input.data[i].oe + "\r\n" + input.data[i].aisin_premium_code + "\r\nNo Sub-Premium Code";
                 } else {
-                    newob.VehicleCode = exdata[i] + "\r\nNo Premium Code\r\nNo Sub-Premium Code";
+                    newob.VehicleCode = exdata[i] + "\r\n" + input.data[i].oe + "\r\nNo Premium Code\r\nNo Sub-Premium Code";
                 }
                 //Concate Array
             transdata.push(newob);
@@ -198,6 +199,7 @@ function DropingDown (input) {
     }
     
     if(queried) {
+        console.log(input.data[1])
         for (let i = 0; i < input.data.length; i++) {
             var newob = {};
                 newob.No = i+1;
@@ -215,10 +217,10 @@ function DropingDown (input) {
                 newob.TransmissionType = input.data[i].transmission_type;
                 newob.Speed = input.data[i].speed;
                 newob.DriveTrain = input.data[i].drivetrain;
-                newob.OEL = input.data[i].oe;
+                newob.OEL = input.data[i].oe + " (" + input.data[i].part_start_time + "-" + input.data[i].part_end_time + ")";
                 newob.AisinPremiumL = input.data[i].aisin_premium_code;
                 newob.AisinSubPremiumL = input.data[i].aisin_sub_premium_code;
-                newob.OER = input.data[i].oe;
+                newob.OER = input.data[i].oe + " (" + input.data[i].part_start_time + "-" + input.data[i].part_end_time + ")";
                 newob.AisinPremiumR = input.data[i].aisin_premium_code;
                 newob.AisinSubPremiumR = input.data[i].aisin_sub_premium_code;
                 newob.VehicleCode = exdata[i];

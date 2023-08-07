@@ -10,6 +10,7 @@ import { PartSubgroup, PartGroup } from "components/PartGroup";
 import { ResultPartList } from "components/ResultList/ResultPartList";
 import {PartListGroup} from "components/ResultList/PartListGroup"
 import { useForceUpdate } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 
 
@@ -25,6 +26,7 @@ const { TabPane } = Tabs;
 let c = 1;
 
 function Homepage() {
+    const {t} = useTranslation();
     const [sidebarOpen, setSideBarOpen] = useState(true);
     const [partSubName, setPartSubName] = useState("");
 
@@ -85,7 +87,7 @@ function Homepage() {
     const addGroup = (formValues, count) => { 
         let text = "Result List";
         if (count === 0) {
-            text = "Vehicel Model List";
+            text = "Vehicle Model List";
         }
             const newTabIndex = c;
             const activeKey = `${newTabIndex}`;

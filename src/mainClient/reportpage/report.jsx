@@ -25,8 +25,8 @@ const initialValues = {
     part_group: "",
     end_year: currentYear,
     start_year: currentYear,
-    start_cover: 25,
-    end_cover: 75,
+    start_cover: 0,
+    end_cover: 100,
 };
 
 var loc;
@@ -172,7 +172,7 @@ function SelectCountries(input) {
                         fontWeight: "500",
                     }}
                 >
-                    {input.country || "Country"}
+                    {input.country || ""}
                 </span>
                 <img
                     src={arrow}
@@ -366,7 +366,7 @@ function SelectCarMaker(input) {
                         fontWeight: "500",
                     }}
                 >
-                    {input.maker || "Toyota"}
+                    {input.maker || ""}
                 </span>
                 <img
                     src={arrow}
@@ -559,7 +559,7 @@ function SelectTransmission(input) {
                         fontWeight: "500",
                     }}
                 >
-                    {input.trans || "MT"}
+                    {input.trans || ""}
                 </span>
                 <img
                     src={arrow}
@@ -752,7 +752,7 @@ function SelectPartGroup(input) {
                         fontWeight: "500",
                     }}
                 >
-                    {input.partGroup || "Electrical"}
+                    {input.partGroup || ""}
                 </span>
                 <img
                     src={arrow}
@@ -943,7 +943,7 @@ function SelectPartName(input) {
                         fontWeight: "500",
                     }}
                 >
-                    {input.part || "Clutch Cover"}
+                    {input.part || ""}
                 </span>
                 <img
                     src={arrow}
@@ -1030,7 +1030,7 @@ function ReportPage(props) {
         setActiveKey(activeKey);
     };
 
-    const [value, setValue] = useState([25, 75]);
+    const [value, setValue] = useState([0, 100]);
     const handleChange = (event, newValue) => {
         setValue(newValue);
         initialValues.start_cover = newValue[0];

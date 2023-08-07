@@ -168,6 +168,7 @@ function ResetPwd() {
                     <h2>
                         <Changer inp="Reset Password" />
                     </h2>
+                    <br />
                     <form action="#" onSubmit={handleSubmit}>
                         <div className="input-box">
                             <input
@@ -235,6 +236,7 @@ function ResetPwd() {
                         <p className="preg-error">
                             {errormsg ? errormsg : null}
                         </p>
+                        <br /><br />
                         <button className="btn btn-dark resetpwdscalebottom">
                             <Changer inp="Reset Password" />
                         </button>
