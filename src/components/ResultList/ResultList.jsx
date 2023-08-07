@@ -35,7 +35,7 @@ function ResultList(props) {
     // Simulate fetching items from another resources.
     // (This could be items from props; or items loaded in a local state
     // from an API endpoint with useEffect and useState)
-    const endOffset = itemOffset + itemsPerPage;
+    const endOffset = parseInt(itemOffset) + parseInt(itemsPerPage);
 
     const pageCount = Math.ceil(formValues.length / itemsPerPage);
 
@@ -60,7 +60,7 @@ function ResultList(props) {
         }
     }
     const currentItemss = add.slice(itemOffset, endOffset);
-    console.log(add);
+    console.log(itemOffset, endOffset);
 
     const pageCounts = Math.ceil(add.length / itemsPerPage);
 
@@ -456,19 +456,44 @@ function ResultList(props) {
                                 nextLinkClassName={"next-link"}
                             />
                         </div>
-                        <div className="splittingrecordpages">
-                            <label htmlFor="itemsPerPage">
+                        <div className="splittingrecordpages" ref={selectDropdownRef}>
+                            <div className="itempgspan">
+                            <div className="itemsPage">
                                 <Changer inp="Records per Page:" />
-                            </label>
-                            <select
-                                id="itemsPerPage"
-                                value={itemsPerPage}
-                                onChange={handleItemsPerPageChange}
-                            >
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                            </select>
+                            </div>
+                            <div className="itemsPerPage" onClick={toggleDropdown}>
+                                <span
+                                    style={{
+                                        color: "black",
+                                        whiteSpace: "nowrap",
+                                    }}
+                                >
+                                    {itemsPerPage}
+                                </span>
+                                <img
+                                    src={arrow}
+                                    id="arrow"
+                                    alt="arrow"
+                                    style={{
+                                        transform: showArrow ? "rotate(180deg)" : "none",
+                                    }}
+                                />
+                            </div>
+                            </div>
+                            <div className="pgnum">
+                                    <li key="10" onClick={handleItemsPerPageChange}>
+                                        10 
+                                    </li>
+                                    <li key="20" onClick={handleItemsPerPageChange}>
+                                        20
+                                    </li>
+                                    <li key="50" onClick={handleItemsPerPageChange}>
+                                        50
+                                    </li>
+                                    <li key="10" onClick={handleItemsPerPageChange}>
+                                        100 
+                                    </li>
+                            </div>
                         </div>
                         <div className="downloadingbuttondrop">
                             <button
