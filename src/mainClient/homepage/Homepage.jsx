@@ -11,7 +11,18 @@ import { ResultPartList } from "components/ResultList/ResultPartList";
 import {PartListGroup} from "components/ResultList/PartListGroup"
 import { useForceUpdate } from "framer-motion";
 
+
+
+const initialItems = [
+    {
+        title: "Search Result",
+        key: `0`,
+        closable: false,
+    },
+];
+
 const { TabPane } = Tabs;
+let c = 1;
 
 function Homepage() {
     const [sidebarOpen, setSideBarOpen] = useState(true);
@@ -21,17 +32,13 @@ function Homepage() {
         setSideBarOpen(!sidebarOpen);
     };
 
-    const [activeKey, setActiveKey] = useState("1");
-    const panes= useRef([
-        {
-            title: "Search Result",
-            key: "1",
-            closable: false,
-        },
-    ]);
+    const [activeKey, setActiveKey] = useState(initialItems[0].key);
+    const panes = useRef(initialItems);
+
 
     const onChange = (activeKey) => {
         setActiveKey(activeKey);
+        console.log(activeKey)
     };
 
     const onEdit = (targetKey, action) => {
@@ -39,21 +46,23 @@ function Homepage() {
     };
 
     const add = (buttonName, carid) => {
-        const newTabIndex = panes.current.length;
-        const activeKey = `newTab${newTabIndex}`;
+        const newTabIndex = c;
+        const activeKey = `${newTabIndex}`;
         const newPane = {
             title: "Part List",
             content: <PartList carid={carid} SubGroupName={buttonName} />,
             key: activeKey,
         };
-        panes.current = [...panes.current, newPane];
+        panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
+        c++;
+        console.log(panes.current)
     };
 
     const addSub = (carid, buttonSubName) => {
         console.log(buttonSubName);
-        const newTabIndex = panes.current.length;
-        const activeKey = `newTab${newTabIndex}`;
+        const newTabIndex = c;
+        const activeKey = `${newTabIndex}`;
         const newPane = {
             title: buttonSubName + ` - Parts subgroup list`,
             content: (
@@ -66,58 +75,90 @@ function Homepage() {
             key: activeKey,
         };
         setPartSubName(buttonSubName);
-        panes.current = [...panes.current, newPane];
+        panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
+        c++;
+        console.log(panes.current)
     };
 
     
     const addGroup = (formValues, count) => { 
-        console.log(formValues);
         let text = "Result List";
         if (count === 0) {
             text = "Vehicel Model List";
         }
-            const newTabIndex = panes.current.length;
-            const activeKey = `newTab${newTabIndex}`;
+            const newTabIndex = c;
+            const activeKey = `${newTabIndex}`;
             const newPane = {
                 title: text,
                 content: <ResultList formValues={formValues} count={count} Add={addList} onAdd = {addSGroup}/>,
                 key: activeKey,
             };
-            panes.current = [...panes.current, newPane];
+            panes.current = [...panes.current, newPane]
             setActiveKey(activeKey);
-            console.log(panes)
+            console.log(panes.current);
+            c++;
+
     };
 
     const addList = (id, formValues) => {
-        const newTabIndex = panes.current.length;
-        const activeKey = `newTab${newTabIndex}`;
+        const newTabIndex = c;
+        const activeKey = `${newTabIndex}`;
         const newPane = {
             title: "Part List",
             content: <ResultPartList formValues = {formValues} id = {id}/>,
             key: activeKey,
         };
-        panes.current = [...panes.current, newPane];
+        panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
+        c++;
+        console.log(panes.current)
     };
 
     const addSGroup = (id, buttonName) => {
-        const newTabIndex = panes.current.length;
-        const activeKey = `newTab${newTabIndex}`;
+        const newTabIndex = c;
+        const activeKey = `${newTabIndex}`;
         const newPane = {
             title: buttonName + " - " + "Parts Group List",
             content: <PartListGroup carid = {id} onAdd = {addSub} buttonName = {buttonName}/>,
             key: activeKey,
         };
-        panes.current = [...panes.current, newPane];
+        panes.current = [...panes.current, newPane]
         setActiveKey(activeKey);
+        c++;
+        console.log(panes.current)
     };
 
+    // const remove = (targetKey) => {
+    //     const targetPaneIndex = panes.current.findIndex(pane => pane.key === targetKey);
+    //     setActiveKey(targetKey);
+    //     const newpanes.current = panes.current.filter(pane => pane.key !== targetKey);
+    //     panes.current = newpanes.current;
+    //     const newActiveKey = newpanes.current[targetPaneIndex - 1]?.key || newpanes.current[targetPaneIndex]?.key || "";
+    //     setActiveKey(newActiveKey);
+    //     console.log(newActiveKey)
+    //   };
+
     const remove = (targetKey) => {
-        const newPanes = panes.current.filter(pane => pane.key !== targetKey);
-        panes.current = newPanes;
-        setActiveKey(newPanes.length > 0 ? newPanes[newPanes.length - 1].key : "");
+        let newActiveKey = activeKey;
+        let lastIndex = -1;
+        panes.current.forEach((pane, i) => {
+          if (pane.key === targetKey) {
+            lastIndex = i - 1;
+          }
+        });
+        const newpPanes = panes.current.filter((pane) => pane.key !== targetKey);
+        if (newpPanes.length && newActiveKey === targetKey) {
+          if (lastIndex >= 0) {
+            newActiveKey = newpPanes[lastIndex].key;
+          } else {
+            newActiveKey = newpPanes[0].key;
+          }
+        }
+        panes.current = newpPanes;
+        setActiveKey(newActiveKey);
       };
+      
 
     return (
         <div>

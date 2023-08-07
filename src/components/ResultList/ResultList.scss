@@ -5,7 +5,7 @@
     height: 50px;
 }
 
-.titleresultcontent h3, .splittingrecordpages, .paginatingpage {
+.titleresultcontent h3, .paginatingpage {
     margin-top: 1.5%;
     margin-bottom: -1%;
     padding-right: 5px;
@@ -124,10 +124,68 @@
     color: black;
 }
 
-#itemsPerPage {
-    height: fit-content;
+.splittingrecordpages{
+    margin-top: 1.5%;
+    margin-bottom: -1%;
+    padding-right: 5px;
+    display: flex;
+    float:left;
+    flex-direction: column;
+    width: 250px;
+    justify-content: center;
+    position: relative;
+}
+
+.itempgspan{
+    display: flex;
+    flex-direction: row;
+}
+
+.itemsPage{
+    display: flex;
+    justify-self: flex-start;
+    width: fit-content;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.itemsPerPage {
+    height: 25px;
     min-width: 80px;
     text-align: center;
+    display: flex;
+    justify-self: flex-end;
+    align-self: center;
+    margin-left: 2%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.itemsPerPage img{
+    height: 30px;
+}
+
+.pgnum{
+    display: none;
+    background-color: white;
+    width: 34%;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 50%;
+    margin-left: 45%;
+    border-radius: 5px;
+}
+
+.pgnum li:hover {
+    background-color:#6fa6f7;
+}
+
+.splittingrecordpages.active {
+    .pgnum {
+        display: block;
+    }
 }
 
 .droplist {
@@ -172,30 +230,17 @@
 //     display: flex;
 // }
 
-.p-table {
-    td {
-        border: solid 2px white;
-        height: 40px;
-        font-size: 1.1em;
-    }
-    tr {
-        border: solid 2px white;
-        height: 40px;
-        font-size: 1.1em;
-    }
-    height: 100%;
-    width: 97%;
-    margin-top: -10px;
-    tbody {
-        tr {
-            &:nth-child(odd) {
-                background-color: #e7e7e7;
-            }
-            &:nth-child(even) {
-                background-color: #cbcbcb;
-            }
-        }
-    }
+.plistscroll {
+    background-color: #b0c4e4;
+    height: 90%;
+    width: 100%;
+    border-radius: 20px;
+    overflow-y: scroll;
+    display: block;
+    max-height: 98%;
+    max-width: 99%;
+    padding-bottom: 20px;
+    padding-right: 50px;
 }
 
 .contents-p-list {
@@ -211,18 +256,30 @@
     padding-top: 10px;
 }
 
-.plistscroll {
-    background-color: #b0c4e4;
-    height: 85%;
-    width: 100%;
+.p-table {
+    td {
+        border: solid 2px white;
+        height: 40px;
+        font-size: 1.1em;
+    }
+    tr {
+        border: solid 2px white;
+        height: 40px;
+        font-size: 1.1em;
+    }
+    height: 100%;
+    width: 99%;
     border-radius: 20px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: block;
-    max-height: 98%;
-    max-width: 99%;
-    padding-bottom: 20px;
-    padding-right: 50px;
+    tbody {
+        tr {
+            &:nth-child(odd) {
+                background-color: #e7e7e7;
+            }
+            &:nth-child(even) {
+                background-color: #cbcbcb;
+            }
+        }
+    }
 }
 
 #pscrolling-style {

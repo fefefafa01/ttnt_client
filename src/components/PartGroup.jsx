@@ -294,7 +294,7 @@ function PartSubgroup(props) {
             <div className="titlecontent">
                 <div className="">
                     <h3>
-                        {maker}, {model}, {vcode} {"(" + start} - {end + ")"},{" "}
+                        {maker}, {model}, {vcode} {"(" + start.substring(0, 4)} - {end.substring(0, 4) + ")"},{" "}
                         {dpos}, {ecode}, {displace}, {ptype}, {ftype},
                         {" " + transc}, {spd}
                         {trans}, {dt} - Part sub group : {subGroup.length}{" "}

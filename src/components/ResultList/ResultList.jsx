@@ -1,6 +1,5 @@
 import "./ResultList.scss";
-import React, { useState, useEffect } from "react";
-import $ from "jquery";
+import React, { useState, useEffect, useRef } from "react";
 import { Changer } from "../Languages/LanguageChange";
 import ReactPaginate from "react-paginate";
 import vehiclePart from "./vehiclePart.png";
@@ -9,22 +8,15 @@ import Prev from "../../img/prev_btn.png";
 import Next from "../../img/next_btn.png";
 import {DropDown, DropingDown } from "./ResDown";
 import { Specpdf } from "components/SpecPDF";
+import arrow from "../../img/arrow.png";
 
 function ResultList(props) {
     
     const { formValues, count, Add, onAdd} = props;
     //Synchronizing Scroll:
 
-    $(function() {
-        $(".plistscroll").on("scroll", function() {
-            $(".scrollsynch")
-                .scrollLeft($(".plistscroll").scrollLeft());
-        });
-        $(".scrollsynch").on("scroll", function() {
-            $(".plistscroll")
-                .scrollLeft($(".scrollsynch").scrollLeft())
-        });
-    });
+    const [showArrow, setShowArrow] = useState(false);
+
     let no = 1;
 
     //Downloader
@@ -53,7 +45,7 @@ function ResultList(props) {
     };
 
     const handleItemsPerPageChange = (event) => {
-        setItemsPerPage(parseInt(event.target.value, 10));
+        setItemsPerPage(event.target.textContent);
     };
 
     const currentItems = formValues.slice(itemOffset, endOffset);
@@ -97,6 +89,35 @@ function ResultList(props) {
         setOpening(!opening);
         console.log(pcode, pdfcarid)
     }
+
+    const selectDropdownRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                selectDropdownRef.current &&
+                !selectDropdownRef.current.contains(event.target)
+            ) {
+                selectDropdownRef.current.classList.remove("active");
+                setShowArrow(false);
+            }
+            
+            
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [selectDropdownRef]);
+
+    const toggleDropdown = () => {
+        if (selectDropdownRef.current) {
+            selectDropdownRef.current.classList.toggle("active");
+            setShowArrow(!showArrow);
+        }
+    };
 
     if (formValues === "There is no car matched your search") {
         return (
@@ -151,20 +172,47 @@ function ResultList(props) {
                                 nextLinkClassName={"next-link"}
                             />
                         </div>
-                        <div className="splittingrecordpages">
-                            <label htmlFor="itemsPerPage">
+
+                        <div className="splittingrecordpages" ref={selectDropdownRef}>
+                            <div className="itempgspan">
+                            <div className="itemsPage">
                                 <Changer inp="Records per Page:" />
-                            </label>
-                            <select
-                                id="itemsPerPage"
-                                value={itemsPerPage}
-                                onChange={handleItemsPerPageChange}
-                            >
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                            </select>
+                            </div>
+                            <div className="itemsPerPage" onClick={toggleDropdown}>
+                                <span
+                                    style={{
+                                        color: "black",
+                                        whiteSpace: "nowrap",
+                                    }}
+                                >
+                                    {itemsPerPage}
+                                </span>
+                                <img
+                                    src={arrow}
+                                    id="arrow"
+                                    alt="arrow"
+                                    style={{
+                                        transform: showArrow ? "rotate(180deg)" : "none",
+                                    }}
+                                />
+                            </div>
+                            </div>
+                            <div className="pgnum">
+                                    <li key="10" onClick={handleItemsPerPageChange}>
+                                        10 
+                                    </li>
+                                    <li key="20" onClick={handleItemsPerPageChange}>
+                                        20
+                                    </li>
+                                    <li key="50" onClick={handleItemsPerPageChange}>
+                                        50
+                                    </li>
+                                    <li key="10" onClick={handleItemsPerPageChange}>
+                                        100 
+                                    </li>
+                            </div>
                         </div>
+
                         <div className="downloadingbuttondrop">
                             <button
                                 className="download"
@@ -366,7 +414,6 @@ function ResultList(props) {
                             </table>
                         </div>
                     </div>
-                    <div className="scrollsynch"><html className="emptyscroll">&nbsp;</html></div>
                 </div>
             );
         } else {
