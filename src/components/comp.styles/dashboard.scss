@@ -1,0 +1,53 @@
+.dashboard-period {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: white;
+    border-radius: 10px;
+    .dashboard-header {
+        display: flex;
+        width: 100%;
+        height: 40%;
+        .aisin-header {
+            width: 40%;
+            color: darkblue;
+            font-family: "VLNL Decks";
+            font-style: italic;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        .monitor-header {
+            width: 100%;
+            padding: 10px;
+            color: darkblue;
+            font-weight: bold;
+            text-align: left;
+        }
+    }
+    .dashboard-criteria {
+        display: flex;
+        width: 100%;
+        .dashboard-left {
+            width: fit-content;
+            color: #adc0e1;
+            font-size: 0.5em;
+            font-weight: 650;
+            text-align: left;
+            padding-left: 40px;
+            p {
+                margin-bottom: 0;
+            }
+        }
+        .dashboard-right {
+            width: fit-content;
+            color: #adc0e1;
+            font-size: 0.5em;
+            font-weight: 650;
+            text-align: left;
+            padding-left: 40px;
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
