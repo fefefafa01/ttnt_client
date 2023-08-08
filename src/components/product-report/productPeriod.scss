@@ -12,7 +12,11 @@
     font-size: 0.5em;
     font-weight: bold;
     height: 30px;
+    padding-top: 3px;
+    padding-left: 10px;
     align-items: center;
+    text-align: left;
+    width: 100%;
 }
 .summary-item {
     p {
@@ -21,7 +25,7 @@
     }
     margin-top: 10px;
     display: flex;
-    font-size: 0.6em;
+    font-size: 0.7em;
     height: 100px;
     div {
         background-color: #d6dff0;
@@ -38,13 +42,13 @@ div {
     #gauge-chart1,
     #gauge-chart2,
     #gauge-chart3 {
+        padding: 0px 35px;
         margin-left: 0px;
-        max-width: 150px;
-        height: 50px;
+        max-width: 100%;
+        max-height: 50px;
+        text-align: center;
     }
     svg {
-        margin-left: 5px;
-        margin-top: 20px;
     }
     #gauge-chart1 text {
         fill: red !important;

@@ -1124,47 +1124,7 @@ function ReportPage(props) {
     var [update3, setUpdate3] = useState([]);
     var [update4, setUpdate4] = useState([]);
     var [update5, setUpdate5] = useState([]);
-    //scroll
-    $(document).ready(function () {
-        // Create a scroll bar element
-        var scrollBar = $('<div className="scrollpanel" ></div>');
 
-        // Append the scroll bar to the outer container
-        $(".scroll-panel").append(scrollBar);
-
-        // Add scroll event handler to the inner container
-        $(".tab-panel").on("scroll", function () {
-            // Update the scroll bar position based on the scroll percentage
-            var scrollPercentage =
-                $(this).scrollTop /
-                ($(this).prop("scrollHeight") - $(this).outerHeight());
-            var trackHeight = $(".scrollpanel").parent().outerHeight();
-            var thumbHeight =
-                trackHeight *
-                ($(this).outerHeight() / $(this).prop("scrollHeight"));
-            var maxScrollTop = trackHeight - thumbHeight;
-            var scrollTop = -scrollPercentage * maxScrollTop;
-
-            $(".scrollpanel").css({
-                top: scrollTop,
-                height: thumbHeight,
-            });
-        });
-
-        $(".scrollpanel").on("scroll", function () {
-            // Update the scroll position of the inner container
-            var thumbHeight = $(this).outerHeight();
-            var trackHeight = $(".scrollpanel").parent().outerHeight();
-            var scrollPercentage =
-                -$(this).scrollTop() / (trackHeight - thumbHeight);
-            var maxScrollTop =
-                $(".tab-panel").prop("scrollHeight") -
-                $(".tab-panel").outerHeight();
-            var scrollTop = scrollPercentage * maxScrollTop;
-
-            $(".tab-panel").scrollTop(scrollTop);
-        });
-    });
     return (
         <div>
             <ReportHeader />
