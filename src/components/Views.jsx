@@ -5,7 +5,6 @@ import ReportPage from "mainClient/reportpage/report";
 import { BlankPage } from "constants/blankpage";
 
 const Views = () => {
-    const remembered = localStorage.getItem("remembered")
     const loggedIn = localStorage.getItem("isLoggedIn");
 
     return (
@@ -13,11 +12,11 @@ const Views = () => {
             <Routes>
                 <Route
                     path="/"
-                    element={(loggedIn === "true" && remembered==="yes") ? <HomePage /> : <MainPage input="normal"/>}
+                    element={(loggedIn === "true") ? <HomePage /> : <MainPage input="normal"/>}
                 />
                 <Route
                     path="*"
-                    element={(loggedIn === "true" && remembered==="yes") ? <HomePage /> : <MainPage input="normal"/>}
+                    element={(loggedIn === "true") ? <HomePage /> : <MainPage input="normal"/>}
                 />
                 {/* <Route path="/homepage" element={<HomePage />} /> */}
                 <Route path="/resetpwdhome" element={<MainPage input="reset"/>} />

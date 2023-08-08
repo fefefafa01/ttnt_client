@@ -121,7 +121,6 @@ function Login() {
             localStorage.checkEmail = formValues.email;
             localStorage.checkPassword = formValues.password;
             localStorage.expirationDate = dateLogin;
-            localStorage.remembered = "yes";
         }
         // here call the API to signup/login
         else if (!isChecked) {
@@ -130,7 +129,6 @@ function Login() {
             localStorage.checkbox = false;
             localStorage.checkEmail = "";
             localStorage.checkPassword = "";
-            localStorage.remembered = "no";
         }
     };
 
@@ -216,6 +214,7 @@ function Login() {
                                 className="p-2"
                                 onMouseDown={() => setVisible(true)}
                                 onMouseUp={() => setVisible(false)}
+                                onMouseLeave={() => setVisible(false)}
                             >
                                 {visible ? (
                                     <EyeOutlined className="eye" />
