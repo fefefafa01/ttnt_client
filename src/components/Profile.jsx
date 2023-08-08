@@ -106,7 +106,7 @@ function Profile() {
                     onClick={toggleDropdown}
                 />
             </button>
-                <div className="dropdown-content">
+            <div className="dropdown-content">
                 <p className="openerprofile" onClick={handleOpen}>
                     <Changer inp="My Profile" />
                 </p>

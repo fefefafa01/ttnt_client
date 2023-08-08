@@ -1,10 +1,10 @@
 .sidebar {
     position: absolute;
     background-color: #b0c4e4;
-    top: 13vh;
+    top: 12vh;
     left: -470px;
     margin-left: 0px;
-    height: calc(100% - 14vh);
+    height: calc(100% - 13vh);
     width: 450px;
     z-index: 2;
     display: flex;
@@ -160,27 +160,27 @@
     }
 }
 .submitbtn {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	height: 50px;
-	width: 92%;
-	margin: 20px 0px 20px 20px;
-	button {
-		border: none;
-		border-radius: 10px;
-		cursor: pointer;
-		color: white;
-	}
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    width: 92%;
+    margin: 20px 0px 20px 20px;
+    button {
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        color: white;
+    }
 }
 #Submit {
     width: 70%;
     background-color: black;
 }
 #Reset {
-	width: 25%;
-	background-color: grey;
-	height: 50px;
+    width: 25%;
+    background-color: grey;
+    height: 50px;
 }
 .selectDropdown {
     width: 200px;
