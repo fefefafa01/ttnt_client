@@ -1,7 +1,7 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { React, useState, useEffect, useContext } from "react";
 import { Changer } from "../Languages/LanguageChange";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
 import { backlocale, japregex, vietregex } from "constants/constindex";
@@ -94,6 +94,10 @@ function ResetPwd() {
             if (data.status === "Email Unavailable") {
                 setErrormsg(t("Email address does not exist"));
             } else if (data.status === "Changed Pass") {
+                localStorage.removeItem("email");
+                localStorage.removeItem("password");
+                localStorage.removeItem("isLoggedIn");
+                localStorage.removeItem("remembered");
                 sethide(!hide);
             }
         });
@@ -160,6 +164,9 @@ function ResetPwd() {
         setFormErrors(erro);
     }
 
+    const handlebacklog = () => {
+        window.location.assign("/login");
+    }
     return (
     <>
         {hide && (
@@ -258,10 +265,10 @@ function ResetPwd() {
                             <p>
                                 <Changer inp="please log in" />
                             </p>
-                            <button className="regbackbtn">
-                                <Link className="back_login" to="/login">
+                            <button className="regbackbtn" onClick={handlebacklog}>
+                                <div className="back_login">
                                     <Changer inp="Go to Login" />
-                                </Link>
+                                </div>
                             </button>
                         </span>
                     </div>

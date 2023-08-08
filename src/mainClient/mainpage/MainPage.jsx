@@ -5,10 +5,21 @@ import { Changer } from "../../components/Languages/LanguageChange";
 import { MultiLang } from "components/Languages/Multi_Lang";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
 import "./MainPage.scss";
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-function MainPage() {
+function MainPage(input) {
+    const [once, setOnce] = useState(true)
+    const [routing, setRouting] = useState(true)
+    if (once) {
+        if (input.input === "normal") {
+            setRouting(true);
+        } else if (input.input === "reset") {
+            setRouting(false);
+        }
+        setOnce(false);
+    }
+    console.log(input.input)
     return (
         <div>
             <div className="header">
@@ -32,13 +43,18 @@ function MainPage() {
                 </div>
             </div>
             <div className="body">
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/resetpwd" element={<ResetPwd />} />
-                    <Route path="*" element={<Login />} />
-                </Routes>
+                {routing &&
+                    <Routes>
+                        <Route path="/" element={<Login />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/resetpwd" element={<ResetPwd />} />
+                        <Route path="*" element={<Login />} />
+                    </Routes>
+                }
+                {!routing &&
+                    <ResetPwd />
+                }
                 <div className="bigcontent">
                     <div className="col-sm-12 col-md maincontent">
                         <p className="logo">AISIN</p>

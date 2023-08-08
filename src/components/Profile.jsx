@@ -29,12 +29,8 @@ function Profile() {
     };
 
     const handleRP = () => {
-        localStorage.removeItem("email");
-        localStorage.removeItem("password");
-        localStorage.removeItem("isLoggedIn");
-        localStorage.removeItem("remembered");
         // setLogOut(true);
-        window.location.assign("/resetpwd");
+        window.location.assign("/resetpwdhome");
     };
 
     if (open && localStorage.email !== "") {

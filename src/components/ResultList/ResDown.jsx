@@ -99,7 +99,7 @@ function DropDown (input) {
                     &&
                     (input.data[i].aisin_sub_premium_code!=="" && input.data[i].aisin_sub_premium_code !== undefined && input.data[i].aisin_sub_premium_code !== null)
                 ) {
-                    newob.VehicleCode = exdata[i] + "\r\n" + input.data[i].oe + "\r\nNo Premium Coden\r\n" + input.data[i].aisin_sub_premium_code;
+                    newob.VehicleCode = exdata[i] + "\r\n" + input.data[i].oe + "\r\nNo Premium Code\r\n" + input.data[i].aisin_sub_premium_code;
                 } else if (
                     (input.data[i].aisin_premium_code!=="" && input.data[i].aisin_premium_code !== undefined && input.data[i].aisin_premium_code !== null)
                     &&

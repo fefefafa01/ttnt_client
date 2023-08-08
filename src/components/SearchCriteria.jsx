@@ -1537,7 +1537,7 @@ function SelectEngineCode(input) {
         } else if (selectedOption === "Select Allclear all") {
             selectedOption = "Select All";
         }
-
+        
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
