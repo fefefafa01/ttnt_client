@@ -1275,14 +1275,14 @@ function ReportPage(props) {
                                         disableSwap
                                     />
                                 </div>
-                            </div>
-                            <div className="export-btn">
-                                <button
-                                    className="export"
-                                    onClick={handleDownload}
-                                >
-                                    Export Data
-                                </button>
+                                <div className="export-btn">
+                                    <button
+                                        className="export"
+                                        onClick={handleDownload}
+                                    >
+                                        Export Data
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -132,43 +132,50 @@ function ProductPeriod(props) {
 
     return (
         <div className="tab2">
-            <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
-                <div
-                    style={{ marginTop: "10px", marginLeft: "10px" }}
-                    className="item"
-                >
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "50% 50%",
+                }}
+            >
+                <div style={{ padding: "10px" }} className="item ">
                     <BrandCoverage formValues={formValues} />
                 </div>
                 <div
-                    style={{ marginTop: "10px", marginLeft: "10px" }}
-                    className="item coverage-summary"
+                    style={{
+                        display: "grid",
+                        gridTemplateRows: "50% 50%",
+                        padding: "10px",
+                    }}
                 >
-                    <div className="summary-label">
-                        <p>AISIN Total Coverage Summary</p>
-                    </div>
-                    <div className="summary-item">
-                        <div className="col ">
-                            <p>Total Market</p>
-                            <p className="item">{summary.sum}</p>
+                    <div className="item coverage-summary">
+                        <div className="summary-label">
+                            <p>AISIN Total Coverage Summary</p>
                         </div>
-                        <div className="col ">
-                            <p>Total Coverage</p>
-                            <p className="item">{summary.coverage}</p>
-                        </div>
-                        <div className="col ">
-                            <p>Total % Coverage</p>
-                            <ReactApexChart
-                                id={
-                                    series <= 50
-                                        ? "gauge-chart1"
-                                        : series < 90
-                                        ? "gauge-chart2"
-                                        : "gauge-chart3"
-                                }
-                                options={options}
-                                series={series}
-                                type="radialBar"
-                            />
+                        <div className="summary-item">
+                            <div className="col ">
+                                <p>Total Market</p>
+                                <p className="item">{summary.sum}</p>
+                            </div>
+                            <div className="col ">
+                                <p>Total Coverage</p>
+                                <p className="item">{summary.coverage}</p>
+                            </div>
+                            <div className="col ">
+                                <p>Total % Coverage</p>
+                                <ReactApexChart
+                                    id={
+                                        series <= 50
+                                            ? "gauge-chart1"
+                                            : series < 90
+                                            ? "gauge-chart2"
+                                            : "gauge-chart3"
+                                    }
+                                    options={options}
+                                    series={series}
+                                    type="radialBar"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

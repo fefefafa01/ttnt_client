@@ -127,8 +127,11 @@ function PartCoverage(props) {
                 categories: partName,
                 labels: {
                     show: true,
+                    rotate: -45,
+                    rotateAlways: true,
+                    trim: true,
                     style: {
-                        fontSize: "0.5em", // Set the desired font size for x-axis labels
+                        fontSize: "0.55em", // Set the desired font size for x-axis labels
                         colors: ["#000000"],
                     },
                 },
@@ -162,7 +165,20 @@ function PartCoverage(props) {
                 enabled: false, // Set to false to hide the tooltip box on hover
             },
             grid: {
-                row: false, // Set to false to make the grid column-wise
+                xaxis: {
+                    lines: {
+                        show: true,
+                    },
+                },
+                yaxis: {
+                    lines: {
+                        show: false,
+                    },
+                },
+                padding: {
+                    right: 25,
+                    left: 15,
+                },
             },
         },
     });

@@ -138,11 +138,6 @@ function BrandCoverage(props) {
                     },
                     offsetY: 20,
                 },
-                gridLines: {
-                    show: true, // Set to true to display grid lines for x-axis
-                    offsetX: 0,
-                    offsetY: 0,
-                },
             },
             yaxis: {
                 categories: brandName,
@@ -161,11 +156,6 @@ function BrandCoverage(props) {
                         fontWeight: "bold", // Set the font weight for the y-axis label
                     },
                 },
-                gridLines: {
-                    show: true, // Set to true to enable grid lines for the x-axis
-                    color: "#e0e0e0", // Customize the color of the grid lines (optional)
-                    strokeDashArray: 0, // Set the stroke dash array (optional)
-                },
             },
             title: {
                 text: "Product Coverage by % Brand", // Set the main title of the chart
@@ -177,6 +167,22 @@ function BrandCoverage(props) {
             },
             tooltip: {
                 enabled: false, // Set to false to hide the tooltip box on hover
+            },
+            grid: {
+                xaxis: {
+                    lines: {
+                        show: true,
+                    },
+                },
+                yaxis: {
+                    lines: {
+                        show: false,
+                    },
+                },
+                padding: {
+                    right: 25,
+                    left: 15,
+                },
             },
         },
     });
