@@ -1,16 +1,16 @@
 .sidebar {
     position: absolute;
     background-color: #b0c4e4;
-    top: 12vh;
-    left: -470px;
+    top: 12%;
+    left: -26%;
     margin-left: 0px;
-    height: calc(100% - 13vh);
-    width: 450px;
+    height: 87%;
+    width: 25%;
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 20px;
+    margin-left: 1%;
     transition: left 0.5s ease-in-out;
 }
 
@@ -39,9 +39,9 @@
     left: 0;
     ~ {
         .wrappers {
-            width: calc(100% - 495px);
+            width: 72%;
             height: calc(100% - 13vh);
-            left: 490px;
+            left: 27%;
             transition: all 0.5s ease-in-out;
         }
     }
@@ -50,10 +50,12 @@
     color: #001a71;
     justify-self: flex-start;
     font-weight: 700;
+    font-size: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-align: left;
     p {
         padding-top: 10px;
         padding-left: 20px;
@@ -113,10 +115,17 @@
     padding-bottom: 10px;
     border: none;
     font-size: 15px;
+    text-align: left;
     p {
         margin-top: 15px;
         justify-self: flex-start;
         align-self: center;
+        display: flex;
+        justify-content: flex-start;
+        width: 45%;
+    }
+    span {
+        width: 55%;
     }
 }
 .subSearchbtn {
@@ -183,7 +192,7 @@
     height: 50px;
 }
 .selectDropdown {
-    width: 200px;
+    width: 100%;
     height: auto;
     position: relative;
 }
@@ -201,6 +210,10 @@
     transform: 0.3s linear;
     img {
         height: 30px;
+    }
+    span {
+        display: flex;
+        justify-items: flex-start;
     }
 }
 .selectDropdown.active {
@@ -272,86 +285,6 @@
     color: grey;
 }
 
-@media screen and (max-width: 1024px) {
-    .sidebar {
-        width: 380px;
-    }
-    .sidebar-toggle {
-        right: -150px;
-    }
-    .sidebar.open {
-        ~ {
-            .wrappers {
-                width: calc(100% - 420px);
-                left: 420px;
-            }
-        }
-    }
-    .searchBox {
-        width: calc(100% - 40px);
-        height: 40px;
-        text-align: left;
-        a {
-            font-size: 0.8em;
-        }
-    }
-    .subSearchbtn {
-        width: calc(100% - 40px);
-    }
-    .submitbtn {
-        margin: 20px 0px 20px 20px;
-    }
-    #Submit {
-        width: 250px;
-        height: 40px;
-    }
-    #Clear {
-        width: 170px;
-        height: 40px;
-    }
-}
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 300px;
-    }
-    .sidebar-toggle {
-        right: -250px;
-    }
-    .sidebar.open {
-        ~ {
-            .wrappers {
-                width: calc(100% - 320px);
-                left: 320px;
-            }
-        }
-    }
-    .searchBox {
-        width: calc(100% - 50px);
-        height: 40px;
-        text-align: left;
-        a {
-            font-size: 0.8em;
-        }
-    }
-    .searchScroll {
-        height: 98%;
-    }
-    .select-css {
-        width: 100px;
-    }
-    .subSearchbtn {
-        height: 30px;
-        width: calc(100% - 50px);
-    }
-    .submitbtn {
-        margin: 20px 0px 5px 20px;
-    }
-    #Submit {
-        width: 250px;
-        height: 35px;
-    }
-    #Clear {
-        width: 100px;
-        height: 35px;
-    }
-}
+
+
+

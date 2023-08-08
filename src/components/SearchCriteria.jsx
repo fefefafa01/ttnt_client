@@ -78,10 +78,8 @@ function SelectSpeed(input) {
             input.setSpd("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -96,7 +94,7 @@ function SelectSpeed(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.speed = selectedValueOptions;
-            // console.log(initialValues.speed); 
+            console.log(initialValues.speed);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -109,7 +107,7 @@ function SelectSpeed(input) {
             input.setSpd(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.speed = ""
             else initialValues.speed = selectedValueOptions;
-            // console.log(initialValues.speed);
+            console.log(initialValues.speed);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -121,7 +119,7 @@ function SelectSpeed(input) {
             const selectedValueOptions = [...input.update];
             initialValues.speed = selectedValueOptions;
             input.setSpd(selectedValueOptions.join(", "));
-            // console.log(initialValues.speed);
+            console.log(initialValues.speed);
             return;
         }
     };
@@ -268,10 +266,8 @@ function SelectYear(input) {
             input.setYear("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -286,7 +282,7 @@ function SelectYear(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.year = selectedValueOptions;
-            // console.log(initialValues.year);
+            console.log(initialValues.year);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -299,7 +295,7 @@ function SelectYear(input) {
             input.setYear(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.year = ""
             else initialValues.year = selectedValueOptions;
-            // console.log(initialValues.year);
+            console.log(initialValues.year);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -311,7 +307,7 @@ function SelectYear(input) {
             const selectedValueOptions = [...input.update];
             input.setYear(selectedValueOptions.join(", "));
             initialValues.year = selectedValueOptions;
-            // console.log(initialValues.year);
+            console.log(initialValues.year);
             return;
         }
     };
@@ -494,11 +490,8 @@ function SelectCountries(input) {
             input.setCountry("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-        
-        if (
+        else if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
@@ -512,7 +505,7 @@ function SelectCountries(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.country_name = selectedValueOptions;
-            // console.log(initialValues.country_name);
+            console.log(initialValues.country_name);
             return
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -525,7 +518,7 @@ function SelectCountries(input) {
             input.setCountry(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.country_name = ""
             else initialValues.country_name = selectedValueOptions;
-            // console.log(initialValues.country_name);
+            console.log(initialValues.country_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -537,7 +530,7 @@ function SelectCountries(input) {
             const selectedValueOptions = [...input.update];
             input.setCountry(selectedValueOptions.join(", "));
             initialValues.country_name = selectedValueOptions;
-            // console.log(initialValues.country_name);
+            console.log(initialValues.country_name);
             return;
         }
     };
@@ -701,10 +694,8 @@ function SelectCarMaker(input) {
             input.setMaker("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -719,7 +710,7 @@ function SelectCarMaker(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.manufacturer_name = selectedValueOptions;
-            // console.log(initialValues.manufacturer_name);
+            console.log(initialValues.manufacturer_name);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -732,7 +723,7 @@ function SelectCarMaker(input) {
             input.setMaker(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.manufacturer_name = ""
             else initialValues.manufacturer_name = selectedValueOptions;
-            // console.log(initialValues.manufacturer_name);
+            console.log(initialValues.manufacturer_name);
             
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
@@ -745,7 +736,7 @@ function SelectCarMaker(input) {
             const selectedValueOptions = [...input.update];
             input.setMaker(selectedValueOptions.join(", "));
             initialValues.manufacturer_name = selectedValueOptions;
-            // console.log(initialValues.manufacturer_name);
+            console.log(initialValues.manufacturer_name);
             return;
         }
     };
@@ -911,11 +902,8 @@ function SelectModelName(input) {
             input.setName("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-        
-        if (
+        else if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
@@ -929,7 +917,7 @@ function SelectModelName(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.car_model_name = selectedValueOptions;
-            // console.log(initialValues.car_model_name);
+            console.log(initialValues.car_model_name);
             return
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -943,7 +931,7 @@ function SelectModelName(input) {
             input.setName(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.car_model_name = ""
             else initialValues.car_model_name = selectedValueOptions;
-            // console.log(initialValues.car_model_name);
+            console.log(initialValues.car_model_name);
             return
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -955,7 +943,7 @@ function SelectModelName(input) {
             const selectedValueOptions = [...input.update];
             input.setName(selectedValueOptions.join(", "));
             initialValues.car_model_name = selectedValueOptions;
-            // console.log(initialValues.car_model_name);
+            console.log(initialValues.car_model_name);
             return
         }
         
@@ -1120,10 +1108,8 @@ function SelectModelCode(input) {
             input.setCode("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1138,7 +1124,7 @@ function SelectModelCode(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.model_code = selectedValueOptions;
-            // console.log(initialValues.model_code);
+            console.log(initialValues.model_code);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -1151,7 +1137,7 @@ function SelectModelCode(input) {
             input.setCode(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.model_code = ""
             else initialValues.model_code = selectedValueOptions;
-            // console.log(initialValues.model_code);
+            console.log(initialValues.model_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -1163,7 +1149,7 @@ function SelectModelCode(input) {
             const selectedValueOptions = [...input.update];
             input.setCode(selectedValueOptions.join(", "));
             initialValues.model_code = selectedValueOptions;
-            // console.log(initialValues.model_code);
+            console.log(initialValues.model_code);
             return;
         }
     };
@@ -1327,10 +1313,8 @@ function SelectPosition(input) {
             input.setPosition("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1345,7 +1329,7 @@ function SelectPosition(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.drivers_position = selectedValueOptions;
-            //console.log(initialValues.drivers_position);
+            console.log(initialValues.drivers_position);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -1358,7 +1342,7 @@ function SelectPosition(input) {
             input.setPosition(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.drivers_position = ""
             else initialValues.drivers_position = selectedValueOptions;
-            //console.log(initialValues.drivers_position);
+            console.log(initialValues.drivers_position);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -1370,7 +1354,7 @@ function SelectPosition(input) {
             const selectedValueOptions = [...input.update];
             input.setPosition(selectedValueOptions.join(", "));
             initialValues.drivers_position = selectedValueOptions;
-            //console.log(initialValues.drivers_position);
+            console.log(initialValues.drivers_position);
             return;
         }
     };
@@ -1534,10 +1518,8 @@ function SelectEngineCode(input) {
             input.setEngine("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-        
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1552,7 +1534,7 @@ function SelectEngineCode(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.engine_model = selectedValueOptions;
-            //console.log(initialValues.engine_model);
+            console.log(initialValues.engine_model);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -1565,7 +1547,7 @@ function SelectEngineCode(input) {
             input.setEngine(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.engine_model = ""
             else initialValues.engine_model = selectedValueOptions;
-            //console.log(initialValues.engine_model);
+            console.log(initialValues.engine_model);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -1577,7 +1559,7 @@ function SelectEngineCode(input) {
             const selectedValueOptions = [...input.update];
             input.setEngine(selectedValueOptions.join(", "));
             initialValues.engine_model = selectedValueOptions;
-            //console.log(initialValues.engine_model);
+            console.log(initialValues.engine_model);
             return;
         }
     };
@@ -1741,10 +1723,8 @@ function SelectDisplacement(input) {
             input.setDisplacement("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1759,7 +1739,7 @@ function SelectDisplacement(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.displacement_code = selectedValueOptions;
-            //console.log(initialValues.displacement_code);
+            console.log(initialValues.displacement_code);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -1772,7 +1752,7 @@ function SelectDisplacement(input) {
             input.setDisplacement(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.displacement_code = ""
             else initialValues.displacement_code = selectedValueOptions;
-            //console.log(initialValues.displacement_code);
+            console.log(initialValues.displacement_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -1784,7 +1764,7 @@ function SelectDisplacement(input) {
             const selectedValueOptions = [...input.update];
             input.setDisplacement(selectedValueOptions.join(", "));
             initialValues.displacement_code = selectedValueOptions;
-            //console.log(initialValues.displacement_code);
+            console.log(initialValues.displacement_code);
             return;
         }
     };
@@ -1948,10 +1928,8 @@ function SelectFuel(input) {
             input.setFuel("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -1966,7 +1944,7 @@ function SelectFuel(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.fuel_type = selectedValueOptions;
-            //console.log(initialValues.fuel_type);
+            console.log(initialValues.fuel_type);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -1979,7 +1957,7 @@ function SelectFuel(input) {
             input.setFuel(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.fuel_type = ""
             else initialValues.fuel_type = selectedValueOptions;
-            //console.log(initialValues.fuel_type);
+            console.log(initialValues.fuel_type);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -1991,7 +1969,7 @@ function SelectFuel(input) {
             const selectedValueOptions = [...input.update];
             input.setFuel(selectedValueOptions.join(", "));
             initialValues.fuel_type = selectedValueOptions;
-            //console.log(initialValues.fuel_type);
+            console.log(initialValues.fuel_type);
             return;
         }
     };
@@ -2155,10 +2133,8 @@ function SelectTransmission(input) {
             input.setTrans("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -2173,7 +2149,7 @@ function SelectTransmission(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.transmission_type = selectedValueOptions;
-            //console.log(initialValues.transmission_type);
+            console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -2186,7 +2162,7 @@ function SelectTransmission(input) {
             input.setTrans(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.transmission_type = ""
             else initialValues.transmission_type = selectedValueOptions;
-            //console.log(initialValues.transmission_type);
+            console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -2198,7 +2174,7 @@ function SelectTransmission(input) {
             const selectedValueOptions = [...input.update];
             input.setTrans(selectedValueOptions.join(", "));
             initialValues.transmission_type = selectedValueOptions;
-            //console.log(initialValues.transmission_type);
+            console.log(initialValues.transmission_type);
             return;
         }
     };
@@ -2362,15 +2338,12 @@ function SelectDrivertrain(input) {
             input.setTrain("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
         ) {
-            console.log("AAAA")
             const updatedSelectedOptions = [...drivetrainNames];
             input.setUpdate(updatedSelectedOptions);
             const selectedValueOptions = [...updatedSelectedOptions];
@@ -2381,7 +2354,7 @@ function SelectDrivertrain(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.drivetrain = selectedValueOptions;
-            //console.log(initialValues.drivetrain);
+            console.log(initialValues.drivetrain);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -2394,7 +2367,7 @@ function SelectDrivertrain(input) {
             input.setTrain(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.drivetrain = ""
             else initialValues.drivetrain = selectedValueOptions;
-            //console.log(initialValues.drivetrain);
+            console.log(initialValues.drivetrain);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -2406,7 +2379,7 @@ function SelectDrivertrain(input) {
             const selectedValueOptions = [...input.update];
             input.setTrain(selectedValueOptions.join(", "));
             initialValues.drivetrain = selectedValueOptions;
-            //console.log(initialValues.drivetrain);
+            console.log(initialValues.drivetrain);
             return;
         }
     };
@@ -2570,10 +2543,8 @@ function SelectPartName(input) {
             input.setPart("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -2588,7 +2559,7 @@ function SelectPartName(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.aisin_part_name = selectedValueOptions;
-            //console.log(initialValues.aisin_part_name);
+            console.log(initialValues.aisin_part_name);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -2601,7 +2572,7 @@ function SelectPartName(input) {
             input.setPart(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.aisin_part_name = ""
             else initialValues.aisin_part_name = selectedValueOptions;
-            //console.log(initialValues.aisin_part_name);
+            console.log(initialValues.aisin_part_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -2613,7 +2584,7 @@ function SelectPartName(input) {
             const selectedValueOptions = [...input.update];
             input.setPart(selectedValueOptions.join(", "));
             initialValues.aisin_part_name = selectedValueOptions;
-            //console.log(initialValues.aisin_part_name);
+            console.log(initialValues.aisin_part_name);
             return;
         }
     };
@@ -2777,10 +2748,8 @@ function SelectOE(input) {
             input.setOe("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -2795,7 +2764,7 @@ function SelectOE(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.part_code = selectedValueOptions;
-            //console.log(initialValues.part_code);
+            console.log(initialValues.part_code);
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
                 (name) => name !== optionToRemove
@@ -2807,7 +2776,7 @@ function SelectOE(input) {
             input.setOe(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.part_code = ""
             else initialValues.part_code = selectedValueOptions;
-            //console.log(initialValues.part_code);
+            console.log(initialValues.part_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -2819,7 +2788,7 @@ function SelectOE(input) {
             const selectedValueOptions = [...input.update];
             input.setOe(selectedValueOptions.join(", "));
             initialValues.part_code = selectedValueOptions;
-            //console.log(initialValues.part_code);
+            console.log(initialValues.part_code);
             return;
         }
     };
@@ -2984,10 +2953,8 @@ function SelectAISIN(input) {
             input.setAisin("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -3002,7 +2969,7 @@ function SelectAISIN(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.aisin_premium_code = selectedValueOptions;
-            //console.log(initialValues.aisin_premium_code);
+            console.log(initialValues.aisin_premium_code);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -3015,7 +2982,7 @@ function SelectAISIN(input) {
             input.setAisin(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.aisin_premium_code = ""
             else initialValues.aisin_premium_code = selectedValueOptions;
-            //console.log(initialValues.aisin_premium_code);
+            console.log(initialValues.aisin_premium_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -3027,7 +2994,7 @@ function SelectAISIN(input) {
             const selectedValueOptions = [...input.update];
             input.setAisin(selectedValueOptions.join(", "));
             initialValues.aisin_premium_code = selectedValueOptions;
-            //console.log(initialValues.aisin_premium_code);
+            console.log(initialValues.aisin_premium_code);
             return;
         }
     };
@@ -3191,10 +3158,8 @@ function SelectCompetitor(input) {
             input.setComp("");
             input.setUpdate([])
             return
-        } else if (selectedOption === "Select Allclear all") {
-            selectedOption = "Select All";
         }
-
+        else
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -3209,7 +3174,7 @@ function SelectCompetitor(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.competiter_part_code = selectedValueOptions;
-            //console.log(initialValues.competiter_part_code);
+            console.log(initialValues.competiter_part_code);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -3222,7 +3187,7 @@ function SelectCompetitor(input) {
             input.setComp(selectedValueOptions.join(", "));
             if(selectedValueOptions.length === 0) initialValues.competiter_part_code = ""
             else initialValues.competiter_part_code = selectedValueOptions;
-            //console.log(initialValues.competiter_part_code);
+            console.log(initialValues.competiter_part_code);
             return;
         } else if (selectedOption.slice(-5) !== "clear" && (selectedOption.slice(-9) !== "clear all")) {
             const index = input.update.indexOf(selectedOption);
@@ -3234,7 +3199,7 @@ function SelectCompetitor(input) {
             const selectedValueOptions = [...input.update];
             input.setComp(selectedValueOptions.join(", "));
             initialValues.competiter_part_code = selectedValueOptions;
-            //console.log(initialValues.competiter_part_code);
+            console.log(initialValues.competiter_part_code);
             return;
         }
     };
@@ -3395,7 +3360,7 @@ const SearchCriteria = (props) => {
             )
             count = 0;
         }
-        console.log("Submitted Form:", formValues.current)
+        console.log(formValues)
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -3423,7 +3388,7 @@ const SearchCriteria = (props) => {
                     setQueryingcrit(false);
                     return;
                 } else {
-                    console.log("Data table Sample: ",data.table[0],"\r\nData table length: ",data.table.length);
+                    console.log(data.table);
                     props.onAdd(data.table, count);
                     setQueryingcrit(false);
                     return;
