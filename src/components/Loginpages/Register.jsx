@@ -1,7 +1,6 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { React, useState, useEffect, useContext } from "react";
 import { Changer } from "../Languages/LanguageChange";
-import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
 import { backlocale, japregex, vietregex } from "constants/constindex";
@@ -209,6 +208,10 @@ function Register() {
         }
     }, [formErrors]);
 
+    const handlebacklog = () => {
+        window.location.assign("/login");
+    }
+
     return (
         <>
             {vad && (
@@ -348,10 +351,10 @@ function Register() {
                             <p>
                                 <Changer inp="please log in" />
                             </p>
-                            <button className="regbackbtn" type="submit">
-                                <Link className="back_login" to="/login">
+                            <button className="regbackbtn" onClick={handlebacklog}>
+                                <div className="back_login">
                                     <Changer inp="Go to Login" />
-                                </Link>
+                                </div>
                             </button>
                         </span>
                     </div>
