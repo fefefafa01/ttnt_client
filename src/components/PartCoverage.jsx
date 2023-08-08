@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./comp.styles/brandCoverage.scss";
+import "./comp.styles/partCoverage.scss";
 import { backlocale } from "constants/constindex";
 import ReactApexChart from "react-apexcharts";
 
-function BrandCoverage(props) {
+function PartCoverage(props) {
     console.log(props.formValues);
     const [formValues, setFormValues] = useState(props.formValues);
 
@@ -12,7 +12,7 @@ function BrandCoverage(props) {
         setFormValues(props.formValues);
     }, [props]);
 
-    const [brandName, setBrandName] = useState([]);
+    const [partName, setPartName] = useState([]);
     const [rate, setRate] = useState([]);
 
     useEffect(() => {
@@ -39,8 +39,8 @@ function BrandCoverage(props) {
             })
             .then((data) => {
                 if (!data) return;
-                setBrandName(data.brandName);
-                setRate(data.coverageRate);
+                setPartName(data.partName);
+                setRate(data.coveragePart);
             });
     }, [props]);
 
@@ -59,16 +59,16 @@ function BrandCoverage(props) {
                 ...prevChartData.options,
                 xaxis: {
                     ...prevChartData.options.xaxis,
-                    categories: brandName,
+                    categories: partName,
                 },
             },
         }));
-    }, [brandName]);
+    }, [partName]);
 
     const [chartData, setChartData] = useState({
         series: [
             {
-                name: brandName,
+                name: partName,
                 data: rate,
             },
         ],
@@ -79,14 +79,12 @@ function BrandCoverage(props) {
                 toolbar: {
                     show: false, // Set to true to show the default chart toolbar
                 },
-                animations: {
-                    enabled: false, // Disable animations to prevent glitches with CSS transformations
-                },
             },
             plotOptions: {
                 bar: {
-                    borderRadius: 4,
-                    horizontal: true,
+                    borderRadius: 0,
+                    horizontal: false,
+                    columnWidth: "20px",
                     dataLabels: {
                         position: "top",
                     },
@@ -114,8 +112,7 @@ function BrandCoverage(props) {
             },
             dataLabels: {
                 enabled: true,
-                offsetX: 15,
-                offsetY: 10,
+                offsetY: -10,
                 style: {
                     fontSize: "0.5em",
                     colors: ["#000000"],
@@ -124,69 +121,58 @@ function BrandCoverage(props) {
             },
 
             xaxis: {
+                lines: {
+                    show: true,
+                },
+                categories: partName,
                 labels: {
+                    show: true,
                     style: {
                         fontSize: "0.5em", // Set the desired font size for x-axis labels
                         colors: ["#000000"],
                     },
-                },
-                title: {
-                    text: "Total Percent Coverage", // Set the x-axis label
-                    style: {
-                        fontSize: "16px", // Set the font size for the x-axis label
-                        fontWeight: "bold", // Set the font weight for the x-axis label
-                    },
-                    offsetY: 20,
-                },
-                gridLines: {
-                    show: true, // Set to true to display grid lines for x-axis
-                    offsetX: 0,
-                    offsetY: 0,
                 },
             },
             yaxis: {
-                categories: brandName,
                 labels: {
-                    style: {
-                        fontSize: "0.5em", // Set the desired font size for x-axis labels
-                        colors: ["#000000"],
-                    },
+                    show: false,
                 },
+
                 min: 0,
                 max: 100,
-                title: {
-                    text: "Maker", // Set the y-axis label
-                    style: {
-                        fontSize: "16px", // Set the font size for the y-axis label
-                        fontWeight: "bold", // Set the font weight for the y-axis label
-                    },
-                },
-                gridLines: {
-                    show: true, // Set to true to enable grid lines for the x-axis
-                    color: "#e0e0e0", // Customize the color of the grid lines (optional)
-                    strokeDashArray: 0, // Set the stroke dash array (optional)
-                },
             },
             title: {
-                text: "Product Coverage by % Brand", // Set the main title of the chart
+                text: "% COVERAGE", // Set the main title of the chart
                 align: "center", // Set the alignment of the title (left, center, or right)
                 style: {
                     fontSize: "15px", // Set the font size for the title
-                    offsetY: 10,
+                    fontWeight: "bold",
+                },
+            },
+            subtitle: {
+                text: "(DEFAULT ALL BRAND)", // Add your secondary line of text here
+                align: "center", // Align the subtitle in the center
+                offsetY: 20, // Adjust the vertical position of the subtitle
+                style: {
+                    fontSize: "15px", // Set the font size for the title
+                    fontWeight: "bold",
                 },
             },
             tooltip: {
                 enabled: false, // Set to false to hide the tooltip box on hover
+            },
+            grid: {
+                row: false, // Set to false to make the grid column-wise
             },
         },
     });
 
     return (
         <>
-            <div className="summary-label">
-                <p>AISIN Total Coverage Summary</p>
+            <div className="plabel">
+                <p>Product Coverage by Part Name</p>
             </div>
-            <div id="chart">
+            <div id="chartPart">
                 <ReactApexChart
                     options={chartData.options}
                     series={chartData.series}
@@ -198,4 +184,4 @@ function BrandCoverage(props) {
     );
 }
 
-export { BrandCoverage };
+export { PartCoverage };

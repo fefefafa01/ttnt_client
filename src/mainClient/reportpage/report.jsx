@@ -24,7 +24,7 @@ const initialValues = {
     part_name: "",
     part_group: "",
     end_year: currentYear,
-    start_year: currentYear,
+    start_year: 0,
     start_cover: 0,
     end_cover: 100,
 };

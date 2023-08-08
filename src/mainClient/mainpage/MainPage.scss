@@ -70,42 +70,53 @@ p.label {
         margin-bottom: -10px;
     }
 }
-.input-box {
-    position: relative;
-    width: 80%;
-    height: 50px;
-    border-bottom: 2px solid #172685;
-    display: flex;
-    margin: 30px 10% 30px 10%;
-    input {
+.fill {
+    padding: 10px 30px;
+    .input-box {
+        position: relative;
         width: 100%;
-        height: 100%;
-        background: transparent;
-        border: none;
-        outline: none;
-        margin-top: 5px;
-        font-size: 1.2em;
-        &:-webkit-autofill {
-            -webkit-box-shadow: transparent;
+        height: 50px;
+        border-bottom: 2px solid #172685;
+        display: flex;
+        input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            margin-top: 5px;
+            font-size: 1.2em;
+            &:-webkit-autofill {
+                -webkit-box-shadow: transparent;
+            }
+            &::placeholder {
+                color: #64a5b4;
+            }
         }
-        &::placeholder {
-            color: #64a5b4;
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        input:-webkit-autofill::first-line {
+            font-size: 1.2em !important;
         }
     }
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    textarea:-webkit-autofill,
-    textarea:-webkit-autofill:hover,
-    textarea:-webkit-autofill:focus,
-    select:-webkit-autofill,
-    select:-webkit-autofill:hover,
-    select:-webkit-autofill:focus {
-        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-        transition: background-color 5000s ease-in-out 0s;
-    }
-    input:-webkit-autofill::first-line {
-        font-size: 1.2em !important;
+    .error {
+        text-align: left;
+        float: left;
+        color: red;
+        font-size: 0.85em;
+        span {
+            color: red;
+        }
     }
 }
 
@@ -121,43 +132,30 @@ input.name-box {
         color: #64a5b4;
     }
 }
-.error {
-    margin: -20px 10% 0px 10%;
-    text-align: left;
-    float: left;
-    color: red;
-    font-size: 0.85em;
-    span {
-        color: red;
+
+.full-name {
+    padding: 10px 30px;
+    .name {
+        display: flex;
+        width: 100%;
+        .left {
+            width: 100%;
+            padding-right: 10px;
+            input.name-left {
+                width: 100%;
+            }
+        }
+        .right {
+            width: 100%;
+            input.name-right {
+                width: 100%;
+            }
+        }
     }
 }
-.full-name {
-    margin: 35px 10% 0px 10%;
-    display: block;
-    position: relative;
-}
-.name {
-    display: flex;
-}
 
-.left {
-    max-width: 55%;
-    min-width: 50%;
-}
-
-.right {
-    max-width: 55%;
-    min-width: 50%;
-}
-input.name-left {
-    width: 90%;
-    float: left;
-}
-input.name-right {
-    width: 100%;
-    float: right;
-}
-.error_last_name, .error_first_name {
+.error_last_name,
+.error_first_name {
     margin-top: 10px;
     float: left;
     color: red;
@@ -186,7 +184,6 @@ input.name-right {
     color: #64a5b4;
     scale: 150%;
     padding-bottom: 40px;
-    padding-right: 20px;
 }
 .remember-forgot {
     font-size: 0.9em;

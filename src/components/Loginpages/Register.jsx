@@ -218,18 +218,20 @@ function Register() {
                             <Changer inp="Create New Account" />
                         </h2>
                         <form action="#" onSubmit={handleSubmit}>
-                            <div className="input-box">
-                                <input
-                                    type="text"
-                                    name="email"
-                                    placeholder={t("Email Address")}
-                                    value={formValues.email}
-                                    onChange={handleChange}
-                                    onBlur={() => handleBlur("email")}
-                                />
-                            </div>
-                            <div className="error">
-                                <span>{formErrors.email}</span>
+                            <div className="fill">
+                                <div className="input-box">
+                                    <input
+                                        type="text"
+                                        name="email"
+                                        placeholder={t("Email Address")}
+                                        value={formValues.email}
+                                        onChange={handleChange}
+                                        onBlur={() => handleBlur("email")}
+                                    />
+                                </div>
+                                <div className="error">
+                                    <span>{formErrors.email}</span>
+                                </div>
                             </div>
                             <div className="full-name">
                                 <div className="name">
@@ -266,53 +268,57 @@ function Register() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="input-box">
-                                <input
-                                    name="password"
-                                    value={formValues.password}
-                                    type={visible ? "text" : "password"}
-                                    placeholder={t("Password")}
-                                    onChange={handleChange}
-                                    onBlur={() => handleBlur("password")}
-                                />
-                                <div
-                                    className="p-2"
-                                    onMouseDown={() => setVisible(true)}
-                                    onMouseUp={() => setVisible(false)}
-                                >
-                                    {visible ? (
-                                        <EyeOutlined className="eye" />
-                                    ) : (
-                                        <EyeInvisibleOutlined className="eye" />
-                                    )}
+                            <div className="fill">
+                                <div className="input-box">
+                                    <input
+                                        name="password"
+                                        value={formValues.password}
+                                        type={visible ? "text" : "password"}
+                                        placeholder={t("Password")}
+                                        onChange={handleChange}
+                                        onBlur={() => handleBlur("password")}
+                                    />
+                                    <div
+                                        className="p-2"
+                                        onMouseDown={() => setVisible(true)}
+                                        onMouseUp={() => setVisible(false)}
+                                    >
+                                        {visible ? (
+                                            <EyeOutlined className="eye" />
+                                        ) : (
+                                            <EyeInvisibleOutlined className="eye" />
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="error">
+                                    <span>{formErrors.password}</span>
                                 </div>
                             </div>
-                            <div className="error">
-                                <span>{formErrors.password}</span>
-                            </div>
-                            <div className="input-box">
-                                <input
-                                    name="confpassword"
-                                    value={formValues.confpassword}
-                                    type={confvisible ? "text" : "password"}
-                                    placeholder={t("Confirm Password")}
-                                    onChange={handleChange}
-                                    onBlur={() => handleBlur("confpass")}
-                                />
-                                <div
-                                    className="p-2"
-                                    onMouseDown={() => confsetVisible(true)}
-                                    onMouseUp={() => confsetVisible(false)}
-                                >
-                                    {confvisible ? (
-                                        <EyeOutlined className="eye" />
-                                    ) : (
-                                        <EyeInvisibleOutlined className="eye" />
-                                    )}
+                            <div className="fill">
+                                <div className="input-box">
+                                    <input
+                                        name="confpassword"
+                                        value={formValues.confpassword}
+                                        type={confvisible ? "text" : "password"}
+                                        placeholder={t("Confirm Password")}
+                                        onChange={handleChange}
+                                        onBlur={() => handleBlur("confpass")}
+                                    />
+                                    <div
+                                        className="p-2"
+                                        onMouseDown={() => confsetVisible(true)}
+                                        onMouseUp={() => confsetVisible(false)}
+                                    >
+                                        {confvisible ? (
+                                            <EyeOutlined className="eye" />
+                                        ) : (
+                                            <EyeInvisibleOutlined className="eye" />
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="error">
-                                <span>{formErrors.confpassword}</span>
+                                <div className="error">
+                                    <span>{formErrors.confpassword}</span>
+                                </div>
                             </div>
                             <p className="preg-error">
                                 {errormsg ? errormsg : null}
