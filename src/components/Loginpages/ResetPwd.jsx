@@ -278,10 +278,8 @@ function ResetPwd() {
                                 <p>
                                     <Changer inp="please log in" />
                                 </p>
-                                <button className="regbackbtn">
-                                    <Link className="back_login" to="/login">
-                                        <Changer inp="Go to Login" />
-                                    </Link>
+                                <button className="regbackbtn" onClick={handlebacklog}>
+                                    <Changer inp="Go to Login" />
                                 </button>
                             </span>
                         </div>
