@@ -4,7 +4,6 @@ import { backlocale } from "constants/constindex";
 import ReactApexChart from "react-apexcharts";
 
 function BrandCoverage(props) {
-    console.log(props.formValues);
     const [formValues, setFormValues] = useState(props.formValues);
 
     // Update formValues when the initialValues prop changes
@@ -41,6 +40,7 @@ function BrandCoverage(props) {
                 if (!data) return;
                 setBrandName(data.brandName);
                 setRate(data.coverageRate);
+                console.log(data.brandName);
             });
     }, [props]);
 

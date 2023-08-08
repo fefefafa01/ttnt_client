@@ -285,6 +285,7 @@ function Register() {
                                         className="p-2"
                                         onMouseDown={() => setVisible(true)}
                                         onMouseUp={() => setVisible(false)}
+                                        onMouseLeave={() => setVisible(false)}
                                     >
                                         {visible ? (
                                             <EyeOutlined className="eye" />
@@ -311,6 +312,7 @@ function Register() {
                                         className="p-2"
                                         onMouseDown={() => confsetVisible(true)}
                                         onMouseUp={() => confsetVisible(false)}
+                                        onMouseLeave={() => confsetVisible(false)}
                                     >
                                         {confvisible ? (
                                             <EyeOutlined className="eye" />

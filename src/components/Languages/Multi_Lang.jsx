@@ -86,6 +86,7 @@ function MultiLang() {
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
+                                        margin: "10px 0px 0px 0px",
                                     }}
                                 >
                                     <img
@@ -110,6 +111,7 @@ function MultiLang() {
                             }
                         />
                         <FormControlLabel
+                            style={{margin: "-25px 10px 0px -11px",}}
                             value="en"
                             control={
                                 <Radio
@@ -122,6 +124,7 @@ function MultiLang() {
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
+                                        margin: "10px 0px 0px 0px",
                                     }}
                                 >
                                     <img
@@ -223,6 +226,7 @@ function MultiLangHome() {
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
+                                        margin: "10px 0px 0px 0px",
                                     }}
                                 >
                                     <img
@@ -247,6 +251,7 @@ function MultiLangHome() {
                             }
                         />
                         <FormControlLabel
+                            style={{margin: "-25px 10px 0px -11px",}}
                             value="en"
                             control={
                                 <Radio
@@ -259,6 +264,7 @@ function MultiLangHome() {
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
+                                        margin: "10px 0px 0px 0px",
                                     }}
                                 >
                                     <img

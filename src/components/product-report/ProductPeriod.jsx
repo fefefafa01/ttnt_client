@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./productPeriod.scss";
 import { BrandCoverage } from "components/BrandCoverage";
 import { PartCoverage } from "components/PartCoverage";
+import { ProductCoverage } from "components/ProductCoverage";
+import { Dashboard } from "components/Dashboard";
 import { backlocale } from "constants/constindex";
 import ReactApexChart from "react-apexcharts";
 
@@ -148,6 +150,9 @@ function ProductPeriod(props) {
                         padding: "10px",
                     }}
                 >
+                    <div className="item" style={{ paddingBottom: "10px" }}>
+                        <Dashboard formValues={formValues} />
+                    </div>
                     <div className="item coverage-summary">
                         <div className="summary-label">
                             <p>AISIN Total Coverage Summary</p>
@@ -180,12 +185,23 @@ function ProductPeriod(props) {
                     </div>
                 </div>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "70% 30%" }}>
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "70% 30%",
+                }}
+            >
                 <div
-                    style={{ marginTop: "10px", marginLeft: "10px" }}
                     className="item"
+                    style={{ padding: "10px", height: "100%" }}
                 >
                     <PartCoverage formValues={formValues} />
+                </div>
+                <div
+                    className="item"
+                    style={{ padding: "10px", width: "fit-content" }}
+                >
+                    <ProductCoverage formValues={formValues} />
                 </div>
             </div>
         </div>

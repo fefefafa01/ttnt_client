@@ -9,10 +9,10 @@
     display: flex;
     transition: left 0s ease-in-out;
     z-index: 0;
+    padding-bottom: 20px;
 }
 .rtabs {
     height: 5vh;
-    margin-top: 10px;
     margin-left: 20px;
 }
 .report {
@@ -32,8 +32,9 @@
     padding-right: 10px;
 }
 .ant-tabs {
+    height: 100%;
     .ant-tabs-content {
-        height: 70vh;
+        height: 100%;
     }
 }
 .tab-panel {
@@ -41,7 +42,7 @@
     width: 100%;
     border: solid 1px black;
     background-color: #21303c;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     flex-direction: column;
     color: white;
     font-size: 2em;
@@ -62,14 +63,14 @@
 }
 .scroll-form-report {
     position: relative;
-    height: 82.5%;
+    height: 100%;
     width: 20%;
-    margin-top: 70px;
+    padding-top: 70px;
     overflow-y: scroll;
     display: block;
-    max-height: 98%;
     max-width: 99%;
-    padding-right: 15px;
+    padding-right: 25px;
+    padding-left: 20px;
 }
 #rscroll-export {
     &::-webkit-scrollbar {
@@ -85,7 +86,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 98%;
     .ant-tabs-tab.ant-tabs-tab-active {
         .ant-tabs-tab-btn {
             color: white;
@@ -126,8 +127,8 @@
 .sidebar-right {
     min-height: 100%;
     height: fit-content;
-    width: 85%;
-    margin-left: 40px;
+    width: 100%;
+
     border: solid 1px #21303c;
     background-color: #21303c;
     color: white;
