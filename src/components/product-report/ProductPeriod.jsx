@@ -66,16 +66,13 @@ function ProductPeriod(props) {
     }, [formValues]);
 
     // gauge chart
-    const [series, setSeries] = useState([]);
-    useEffect(
-        () => {
-            // Calculate the new value for series based on coverage_rate
-            const newSeries = [Number(summary.coverage_rate)];
-            setSeries(newSeries);
-        },
-        [summary.coverage_rate],
-        summary
-    );
+
+    const [series, setSeries] = useState([90]);
+
+    useEffect(() => {
+        setSeries([Number(summary.coverage_rate)]);
+    }, [summary.coverage_rate]);
+
     const [options, setOptions] = useState({
         chart: {
             type: "radialBar",
@@ -118,12 +115,21 @@ function ProductPeriod(props) {
             },
         },
         colors:
-            series < 50 ? ["#FF0000"] : series < 90 ? ["#FFFF00"] : ["#008000"],
+            series < 50 ? ["#FF0000"] : series < 90 ? ["#FFFB00"] : ["#00FF04"],
     });
-    const removeerror = true
-    if (!removeerror) {
-        setOptions(options)
-    }
+
+    useEffect(() => {
+        setOptions({
+            ...options,
+            colors:
+                series < 50
+                    ? ["#FF0000"]
+                    : series < 90
+                    ? ["#FFFB00"]
+                    : ["#00FF04"],
+        });
+    }, [series]);
+
     return (
         <div className="tab2">
             <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
@@ -155,7 +161,7 @@ function ProductPeriod(props) {
                                 id={
                                     series <= 50
                                         ? "gauge-chart1"
-                                        : series <= 90
+                                        : series < 90
                                         ? "gauge-chart2"
                                         : "gauge-chart3"
                                 }
