@@ -22,7 +22,7 @@ const initialValues = {
     part_name: "",
     part_group: "",
     end_year: currentYear,
-    start_year: currentYear,
+    start_year: 0,
     start_cover: 0,
     end_cover: 100,
 };
@@ -1275,14 +1275,14 @@ function ReportPage(props) {
                                         disableSwap
                                     />
                                 </div>
-                            </div>
-                            <div className="export-btn">
-                                <button
-                                    className="export"
-                                    onClick={handleDownload}
-                                >
-                                    Export Data
-                                </button>
+                                <div className="export-btn">
+                                    <button
+                                        className="export"
+                                        onClick={handleDownload}
+                                    >
+                                        Export Data
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

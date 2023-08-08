@@ -1,6 +1,11 @@
+.tab2 {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
 .coverage-summary {
     display: block;
-    width: 540px;
+    width: 100;
 }
 .summary-label {
     background-color: darkblue;

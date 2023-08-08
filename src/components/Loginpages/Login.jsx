@@ -179,50 +179,54 @@ function Login() {
                     <Changer inp="User Login" />
                 </h2>
                 <form action="#" onSubmit={handleSubmit}>
-                    <div className="input-box">
-                        <input
-                            type="text"
-                            name="email"
-                            placeholder={t("Email Address")}
-                            value={
-                                localStorage.expirationDate === Date()
-                                    ? ""
-                                    : formValues.email
-                            }
-                            onChange={handleChange}
-                            onBlur={() => handleBlur("email")}
-                        />
-                    </div>
-                    <div className="error">
-                        <span>{formErrors.email}</span>
-                    </div>
-                    <div className="input-box">
-                        <input
-                            name="password"
-                            value={
-                                localStorage.expirationDate === Date()
-                                    ? ""
-                                    : formValues.password
-                            }
-                            type={visible ? "text" : "password"}
-                            placeholder={t("Password")}
-                            onChange={handleChange}
-                            onBlur={() => handleBlur("password")}
-                        />
-                        <div
-                            className="p-2"
-                            onMouseDown={() => setVisible(true)}
-                            onMouseUp={() => setVisible(false)}
-                        >
-                            {visible ? (
-                                <EyeOutlined className="eye" />
-                            ) : (
-                                <EyeInvisibleOutlined className="eye" />
-                            )}
+                    <div className="fill">
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                name="email"
+                                placeholder={t("Email Address")}
+                                value={
+                                    localStorage.expirationDate === Date()
+                                        ? ""
+                                        : formValues.email
+                                }
+                                onChange={handleChange}
+                                onBlur={() => handleBlur("email")}
+                            />
+                        </div>
+                        <div className="error">
+                            <span>{formErrors.email}</span>
                         </div>
                     </div>
-                    <div className="error">
-                        <span>{formErrors.password}</span>
+                    <div className="fill">
+                        <div className="input-box">
+                            <input
+                                name="password"
+                                value={
+                                    localStorage.expirationDate === Date()
+                                        ? ""
+                                        : formValues.password
+                                }
+                                type={visible ? "text" : "password"}
+                                placeholder={t("Password")}
+                                onChange={handleChange}
+                                onBlur={() => handleBlur("password")}
+                            />
+                            <div
+                                className="p-2"
+                                onMouseDown={() => setVisible(true)}
+                                onMouseUp={() => setVisible(false)}
+                            >
+                                {visible ? (
+                                    <EyeOutlined className="eye" />
+                                ) : (
+                                    <EyeInvisibleOutlined className="eye" />
+                                )}
+                            </div>
+                        </div>
+                        <div className="error">
+                            <span>{formErrors.password}</span>
+                        </div>
                     </div>
                     <div className="remember-forgot">
                         <label htmlFor="">

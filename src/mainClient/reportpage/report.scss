@@ -35,10 +35,6 @@
     .ant-tabs-content {
         height: 70vh;
     }
-    #report-panel-2 {
-        display: grid;
-        grid-template-rows: 50% 50%;
-    }
 }
 .tab-panel {
     height: 100%;
@@ -67,12 +63,13 @@
 .scroll-form-report {
     position: relative;
     height: 82.5%;
-    width: 25%;
+    width: 20%;
     margin-top: 70px;
     overflow-y: scroll;
     display: block;
     max-height: 98%;
     max-width: 99%;
+    padding-right: 15px;
 }
 #rscroll-export {
     &::-webkit-scrollbar {
@@ -81,7 +78,7 @@
 }
 .report-content {
     display: block;
-    width: 75%;
+    width: 80%;
 }
 #report.ant-tabs {
     box-sizing: border-box;
@@ -128,7 +125,6 @@
 }
 .sidebar-right {
     min-height: 100%;
-    padding-right: 20px;
     height: fit-content;
     width: 85%;
     margin-left: 40px;
@@ -147,6 +143,7 @@
         margin-top: -10px;
         text-align: left;
         padding-left: 30px;
+        padding-right: 30px;
     }
 }
 
@@ -175,7 +172,7 @@
     font-weight: 500;
 }
 .selectDropdown-report {
-    width: 85%;
+    width: 100%;
     height: 30px;
     position: relative;
 }
@@ -261,6 +258,8 @@
     }
 }
 .from-to {
+    width: 100%;
+    height: 30px;
     margin-top: 30px;
     display: flex;
     align-items: center;
@@ -268,24 +267,31 @@
     font-size: 1.2em;
     font-weight: 500;
 }
+.to-input {
+    padding-left: 20px;
+}
 .from-input,
 .to-input {
+    height: 100%;
     display: flex;
     span {
         font-size: 1em;
+        width: fit-content;
     }
 }
 .from-year,
 .to-year {
-    height: 30px;
-    width: 80px;
+    right: 0px;
+    height: 100%;
+    width: 100%;
     margin-left: 10px;
     font-size: 1.2em;
     font-weight: 500;
 }
 
 .coverage {
-    margin-top: 50px;
+    text-align: center;
+    margin-top: 30px;
     font-weight: 500;
     font-size: 1.2em;
 }
@@ -314,9 +320,8 @@ span.css-eg0mwd-MuiSlider-thumb.Mui-active {
     box-shadow: none;
 }
 .export-btn {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    align-items: center;
+    margin-top: 10px;
+    text-align: center;
 }
 .export {
     background-color: darkblue;

@@ -13,7 +13,7 @@ function ProductOverview(input) {
     const [firstOpen, setFirstOpen] = useState(true);
     const [openOverall, setOpenOverall] = useState(true);
     if (firstOpen) {
-        let loc = backlocale + "overall/maker"
+        let loc = backlocale + "overall/maker";
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -47,7 +47,7 @@ function ProductOverview(input) {
             });
     }
     if (openOverall) {
-        let loc = backlocale + "overall/overallTable"
+        let loc = backlocale + "overall/overallTable";
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -153,13 +153,13 @@ function ProductOverview(input) {
                                     AT = Auto transmission
                                 </td>
                                 <th
-                                    colSpan={3}
+                                    colSpan={partMT.length}
                                     style={{ border: "3px solid black" }}
                                 >
                                     MT
                                 </th>
                                 <th
-                                    colSpan={7}
+                                    colSpan={partMTAT.length}
                                     style={{ border: "3px solid black" }}
                                 >
                                     MT&AT

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./productPeriod.scss";
 import { BrandCoverage } from "components/BrandCoverage";
+import { PartCoverage } from "components/PartCoverage";
 import { backlocale } from "constants/constindex";
 import ReactApexChart from "react-apexcharts";
 
@@ -35,7 +36,7 @@ function ProductPeriod(props) {
     }, [props]);
     useEffect(() => {
         console.log(formValues);
-        let loc = backlocale + "period/summary";
+        let loc = backlocale + "period/brandChart";
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -59,22 +60,19 @@ function ProductPeriod(props) {
             .then((data) => {
                 if (!data) return;
 
-                setSummary(data.summary);
-                console.log(data.summary);
+                setSummary(data.data);
+                console.log(data.data);
             });
     }, [formValues]);
 
     // gauge chart
-    const [series, setSeries] = useState([]);
-    useEffect(
-        () => {
-            // Calculate the new value for series based on coverage_rate
-            const newSeries = [Number(summary.coverage_rate)];
-            setSeries(newSeries);
-        },
-        [summary.coverage_rate],
-        summary
-    );
+
+    const [series, setSeries] = useState([90]);
+
+    useEffect(() => {
+        setSeries([Number(summary.coverage_rate)]);
+    }, [summary.coverage_rate]);
+
     const [options, setOptions] = useState({
         chart: {
             type: "radialBar",
@@ -117,45 +115,77 @@ function ProductPeriod(props) {
             },
         },
         colors:
-            series < 50 ? ["#FF0000"] : series < 90 ? ["#FFFF00"] : ["#008000"],
+            series < 50 ? ["#FF0000"] : series < 90 ? ["#FFFB00"] : ["#00FF04"],
     });
-    const removeerror = true
-    if (!removeerror) {
-        setOptions(options)
-    }
+
+    useEffect(() => {
+        setOptions({
+            ...options,
+            colors:
+                series < 50
+                    ? ["#FF0000"]
+                    : series < 90
+                    ? ["#FFFB00"]
+                    : ["#00FF04"],
+        });
+    }, [series]);
+
     return (
-        <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
-            <div className="item">
-                <BrandCoverage formValues={formValues} />
-            </div>
-            <div className="item coverage-summary">
-                <div className="summary-label">
-                    <p>AISIN Total Coverage Summary</p>
+        <div className="tab2">
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "50% 50%",
+                }}
+            >
+                <div style={{ padding: "10px" }} className="item ">
+                    <BrandCoverage formValues={formValues} />
                 </div>
-                <div className="summary-item">
-                    <div className="col ">
-                        <p>Total Market</p>
-                        <p className="item">{summary.sum}</p>
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateRows: "50% 50%",
+                        padding: "10px",
+                    }}
+                >
+                    <div className="item coverage-summary">
+                        <div className="summary-label">
+                            <p>AISIN Total Coverage Summary</p>
+                        </div>
+                        <div className="summary-item">
+                            <div className="col ">
+                                <p>Total Market</p>
+                                <p className="item">{summary.sum}</p>
+                            </div>
+                            <div className="col ">
+                                <p>Total Coverage</p>
+                                <p className="item">{summary.coverage}</p>
+                            </div>
+                            <div className="col ">
+                                <p>Total % Coverage</p>
+                                <ReactApexChart
+                                    id={
+                                        series <= 50
+                                            ? "gauge-chart1"
+                                            : series < 90
+                                            ? "gauge-chart2"
+                                            : "gauge-chart3"
+                                    }
+                                    options={options}
+                                    series={series}
+                                    type="radialBar"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className="col ">
-                        <p>Total Coverage</p>
-                        <p className="item">{summary.coverage}</p>
-                    </div>
-                    <div className="col ">
-                        <p>Total % Coverage</p>
-                        <ReactApexChart
-                            id={
-                                series <= 50
-                                    ? "gauge-chart1"
-                                    : series <= 90
-                                    ? "gauge-chart2"
-                                    : "gauge-chart3"
-                            }
-                            options={options}
-                            series={series}
-                            type="radialBar"
-                        />
-                    </div>
+                </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "70% 30%" }}>
+                <div
+                    style={{ marginTop: "10px", marginLeft: "10px" }}
+                    className="item"
+                >
+                    <PartCoverage formValues={formValues} />
                 </div>
             </div>
         </div>
