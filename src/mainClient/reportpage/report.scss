@@ -60,9 +60,9 @@
 }
 .scroll-form-report {
     position: relative;
-    height: 100%;
+    height: calc(100% - 69px);
     width: 20%;
-    padding-top: 70px;
+    margin-top: 69px;
     overflow-y: scroll;
     display: block;
     max-width: 99%;
@@ -143,6 +143,14 @@
         text-align: left;
         padding-left: 30px;
         padding-right: 30px;
+    }
+}
+
+@media screen and (max-width: 1092px) {
+    .sidebar-right {
+        p {
+            font-size: 0.9em;
+        }
     }
 }
 
@@ -273,6 +281,13 @@
 .to-input {
     height: 100%;
     display: flex;
+    .text-item {
+        text-align: left;
+        width: 40%;
+    }
+    .input-item {
+        width: 70%;
+    }
     span {
         font-size: 1em;
         width: fit-content;
@@ -283,9 +298,37 @@
     right: 0px;
     height: 100%;
     width: 100%;
-    margin-left: 10px;
     font-size: 1.2em;
     font-weight: 500;
+}
+@media screen and (max-width: 1092px) {
+    .from-input,
+    .to-input {
+        span {
+            font-size: 0.9em;
+        }
+    }
+}
+@media screen and (max-width: 1500px) {
+    .from-to {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        height: 50px;
+    }
+    .to-input {
+        padding-left: 0px;
+        padding-top: 5px;
+    }
+    .from-input {
+        padding-bottom: 5px;
+    }
+    .from-input,
+    .to-input {
+        width: 100%;
+        .input-item {
+            height: 30px;
+        }
+    }
 }
 
 .coverage {
@@ -293,6 +336,16 @@
     margin-top: 30px;
     font-weight: 500;
     font-size: 1.2em;
+}
+@media screen and (max-width: 1261px) {
+    .coverage {
+        font-size: 1em;
+    }
+}
+@media screen and (max-width: 1126px) {
+    .coverage {
+        font-size: 0.8em;
+    }
 }
 span.css-187mznn-MuiSlider-root {
     height: 10px;
@@ -328,6 +381,12 @@ span.css-eg0mwd-MuiSlider-thumb.Mui-active {
     border: transparent;
     border-radius: 5px;
     height: 40px;
-    width: 160px;
+    width: 80%;
     font-size: 1.2em;
+}
+
+@media screen and (max-width: 1140px) {
+    .export {
+        font-size: 0.9em;
+    }
 }

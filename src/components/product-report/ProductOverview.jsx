@@ -83,7 +83,7 @@ function ProductOverview(input) {
     }
 
     return (
-        <div>
+        <div className="tab1">
             <div className="coverage-report">
                 <p>Product Coverage report</p>
             </div>
@@ -140,7 +140,7 @@ function ProductOverview(input) {
                 </div>
                 <div className="col overall-part">
                     <table className="part-overall-table">
-                        <thead>
+                        <thead style={{ border: "solid 3px black" }}>
                             <tr>
                                 <td colSpan={3} style={{ textAlign: "left" }}>
                                     MT = manual transmission

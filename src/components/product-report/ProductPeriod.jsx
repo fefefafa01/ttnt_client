@@ -123,16 +123,37 @@ function ProductPeriod(props) {
         setSeries([Number(summary.coverage_rate)]);
     }, [summary.coverage_rate]);
 
+    const [chartHeight, setChartHeight] = useState("90%");
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 1100) {
+                setChartHeight("60px");
+            } else if (window.innerWidth <= 1180) {
+                setChartHeight("70px");
+            } else {
+                setChartHeight("80px");
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize(); // Initial height calculation
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     const [options, setOptions] = useState({
         chart: {
             type: "radialBar",
-            offsetY: 0,
             sparkline: {
                 enabled: true,
             },
         },
         plotOptions: {
             radialBar: {
+                offsetY: 5,
                 startAngle: -90,
                 endAngle: 90,
                 track: {
@@ -185,19 +206,13 @@ function ProductPeriod(props) {
             <div
                 style={{
                     display: "grid",
-                    gridTemplateColumns: "50% 50%",
+                    gridTemplateColumns: "50% 1fr",
                 }}
             >
                 <div style={{ padding: "10px" }} className="item ">
                     <BrandCoverage Brand={brandName} Rate={rate} />
                 </div>
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateRows: "50% 50%",
-                        padding: "10px",
-                    }}
-                >
+                <div className="monitor-column">
                     <div className="item" style={{ paddingBottom: "10px" }}>
                         <Dashboard
                             formValues={formValues}
@@ -229,6 +244,7 @@ function ProductPeriod(props) {
                                     }
                                     options={options}
                                     series={series}
+                                    height={chartHeight}
                                     type="radialBar"
                                 />
                             </div>
@@ -236,12 +252,7 @@ function ProductPeriod(props) {
                     </div>
                 </div>
             </div>
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "70% 30%",
-                }}
-            >
+            <div className="porduct-cov">
                 <div
                     className="item"
                     style={{ padding: "10px", height: "100%" }}

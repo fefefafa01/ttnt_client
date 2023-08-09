@@ -34,6 +34,21 @@ function BrandCoverage(props) {
         }));
     }, [brandName]);
 
+    const [chartHeight, setChartHeight] = useState("90%");
+
+    useEffect(() => {
+        const handleResize = () => {
+            setChartHeight("100%");
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize(); // Initial height calculation
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     const [chartData, setChartData] = useState({
         series: [
             {
@@ -166,7 +181,7 @@ function BrandCoverage(props) {
                     options={chartData.options}
                     series={chartData.series}
                     type="bar"
-                    height={"100%"}
+                    height={chartHeight}
                 />
             </div>
         </>

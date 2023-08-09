@@ -1207,21 +1207,29 @@ function ReportPage(props) {
                                     />
                                 </div>
                                 <div className="from-to">
-                                    <div className="from-input col">
-                                        <span>From</span>
-                                        <input
-                                            type="year"
-                                            className="from-year"
-                                            onInput={handleChangeStYear}
-                                        />
+                                    <div className="from-input col-6">
+                                        <div className="text-item">
+                                            <span>From</span>
+                                        </div>
+                                        <div className="input-item">
+                                            <input
+                                                type="year"
+                                                className="from-year"
+                                                onInput={handleChangeStYear}
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="to-input col">
-                                        <span>To</span>
-                                        <input
-                                            type="year"
-                                            className="to-year"
-                                            onInput={handleChangeEnYear}
-                                        />
+                                    <div className="to-input col-6">
+                                        <div className="text-item">
+                                            <span>To</span>
+                                        </div>
+                                        <div className="input-item">
+                                            <input
+                                                type="year"
+                                                className="to-year"
+                                                onInput={handleChangeEnYear}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="coverage">

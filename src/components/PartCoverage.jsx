@@ -48,6 +48,7 @@ function PartCoverage(props) {
                 toolbar: {
                     show: false, // Set to true to show the default chart toolbar
                 },
+                offsetY: 1,
             },
             plotOptions: {
                 bar: {
@@ -95,6 +96,7 @@ function PartCoverage(props) {
                 },
                 categories: partName,
                 labels: {
+                    offsetY: 20,
                     show: true,
                     rotate: -45,
                     rotateAlways: true,
