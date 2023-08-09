@@ -30,8 +30,8 @@ function ResultPartList(props) {
     var [opening, setOpening] = useState(false);
     const openPDF = (code) => {
         if (typeof(code)==="object") {
-            if (code.oe!==(undefined && null && "") && code.start_of_production!==(undefined && null && "") && code.end_of_production!==(undefined && null && "")) {
-                var oecode = code.oe + " (" + code.start_of_production.slice(2, 4) + "-" + code.end_of_production.slice(2, 4) + ")";
+            if (code.oe!==(undefined && null && "") && code.part_start_time!==(undefined && null && "") && code.part_end_time!==(undefined && null && "")) {
+                var oecode = code.oe + " (" + code.part_start_time + "-" + code.part_end_time + ")";
             }
             setPcode(oecode);
             setPdfcarid(code.car_info_id);
