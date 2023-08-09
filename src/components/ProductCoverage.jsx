@@ -56,7 +56,13 @@ function ProductCoverage(props) {
                 <p>Product Coverage Summary</p>
             </div>
             <div id="product">
-                <table style={{ backgroundColor: "white", width: "100%" }}>
+                <table
+                    style={{
+                        backgroundColor: "white",
+                        width: "100%",
+                        height: "100%",
+                    }}
+                >
                     <thead>
                         <tr
                             style={{

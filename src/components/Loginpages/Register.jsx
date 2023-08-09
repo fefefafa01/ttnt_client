@@ -210,7 +210,7 @@ function Register() {
 
     const handlebacklog = () => {
         window.location.assign("/login");
-    }
+    };
 
     return (
         <>
@@ -282,7 +282,7 @@ function Register() {
                                         onBlur={() => handleBlur("password")}
                                     />
                                     <div
-                                        className="p-2"
+                                        className="p2"
                                         onMouseDown={() => setVisible(true)}
                                         onMouseUp={() => setVisible(false)}
                                         onMouseLeave={() => setVisible(false)}
@@ -309,10 +309,12 @@ function Register() {
                                         onBlur={() => handleBlur("confpass")}
                                     />
                                     <div
-                                        className="p-2"
+                                        className="p2"
                                         onMouseDown={() => confsetVisible(true)}
                                         onMouseUp={() => confsetVisible(false)}
-                                        onMouseLeave={() => confsetVisible(false)}
+                                        onMouseLeave={() =>
+                                            confsetVisible(false)
+                                        }
                                     >
                                         {confvisible ? (
                                             <EyeOutlined className="eye" />
@@ -353,7 +355,10 @@ function Register() {
                             <p>
                                 <Changer inp="please log in" />
                             </p>
-                            <button className="regbackbtn" onClick={handlebacklog}>
+                            <button
+                                className="regbackbtn"
+                                onClick={handlebacklog}
+                            >
                                 <div className="back_login">
                                     <Changer inp="Go to Login" />
                                 </div>

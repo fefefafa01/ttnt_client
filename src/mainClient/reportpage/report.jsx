@@ -1151,9 +1151,9 @@ function ReportPage(props) {
                             ))}
                         </Tabs>
 
-                        <div className="scrollpanel">
+                        {/* <div className="scrollpanel">
                             <html className="scrollempty">&nbsp;</html>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="scroll-form-report" id="rscroll-export">
                         <div className="sidebar-right ">

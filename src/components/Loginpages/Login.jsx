@@ -65,7 +65,7 @@ function Login() {
         }
     };
 
-    function handleSubmit (e) {
+    function handleSubmit(e) {
         e.preventDefault();
         setFormErrors(validate(formValues));
         setIsSubmit(true);
@@ -106,7 +106,7 @@ function Login() {
                     window.location.assign("/homepage");
                 }
             });
-    };
+    }
 
     const handleCheck = (e) => {
         setIsChecked(e.target.checked);
@@ -211,7 +211,7 @@ function Login() {
                                 onBlur={() => handleBlur("password")}
                             />
                             <div
-                                className="p-2"
+                                className="p2"
                                 onMouseDown={() => setVisible(true)}
                                 onMouseUp={() => setVisible(false)}
                                 onMouseLeave={() => setVisible(false)}

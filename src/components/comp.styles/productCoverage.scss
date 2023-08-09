@@ -5,4 +5,8 @@
 #product {
     height: calc(100% - 30px);
     width: fit-content;
+    overflow-y: auto;
+}
+#product::-webkit-scrollbar {
+    display: none;
 }

@@ -5,7 +5,7 @@
     left: 30px;
     right: 30px;
     height: calc(100% - 15vh);
-    width: 95%;
+    width: 97%;
     display: flex;
     transition: left 0s ease-in-out;
     z-index: 0;
@@ -24,7 +24,6 @@
     background-color: transparent;
     height: 76.5vh;
     width: 64vw;
-    overflow: hidden;
     display: flex;
     max-height: 98%;
     max-width: 99%;
@@ -46,7 +45,6 @@
     flex-direction: column;
     color: white;
     font-size: 2em;
-    overflow-y: auto;
 }
 .scrollpanel {
     position: absolute;
@@ -54,7 +52,6 @@
     right: 0;
     bottom: 0;
     width: 20px;
-    overflow-y: scroll;
     background-color: #ccc;
 }
 .scrollempty {
@@ -69,7 +66,7 @@
     overflow-y: scroll;
     display: block;
     max-width: 99%;
-    padding-right: 25px;
+    padding-right: 5px;
     padding-left: 20px;
 }
 #rscroll-export {
@@ -80,13 +77,14 @@
 .report-content {
     display: block;
     width: 80%;
+    padding-right: 5px;
 }
 #report.ant-tabs {
     box-sizing: border-box;
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 98%;
+    width: 99%;
     .ant-tabs-tab.ant-tabs-tab-active {
         .ant-tabs-tab-btn {
             color: white;

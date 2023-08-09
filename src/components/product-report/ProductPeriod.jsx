@@ -78,7 +78,7 @@ function ProductPeriod(props) {
     const [options, setOptions] = useState({
         chart: {
             type: "radialBar",
-            offsetY: -20,
+            offsetY: 0,
             sparkline: {
                 enabled: true,
             },
@@ -105,7 +105,7 @@ function ProductPeriod(props) {
                         show: false,
                     },
                     value: {
-                        offsetY: -2,
+                        offsetY: 2,
                         fontSize: "22px",
                     },
                 },
@@ -199,7 +199,12 @@ function ProductPeriod(props) {
                 </div>
                 <div
                     className="item"
-                    style={{ padding: "10px", width: "fit-content" }}
+                    style={{
+                        padding: "10px",
+                        width: "fit-content",
+                        height: "100%",
+                        overflowY: "hidden",
+                    }}
                 >
                     <ProductCoverage formValues={formValues} />
                 </div>

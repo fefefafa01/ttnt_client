@@ -4,11 +4,11 @@ import { Tabs } from "antd";
 import { PartList } from "components/PartList/PartList";
 import { AdminHeader } from "components/Header";
 import { SearchCriteria } from "components/SearchCriteria";
-import { SearchResult } from "components/SearchList"
+import { SearchResult } from "components/SearchList";
 import { ResultList } from "components/ResultList/ResultList";
 import { PartSubgroup } from "components/PartGroup";
 import { ResultPartList } from "components/ResultList/ResultPartList";
-import {PartListGroup} from "components/ResultList/PartListGroup"
+import { PartListGroup } from "components/ResultList/PartListGroup";
 
 const initialItems = [
     {
@@ -32,10 +32,9 @@ function Homepage() {
     const [activeKey, setActiveKey] = useState(initialItems[0].key);
     const panes = useRef(initialItems);
 
-
     const onChange = (activeKey) => {
         setActiveKey(activeKey);
-        console.log("Current Active Key: ",activeKey)
+        console.log("Current Active Key: ", activeKey);
     };
 
     const onEdit = (targetKey, action) => {
@@ -50,14 +49,14 @@ function Homepage() {
             content: <PartList carid={carid} SubGroupName={buttonName} />,
             key: activeKey,
         };
-        panes.current = [...panes.current, newPane]
+        panes.current = [...panes.current, newPane];
         setActiveKey(activeKey);
         c++;
-        console.log("Current Panes: ",panes.current)
+        console.log("Current Panes: ", panes.current);
     };
 
     const addSub = (carid, buttonSubName) => {
-        console.log("Part Subgroup Name: ",buttonSubName);
+        console.log("Part Subgroup Name: ", buttonSubName);
         const newTabIndex = c;
         const activeKey = `${newTabIndex}`;
         const newPane = {
@@ -72,30 +71,35 @@ function Homepage() {
             key: activeKey,
         };
         // setPartSubName(buttonSubName);
-        panes.current = [...panes.current, newPane]
+        panes.current = [...panes.current, newPane];
         setActiveKey(activeKey);
         c++;
-        console.log("Current Panes: ",panes.current)
+        console.log("Current Panes: ", panes.current);
     };
 
-    
-    const addGroup = (formValues, count) => { 
+    const addGroup = (formValues, count) => {
         let text = "Result List";
         if (count === 0) {
             text = "Vehicle Model List";
         }
-            const newTabIndex = c;
-            const activeKey = `${newTabIndex}`;
-            const newPane = {
-                title: text,
-                content: <ResultList formValues={formValues} count={count} Add={addList} onAdd = {addSGroup}/>,
-                key: activeKey,
-            };
-            panes.current = [...panes.current, newPane]
-            setActiveKey(activeKey);
-            console.log("Current Panes: ",panes.current);
-            c++;
-
+        const newTabIndex = c;
+        const activeKey = `${newTabIndex}`;
+        const newPane = {
+            title: text,
+            content: (
+                <ResultList
+                    formValues={formValues}
+                    count={count}
+                    Add={addList}
+                    onAdd={addSGroup}
+                />
+            ),
+            key: activeKey,
+        };
+        panes.current = [...panes.current, newPane];
+        setActiveKey(activeKey);
+        console.log("Current Panes: ", panes.current);
+        c++;
     };
 
     const addList = (id, formValues) => {
@@ -103,13 +107,13 @@ function Homepage() {
         const activeKey = `${newTabIndex}`;
         const newPane = {
             title: "Part List",
-            content: <ResultPartList formValues = {formValues} id = {id}/>,
+            content: <ResultPartList formValues={formValues} id={id} />,
             key: activeKey,
         };
-        panes.current = [...panes.current, newPane]
+        panes.current = [...panes.current, newPane];
         setActiveKey(activeKey);
         c++;
-        console.log("Current Panes: ",panes.current)
+        console.log("Current Panes: ", panes.current);
     };
 
     const addSGroup = (id, buttonName) => {
@@ -117,13 +121,19 @@ function Homepage() {
         const activeKey = `${newTabIndex}`;
         const newPane = {
             title: `${buttonName}  -  Parts Group List`,
-            content: <PartListGroup carid = {id} onAdd = {addSub} buttonName = {buttonName}/>,
+            content: (
+                <PartListGroup
+                    carid={id}
+                    onAdd={addSub}
+                    buttonName={buttonName}
+                />
+            ),
             key: activeKey,
         };
-        panes.current = [...panes.current, newPane]
+        panes.current = [...panes.current, newPane];
         setActiveKey(activeKey);
         c++;
-        console.log("Current Panes: ",panes.current)
+        console.log("Current Panes: ", panes.current);
     };
 
     // const remove = (targetKey) => {
@@ -140,32 +150,35 @@ function Homepage() {
         let newActiveKey = activeKey;
         let lastIndex = -1;
         panes.current.forEach((pane, i) => {
-          if (pane.key === targetKey) {
-            lastIndex = i - 1;
-          }
+            if (pane.key === targetKey) {
+                lastIndex = i - 1;
+            }
         });
-        const newpPanes = panes.current.filter((pane) => pane.key !== targetKey);
+        const newpPanes = panes.current.filter(
+            (pane) => pane.key !== targetKey
+        );
         if (newpPanes.length && newActiveKey === targetKey) {
-          if (lastIndex >= 0) {
-            newActiveKey = newpPanes[lastIndex].key;
-          } else {
-            newActiveKey = newpPanes[0].key;
-          }
+            if (lastIndex >= 0) {
+                newActiveKey = newpPanes[lastIndex].key;
+            } else {
+                newActiveKey = newpPanes[0].key;
+            }
         }
         panes.current = newpPanes;
         setActiveKey(newActiveKey);
-      };
-      
+    };
 
     return (
         <div>
             <AdminHeader />
             <div className="hbody">
-                <SearchCriteria
-                    onAdd={addGroup}
-                    isOpen={sidebarOpen}
-                    toggleSidebar={handleViewSidebar}
-                />
+                <div style={{ width: "20%" }}>
+                    <SearchCriteria
+                        onAdd={addGroup}
+                        isOpen={sidebarOpen}
+                        toggleSidebar={handleViewSidebar}
+                    />
+                </div>
                 <div className="wrappers">
                     <Tabs
                         hideAdd

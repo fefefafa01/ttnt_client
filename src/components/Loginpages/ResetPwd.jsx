@@ -82,28 +82,28 @@ function ResetPwd() {
             },
             body: JSON.stringify(formValues),
         })
-        .catch((err) => {
-            return;
-        })
-        .then((res) => {
-            if (!res || !res.ok || res.status >= 400) {
+            .catch((err) => {
                 return;
-            }
-            return res.json();
-        })
-        .then((data) => {
-            if (!data) return;
-            setUser({ ...data });
-            if (data.status === "Email Unavailable") {
-                setErrormsg(t("Email address does not exist"));
-            } else if (data.status === "Changed Pass") {
-                localStorage.removeItem("email");
-                localStorage.removeItem("password");
-                localStorage.removeItem("isLoggedIn");
-                localStorage.removeItem("remembered");
-                sethide(!hide);
-            }
-        });
+            })
+            .then((res) => {
+                if (!res || !res.ok || res.status >= 400) {
+                    return;
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if (!data) return;
+                setUser({ ...data });
+                if (data.status === "Email Unavailable") {
+                    setErrormsg(t("Email address does not exist"));
+                } else if (data.status === "Changed Pass") {
+                    localStorage.removeItem("email");
+                    localStorage.removeItem("password");
+                    localStorage.removeItem("isLoggedIn");
+                    localStorage.removeItem("remembered");
+                    sethide(!hide);
+                }
+            });
     };
 
     useEffect(() => {
@@ -173,7 +173,7 @@ function ResetPwd() {
 
     const handlebacklog = () => {
         window.location.assign("/login");
-    }
+    };
     return (
         <>
             {hide && (
@@ -210,7 +210,7 @@ function ResetPwd() {
                                         onBlur={() => handleBlur("password")}
                                     />
                                     <div
-                                        className="p-2"
+                                        className="p2"
                                         onMouseDown={() => setVisible(true)}
                                         onMouseUp={() => setVisible(false)}
                                         onMouseLeave={() => setVisible(false)}
@@ -238,10 +238,12 @@ function ResetPwd() {
                                         onBlur={() => handleBlur("confpass")}
                                     />
                                     <div
-                                        className="p-2"
+                                        className="p2"
                                         onMouseDown={() => confsetVisible(true)}
                                         onMouseUp={() => confsetVisible(false)}
-                                        onMouseLeave={() => confsetVisible(false)}
+                                        onMouseLeave={() =>
+                                            confsetVisible(false)
+                                        }
                                     >
                                         {confvisible ? (
                                             <EyeOutlined className="eye" />
@@ -280,7 +282,10 @@ function ResetPwd() {
                                 <p>
                                     <Changer inp="please log in" />
                                 </p>
-                                <button className="regbackbtn" onClick={handlebacklog}>
+                                <button
+                                    className="regbackbtn"
+                                    onClick={handlebacklog}
+                                >
                                     <Changer inp="Go to Login" />
                                 </button>
                             </span>
