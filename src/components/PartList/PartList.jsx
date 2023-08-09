@@ -91,22 +91,7 @@ function PartList({ carid, SubGroupName }) {
                 setDt(data.dtrain);
             });
     }
-    // console.log(
-    //     maker,
-    //     model,
-        // vcode
-    //     start,
-    //     end,
-    //     dpos,
-    //     ecode,
-    //     displace,
-    //     ptype,
-    //     ftype,
-    //     transc,
-    //     spd,
-    //     trans,
-    //     dt
-    // );
+    
     if (firstOpenPreP) {
         loc = backlocale + "exp/partList";
         fetch(loc, {

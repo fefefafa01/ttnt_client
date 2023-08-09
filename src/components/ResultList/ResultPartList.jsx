@@ -7,8 +7,6 @@ import { DropDown } from "./ResPDown";
 
 function ResultPartList(props) {
     const { formValues, id} = props;
-    //Synchronizing Scroll:
-    console.log(formValues)
 
     //Download
     const [downdrop, setDowndrop] = useState(false);

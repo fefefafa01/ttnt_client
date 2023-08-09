@@ -214,6 +214,7 @@
     span {
         display: flex;
         justify-items: flex-start;
+        width: max-content;
     }
 }
 .selectDropdown.active {

@@ -11,12 +11,8 @@ import { Specpdf } from "components/SpecPDF";
 import arrow from "../../img/arrow.png";
 
 function ResultList(props) {
-    
     const { formValues, count, Add, onAdd} = props;
-    //Synchronizing Scroll:
-
     const [showArrow, setShowArrow] = useState(false);
-
     let no = 1;
 
     //Downloader
@@ -60,7 +56,6 @@ function ResultList(props) {
         }
     }
     const currentItemss = add.slice(itemOffset, endOffset);
-    console.log(itemOffset, endOffset);
 
     const pageCounts = Math.ceil(add.length / itemsPerPage);
 
@@ -87,7 +82,6 @@ function ResultList(props) {
         setPcode(code);
         setPdfcarid(id);
         setOpening(!opening);
-        console.log(pcode, pdfcarid)
     }
 
     const selectDropdownRef = useRef(null);

@@ -70,7 +70,6 @@ function DropDown (input) {
     }
     
     if(queried) {
-        console.log(input.data)
         for (let i = 0; i < input.data.length; i++) {
             var newob = {};
                 newob.CarMaker = input.data[i].car_maker;
@@ -199,7 +198,6 @@ function DropingDown (input) {
     }
     
     if(queried) {
-        console.log(input.data[1])
         for (let i = 0; i < input.data.length; i++) {
             var newob = {};
                 newob.No = i+1;

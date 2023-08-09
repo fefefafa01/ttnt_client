@@ -19,7 +19,7 @@ function MainPage(input) {
         }
         setOnce(false);
     }
-    console.log(input.input)
+
     return (
         <div>
             <div className="header">

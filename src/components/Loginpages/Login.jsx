@@ -49,7 +49,7 @@ function Login() {
             localStorage.removeItem("checkEmail");
             localStorage.removeItem("checkPassword");
         }
-        console.log(isChecked);
+        console.log("Checkbox Check:", isChecked);
     }, []);
 
     const { t } = useTranslation();
@@ -110,7 +110,7 @@ function Login() {
 
     const handleCheck = (e) => {
         setIsChecked(e.target.checked);
-        console.log(isChecked);
+        console.log("Checkbox Checked? (On Change): ",isChecked);
     };
 
     const loginSubmit = () => {
@@ -122,7 +122,6 @@ function Login() {
             localStorage.checkPassword = formValues.password;
             localStorage.expirationDate = dateLogin;
         }
-        // here call the API to signup/login
         else if (!isChecked) {
             localStorage.email = formValues.email;
             localStorage.password = "";
