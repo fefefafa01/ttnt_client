@@ -4,6 +4,7 @@ import { backlocale } from "constants/constindex";
 import ReactApexChart from "react-apexcharts";
 
 function Dashboard(props) {
+    console.log(props.Dashboard);
     const [formValues, setFormValues] = useState(props.formValues);
 
     // Update formValues when the initialValues prop changes
@@ -60,15 +61,21 @@ function Dashboard(props) {
                         >
                             Dashboard Criteria
                         </p>
-                        <p>- Country = Thailand</p>
-                        <p>- Car Maker = All Brand</p>
-                        <p>- Transmission Type = All Transmission Type</p>
+                        <p>- Country = {props.Dashboard.country}</p>
+                        <p>- Car Maker = {props.Dashboard.brand}</p>
+                        <p>- Transmission Type = {props.Dashboard.Ttype}</p>
                     </div>
                     <div className="dashboard-right">
-                        <p>Dashboard Criteria</p>
-                        <p>- Country = Thailand</p>
-                        <p>- Car Maker = All Brand</p>
-                        <p>- Transmission Type = All Transmission Type</p>
+                        <p>- Part Group = {props.Dashboard.PGroup}</p>
+                        <p>- Part Name = {props.Dashboard.PName}</p>
+                        <p>
+                            - From {props.Dashboard.StY} to{" "}
+                            {props.Dashboard.EnY}
+                        </p>
+                        <p>
+                            - Coverage Range {props.Dashboard.StC} to{" "}
+                            {props.Dashboard.EnC}
+                        </p>
                     </div>
                 </div>
             </div>

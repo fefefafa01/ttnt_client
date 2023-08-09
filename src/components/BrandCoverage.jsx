@@ -4,44 +4,13 @@ import { backlocale } from "constants/constindex";
 import ReactApexChart from "react-apexcharts";
 
 function BrandCoverage(props) {
-    const [formValues, setFormValues] = useState(props.formValues);
+    const [brandName, setBrandName] = useState(props.Brand);
+    const [rate, setRate] = useState(props.Rate);
 
     // Update formValues when the initialValues prop changes
     useEffect(() => {
-        setFormValues(props.formValues);
-    }, [props]);
-
-    const [brandName, setBrandName] = useState([]);
-    const [rate, setRate] = useState([]);
-
-    useEffect(() => {
-        let loc = backlocale + "period/brandChart";
-        fetch(loc, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Acess-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
-            },
-            body: JSON.stringify(formValues),
-        })
-            .catch((err) => {
-                return;
-            })
-            .then((res) => {
-                if (!res || !res.ok || res.status >= 400) {
-                    return;
-                }
-                return res.json();
-            })
-            .then((data) => {
-                if (!data) return;
-                setBrandName(data.brandName);
-                setRate(data.coverageRate);
-                console.log(data.brandName);
-            });
+        setBrandName(props.Brand);
+        setRate(props.Rate);
     }, [props]);
 
     useEffect(() => {

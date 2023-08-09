@@ -16,39 +16,10 @@ function ProductCoverage(props) {
 
     // Update formValues when the initialValues prop changes
     useEffect(() => {
-        setFormValues(props.formValues);
+        setTemp(props.Temp);
     }, [props]);
 
     const [temp, setTemp] = useState([]);
-
-    useEffect(() => {
-        let loc = backlocale + "period/brandChart";
-        fetch(loc, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Acess-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
-            },
-            body: JSON.stringify(formValues),
-        })
-            .catch((err) => {
-                return;
-            })
-            .then((res) => {
-                if (!res || !res.ok || res.status >= 400) {
-                    return;
-                }
-                return res.json();
-            })
-            .then((data) => {
-                if (!data) return;
-                setTemp(data.temp);
-                console.log(data.temp);
-            });
-    }, [props]);
 
     return (
         <>

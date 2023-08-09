@@ -9,6 +9,12 @@ import ReactApexChart from "react-apexcharts";
 
 function ProductPeriod(props) {
     const [summary, setSummary] = useState({});
+    const [brandName, setBrandName] = useState([]);
+    const [rate, setRate] = useState([]);
+    const [partName, setPartName] = useState([]);
+    const [ratePart, setRatePart] = useState([]);
+    const [temp, setTemp] = useState([]);
+    const [dashboard, setDashboard] = useState({});
     const [formValues, setFormValues] = useState({
         country_name: props.country_name,
         manufacturer_name: props.manufacturer_name,
@@ -38,7 +44,7 @@ function ProductPeriod(props) {
     }, [props]);
     useEffect(() => {
         console.log(formValues);
-        let loc = backlocale + "period/brandChart";
+        let loc = backlocale + "period/periodData";
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -63,7 +69,49 @@ function ProductPeriod(props) {
                 if (!data) return;
 
                 setSummary(data.data);
-                console.log(data.data);
+                setBrandName(data.brandName);
+                setRate(data.coverageRate);
+                setPartName(data.partName);
+                setRatePart(data.coveragePart);
+                setTemp(data.temp);
+            });
+
+        let loc1 = backlocale + "period/dashboard";
+        fetch(loc1, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+                "Acess-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods":
+                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
+            },
+            body: JSON.stringify(formValues),
+        })
+            .catch((err) => {
+                return;
+            })
+            .then((res) => {
+                if (!res || !res.ok || res.status >= 400) {
+                    return;
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if (!data) return;
+
+                setDashboard({
+                    country: data.country,
+                    brand: data.brand,
+                    Ttype: data.Ttype,
+                    PGroup: data.PGroup,
+                    PName: data.PName,
+                    StY: data.StY,
+                    EnY: data.EnY,
+                    StC: data.StC,
+                    EnC: data.EnC,
+                });
+                console.log(data);
             });
     }, [formValues]);
 
@@ -141,7 +189,7 @@ function ProductPeriod(props) {
                 }}
             >
                 <div style={{ padding: "10px" }} className="item ">
-                    <BrandCoverage formValues={formValues} />
+                    <BrandCoverage Brand={brandName} Rate={rate} />
                 </div>
                 <div
                     style={{
@@ -151,7 +199,10 @@ function ProductPeriod(props) {
                     }}
                 >
                     <div className="item" style={{ paddingBottom: "10px" }}>
-                        <Dashboard formValues={formValues} />
+                        <Dashboard
+                            formValues={formValues}
+                            Dashboard={dashboard}
+                        />
                     </div>
                     <div className="item coverage-summary">
                         <div className="summary-label">
@@ -195,7 +246,7 @@ function ProductPeriod(props) {
                     className="item"
                     style={{ padding: "10px", height: "100%" }}
                 >
-                    <PartCoverage formValues={formValues} />
+                    <PartCoverage Part={partName} Rate={ratePart} />
                 </div>
                 <div
                     className="item"
@@ -206,7 +257,7 @@ function ProductPeriod(props) {
                         overflowY: "hidden",
                     }}
                 >
-                    <ProductCoverage formValues={formValues} />
+                    <ProductCoverage Temp={temp} />
                 </div>
             </div>
         </div>
