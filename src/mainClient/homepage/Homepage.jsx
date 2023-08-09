@@ -172,13 +172,11 @@ function Homepage() {
         <div>
             <AdminHeader />
             <div className="hbody">
-                <div style={{ width: "20%" }}>
-                    <SearchCriteria
-                        onAdd={addGroup}
-                        isOpen={sidebarOpen}
-                        toggleSidebar={handleViewSidebar}
-                    />
-                </div>
+                <SearchCriteria
+                    onAdd={addGroup}
+                    isOpen={sidebarOpen}
+                    toggleSidebar={handleViewSidebar}
+                />
                 <div className="wrappers">
                     <Tabs
                         hideAdd
