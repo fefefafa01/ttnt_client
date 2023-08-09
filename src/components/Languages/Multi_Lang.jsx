@@ -80,13 +80,14 @@ function MultiLang() {
                                     onChange={() => handleLang("vi")}
                                 />
                             }
+                            style = {{margin: "10px 0px 0px 0px"}}
                             value="vi"
                             label={
                                 <div
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
-                                        margin: "10px 0px 0px 0px",
+                                        margin: "-10px 0px 0px 0px",
                                     }}
                                 >
                                     <img
@@ -111,7 +112,7 @@ function MultiLang() {
                             }
                         />
                         <FormControlLabel
-                            style={{margin: "-25px 10px 0px -11px",}}
+                            style={{margin: "-10px 10px 0px 0px",}}
                             value="en"
                             control={
                                 <Radio
@@ -124,7 +125,7 @@ function MultiLang() {
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
-                                        margin: "10px 0px 0px 0px",
+                                        margin: "-10px 0px 0px 0px",
                                     }}
                                 >
                                     <img
