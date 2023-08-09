@@ -10,9 +10,7 @@ function Specpdf(input) {
     //Variables
     const OE = "OE#: "
     const [firstOpenModel, setFirstOpenModel] = useState(true);
-    const [firstOpenPreP, setFirstOpenPreP] = useState(false);
-    const [firstOpenSPreP, setFirstOpenSPreP] = useState(false);
-    const [firstOpenComp, setFirstOpenComp] = useState(false);
+    const [firstOpenDe, setFirstOpenDe] = useState(false);
 
     //Scrollbar Synchronization
     $(function() {
@@ -80,7 +78,7 @@ function Specpdf(input) {
             .then((data) => {
                 if (!data) return;
                 setFirstOpenModel(false);
-                setFirstOpenPreP(true);
+                setFirstOpenDe(true);
                 //Set Values
                 setMaker(data.maker);
                 setModel(data.model);
@@ -99,9 +97,9 @@ function Specpdf(input) {
             });
     }
 
-    //Querying Premium Parts Array
-    if (firstOpenPreP) {
-        loc = backlocale + "exp/premium";
+    //Querying Premium + Sub-Premium Parts Array
+    if (firstOpenDe) {
+        loc = backlocale + "exp/partdetails";
         fetch(loc, {
             method: "POST",
             credentials: "include",
@@ -124,70 +122,9 @@ function Specpdf(input) {
             })
             .then((data) => {
                 if (!data) return;
-                setFirstOpenPreP(false);
-                setFirstOpenSPreP(true);
-                setPremiumData(data.Premium.TotalPre);
-            });
-    }
-
-    //Querying SubPremium Parts Data
-    if (firstOpenSPreP) {
-        loc = backlocale + "exp/subpremium";
-        fetch(loc, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Acess-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
-            },
-            body: JSON.stringify(input.partcode.slice(0, input.partcode.length-8)),
-        })
-            .catch((err) => {
-                return;
-            })
-            .then((res) => {
-                if (!res || !res.ok || res.status >= 400) {
-                    return;
-                }
-                return res.json();
-            })
-            .then((data) => {
-                if (!data) return;
-                setFirstOpenSPreP(false);
-                setFirstOpenComp(true);
-                setSPremiumData(data.SPremium.TotalSPre);
-            });
-    }
-
-    //Querying Competitor
-    if (firstOpenComp) {
-        loc = backlocale + "exp/comp";
-        fetch(loc, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "Acess-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods":
-                    "GET, PUT, POST, DELETE, PATCH, OPTIONS",
-            },
-            body: JSON.stringify(input.partcode.slice(0, input.partcode.length-8)),
-        })
-            .catch((err) => {
-                return;
-            })
-            .then((res) => {
-                if (!res || !res.ok || res.status >= 400) {
-                    return;
-                }
-                return res.json();
-            })
-            .then((data) => {
-                if (!data) return;
-                setFirstOpenComp(false);
-                setCompetitor(data.Comp);
+                setPremiumData(data.Premium);
+                setSPremiumData(data.SPremium);
+                setCompetitor(data.Competitor);
             });
     }
 

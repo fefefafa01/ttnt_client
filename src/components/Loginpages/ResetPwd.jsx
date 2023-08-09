@@ -1,7 +1,6 @@
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { React, useState, useEffect, useContext } from "react";
 import { Changer } from "../Languages/LanguageChange";
-// import { Link } from "react-router-dom";
 import { AccountContext } from "./Login.comps/AccountContext";
 import { useTranslation } from "react-i18next";
 import { backlocale, japregex, vietregex } from "constants/constindex";

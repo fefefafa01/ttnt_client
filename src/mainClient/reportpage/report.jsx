@@ -108,7 +108,7 @@ function SelectCountries(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.country_name = selectedValueOptions;
-            console.log(initialValues.country_name);
+            // console.log(initialValues.country_name);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -120,7 +120,7 @@ function SelectCountries(input) {
             );
             input.setCountry(selectedValueOptions.join(", "));
             initialValues.country_name = selectedValueOptions;
-            console.log(initialValues.country_name);
+            // console.log(initialValues.country_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
             const index = input.update.indexOf(selectedOption);
@@ -132,7 +132,7 @@ function SelectCountries(input) {
             const selectedValueOptions = [...input.update];
             input.setCountry(selectedValueOptions.join(", "));
             initialValues.country_name = selectedValueOptions;
-            console.log(initialValues.country_name);
+            // console.log(initialValues.country_name);
             return;
         }
     };
@@ -301,7 +301,7 @@ function SelectCarMaker(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.manufacturer_name = selectedValueOptions;
-            console.log(initialValues.manufacturer_name);
+            // console.log(initialValues.manufacturer_name);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -313,7 +313,7 @@ function SelectCarMaker(input) {
             );
             input.setMaker(selectedValueOptions.join(", "));
             initialValues.manufacturer_name = selectedValueOptions;
-            console.log(initialValues.manufacturer_name);
+            // console.log(initialValues.manufacturer_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
             const index = input.update.indexOf(selectedOption);
@@ -325,7 +325,7 @@ function SelectCarMaker(input) {
             const selectedValueOptions = [...input.update];
             input.setMaker(selectedValueOptions.join(", "));
             initialValues.manufacturer_name = selectedValueOptions;
-            console.log(initialValues.manufacturer_name);
+            // console.log(initialValues.manufacturer_name);
             return;
         }
     };
@@ -495,7 +495,7 @@ function SelectTransmission(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.transmission_type = selectedValueOptions;
-            console.log(initialValues.transmission_type);
+            // console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -507,7 +507,7 @@ function SelectTransmission(input) {
             );
             input.setTrans(selectedValueOptions.join(", "));
             initialValues.transmission_type = selectedValueOptions;
-            console.log(initialValues.transmission_type);
+            // console.log(initialValues.transmission_type);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
             const index = input.update.indexOf(selectedOption);
@@ -519,7 +519,7 @@ function SelectTransmission(input) {
             const selectedValueOptions = [...input.update];
             input.setTrans(selectedValueOptions.join(", "));
             initialValues.transmission_type = selectedValueOptions;
-            console.log(initialValues.transmission_type);
+            // console.log(initialValues.transmission_type);
             return;
         }
     };
@@ -695,7 +695,7 @@ function SelectPartGroup(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.part_group = selectedValueOptions;
-            console.log(initialValues.part_group);
+            // console.log(initialValues.part_group);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -707,7 +707,7 @@ function SelectPartGroup(input) {
             );
             input.setPartGroup(selectedValueOptions.join(", "));
             initialValues.part_group = selectedValueOptions;
-            console.log(initialValues.part_group);
+            // console.log(initialValues.part_group);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
             const index = input.update.indexOf(selectedOption);
@@ -719,7 +719,7 @@ function SelectPartGroup(input) {
             const selectedValueOptions = [...input.update];
             input.setPartGroup(selectedValueOptions.join(", "));
             initialValues.part_group = selectedValueOptions;
-            console.log(initialValues.part_group);
+            // console.log(initialValues.part_group);
             return;
         }
     };
@@ -886,7 +886,7 @@ function SelectPartName(input) {
                 optionElement.classList.add("selected")
             );
             initialValues.part_name = selectedValueOptions;
-            console.log(initialValues.part_name);
+            // console.log(initialValues.part_name);
             return;
         } else if (selectedOption === "clear") {
             const updatedSelectedOptions = input.update.filter(
@@ -898,7 +898,7 @@ function SelectPartName(input) {
             );
             input.setPart(selectedValueOptions.join(", "));
             initialValues.part_name = selectedValueOptions;
-            console.log(initialValues.part_name);
+            // console.log(initialValues.part_name);
             return;
         } else if (selectedOption.slice(-5) !== "clear") {
             const index = input.update.indexOf(selectedOption);
@@ -910,7 +910,7 @@ function SelectPartName(input) {
             const selectedValueOptions = [...input.update];
             input.setPart(selectedValueOptions.join(", "));
             initialValues.part_name = selectedValueOptions;
-            console.log(initialValues.part_name);
+            // console.log(initialValues.part_name);
             return;
         }
     };

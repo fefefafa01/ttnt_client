@@ -4,8 +4,6 @@ import { MultiLangHome } from "./Languages/Multi_Lang";
 import Profile from "./Profile";
 import "./comp.styles/Header.scss";
 
-//Link with UserHandler.js in ./server for Profile
-
 function AdminHeader() {
     const handlePSBtn = (e) => {
         e.preventDefault();
