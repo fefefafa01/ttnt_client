@@ -74,6 +74,7 @@ function ProductPeriod(props) {
                 setPartName(data.partName);
                 setRatePart(data.coveragePart);
                 setTemp(data.temp);
+                console.log(data.data);
             });
 
         let loc1 = backlocale + "period/dashboard";
@@ -120,7 +121,11 @@ function ProductPeriod(props) {
     const [series, setSeries] = useState([90]);
 
     useEffect(() => {
-        setSeries([Number(summary.coverage_rate)]);
+        const tb = parseInt(
+            (Number(summary.coverage) * 100) / Number(summary.sum)
+        );
+        console.log(tb);
+        setSeries([tb]);
     }, [summary.coverage_rate]);
 
     const [chartHeight, setChartHeight] = useState("90%");
