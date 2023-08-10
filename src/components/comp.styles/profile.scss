@@ -1,82 +1,79 @@
 .drop {
-	position: relative;
-	float: right;
+    position: relative;
+    float: right;
+    margin-left: 25px;
+    padding: 10px 0px;
 }
 .dropbtn {
-	background-color: transparent;
-	margin-left: -90px;
-	border: none;
-	margin-top: -5px;
-	img {
-		width: 25px;
-		margin-top: 33px;
-		border: solid lightblue 2px;
-	}
+    background-color: transparent;
+    border: none;
+    img {
+        width: 25px;
+        border: solid lightblue 2px;
+    }
 }
 .dropdown-content {
-	display: none;
-	position: absolute;
-	right: 0;
-	width: 120px;
-	text-align: left;
-	margin-top: 10px;
-	margin-left: -140px;
-	margin-right: 20px;
-	background-color: white;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-	border: 1px solid black;
-	border-radius: 20px;
-	color: #86bac5;
-	p.openerprofile {
-		text-decoration: none;
-		width: max-content;
-		padding: 10px 0px 0px 16px;
-		display: block;
-		&:hover {
-			cursor: pointer;
-			border-radius: inherit;
-		}
-	}
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 120px;
+    text-align: left;
+    margin-top: 20px;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 1px solid black;
+    border-radius: 20px;
+    color: #86bac5;
+    p.openerprofile {
+        text-decoration: none;
+        width: max-content;
+        padding: 10px 0px 0px 16px;
+        display: block;
+        &:hover {
+            cursor: pointer;
+            border-radius: inherit;
+        }
+    }
 
-	p.backprofile {
-		display: block;
-		text-decoration: none;
-		width: max-content;
-		padding: 15px 16px 0px 0px;
-		&:hover {
-			cursor: pointer;
-			border-radius: inherit;
-		}
-	}
+    p.backprofile {
+        display: block;
+        text-decoration: none;
+        width: max-content;
+        padding: 15px 16px 0px 0px;
+        &:hover {
+            cursor: pointer;
+            border-radius: inherit;
+        }
+    }
 
-	p.myProfile {
-		text-decoration: none;
-		color: #86bac5;
-		width: max-content;
-		padding: 12px 16px;
-		margin-bottom: -20px;
-		display: block;
-		font-weight: bold;
-		font-size: 1.3em;
-	}
+    p.myProfile {
+        text-decoration: none;
+        color: #86bac5;
+        width: max-content;
+        padding: 12px 16px;
+        margin-bottom: -20px;
+        display: block;
+        font-weight: bold;
+        font-size: 1.3em;
+    }
 
-	p {
-		text-decoration: none;
-		width: max-content;
-		display: block;
-		padding: 10px 30px 0px 50px;
-	}
+    p {
+        text-decoration: none;
+        width: max-content;
+        display: block;
+        padding: 10px 30px 0px 50px;
+    }
 
-	span {
-		display: flex;
-		justify-content: space-between;
-		&:hover {
-			background-color: white;
-			border-radius: inherit;
-		}
-	}
+    span {
+        display: flex;
+        justify-content: space-between;
+        &:hover {
+            background-color: white;
+            border-radius: inherit;
+        }
+    }
 }
 
 .drop.active .dropdown-content {
@@ -84,47 +81,23 @@
 }
 
 .dropdown-content.profile {
-	width: fit-content;
-	margin-right: 20px;
-	span {
-		padding-left: 20px;
-	}
-	a {
-		padding-left: 50px;
-	}
+    width: fit-content;
+    span {
+        padding-left: 20px;
+    }
+    a {
+        padding-left: 50px;
+    }
 }
 .powerbutton {
-	width: 13px;
-	display: inline;
-	margin-top: -3px;
-	margin-left: 5px;
-	margin-bottom: 2px;
+    width: 13px;
+    display: inline;
+    margin-top: -3px;
+    margin-left: 5px;
+    margin-bottom: 2px;
 }
 .myProfile {
-	padding-left: 20px;
-	text-decoration: none;
-	color: #86bac5;
+    padding-left: 20px;
+    text-decoration: none;
+    color: #86bac5;
 }
-@media screen and (max-width: 1024px) {
-	.dropdown-content {
-		a {
-			padding: 7px;
-		}
-	}
-	.myProfile {
-		padding-left: 0px;
-	}
-}
-@media screen and (max-width: 991px) {
-	.dropbtn {
-		margin-left: -230px;
-		margin-top: -12px;
-	}
-	.dropdown-content {
-		margin-right: 100px;
-	}
-	.dropdown-content.profile {
-		margin: 50px;
-	}
-}
-

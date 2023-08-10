@@ -1,9 +1,40 @@
 /*for header of report*/
-.bttn {
+.aheader,
+.raheader {
+    display: grid;
+
+    text-align: center;
+    background-color: hsl(226, 100%, 22%);
+    height: 10vh;
+    div {
+        .logo {
+            font-size: 1.5vw;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    }
+}
+.aheader {
+    grid-template-columns: 1fr 2fr 3fr 3fr 1fr;
+}
+.raheader {
+    grid-template-columns: 1fr 2fr 3fr 2fr 1fr;
+}
+
+.header-item {
+    padding: 10px;
+    height: 80%;
+}
+.head-AISIN {
+    display: block;
+    padding: 25px 0px;
+}
+.bttn,
+.rbttn {
     transform: skew(-45deg);
     height: 45px;
-    width: 150px;
-    margin-top: 10px;
+    width: 100%;
+    scale: 90%;
     text-align: center;
     font-size: 0.85em;
     font-weight: bold;
@@ -11,143 +42,139 @@
     &:hover {
         transform: skew(-45deg);
         min-height: 10px;
-        width: 150px;
+        width: 100%;
         text-align: center;
         font-size: 0.85em;
         font-weight: bold;
         background-color: #acc0e2;
     }
 }
-@media screen and (max-width: 1024px) {
-    .bttn {
-        width: 100px;
-        height: 40px;
-        font-size: 0.65em;
+
+.lbtngroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    span {
+        display: inline-block;
+        transform: skew(35deg);
+    }
+    .rep-btn {
+        background-color: rgb(200, 228, 255);
+    }
+}
+.leftalgn {
+    margin-left: 5px;
+}
+.hlabel,
+.hlabel-report {
+    color: white;
+    align-items: center;
+    text-align: center;
+    display: block;
+    font-family: Tahoma;
+    .hlabel-content {
+        font-size: 2.3vw;
+    }
+}
+
+.rbtngroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    span {
+        display: inline-block;
+        transform: skew(35deg);
+    }
+}
+
+.rrbtngroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    span {
+        display: inline-block;
+        transform: skew(35deg);
     }
 }
 .srbtngroup {
     justify-content: right;
-    display: flex;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
     span {
         display: inline-block;
         transform: skew(35deg);
     }
 }
-.leftalgn {
-    margin-left: 10px;
-}
-.lbtngroup {
-    display: flex;
-    margin-top: 20px;
-    span {
-        display: inline-block;
-        transform: skew(35deg);
-    }
-}
-.rbtngroup {
-    display: flex;
-    margin-top: 20px;
-    align-self: right;
-    span {
-        display: inline-block;
-        transform: skew(35deg);
-    }
-}
-.aheader {
-    display: flex;
-    text-align: center;
-    background-color: hsl(226, 100%, 22%);
-    height: 10vh;
-    padding-bottom: 10px;
-    div {
-        p.logo {
-            font-size: xx-large;
-            margin-top: 20px;
-        }
-    }
-}
-.hlabel {
-    color: white;
-    flex: 10%;
-    text-align: center;
-    display: block;
-    font-family: Tahoma;
-}
-@media screen and (max-width: 1024px) {
-    .hlabel {
-        margin-left: 40px;
-    }
-}
-.hlabel-report {
-    color: white;
-    flex: 10%;
-    text-align: center;
-    display: block;
-    font-family: Tahoma;
-}
-.hlabel-content {
-    font-size: 2.5em;
-    margin-top: 20px;
-}
+
 .btn-profile {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-top: 15px;
-    padding-left: 150px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+    padding: 0px 20%;
+    text-align: center;
+    align-items: center;
 }
+
 .dropdown {
     position: relative;
     z-index: 3;
 }
-.rep-btn {
-    background-color: rgb(200, 228, 255);
+
+@media screen and (max-width: 1740px) {
+    .btn-profile {
+        padding: 0px 15%;
+    }
 }
-.rbttn {
-    transform: skew(-45deg);
-    height: 45px;
-    width: 130px;
-    margin-top: 10px;
-    text-align: center;
-    font-size: 0.85em;
-    font-weight: bold;
+
+@media screen and (max-width: 1500px) {
+    .btn-profile {
+        padding: 0px 10%;
+    }
 }
-@media screen and (max-width: 1024px) {
+
+@media screen and (max-width: 1300px) {
+    .btn-profile {
+        padding: 0px 5%;
+    }
+    .hlabel {
+        .hlabel-content {
+            margin-top: 1vh;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .hlabel {
+        .hlabel-content {
+            margin-top: 2vh;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    p.logo {
+        font-size: 2.5vw;
+        margin-top: 30px;
+    }
+    .bttn {
+        font-size: 0.6em;
+    }
+    .btn-profile {
+        padding: 0px 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hlabel {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1160px) {
     .rbttn {
         width: 80px;
         height: 40px;
         font-size: 0.65em;
-    }
-}
-@media screen and (max-width: 1024px) {
-    .hlabel-content {
-        font-size: 1.4em;
-        margin-top: 30px;
-    }
-}
-@media screen and (max-width: 991px) {
-    .aheader {
-        padding-bottom: 10px;
-        div {
-            p.logo {
-                margin-top: 25px;
-                font-size: 1em;
-                margin-left: -10px;
-            }
-        }
-    }
-    .bttn {
-        margin-top: 0px;
-        font-size: 0.7em;
-        width: 100px;
-        height: 35px;
-        margin-left: 15px;
-        padding: 0px;
-    }
-    .logotext {
-        display: none;
-    }
-    .hlabel {
-        display: none;
     }
 }

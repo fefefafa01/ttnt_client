@@ -9,8 +9,8 @@ import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 function MainPage(input) {
-    const [once, setOnce] = useState(true)
-    const [routing, setRouting] = useState(true)
+    const [once, setOnce] = useState(true);
+    const [routing, setRouting] = useState(true);
     if (once) {
         if (input.input === "normal") {
             setRouting(true);
@@ -29,9 +29,12 @@ function MainPage(input) {
                         rel="stylesheet"
                         type="text/css"
                     />
-                    <p className="logo">AISIN</p>
-                    <br></br>
-                    <p className="col logotext">We Touch The Future</p>
+                    <div className="mfront-AISIN">
+                        <p className="logo">AISIN</p>
+                    </div>
+                    <div className="mbehi-AISIN">
+                        <p className="col mlogotext">We Touch The Future</p>
+                    </div>
                 </div>
                 <div className="label col">
                     <p className="label">
@@ -43,7 +46,7 @@ function MainPage(input) {
                 </div>
             </div>
             <div className="body">
-                {routing &&
+                {routing && (
                     <Routes>
                         <Route path="/" element={<Login />} />
                         <Route path="/login" element={<Login />} />
@@ -51,10 +54,8 @@ function MainPage(input) {
                         <Route path="/resetpwd" element={<ResetPwd />} />
                         <Route path="*" element={<Login />} />
                     </Routes>
-                }
-                {!routing &&
-                    <ResetPwd />
-                }
+                )}
+                {!routing && <ResetPwd />}
                 <div className="bigcontent">
                     <div className="col-sm-12 col-md maincontent">
                         <p className="logo">AISIN</p>

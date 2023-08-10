@@ -88,7 +88,7 @@ function Profile() {
     }, [selectDropdownRef]);
 
     return (
-        <div className="drop" ref={selectDropdownRef}>
+        <div className="drop item" ref={selectDropdownRef}>
             <button
                 className="dropbtn"
                 type="button"

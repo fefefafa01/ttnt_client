@@ -10,17 +10,50 @@
         }
     }
 }
+.front-AISIN {
+    height: 60%;
+}
+.mfront-AISIN {
+    height: 45%;
+}
+.rfront-AISIN {
+    height: 70%;
+}
+
+.mbehi-AISIN,
+.rbehi-AISIN,
+.behi-AISIN {
+    position: absolute;
+}
+.mbehi-AISIN {
+    width: 16.66667%;
+}
+.behi-AISIN {
+    width: 10%;
+}
+.rbehi-AISIN {
+    width: 11%;
+}
 .logo {
     color: white;
     font-family: "VLNL Decks";
     font-style: italic;
 }
-.logotext {
+
+.logotext,
+.mlogotext {
+    margin-top: 0px;
+    margin-bottom: 0px;
     color: white;
-    margin-top: -50px;
     font-weight: bold;
+}
+.logotext {
+    font-size: 0.5vw;
+}
+.mlogotext {
     font-size: x-small;
 }
+
 .label {
     color: white;
     flex: 10%;

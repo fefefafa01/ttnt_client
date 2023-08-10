@@ -80,7 +80,7 @@ function MultiLang() {
                                     onChange={() => handleLang("vi")}
                                 />
                             }
-                            style = {{margin: "10px 0px 0px 0px"}}
+                            style={{ margin: "10px 0px 0px 0px" }}
                             value="vi"
                             label={
                                 <div
@@ -112,7 +112,7 @@ function MultiLang() {
                             }
                         />
                         <FormControlLabel
-                            style={{margin: "-10px 10px 0px 0px",}}
+                            style={{ margin: "-10px 10px 0px 0px" }}
                             value="en"
                             control={
                                 <Radio
@@ -195,7 +195,7 @@ function MultiLangHome() {
     }, [selectDropdownRef]);
 
     return (
-        <div className="hlang dropdown" ref={selectDropdownRef}>
+        <div className="hlang dropdown item" ref={selectDropdownRef}>
             <button
                 className="hmulti-lang"
                 onClick={toggleDropdown}
@@ -227,15 +227,13 @@ function MultiLangHome() {
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
-                                        margin: "10px 0px 0px 0px",
                                     }}
                                 >
                                     <img
                                         src={VI}
                                         alt="Vietnamese"
                                         style={{
-                                            maxWidth: "25px",
-                                            marginLeft: "-6px",
+                                            maxWidth: "30px",
                                         }}
                                     />
                                     <Typography
@@ -252,7 +250,7 @@ function MultiLangHome() {
                             }
                         />
                         <FormControlLabel
-                            style={{margin: "-25px 10px 0px -11px",}}
+                            style={{ margin: "" }}
                             value="en"
                             control={
                                 <Radio
@@ -265,15 +263,13 @@ function MultiLangHome() {
                                     style={{
                                         display: "flex",
                                         alignItems: "center",
-                                        margin: "10px 0px 0px 0px",
                                     }}
                                 >
                                     <img
                                         src={EN}
                                         alt="English"
                                         style={{
-                                            maxWidth: "25px",
-                                            marginLeft: "-6px",
+                                            maxWidth: "30px",
                                         }}
                                     />
                                     <Typography

@@ -17,26 +17,26 @@ function AdminHeader() {
     return (
         <>
             <div className="aheader">
-                <div className="col-lg-2 col-sm-1">
+                <div className="item header-item head-AISIN">
                     <link
                         href="//db.onlinewebfonts.com/c/11cd399ec653d4e156ce034b85c19cb7?family=VLNL+Decks"
                         rel="stylesheet"
                         type="text/css"
                     />
-                    <p className="logo">AISIN</p>
-                    <br></br>
-                    <p className="col-lg logotext">We Touch The Future</p>
+                    <div className="front-AISIN">
+                        <p className="logo">AISIN</p>
+                    </div>
+                    <div className="behi-AISIN">
+                        <p className="col logotext">We Touch The Future</p>
+                    </div>
                 </div>
-                <div className="lbtngroup col-lg-2 col-sm-4">
-                    <button
-                        className="bttn col-2 rep-btn"
-                        onClick={handlePSBtn}
-                    >
+                <div className="lbtngroup item header-item">
+                    <button className="bttn item rep-btn" onClick={handlePSBtn}>
                         <span>
                             <Changer inp="Vehicle Part Search" />
                         </span>
                     </button>
-                    <Link className="col" to="/report">
+                    <Link className="item" to="/report">
                         <button className="bttn leftalgn ">
                             <span>
                                 <Changer inp="Report" />
@@ -44,19 +44,19 @@ function AdminHeader() {
                         </button>
                     </Link>
                 </div>
-                <div className="hlabel col-lg ">
+                <div className="hlabel item header-item">
                     <p className="hlabel-content">
                         <Changer inp="Vehicle Part Search" />
                     </p>
                 </div>
-                <div className="rbtngroup col-lg-3 col-sm-6">
-                    <button className="bttn col-lg" onClick={handleBlank}>
+                <div className="rbtngroup item header-item">
+                    <button className="bttn item" onClick={handleBlank}>
                         <span>
                             <Changer inp="Vehicle Management" />
                         </span>
                     </button>
                     <button
-                        className="bttn leftalgn col-lg"
+                        className="bttn leftalgn item"
                         onClick={handleBlank}
                     >
                         <span>
@@ -64,7 +64,7 @@ function AdminHeader() {
                         </span>
                     </button>
                     <button
-                        className="bttn leftalgn col-lg"
+                        className="bttn leftalgn item"
                         onClick={handlePSBtn}
                     >
                         <span>
@@ -72,7 +72,7 @@ function AdminHeader() {
                         </span>
                     </button>
                 </div>
-                <div className="col-lg-1 col-sm-1 btn-profile">
+                <div className="item header-item btn-profile">
                     <MultiLangHome />
                     <Profile />
                 </div>
@@ -96,9 +96,12 @@ function StaffHeader() {
                         rel="stylesheet"
                         type="text/css"
                     />
-                    <p className="logo">AISIN</p>
-                    <br></br>
-                    <p className="col logotext">We Touch The Future</p>
+                    <div className="AISIN">
+                        <p className="logo">AISIN</p>
+                    </div>
+                    <div className="behi-AISIN">
+                        <p className="col logotext">We Touch The Future</p>
+                    </div>
                 </div>
                 <div className="lbtngroup col-2">
                     <button className="bttn col" onClick={handlePSBtn}>
@@ -141,18 +144,21 @@ function ReportHeader() {
 
     return (
         <>
-            <div className="aheader">
-                <div className="col-lg-2 col-sm-1">
+            <div className="raheader ">
+                <div className="item header-item head-AISIN">
                     <link
                         href="//db.onlinewebfonts.com/c/11cd399ec653d4e156ce034b85c19cb7?family=VLNL+Decks"
                         rel="stylesheet"
                         type="text/css"
                     />
-                    <p className="logo">AISIN</p>
-                    <br></br>
-                    <p className="col-lg logotext">We Touch The Future</p>
+                    <div className="rfront-AISIN">
+                        <p className="logo">AISIN</p>
+                    </div>
+                    <div className="rbehi-AISIN">
+                        <p className="col logotext">We Touch The Future</p>
+                    </div>
                 </div>
-                <div className="lbtngroup col-lg-2 col-sm-4">
+                <div className="lbtngroup header-item item">
                     <button className="rbttn col" onClick={handlePSBtn}>
                         <span>
                             <Changer inp="Vehicle Part Search" />
@@ -166,12 +172,12 @@ function ReportHeader() {
                         </button>
                     </Link>
                 </div>
-                <div className="hlabel-report col-lg ">
+                <div className="hlabel-report item header-item">
                     <p className="hlabel-content">
                         <Changer inp="Product Coverage by Period" />
                     </p>
                 </div>
-                <div className="rbtngroup col-lg-2 col-sm-6">
+                <div className="rrbtngroup header-item item">
                     <button className="rbttn leftalgn col-lg">
                         <span>
                             <Changer inp="Vehicle Part Management" />
@@ -186,7 +192,7 @@ function ReportHeader() {
                         </span>
                     </button>
                 </div>
-                <div className="col-lg-1 col-sm-1 btn-profile">
+                <div className="item header-item btn-profile">
                     <MultiLangHome />
                     <Profile />
                 </div>

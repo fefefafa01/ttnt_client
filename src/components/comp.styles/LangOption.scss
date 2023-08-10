@@ -35,8 +35,8 @@
     margin-top: -20px;
 }
 .hlang {
-    margin-top: 30px;
-    justify-content: center;
+    padding: 45px 0px;
+    align-items: center;
 }
 .hmulti-lang {
     background-color: transparent;
@@ -44,18 +44,15 @@
     padding: 0 0;
 }
 .hlangbtn {
-	color: white;
-	position: absolute;
-	margin-left: -105px;
-	font-size: 1.2em;
-	margin-top: -4px;
+    color: white;
+    position: absolute;
+    font-size: 1.2em;
 }
 .hbox {
     border: solid black 1px;
     background-color: white;
     width: fit-content;
     border-radius: 8px;
-    margin-left: -115px;
     margin-top: 10px;
     position: absolute;
     display: none;
@@ -63,66 +60,11 @@
 .hlang.active {
     .hbox {
         display: block;
-    }
-}
-.hglobe {
-	max-width: 20px;
-	margin-left: -230px;
-	margin-top: -5px;
-}
-@media screen and (max-width: 1024px) {
-    .globe {
-        margin-left: -100px;
-    }
-    .langbtn {
-        margin-left: -40px;
-    }
-    .box {
-        margin-left: -80px;
-    }
-}
-@media screen and (max-width: 768px) {
-    .globe {
-        margin-left: -150px;
-    }
-    .langbtn {
-        margin-left: -70px;
-    }
-    .box {
-        margin-left: -100px;
-    }
-}
-@media screen and (max-width: 320px) {
-    .globe {
-        margin-left: -150px;
-    }
-    .langbtn {
-        margin-left: -70px;
-    }
-    .box {
-        margin-left: -100px;
-    }
-}
-@media screen and (max-width: 991px) {
-    .hglobe {
-        margin-left: -270px;
-        margin-top: -25px;
-    }
-    .hlangbtn {
-        display: none;
-    }
-    .hbox {
-        margin-left: -170px;
-        margin-top: -5px;
-    }
-    .Typography {
-        display: none;
-    }
-    .hlang-name {
-        display: none;
+        width: 120px;
+        margin-right: 30px;
     }
 }
 
-.css-hyxlzm {
-	margin-bottom: 10px;
+.hglobe {
+    max-width: 20px;
 }
