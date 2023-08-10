@@ -206,7 +206,7 @@ function ProductPeriod(props) {
             <div
                 style={{
                     display: "grid",
-                    gridTemplateColumns: "50% 1fr",
+                    gridTemplateColumns: "1fr 50%",
                 }}
             >
                 <div style={{ padding: "10px" }} className="item ">

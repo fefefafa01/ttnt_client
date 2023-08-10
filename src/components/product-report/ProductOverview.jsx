@@ -38,12 +38,8 @@ function ProductOverview(input) {
                 setFirstOpen(false);
                 for (let i = 0; i <= data.MakerName.length - 1; i++) {
                     setSumMaker(sumMaker + Number(data.MakerName[i].sum));
-                    //console.log(data.MakerName[i].sum);
-                    // console.log(sumMaker);
                 }
                 setMaker(data.MakerName);
-                // console.log(data.MakerName.length);
-                // console.log(maker);
             });
     }
     if (openOverall) {
