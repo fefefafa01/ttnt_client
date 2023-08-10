@@ -27,7 +27,7 @@ function AdminHeader() {
                         <p className="logo">AISIN</p>
                     </div>
                     <div className="behi-AISIN">
-                        <p className="col logotext">We Touch The Future</p>
+                        <p className="col logotext" style={{marginTop: "5px",}}>We Touch The Future</p>
                     </div>
                 </div>
                 <div className="lbtngroup item header-item">
@@ -100,7 +100,7 @@ function StaffHeader() {
                         <p className="logo">AISIN</p>
                     </div>
                     <div className="behi-AISIN">
-                        <p className="col logotext">We Touch The Future</p>
+                        <p className="col logotext" style={{marginTop:"5px",}}>We Touch The Future</p>
                     </div>
                 </div>
                 <div className="lbtngroup col-2">
