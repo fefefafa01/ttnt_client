@@ -75,7 +75,6 @@
     }
 }
 .report-content {
-    display: block;
     width: 80%;
     padding-right: 5px;
 }
@@ -130,13 +129,21 @@
     border: solid 1px #21303c;
     background-color: #21303c;
     color: white;
-    p {
-        font-size: 1em;
-    }
+
     .sidebar-title {
         align-items: left;
         text-align: left;
         font-size: 1.2em;
+        display: flex;
+    }
+    .closeSide {
+        max-width: 20px;
+        max-height: 20px;
+        margin-top: 5px;
+        position: relative;
+    }
+    p {
+        font-size: 1em;
     }
     .boxcontent {
         margin-top: -10px;
@@ -144,6 +151,18 @@
         padding-left: 30px;
         padding-right: 30px;
     }
+}
+
+.scroll-form-report.open {
+    display: none;
+}
+
+.report-content.open {
+    width: 99%;
+}
+
+.toggle {
+    height: 50px;
 }
 
 @media screen and (max-width: 1092px) {
@@ -383,6 +402,13 @@ span.css-eg0mwd-MuiSlider-thumb.Mui-active {
     height: 40px;
     width: 80%;
     font-size: 1.2em;
+}
+
+.openSide {
+    margin-top: 10vh;
+    max-width: 20px;
+    max-height: 20px;
+    position: relative;
 }
 
 @media screen and (max-width: 1140px) {

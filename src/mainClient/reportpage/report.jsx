@@ -8,6 +8,8 @@ import "components/product-report/ProductPeriod";
 import { Slider } from "@mui/material";
 import arrow from "../../img/arrow.png";
 import glass from "../../img/Glass.png";
+import left from "../../img/next_btn.png";
+import right from "../../img/openSide.png";
 import { Tabs } from "antd";
 import $ from "jquery";
 import { backlocale } from "constants/constindex";
@@ -94,6 +96,15 @@ function SelectCountries(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         }
+        if (selectedOption === "clear all") {
+            initialValues.country_name = "";
+            input.setCountry("");
+            input.setUpdate([]);
+            return;
+        } else if (selectedOption === "Select Allclear all") {
+            selectedOption = "Select All";
+        }
+
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -119,10 +130,15 @@ function SelectCountries(input) {
                 (name) => name !== "Select All"
             );
             input.setCountry(selectedValueOptions.join(", "));
-            initialValues.country_name = selectedValueOptions;
+            if (selectedValueOptions.length === 0)
+                initialValues.country_name = "";
+            else initialValues.country_name = selectedValueOptions;
             // console.log(initialValues.country_name);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (
+            selectedOption.slice(-5) !== "clear" &&
+            selectedOption.slice(-9) !== "clear all"
+        ) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -200,6 +216,9 @@ function SelectCountries(input) {
                 <ul className="options-report">
                     <li key="*" onClick={handleSelection}>
                         <Changer inp="Select All" />
+                        {input.country !== "" && (
+                            <button className="remove-btn">clear all</button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -207,7 +226,7 @@ function SelectCountries(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.country.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -287,6 +306,14 @@ function SelectCarMaker(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         }
+        if (selectedOption === "clear all") {
+            initialValues.manufacturer_name = "";
+            input.setMaker("");
+            input.setUpdate([]);
+            return;
+        } else if (selectedOption === "Select Allclear all") {
+            selectedOption = "Select All";
+        }
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -312,10 +339,15 @@ function SelectCarMaker(input) {
                 (name) => name !== "Select All"
             );
             input.setMaker(selectedValueOptions.join(", "));
-            initialValues.manufacturer_name = selectedValueOptions;
+            if (selectedValueOptions.length === 0)
+                initialValues.manufacturer_name = "";
+            else initialValues.manufacturer_name = selectedValueOptions;
             // console.log(initialValues.manufacturer_name);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (
+            selectedOption.slice(-5) !== "clear" &&
+            selectedOption.slice(-9) !== "clear all"
+        ) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -394,6 +426,9 @@ function SelectCarMaker(input) {
                 <ul className="options-report">
                     <li key="*" onClick={handleSelection}>
                         <Changer inp="Select All" />
+                        {input.maker !== "" && (
+                            <button className="remove-btn">clear all</button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -401,7 +436,7 @@ function SelectCarMaker(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.maker.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -481,6 +516,14 @@ function SelectTransmission(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         }
+        if (selectedOption === "clear all") {
+            initialValues.transmission_type = "";
+            input.setTrans("");
+            input.setUpdate([]);
+            return;
+        } else if (selectedOption === "Select Allclear all") {
+            selectedOption = "Select All";
+        }
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -506,10 +549,15 @@ function SelectTransmission(input) {
                 (name) => name !== "Select All"
             );
             input.setTrans(selectedValueOptions.join(", "));
-            initialValues.transmission_type = selectedValueOptions;
+            if (selectedValueOptions.length === 0)
+                initialValues.transmission_type = "";
+            else initialValues.transmission_type = selectedValueOptions;
             // console.log(initialValues.transmission_type);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (
+            selectedOption.slice(-5) !== "clear" &&
+            selectedOption.slice(-9) !== "clear all"
+        ) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -587,6 +635,9 @@ function SelectTransmission(input) {
                 <ul className="options-report">
                     <li key="*" onClick={handleSelection}>
                         <Changer inp="Select All" />
+                        {input.trans !== "" && (
+                            <button className="remove-btn">clear all</button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -594,7 +645,7 @@ function SelectTransmission(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.trans.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -681,6 +732,14 @@ function SelectPartGroup(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         }
+        if (selectedOption === "clear all") {
+            initialValues.part_group = "";
+            input.setPartGroup("");
+            input.setUpdate([]);
+            return;
+        } else if (selectedOption === "Select Allclear all") {
+            selectedOption = "Select All";
+        }
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -706,10 +765,15 @@ function SelectPartGroup(input) {
                 (name) => name !== "Select All"
             );
             input.setPartGroup(selectedValueOptions.join(", "));
-            initialValues.part_group = selectedValueOptions;
+            if (selectedValueOptions.length === 0)
+                initialValues.part_group = "";
+            else initialValues.part_group = selectedValueOptions;
             // console.log(initialValues.part_group);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (
+            selectedOption.slice(-5) !== "clear" &&
+            selectedOption.slice(-9) !== "clear all"
+        ) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -785,6 +849,9 @@ function SelectPartGroup(input) {
                 <ul className="options-report">
                     <li key="*" onClick={handleSelection}>
                         <Changer inp="Select All" />
+                        {input.partGroup !== "" && (
+                            <button className="remove-btn">clear all</button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -792,7 +859,7 @@ function SelectPartGroup(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {selectedValue.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -872,6 +939,14 @@ function SelectPartName(input) {
             selectedOption =
                 selectedOption - selectedOption.slice(-3) + "clear";
         }
+        if (selectedOption === "clear all") {
+            initialValues.part_name = "";
+            input.setPart("");
+            input.setUpdate([]);
+            return;
+        } else if (selectedOption === "Select Allclear all") {
+            selectedOption = "Select All";
+        }
         if (
             selectedOption === "Select All" ||
             selectedOption === "Chọn tất cả"
@@ -897,10 +972,14 @@ function SelectPartName(input) {
                 (name) => name !== "Select All"
             );
             input.setPart(selectedValueOptions.join(", "));
-            initialValues.part_name = selectedValueOptions;
+            if (selectedValueOptions.length === 0) initialValues.part_name = "";
+            else initialValues.part_name = selectedValueOptions;
             // console.log(initialValues.part_name);
             return;
-        } else if (selectedOption.slice(-5) !== "clear") {
+        } else if (
+            selectedOption.slice(-5) !== "clear" &&
+            selectedOption.slice(-9) !== "clear all"
+        ) {
             const index = input.update.indexOf(selectedOption);
             if (index > -1) {
                 input.update.splice(index, 1);
@@ -978,6 +1057,9 @@ function SelectPartName(input) {
                 <ul className="options-report">
                     <li key="*" onClick={handleSelection}>
                         Select All
+                        {input.part !== "" && (
+                            <button className="remove-btn">clear all</button>
+                        )}
                     </li>
                     {filtered.map((name) => (
                         <li
@@ -985,7 +1067,7 @@ function SelectPartName(input) {
                             onClick={(event) => handleSelection(event, name)}
                         >
                             {name}
-                            {input.part.includes(name) && (
+                            {input.update.indexOf(name) !== -1 && (
                                 <button
                                     className="remove-btn"
                                     onClick={() => handleRemoveSelected(name)}
@@ -1002,6 +1084,18 @@ function SelectPartName(input) {
 }
 
 function ReportPage(props) {
+    const [show, showSidebar] = useState(false);
+
+    const sidebarClass = show
+        ? "scroll-form-report open"
+        : "scroll-form-report";
+
+    const openClass = show ? "report-content open" : "report-content";
+
+    const handleSidebar = () => {
+        showSidebar(!show);
+    };
+
     const [activeKey, setActiveKey] = useState("1");
     const [formValues, setFormValues] = useState(initialValues);
     //Remove Warning
@@ -1130,7 +1224,7 @@ function ReportPage(props) {
             <ReportHeader />
             <div className="hbody">
                 <div className="wrappers-report">
-                    <div className="report-content">
+                    <div className={openClass}>
                         <Tabs
                             hideAdd
                             className="rtabs"
@@ -1155,9 +1249,15 @@ function ReportPage(props) {
                             <html className="scrollempty">&nbsp;</html>
                         </div> */}
                     </div>
-                    <div className="scroll-form-report" id="rscroll-export">
-                        <div className="sidebar-right ">
+                    <div className={sidebarClass} id="rscroll-export">
+                        <div className="sidebar-right">
                             <div className="sidebar-title">
+                                <img
+                                    className="closeSide"
+                                    onClick={handleSidebar}
+                                    src={left}
+                                    alt=""
+                                />
                                 <p>Filter by part (High level)</p>
                             </div>
                             <div className="boxcontent">
@@ -1254,6 +1354,14 @@ function ReportPage(props) {
                             </div>
                         </div>
                     </div>
+                    {show && (
+                        <img
+                            className="openSide"
+                            onClick={handleSidebar}
+                            src={right}
+                            alt=""
+                        />
+                    )}
                 </div>
             </div>
         </div>
