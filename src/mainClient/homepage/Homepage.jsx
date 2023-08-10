@@ -234,6 +234,18 @@ function Homepage() {
         } else if (removed.title==="Fitted") {
             if ([...panes.current].length===1) {
                 setActiveKey([...panes.current][0].key);
+            } else {
+                var setted = false;
+                for (let i = 0; i < [...panes.current].length; i++) {
+                    if ([...panes.current][i].title === "Vehicle Model List" || [...panes.current][i].title === "Result List") {
+                        setted = true;
+                        setActiveKey([...panes.current][i].key);
+                        break;
+                    }
+                }
+                if (!setted) {
+                    setActiveKey(removed.key);
+                }
             }
             removed.status = false;
             removed.key = "";
