@@ -20,10 +20,10 @@ const initialItems = [
 
 const { TabPane } = Tabs;
 let c = 1;
+let removed = {status: false, key: "", title:"", special: ""};
 
 function Homepage() {
     const [sidebarOpen, setSideBarOpen] = useState(true);
-    // const [partSubName, setPartSubName] = useState("");
 
     const handleViewSidebar = () => {
         setSideBarOpen(!sidebarOpen);
@@ -78,6 +78,8 @@ function Homepage() {
     };
 
     const addGroup = (formValues, count) => {
+        let counter = 0;
+        let samepane = false;
         let text = "Result List";
         if (count === 0) {
             text = "Vehicle Model List";
@@ -96,7 +98,42 @@ function Homepage() {
             ),
             key: activeKey,
         };
-        panes.current = [...panes.current, newPane];
+
+        for (let i = 0; i<[...panes.current].length; i++) {
+            if (([...panes.current][i].title === "Result List") || ([...panes.current][i].title === "Vehicle Model List")) {
+                counter = i;
+                samepane = true;
+                remove([...panes.current][i].key);
+                break;
+            }
+        }
+        let newPanelist = [];
+        if (samepane && [...panes.current].length > 0) {
+            for (let i = 0; i <= [...panes.current].length; i++) {
+                if (i<counter) {
+                    if ([...panes.current][i].title!=="Search Result") {
+                        newPanelist.push([...panes.current][i]);
+                    }
+                    continue;
+                } else if (i===counter) {
+                    newPanelist.push(newPane);
+                    continue;
+                } else if (i>counter) {
+                    if ([...panes.current][i-1].title!=="Search Result") {
+                        newPanelist.push([...panes.current][i-1]);
+                    }
+                    continue;
+                }
+            }
+        } else if (samepane && [panes.current].length===0) {
+            newPanelist = [...newPane];
+        } else {
+            newPanelist = [...panes.current, newPane];
+        }
+        panes.current = newPanelist;
+
+        //Pre-change:
+        // panes.current = [...panes.current, newPane];
         setActiveKey(activeKey);
         console.log("Current Panes: ", panes.current);
         c++;
@@ -136,28 +173,40 @@ function Homepage() {
         console.log("Current Panes: ", panes.current);
     };
 
-    // const remove = (targetKey) => {
-    //     const targetPaneIndex = panes.current.findIndex(pane => pane.key === targetKey);
-    //     setActiveKey(targetKey);
-    //     const newpanes.current = panes.current.filter(pane => pane.key !== targetKey);
-    //     panes.current = newpanes.current;
-    //     const newActiveKey = newpanes.current[targetPaneIndex - 1]?.key || newpanes.current[targetPaneIndex]?.key || "";
-    //     setActiveKey(newActiveKey);
-    //     console.log(newActiveKey)
-    //   };
-
     const remove = (targetKey) => {
-        let newActiveKey = activeKey;
+        let newActiveKey;
+        if (activeKey !== targetKey) {
+            newActiveKey = targetKey;
+            setActiveKey(targetKey);
+        } else {
+            newActiveKey = activeKey;
+        }
         let lastIndex = -1;
         panes.current.forEach((pane, i) => {
             if (pane.key === targetKey) {
                 lastIndex = i - 1;
+                if (pane.title === "Vehicle Model List" || pane.title === "Result List") {
+                    removed.title = "Fitted";
+                }
             }
         });
-        const newpPanes = panes.current.filter(
+        var newpPanes = panes.current.filter(
             (pane) => pane.key !== targetKey
         );
-        if (newpPanes.length && newActiveKey === targetKey) {
+
+        if (newpPanes.length === 0) {
+            const SpawningIndex = 0;
+            newActiveKey = `${SpawningIndex}`;
+            const SpawnPane = {
+                title: `Search Result`,
+                content: (
+                    <SearchResult />
+                ),
+                key: newActiveKey,
+                closable: false
+            }
+            newpPanes.push(SpawnPane);
+        } else if (newpPanes.length && newActiveKey === targetKey) {
             if (lastIndex >= 0) {
                 newActiveKey = newpPanes[lastIndex].key;
             } else {
@@ -165,8 +214,32 @@ function Homepage() {
             }
         }
         panes.current = newpPanes;
-        setActiveKey(newActiveKey);
-    };
+        if (targetKey===activeKey) {
+            setActiveKey(newActiveKey);
+        } else {
+        removed.status = true;
+        removed.key = newActiveKey;
+        }
+    }
+
+    if ([...panes.current][0].title === "Search Result" && [...panes.current].length > 1) {
+        remove([...panes.current][0].key);
+    }
+
+    if (removed.status===true) {
+        if (removed.title!=="Fitted") {
+            setActiveKey(removed.key);
+            removed.status = false;
+            removed.key = "";
+        } else if (removed.title==="Fitted") {
+            if ([...panes.current].length===1) {
+                setActiveKey([...panes.current][0].key);
+            }
+            removed.status = false;
+            removed.key = "";
+            removed.title = "";
+        }
+    }
 
     return (
         <div>
