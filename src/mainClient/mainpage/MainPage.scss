@@ -80,7 +80,7 @@ p.label {
 .wrapper {
     position: absolute;
     height: fit-content;
-    width: 25vw;
+    width: 22vw;
     background-color: #d8dcf4;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -178,6 +178,7 @@ input.name-box {
                 width: 100%;
             }
         }
+
         .right {
             width: 100%;
             padding-left: 5px;
@@ -335,22 +336,10 @@ p.register-link {
 .bigcontent {
     width: 100%;
 }
-@media screen and (min-width: 1440) {
+
+@media screen and (max-width: 1470) {
     .wrapper {
-        width: 30vw;
-    }
-    .name {
-        div.right {
-            padding-right: 0px;
-        }
-        div.left {
-            padding-right: 0px;
-        }
-    }
-}
-@media screen and (max-width: 1024px) {
-    .wrapper {
-        width: 35vw;
+        width: 40vw;
         margin-left: 5vw;
     }
     .content {
@@ -393,10 +382,10 @@ p.register-link {
         font-size: 0.8em;
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .wrapper {
-        margin-left: 10px;
-        width: 40vw;
+        margin-left: 7vw;
+        width: 30vw;
         margin-top: 50px;
     }
     .form-box {
@@ -418,7 +407,7 @@ p.register-link {
             margin-top: -50px;
         }
     }
-    .name {
+    .full-name .name {
         display: block;
     }
     input.name-left {
