@@ -12,16 +12,58 @@ const Views = () => {
             <Routes>
                 <Route
                     path="/"
-                    element={(loggedIn === "true") ? <HomePage /> : <MainPage input="normal"/>}
+                    element={
+                        loggedIn === "true" ? (
+                            <HomePage />
+                        ) : (
+                            <MainPage input="normal" />
+                        )
+                    }
                 />
                 <Route
                     path="*"
-                    element={(loggedIn === "true") ? <HomePage /> : <MainPage input="normal"/>}
+                    element={
+                        loggedIn === "true" ? (
+                            <HomePage />
+                        ) : (
+                            <MainPage input="normal" />
+                        )
+                    }
                 />
-                {/* <Route path="/homepage" element={<HomePage />} /> */}
-                <Route path="/resetpwdhome" element={<MainPage input="reset"/>} />
-                <Route path="/report" element={<ReportPage />} />
-                <Route path="/blankpage" element={<BlankPage />} />
+                <Route
+                    path="/homepage"
+                    element={
+                        loggedIn === "true" ? (
+                            <HomePage />
+                        ) : (
+                            <MainPage input="normal" />
+                        )
+                    }
+                />
+                <Route
+                    path="/resetpwdhome"
+                    element={<MainPage input="reset" />}
+                />
+                <Route
+                    path="/report"
+                    element={
+                        loggedIn === "true" ? (
+                            <ReportPage />
+                        ) : (
+                            <MainPage input="normal" />
+                        )
+                    }
+                />
+                <Route
+                    path="/blankpage"
+                    element={
+                        loggedIn === "true" ? (
+                            <BlankPage />
+                        ) : (
+                            <MainPage input="normal" />
+                        )
+                    }
+                />
             </Routes>
         </div>
     );
